@@ -1,0 +1,16 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion Integer.parseInt(rootProject.targetSdkVersion)
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion Integer.parseInt(rootProject.minSdkVersion)
+        targetSdkVersion Integer.parseInt(rootProject.targetSdkVersion)
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-annotations:' + rootProject.supportLibVersion
+}
+
