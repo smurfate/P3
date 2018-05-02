@@ -23,6 +23,7 @@ import com.itland.irecruitment.abstracts.AbstractActivity;
 import com.itland.irecruitment.fragments.ApplicationsFragment;
 import com.itland.irecruitment.fragments.HomeFragment;
 import com.itland.irecruitment.fragments.MoreFragment;
+import com.itland.irecruitment.fragments.ProfileFragment;
 import com.itland.irecruitment.fragments.ResumeFragment;
 import com.itland.irecruitment.fragments.VacanciesFragment;
 import com.itland.irecruitment.util.FragmentNavigator;
@@ -62,6 +63,13 @@ public class MainActivity extends AbstractActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        imgProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigator.gotoSubSection(ProfileFragment.newInstance());
+            }
+        });
     }
 
     @Override
@@ -79,23 +87,18 @@ public class MainActivity extends AbstractActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    actionbarSearch(false);
                     navigator.gotoSection(HomeFragment.newInstance());
                     return true;
                 case R.id.navigation_resumes:
-                    actionbarSearch(true);
                     navigator.gotoSection(ResumeFragment.newInstance());
                     return true;
                 case R.id.navigation_applications:
-                    actionbarSearch(false);
                     navigator.gotoSection(ApplicationsFragment.newInstance());
                     return true;
                 case R.id.navigation_vacancies:
-                    actionbarSearch(false);
                     navigator.gotoSection(VacanciesFragment.newInstance());
                     return true;
                 case R.id.navigation_more:
-                    actionbarSearch(false);
                     navigator.gotoSection(MoreFragment.newInstance());
                     return true;
             }
@@ -135,6 +138,12 @@ public class MainActivity extends AbstractActivity {
             searchView.setVisibility(View.GONE);
             tvTitle.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void showActionBar(boolean show)
+    {
+        if(show) actionBar.show();
+        else actionBar.hide();
     }
 
     public SearchView getSearchView()

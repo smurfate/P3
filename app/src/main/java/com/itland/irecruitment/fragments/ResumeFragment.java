@@ -14,11 +14,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.abstracts.AbstractFragment;
 import com.itland.irecruitment.adapters.ResumeAdapter;
 import com.itland.irecruitment.entities.Resume;
+import com.itland.irecruitment.util.FragmentNavigator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +35,11 @@ public class ResumeFragment extends AbstractFragment {
     @Bind(R.id.gridView) GridView gridView;
     @Bind(R.id.drawer_layout) public DrawerLayout drawer;
     @Bind(R.id.nav_view) NavigationView navigationView;
+
+
+    @Bind(R.id.lnrChoose) LinearLayout lnrChoose;
+    @Bind(R.id.lnrFilter) LinearLayout lnrFilter;
+    @Bind(R.id.txtDone) TextView txtDone;
 
 
 
@@ -60,11 +68,24 @@ public class ResumeFragment extends AbstractFragment {
         setTitle(getString(R.string.resumes));
     }
 
+    private void showFilter()
+    {
+        lnrFilter.setVisibility(View.VISIBLE);
+        lnrChoose.setVisibility(View.GONE);
+    }
+
+    private void showChoose()
+    {
+        lnrFilter.setVisibility(View.GONE);
+        lnrChoose.setVisibility(View.VISIBLE);
+    }
 
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        activity.actionbarSearch(true);
 
         List<Resume> lst = new ArrayList<>(10);
         for(int i=0;i<10;i++) lst.add(new Resume());
@@ -100,8 +121,21 @@ public class ResumeFragment extends AbstractFragment {
             }
         });
 
+        showFilter();
+        txtDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showChoose();
+            }
+        });
+
 
 
     }
 
+    @Override
+    public void onPause() {
+        activity.actionbarSearch(false);
+        super.onPause();
+    }
 }

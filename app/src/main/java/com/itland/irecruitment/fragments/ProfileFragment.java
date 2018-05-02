@@ -4,6 +4,7 @@ package com.itland.irecruitment.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +12,20 @@ import android.view.ViewGroup;
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.abstracts.AbstractFragment;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class VacancyDetailsFragment extends AbstractFragment {
+public class ProfileFragment extends AbstractFragment {
 
 
-    public VacancyDetailsFragment() {
+    @Bind(R.id.toolbar) Toolbar toolbar;
+
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
-    public static VacancyDetailsFragment newInstance() {
-        VacancyDetailsFragment fragment = new VacancyDetailsFragment();
+    public static ProfileFragment newInstance() {
+        ProfileFragment fragment = new ProfileFragment();
         return fragment;
     }
 
@@ -30,16 +34,27 @@ public class VacancyDetailsFragment extends AbstractFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_vacancy_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this,view);
         return view;
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        activity.showActionBar(false);
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activity.actionbarSearch(false);
 
-        
+        toolbar.setTitle("S4U");
+    }
+
+    @Override
+    public void onPause() {
+        activity.showActionBar(true);
+        super.onPause();
     }
 }

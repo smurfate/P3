@@ -5,9 +5,12 @@
     tools:context="com.itland.irecruitment.fragments.ApplicationsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ListView
+        android:id="@+id/lstApplications"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Applications" />
-
+        android:divider="@null"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp" />
 </FrameLayout>

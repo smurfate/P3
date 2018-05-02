@@ -227,6 +227,18 @@ public class FragmentNavigator {
 //        return fragmentManager.findFragmentById(container);
     }
 
+    public Fragment getBackstackFragment(Class cls)
+    {
+        for(Fragment f:fragmentManager.getFragments())
+        {
+            if(f.getClass().getSimpleName().equals(cls.getSimpleName()))
+            {
+                return f;
+            }
+        }
+        return null;
+    }
+
     public boolean isCurrentFragment(Class fragmentClass)
     {
         return getCurrentFragment().getClass().getSimpleName().equals(fragmentClass.getSimpleName());

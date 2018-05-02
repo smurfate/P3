@@ -3,25 +3,27 @@ package com.itland.irecruitment.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.abstracts.AbstractFragment;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class VacancyDetailsFragment extends AbstractFragment {
+public class ApplicationViewFragment extends AbstractFragment {
 
+    @Bind(R.id.txtMore) TextView txtMore;
 
-    public VacancyDetailsFragment() {
+    public ApplicationViewFragment() {
         // Required empty public constructor
     }
 
-    public static VacancyDetailsFragment newInstance() {
-        VacancyDetailsFragment fragment = new VacancyDetailsFragment();
+    public static ApplicationViewFragment newInstance() {
+        ApplicationViewFragment fragment = new ApplicationViewFragment();
         return fragment;
     }
 
@@ -30,7 +32,7 @@ public class VacancyDetailsFragment extends AbstractFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_vacancy_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_application_view, container, false);
         ButterKnife.bind(this,view);
         return view;
     }
@@ -38,8 +40,13 @@ public class VacancyDetailsFragment extends AbstractFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activity.actionbarSearch(false);
 
-        
+        txtMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigator.gotoSubSection(ApplicationDetailsFragment.newInstance());
+            }
+        });
+
     }
 }
