@@ -3,6 +3,7 @@ package com.itland.irecruitment.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ public class ProfileFragment extends AbstractFragment {
 
 
     @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.fab) FloatingActionButton fab;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -50,6 +52,13 @@ public class ProfileFragment extends AbstractFragment {
         super.onViewCreated(view, savedInstanceState);
 
         toolbar.setTitle("S4U");
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigator.gotoSubSection(EditProfileFragment.newInstance());
+            }
+        });
     }
 
     @Override
@@ -57,4 +66,6 @@ public class ProfileFragment extends AbstractFragment {
         activity.showActionBar(true);
         super.onPause();
     }
+
+
 }

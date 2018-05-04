@@ -40,5 +40,12 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="SpinnerStyle">
+        <item name="android:background">@drawable/ad_spinner_background_holo_light</item>
+    </style>
+
+
+
+
 
 </resources>

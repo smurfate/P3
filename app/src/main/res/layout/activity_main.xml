@@ -21,7 +21,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" >
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
                 android:gravity="center_vertical"
@@ -56,6 +56,11 @@
                     app:iconifiedByDefault="false"
                     app:queryHint="@string/search" />
 
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
                 <ProgressBar
                     android:id="@+id/pb_loading"
                     android:layout_width="wrap_content"
@@ -71,17 +76,21 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:visibility="gone"
-                    app:srcCompat="@drawable/ic_dashboard_black_24dp" />
+                    app:srcCompat="@drawable/ic_filter" />
 
-
+                <TextView
+                    android:id="@+id/tvSave"
+                    style="@style/TextViewBody"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
 
             </LinearLayout>
-
-
-
-
-
-
 
         </android.support.v7.widget.Toolbar>
 
@@ -97,6 +106,7 @@
 
 
     </FrameLayout>
+
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

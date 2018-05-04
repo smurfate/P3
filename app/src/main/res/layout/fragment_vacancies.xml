@@ -1,66 +1,121 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.itland.irecruitment.fragments.VacanciesFragment">
 
-
-    <TabHost
+    <LinearLayout
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="match_parent">
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorHeight="3dp"
+            android:background="@color/colorPrimary"
+            app:tabIndicatorColor="@color/yellow"
+            app:tabTextColor="@color/white"
+            app:tabSelectedTextColor="@color/white"
+            app:tabGravity="fill"/>
 
-        <LinearLayout
+        <TabHost
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:id="@+id/tabHost"
+            android:layout_gravity="center_horizontal|top">
 
-            <TabWidget
-                android:id="@android:id/tabs"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:id="@+id/Active"
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:tabStripEnabled="false"
+                    android:baselineAligned="false">
 
-                    <ListView
-                        android:id="@+id/lstActive"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
+                </TabWidget>
 
-                <LinearLayout
-                    android:id="@+id/In-Active"
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent">
 
-                    <ListView
-                        android:id="@+id/lstInactive"
+                    <LinearLayout
+                        android:id="@+id/active_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
+                        android:layout_height="match_parent"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/Expired"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                        <ListView
+                            android:layout_width="match_parent"
+                            android:id="@+id/lstActive"
+                            android:divider="@null"
+                            android:layout_height="match_parent">
 
-                    <ListView
-                        android:id="@+id/lstExpired"
+                        </ListView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/inactive_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
-</LinearLayout>
+                        android:layout_height="match_parent"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:orientation="vertical">
+                        <ListView
+                            android:layout_width="match_parent"
+                            android:id="@+id/lstInActive"
+                            android:divider="@null"
+
+                            android:layout_height="match_parent">
+
+                        </ListView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/expired_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:orientation="vertical">
+                        <ListView
+                            android:layout_width="match_parent"
+                            android:id="@+id/lstExpired"
+                            android:divider="@null"
+                            android:layout_height="match_parent">
+
+                        </ListView>
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </LinearLayout>
+        </TabHost>
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:backgroundTint="@color/text_blue"
+        app:layout_anchor="@id/app_bar"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+
+</RelativeLayout>

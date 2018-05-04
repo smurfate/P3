@@ -49,12 +49,13 @@ public class VacanciesAdapter extends BaseAdapter {
         if (convertView != null) {
             viewHolder = (ViewHolder) convertView.getTag();
         } else {
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_application, parent, false);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_vacancy, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }
 
         Vacancy vacancy = getItem(position);
+        viewHolder.imgProfile.setVisibility(View.GONE);
 
         return convertView;
     }

@@ -36,8 +36,10 @@ public class MainActivity extends AbstractActivity {
 
     @Bind(R.id.toolbar) public Toolbar toolbar;
     @Bind(R.id.pb_loading) ProgressBar pbLoading;
+    @Bind(R.id.navigation) BottomNavigationView navigation;
 
     @Bind(R.id.tvTitle) TextView tvTitle;
+    @Bind(R.id.tvSave) TextView tvSave;
     @Bind(R.id.imgProfile) ImageView imgProfile;
     @Bind(R.id.searchView) SearchView searchView;
     @Bind(R.id.imgFilter) ImageView imgFilter;
@@ -61,13 +63,15 @@ public class MainActivity extends AbstractActivity {
 
         navigator = new FragmentNavigator(this, HomeFragment.newInstance(),R.id.frmContent);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
 
         imgProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navigator.gotoSubSection(ProfileFragment.newInstance());
+                navigation.setSelected(false);
+
             }
         });
     }
@@ -153,5 +157,11 @@ public class MainActivity extends AbstractActivity {
 
     public ImageView getFilterBtn() { return imgFilter; }
 
+    public TextView showSave(boolean show)
+    {
+        if(show) tvSave.setVisibility(View.VISIBLE);
+        else tvSave.setVisibility(View.GONE);
+        return tvSave;
+    }
 
 }

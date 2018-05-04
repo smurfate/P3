@@ -12,20 +12,16 @@ import android.widget.TextView;
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.abstracts.AbstractFragment;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MoreFragment extends AbstractFragment {
+public class EditProfileFragment extends AbstractFragment {
 
-    @Bind(R.id.txtMore)
-    TextView txtMore;
-    public MoreFragment() {
+    public EditProfileFragment() {
         // Required empty public constructor
     }
 
-    public static MoreFragment newInstance() {
-        MoreFragment fragment = new MoreFragment();
-
+    public static EditProfileFragment newInstance() {
+        EditProfileFragment fragment = new EditProfileFragment();
         return fragment;
     }
 
@@ -34,7 +30,7 @@ public class MoreFragment extends AbstractFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_more, container, false);
+        View view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
         ButterKnife.bind(this,view);
         return view;
     }
@@ -42,12 +38,25 @@ public class MoreFragment extends AbstractFragment {
     @Override
     public void onStart() {
         super.onStart();
-        setTitle(getString(R.string.more));
+        setTitle("Edit Profile");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        activity.showSave(false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        TextView txtSave = activity.showSave(true);
+        txtSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toast("Saved");
+            }
+        });
     }
 }

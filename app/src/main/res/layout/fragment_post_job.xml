@@ -1,0 +1,250 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context="com.itland.irecruitment.fragments.PostJobFragment">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Position Title" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                style="@style/TextViewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Country"
+                android:textColor="@color/black" />
+
+            <Spinner
+                style="@style/SpinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/TextViewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="City"
+                android:textColor="@color/black" />
+
+            <Spinner
+                style="@style/SpinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/TextViewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Required years of experience"
+                android:textColor="@color/black" />
+
+            <Spinner
+                style="@style/SpinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/TextViewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Minimum education degree level"
+                android:textColor="@color/black" />
+
+            <Spinner
+                style="@style/SpinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Job description" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Pre-requisites" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                style="@style/TextViewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Field of work"
+                android:textColor="@color/black" />
+
+            <Spinner
+                style="@style/SpinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/TextViewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Job title"
+                android:textColor="@color/black" />
+
+            <Spinner
+                style="@style/SpinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/TextViewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Military services"
+                android:textColor="@color/black" />
+
+            <Spinner
+                style="@style/SpinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Key skills needed" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                style="@style/TextViewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Salary"
+                android:textColor="@color/black" />
+
+            <Spinner
+                style="@style/SpinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Benefits" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                style="@style/TextViewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Required employees number"
+                android:textColor="@color/black" />
+
+            <Spinner
+                style="@style/SpinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/TextViewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Photo"
+                android:textColor="@color/black" />
+
+            <Spinner
+                style="@style/SpinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/TextViewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CV language"
+                android:textColor="@color/black" />
+
+            <Spinner
+                style="@style/SpinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/TextViewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hide company name"
+                android:textColor="@color/black" />
+
+            <Spinner
+                style="@style/SpinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="About the company" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</ScrollView>
