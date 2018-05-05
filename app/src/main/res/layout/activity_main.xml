@@ -48,18 +48,29 @@
 
                 <android.support.v7.widget.SearchView
                     android:id="@+id/searchView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_gravity="end"
                     android:layout_weight="1"
                     android:visibility="gone"
                     app:iconifiedByDefault="false"
                     app:queryHint="@string/search" />
 
                 <Space
+                    android:id="@+id/space"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/imgFilter"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:tint="@color/white"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_filter" />
 
                 <ProgressBar
                     android:id="@+id/pb_loading"
@@ -68,15 +79,6 @@
                     android:layout_gravity="end"
                     android:indeterminate="true"
                     android:visibility="gone" />
-
-                <ImageView
-                    android:id="@+id/imgFilter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:visibility="gone"
-                    app:srcCompat="@drawable/ic_filter" />
 
                 <TextView
                     android:id="@+id/tvSave"

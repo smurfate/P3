@@ -43,6 +43,18 @@ public class HomeFragment extends AbstractFragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        activity.showActionBar(true);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        activity.showActionBar(false);
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 

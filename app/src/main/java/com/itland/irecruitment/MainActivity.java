@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Space;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ public class MainActivity extends AbstractActivity {
     @Bind(R.id.toolbar) public Toolbar toolbar;
     @Bind(R.id.pb_loading) ProgressBar pbLoading;
     @Bind(R.id.navigation) BottomNavigationView navigation;
+    @Bind(R.id.space) Space space;
 
     @Bind(R.id.tvTitle) TextView tvTitle;
     @Bind(R.id.tvSave) TextView tvSave;
@@ -61,9 +63,10 @@ public class MainActivity extends AbstractActivity {
 //        toolbar.getOverflowIcon().setColorFilter(getResources().getColor(R.color.bbsf_background), PorterDuff.Mode.SRC_ATOP);
 //        toolbar.setPopupTheme(R.style.OverflowOptionsMenu);
 
-        navigator = new FragmentNavigator(this, HomeFragment.newInstance(),R.id.frmContent);
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        navigator = new FragmentNavigator(this, HomeFragment.newInstance(),navigation,R.id.frmContent);
 
 
         imgProfile.setOnClickListener(new View.OnClickListener() {
@@ -117,8 +120,10 @@ public class MainActivity extends AbstractActivity {
         {
             if (indeterminate) {
                 pbLoading.setVisibility(View.VISIBLE);
+                space.setVisibility(View.VISIBLE);
             }else {
                 pbLoading.setVisibility(View.GONE);
+                space.setVisibility(View.GONE);
             }
         }
     }
@@ -135,11 +140,13 @@ public class MainActivity extends AbstractActivity {
             imgFilter.setVisibility(View.VISIBLE);
             searchView.setVisibility(View.VISIBLE);
             tvTitle.setVisibility(View.GONE);
+            space.setVisibility(View.GONE);
         }
         else
         {
             imgFilter.setVisibility(View.GONE);
             searchView.setVisibility(View.GONE);
+            space.setVisibility(View.VISIBLE);
             tvTitle.setVisibility(View.VISIBLE);
         }
     }
@@ -159,8 +166,14 @@ public class MainActivity extends AbstractActivity {
 
     public TextView showSave(boolean show)
     {
-        if(show) tvSave.setVisibility(View.VISIBLE);
-        else tvSave.setVisibility(View.GONE);
+        if(show) {
+            tvSave.setVisibility(View.VISIBLE);
+            space.setVisibility(View.VISIBLE);
+        }
+        else {
+            tvSave.setVisibility(View.GONE);
+            space.setVisibility(View.VISIBLE);
+        }
         return tvSave;
     }
 

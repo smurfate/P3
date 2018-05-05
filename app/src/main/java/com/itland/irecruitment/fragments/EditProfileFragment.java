@@ -42,6 +42,12 @@ public class EditProfileFragment extends AbstractFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        activity.showSave(true);
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
         activity.showSave(false);

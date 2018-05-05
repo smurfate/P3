@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.abstracts.AbstractFragment;
@@ -18,6 +19,7 @@ import butterknife.ButterKnife;
 public class ApplicationDetailsFragment extends AbstractFragment {
 
     @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.txtTitle) TextView txtTitle;
 
     public ApplicationDetailsFragment() {
         // Required empty public constructor
@@ -41,9 +43,7 @@ public class ApplicationDetailsFragment extends AbstractFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activity.showActionBar(false);
-        toolbar.setTitle("Sami somthing");
-        toolbar.setSubtitle("developer");
+        txtTitle.setText("Hello world");
 
 
 
@@ -51,7 +51,13 @@ public class ApplicationDetailsFragment extends AbstractFragment {
 
     @Override
     public void onPause() {
-        activity.showActionBar(true);
         super.onPause();
+        activity.showActionBar(true);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        activity.showActionBar(false);
     }
 }

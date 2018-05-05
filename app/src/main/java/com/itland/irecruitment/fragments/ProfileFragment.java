@@ -3,15 +3,19 @@ package com.itland.irecruitment.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.abstracts.AbstractFragment;
+
+import org.w3c.dom.Text;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -21,6 +25,7 @@ public class ProfileFragment extends AbstractFragment {
 
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.fab) FloatingActionButton fab;
+    @Bind(R.id.txtVacancyTitle) TextView txtTitle;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -44,14 +49,13 @@ public class ProfileFragment extends AbstractFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity.showActionBar(false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        toolbar.setTitle("S4U");
+        txtTitle.setText("Company Name");
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,9 +67,14 @@ public class ProfileFragment extends AbstractFragment {
 
     @Override
     public void onPause() {
-        activity.showActionBar(true);
         super.onPause();
+        activity.showActionBar(true);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        activity.showActionBar(false);
+    }
 
 }

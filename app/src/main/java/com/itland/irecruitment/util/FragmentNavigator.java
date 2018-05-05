@@ -4,11 +4,18 @@ import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
+import android.view.View;
 
 import com.itland.irecruitment.MainActivity;
+import com.itland.irecruitment.R;
+import com.itland.irecruitment.entities.Resume;
+import com.itland.irecruitment.fragments.ApplicationsFragment;
+import com.itland.irecruitment.fragments.MoreFragment;
+import com.itland.irecruitment.fragments.VacanciesFragment;
 
 
 /**
@@ -21,16 +28,18 @@ public class FragmentNavigator {
     private Fragment mainSection;
     private int container;
     private MainActivity activity;
+    private BottomNavigationView navigationView;
 
     private FragmentManager fragmentManager;
     public boolean isBack = false;
 
 
-    public FragmentNavigator(MainActivity activity,Fragment mainSection,int container) {
+    public FragmentNavigator(MainActivity activity, Fragment mainSection, BottomNavigationView navigationView, int container) {
         this.activity = activity;
         this.mainSection = mainSection;
         this.container = container;
         this.fragmentManager = activity.getSupportFragmentManager();
+        this.navigationView = navigationView;
         gotoMainSection();
         addStackListener();
     }
@@ -43,6 +52,30 @@ public class FragmentNavigator {
                 if (getCurrentFragment() == currentSection) {
                     displayHamburger();
                 }
+
+                navigationView.setVisibility(View.VISIBLE);
+                navigationView.refreshDrawableState();
+//                if(getCurrentFragment() == mainSection)
+//                {
+//                    navigationView.setSelectedItemId(R.id.navigation_home);
+//                }
+//
+//                if(currentSection.getClass().isInstance(VacanciesFragment.class))
+//                {
+//                    navigationView.setSelectedItemId(R.id.navigation_vacancies);
+//                }
+//                if(currentSection.getClass().isInstance(Resume.class))
+//                {
+//                    navigationView.setSelectedItemId(R.id.navigation_resumes);
+//                }
+//                if(currentSection.getClass().isInstance(ApplicationsFragment.class))
+//                {
+//                    navigationView.setSelectedItemId(R.id.navigation_applications);
+//                }
+//                if(currentSection.getClass().isInstance(MoreFragment.class))
+//                {
+//                    navigationView.setSelectedItemId(R.id.navigation_more);
+//                }
             }
         });
     }
