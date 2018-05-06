@@ -4,6 +4,7 @@ package com.itland.irecruitment.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
@@ -23,9 +24,8 @@ import butterknife.ButterKnife;
 public class ProfileFragment extends AbstractFragment {
 
 
-    @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.fab) FloatingActionButton fab;
-    @Bind(R.id.txtVacancyTitle) TextView txtTitle;
+    @Bind(R.id.toolbar_layout) CollapsingToolbarLayout toolbarLayout;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -55,7 +55,7 @@ public class ProfileFragment extends AbstractFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        txtTitle.setText("Company Name");
+        toolbarLayout.setTitle("Hello");
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -114,6 +114,8 @@ public class MainActivity extends AbstractActivity {
 
     };
 
+
+
     public void showProgressIndicator(boolean indeterminate) {
 
         if(pbLoading != null)

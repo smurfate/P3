@@ -17,8 +17,6 @@ import butterknife.ButterKnife;
 
 public class MoreFragment extends AbstractFragment {
 
-    @Bind(R.id.txtMore)
-    TextView txtMore;
     public MoreFragment() {
         // Required empty public constructor
     }
@@ -43,6 +41,18 @@ public class MoreFragment extends AbstractFragment {
     public void onStart() {
         super.onStart();
         setTitle(getString(R.string.more));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        activity.showActionBar(false);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        activity.showActionBar(true);
     }
 
     @Override

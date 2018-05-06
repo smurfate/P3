@@ -3,6 +3,7 @@ package com.itland.irecruitment.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -18,8 +19,7 @@ import butterknife.ButterKnife;
 
 public class ApplicationDetailsFragment extends AbstractFragment {
 
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.txtTitle) TextView txtTitle;
+    @Bind(R.id.toolbar_layout) CollapsingToolbarLayout toolbar_layout;
 
     public ApplicationDetailsFragment() {
         // Required empty public constructor
@@ -43,8 +43,7 @@ public class ApplicationDetailsFragment extends AbstractFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        txtTitle.setText("Hello world");
-
+        toolbar_layout.setTitle("Title");
 
 
     }

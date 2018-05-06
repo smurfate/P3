@@ -2,7 +2,6 @@ package com.itland.irecruitment.abstracts;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.BoolRes;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -13,25 +12,26 @@ import android.widget.Toast;
 
 import com.itland.irecruitment.MainActivity;
 import com.itland.irecruitment.R;
+import com.itland.irecruitment.registration.RegistrationActivity;
 import com.itland.irecruitment.util.FragmentNavigator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Saad on 5/1/2018.
+ * Created by Saad on 5/6/2018.
  */
 
-public abstract class AbstractFragment extends Fragment {
+public abstract class AbstractResistrationFragment extends Fragment {
 
-    public MainActivity activity;
+    public RegistrationActivity activity;
     public FragmentNavigator navigator;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        activity = (MainActivity) getActivity();
+        activity = (RegistrationActivity) getActivity();
         navigator = activity.navigator;
         setHasOptionsMenu(true) ;
 
@@ -61,7 +61,7 @@ public abstract class AbstractFragment extends Fragment {
     public void snack(String message)
     {
         if(isSafe()) Snackbar.make(getActivity().findViewById(R.id.frmContent), message, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                .setAction("Action", null).show();
     }
 
     public <T> List<T> array2List(T[] array)
@@ -87,9 +87,5 @@ public abstract class AbstractFragment extends Fragment {
         activity.setTitle(title);
     }
 
-    public void showProgressIndicator(boolean show)
-    {
-        activity.showProgressIndicator(show);
-    }
 
 }

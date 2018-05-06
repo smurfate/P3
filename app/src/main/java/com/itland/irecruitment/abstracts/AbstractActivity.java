@@ -28,7 +28,7 @@ import java.util.Locale;
  * Created by Saad on 5/1/2018.
  */
 
-public class AbstractActivity extends AppCompatActivity {
+public abstract class AbstractActivity extends AppCompatActivity {
 
     public enum Lang { ar,en }
 
