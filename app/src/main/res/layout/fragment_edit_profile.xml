@@ -72,7 +72,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextViewBody"
-                android:textColor="@color/black"
                 android:text="Country" />
 
             <Spinner
@@ -84,7 +83,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextViewBody"
-                android:textColor="@color/black"
                 android:text="City" />
 
             <Spinner
@@ -124,7 +122,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextViewBody"
-                android:textColor="@color/black"
                 android:text="Company Industry" />
 
             <Spinner
@@ -235,8 +232,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                android:paddingBottom="4dp"
-                android:paddingTop="4dp"
                 android:text="Contact Person"
                 android:textColor="@color/white" />
 
@@ -244,7 +239,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextViewBody"
-                android:textColor="@color/black"
                 android:text="Title" />
 
             <Spinner
@@ -312,7 +306,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextViewBody"
-                android:textColor="@color/black"
                 android:text="Visibility" />
 
             <Spinner

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
+    android:padding="@dimen/layout_padding"
     tools:context="com.itland.irecruitment.fragments.PostJobFragment">
 
     <android.support.v7.widget.CardView
@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:layout_margin="@dimen/layout_padding">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -33,8 +33,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Country"
-                android:textColor="@color/black" />
+                android:text="Country" />
 
             <Spinner
                 style="@style/SpinnerStyle"
@@ -45,8 +44,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="City"
-                android:textColor="@color/black" />
+                android:text="City" />
 
             <Spinner
                 style="@style/SpinnerStyle"
@@ -58,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Required years of experience"
-                android:textColor="@color/black" />
+                 />
 
             <Spinner
                 style="@style/SpinnerStyle"
@@ -70,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Minimum education degree level"
-                android:textColor="@color/black" />
+                 />
 
             <Spinner
                 style="@style/SpinnerStyle"
@@ -109,8 +107,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Field of work"
-                android:textColor="@color/black" />
+                android:text="Field of work" />
 
             <Spinner
                 style="@style/SpinnerStyle"
@@ -121,8 +118,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Job title"
-                android:textColor="@color/black" />
+                android:text="Job title" />
 
             <Spinner
                 style="@style/SpinnerStyle"
@@ -133,8 +129,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Military services"
-                android:textColor="@color/black" />
+                android:text="Military services" />
 
             <Spinner
                 style="@style/SpinnerStyle"
@@ -159,8 +154,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Salary"
-                android:textColor="@color/black" />
+                android:text="Salary" />
 
             <Spinner
                 style="@style/SpinnerStyle"
@@ -186,7 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Required employees number"
-                android:textColor="@color/black" />
+                 />
 
             <Spinner
                 style="@style/SpinnerStyle"
@@ -197,8 +191,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Photo"
-                android:textColor="@color/black" />
+                android:text="Photo" />
 
             <Spinner
                 style="@style/SpinnerStyle"
@@ -209,8 +202,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CV language"
-                android:textColor="@color/black" />
+                android:text="CV language" />
 
             <Spinner
                 style="@style/SpinnerStyle"
@@ -221,8 +213,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hide company name"
-                android:textColor="@color/black" />
+                android:text="Hide company name" />
 
             <Spinner
                 style="@style/SpinnerStyle"

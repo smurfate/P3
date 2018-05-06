@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/layout_padding"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.v7.widget.CardView
@@ -11,13 +13,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_margin"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="8dp">
+                android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/imgProfile"
@@ -34,38 +36,37 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="@dimen/layout_padding">
 
                     <TextView
                         android:id="@+id/txtVacancyName"
-                        style="@style/TextViewTitle"
+                        style="@style/TextViewBody"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:maxLines="1"
                         android:text="Front-end Developer"
                         android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/txtCompany"
-                        style="@style/TextViewBody"
+                        style="@style/TextViewDetails.Inactive"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="IT-Land"
-                        android:textSize="12sp" />
+                        android:text="IT-Land" />
 
                     <TextView
                         android:id="@+id/txtCompanyType"
-                        style="@style/TextViewBody"
+                        style="@style/TextViewDetails"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Technology Industry"
-                        android:textSize="12sp" />
+                        android:text="Technology Industry" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="@dimen/layout_padding">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -83,14 +84,13 @@
 
                         <TextView
                             android:id="@+id/txtActive"
-                            style="@style/TextViewBody"
+                            style="@style/TextViewDetails"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:paddingLeft="4dp"
-                            android:paddingRight="4dp"
-                            android:text="In-active"
-                            android:textSize="12sp" />
+                            android:layout_marginRight="@dimen/margin_lr"
+                            android:layout_marginLeft="@dimen/margin_lr"
+                            android:text="In-active" />
 
                     </LinearLayout>
 
@@ -115,14 +115,13 @@
 
                         <TextView
                             android:id="@+id/txtDaysBegining"
-                            style="@style/TextViewBody"
+                            style="@style/TextViewDetails"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:paddingLeft="4dp"
-                            android:paddingRight="4dp"
-                            android:text="14 days ago"
-                            android:textSize="12sp" />
+                            android:layout_marginRight="@dimen/margin_lr"
+                            android:layout_marginLeft="@dimen/margin_lr"
+                            android:text="14 days ago" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -141,14 +140,13 @@
 
                         <TextView
                             android:id="@+id/txtDaysExpiring"
-                            style="@style/TextViewBody"
+                            style="@style/TextViewDetails"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:paddingLeft="4dp"
-                            android:paddingRight="4dp"
-                            android:text="expiring in 2 days"
-                            android:textSize="12sp" />
+                            android:layout_marginRight="@dimen/margin_lr"
+                            android:layout_marginLeft="@dimen/margin_lr"
+                            android:text="expiring in 2 days"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -163,6 +161,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dividerHeight"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -176,8 +175,8 @@
                     style="@style/TextViewDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="@dimen/margin_lr"
+                    android:layout_marginRight="@dimen/margin_lr"
                     android:text="335 views" />
 
                 <Space
@@ -190,8 +189,8 @@
                     style="@style/TextViewDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="@dimen/margin_lr"
+                    android:layout_marginRight="@dimen/margin_lr"
                     android:text="Expired" />
             </LinearLayout>
         </LinearLayout>

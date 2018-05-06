@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="8dp"
+            android:padding="@dimen/layout_padding"
             android:weightSum="100">
 
             <LinearLayout
@@ -29,25 +29,24 @@
 
                 <TextView
                     android:id="@+id/txtVacancyTitle"
-                    style="@style/TextViewTitle"
+                    style="@style/TextViewBody"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Vacancy Title" />
 
                 <TextView
                     android:id="@+id/txtCity"
-                    style="@style/TextViewBody"
+                    style="@style/TextViewBody.Inactive"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Damascus Syria" />
 
                 <TextView
                     android:id="@+id/txtName"
-                    style="@style/TextViewBody"
+                    style="@style/TextViewBody.Active"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sami Samara"
-                    android:textColor="@color/text_blue" />
+                    android:text="Sami Samara" />
 
             </LinearLayout>
 
@@ -113,10 +112,10 @@
 
     <TextView
         android:id="@+id/textView40"
-        style="@style/TextViewBody"
+        style="@style/TextViewBody.Inactive"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/dividerHeight"
         android:text="Cover letter" />
 
     <android.support.v7.widget.CardView
@@ -128,16 +127,16 @@
             style="@style/TextViewDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/layout_margin"
             android:text='android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem" ' />
     </android.support.v7.widget.CardView>
 
     <TextView
         android:id="@+id/textView42"
-        style="@style/TextViewBody"
+        style="@style/TextViewBody.Inactive"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/dividerHeight"
         android:text="Main Information" />
 
     <android.support.v7.widget.CardView
@@ -148,7 +147,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="@dimen/layout_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -167,8 +166,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
+                    style="@style/TextViewBody"
+                    android:layout_marginLeft="@dimen/margin_lr"
+                    android:layout_marginRight="@dimen/margin_lr"
                     android:text="(+963)991 345 379" />
 
             </LinearLayout>
@@ -189,8 +189,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
+                    style="@style/TextViewBody"
+                    android:layout_marginLeft="@dimen/margin_lr"
+                    android:layout_marginRight="@dimen/margin_lr"
                     android:text="info@something.com" />
 
             </LinearLayout>
@@ -198,7 +199,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/dividerHeight"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -211,8 +212,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
+                    style="@style/TextViewBody"
+                    android:layout_marginLeft="@dimen/margin_lr"
+                    android:layout_marginRight="@dimen/margin_lr"
                     android:text="Damascus, Syria" />
 
             </LinearLayout>
@@ -220,7 +222,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/dividerHeight"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -233,8 +235,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
+                    style="@style/TextViewBody"
+                    android:layout_marginLeft="@dimen/margin_lr"
+                    android:layout_marginRight="@dimen/margin_lr"
                     android:text="www.love.com" />
 
             </LinearLayout>
@@ -244,10 +247,10 @@
 
     <TextView
         android:id="@+id/txtMore"
-        style="@style/TextViewBody"
+        style="@style/TextViewBody.Inactive"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/dividerHeight"
         android:text="View More"
         android:textAlignment="center"
         android:textSize="25sp" />

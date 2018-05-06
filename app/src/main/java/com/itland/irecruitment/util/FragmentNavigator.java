@@ -62,31 +62,31 @@ public class FragmentNavigator {
 
 
 
-                if(fragment!=null && navigationView != null)
-                {
-                    if(fragment == mainSection )
-                    {
-                        navigationView.setSelectedItemId(R.id.navigation_home);
-                    }
-
-                    if(VacanciesFragment.class.isInstance(fragment))
-                    {
-                        navigationView.setSelectedItemId(R.id.navigation_vacancies);
-                    }
-                    if(ResumeFragment.class.isInstance(fragment))
-                    {
-                        navigationView.setSelectedItemId(R.id.navigation_resumes);
-                    }
-                    if(ApplicationsFragment.class.isInstance(fragment))
-                    {
-                        navigationView.setSelectedItemId(R.id.navigation_applications);
-                    }
-                    if(MoreFragment.class.isInstance(fragment))
-                    {
-                        navigationView.setSelectedItemId(R.id.navigation_more);
-                    }
-
-                }
+//                if(fragment!=null && navigationView != null)
+//                {
+//                    if(fragment == mainSection )
+//                    {
+//                        navigationView.setSelectedItemId(R.id.navigation_home);
+//                    }
+//
+//                    if(VacanciesFragment.class.isInstance(fragment))
+//                    {
+//                        navigationView.setSelectedItemId(R.id.navigation_vacancies);
+//                    }
+//                    if(ResumeFragment.class.isInstance(fragment))
+//                    {
+//                        navigationView.setSelectedItemId(R.id.navigation_resumes);
+//                    }
+//                    if(ApplicationsFragment.class.isInstance(fragment))
+//                    {
+//                        navigationView.setSelectedItemId(R.id.navigation_applications);
+//                    }
+//                    if(MoreFragment.class.isInstance(fragment))
+//                    {
+//                        navigationView.setSelectedItemId(R.id.navigation_more);
+//                    }
+//
+//                }
             }
         });
     }

@@ -13,6 +13,6 @@
 
         android:divider="@null"
         android:dividerHeight="@dimen/dividerHeight"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp" />
+        android:layout_marginLeft="@dimen/margin_lr"
+        android:layout_marginRight="@dimen/margin_lr" />
 </FrameLayout>

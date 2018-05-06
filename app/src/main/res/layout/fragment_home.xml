@@ -55,7 +55,6 @@ tools:context="com.itland.irecruitment.fragments.HomeFragment">
     android:layout_margin="@dimen/fab_margin"
     android:background="@color/colorPrimaryDark"
     android:tint="@color/white"
-    app:backgroundTint="@color/text_blue"
     app:layout_anchor="@id/app_bar"
     app:layout_anchorGravity="bottom|end"
     app:srcCompat="@drawable/ic_edit" />

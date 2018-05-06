@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/layout_padding"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
@@ -13,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="8dp"
+            android:layout_margin="@dimen/layout_margin"
             android:weightSum="100">
 
             <LinearLayout
@@ -25,25 +26,24 @@
 
                 <TextView
                     android:id="@+id/txtVacancyTitle"
-                    style="@style/TextViewTitle"
+                    style="@style/TextViewBody"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Vacancy Title" />
 
                 <TextView
                     android:id="@+id/txtCity"
-                    style="@style/TextViewBody"
+                    style="@style/TextViewBody.Inactive"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Damascus Syria" />
 
                 <TextView
                     android:id="@+id/txtName"
-                    style="@style/TextViewBody"
+                    style="@style/TextViewBody.Active"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sami Samara"
-                    android:textColor="@color/text_blue" />
+                    android:text="Sami Samara" />
 
             </LinearLayout>
 
@@ -73,8 +73,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingLeft="4dp"
-                        android:paddingRight="4dp"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
                         android:text="Unread" />
 
                 </LinearLayout>
@@ -97,8 +97,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingLeft="4dp"
-                        android:paddingRight="4dp"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
                         android:text="11 days" />
                 </LinearLayout>
 

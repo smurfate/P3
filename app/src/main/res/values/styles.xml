@@ -20,6 +20,7 @@
 
     <style name="EditTextStyle">
         <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColorHint">@color/text_inactive</item>
         <item name="android:textSize">16sp</item>
     </style>
 
@@ -29,15 +30,49 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TextViewTitle.Active">
+        <item name="android:textColor">@color/text_active</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewTitle.Inactive">
+        <item name="android:textColor">@color/text_inactive</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="TextViewBody">
-        <item name="android:textColor">@color/black_secondary2</item>
+        <item name="android:textColor">@color/text_normal</item>
         <item name="android:textSize">16sp</item>
         <item name="android:padding">2dp</item>
     </style>
 
+    <style name="TextViewBody.Active">
+        <item name="android:textColor">@color/text_active</item>
+        <!--<item name="android:textSize">16sp</item>-->
+        <!--<item name="android:padding">2dp</item>-->
+    </style>
+
+    <style name="TextViewBody.Inactive">
+        <item name="android:textColor">@color/text_inactive</item>
+        <!--<item name="android:textSize">16sp</item>-->
+        <!--<item name="android:padding">2dp</item>-->
+    </style>
+
     <style name="TextViewDetails">
-        <item name="android:textColor">@color/black_secondary</item>
+        <item name="android:textColor">@color/text_normal</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextViewDetails.Active">
+        <item name="android:textColor">@color/text_active</item>
+        <!--<item name="android:textSize">12sp</item>-->
+    </style>
+
+    <style name="TextViewDetails.Inactive">
+        <item name="android:textColor">@color/text_inactive</item>
+        <!--<item name="android:textSize">12sp</item>-->
     </style>
 
     <style name="SpinnerStyle">

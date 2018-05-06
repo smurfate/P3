@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
+    android:padding="@dimen/layout_padding"
     tools:context="com.itland.irecruitment.fragments.VacancyDetailsFragment">
 
 
@@ -19,13 +19,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
-                android:background="@color/text_blue2"
+                android:layout_margin="@dimen/layout_margin"
                 android:layout_height="wrap_content">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
+                    android:orientation="horizontal">
 
                     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/imgProfile"
@@ -42,27 +41,28 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:orientation="vertical"
-                        android:padding="8dp">
+                        android:padding="@dimen/layout_padding">
 
                         <TextView
                             android:id="@+id/textView19"
-                            style="@style/TextViewTitle"
+                            style="@style/TextViewBody"
+                            android:maxLines="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Front-end Developer"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                             />
 
                         <TextView
                             android:id="@+id/textView10"
-                            style="@style/TextViewBody"
+                            style="@style/TextViewDetails.Inactive"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="IT-Land"
-                            android:textSize="12sp" />
+                            android:text="IT-Land"/>
 
                         <TextView
                             android:id="@+id/textView9"
-                            style="@style/TextViewBody"
+                            style="@style/TextViewDetails"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Technology Industry"
@@ -72,6 +72,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:padding="@dimen/layout_padding"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -88,13 +89,12 @@
 
                             <TextView
                                 android:id="@+id/textView21"
-                                style="@style/TextViewBody"
+                                style="@style/TextViewDetails"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="4dp"
-                                android:paddingRight="4dp"
-                                android:text="In-active"
-                                android:textSize="12sp" />
+                                android:layout_marginLeft="@dimen/margin_lr"
+                                android:layout_marginRight="@dimen/margin_lr"
+                                android:text="In-active" />
                         </LinearLayout>
 
                         <Space
@@ -116,18 +116,18 @@
 
                             <TextView
                                 android:id="@+id/textView65"
-                                style="@style/TextViewBody"
+                                style="@style/TextViewDetails"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="4dp"
-                                android:paddingRight="4dp"
-                                android:text="14 days ago"
-                                android:textSize="12sp" />
+                                android:layout_marginLeft="@dimen/margin_lr"
+                                android:layout_marginRight="@dimen/margin_lr"
+                                android:text="14 days ago" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dividerHeight"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
@@ -139,13 +139,12 @@
 
                             <TextView
                                 android:id="@+id/textView66"
-                                style="@style/TextViewBody"
+                                style="@style/TextViewDetails"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="4dp"
-                                android:paddingRight="4dp"
-                                android:text="expiring in 2 days"
-                                android:textSize="12sp" />
+                                android:layout_marginLeft="@dimen/margin_lr"
+                                android:layout_marginRight="@dimen/margin_lr"
+                                android:text="expiring in 2 days" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -160,8 +159,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp">
+                    android:layout_marginTop="@dimen/dividerHeight"
+                    android:layout_marginLeft="@dimen/margin_lr"
+                    android:layout_marginRight="@dimen/margin_lr">
 
                     <ImageView
                         android:id="@+id/imageView16"
@@ -174,8 +174,8 @@
                         style="@style/TextViewDetails"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
                         android:text="335 views" />
 
                     <Space
@@ -188,8 +188,8 @@
                         style="@style/TextViewDetails"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
                         android:text="Expired" />
                 </LinearLayout>
             </LinearLayout>
@@ -200,8 +200,8 @@
             android:id="@+id/textView22"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/TextViewBody"
-            android:layout_marginTop="8dp"
+            style="@style/TextViewBody.Inactive"
+            android:layout_marginTop="@dimen/dividerHeight"
             android:text="Main Details" />
 
         <android.support.v7.widget.CardView
@@ -222,35 +222,34 @@
 
                     <ImageView
                         android:id="@+id/imageView2"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:adjustViewBounds="false"
                         app:srcCompat="@drawable/ic_location" />
 
                     <TextView
                         android:id="@+id/textView23"
-                        style="@style/TextViewDetails"
+                        style="@style/TextViewBody"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingLeft="4dp"
-                        android:paddingRight="4dp"
-                        android:text="Damascus"
-                        android:textColor="@color/black" />
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:text="Damascus" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="@dimen/dividerHeight"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/imageView3"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:adjustViewBounds="false"
                         app:srcCompat="@drawable/ic_job" />
 
@@ -261,10 +260,9 @@
                         android:layout_height="wrap_content"
 
                         android:layout_weight="1"
-                        android:paddingLeft="4dp"
-                        android:paddingRight="4dp"
-                        android:text="5 years expertise"
-                        android:textColor="@color/black" />
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:text="5 years expertise"/>
 
                 </LinearLayout>
 
@@ -277,8 +275,8 @@
 
                     <ImageView
                         android:id="@+id/imageView4"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:adjustViewBounds="false"
                         app:srcCompat="@drawable/ic_application" />
 
@@ -287,12 +285,11 @@
                         style="@style/TextViewDetails"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:layout_weight="1"
-                        android:paddingLeft="4dp"
-                        android:paddingRight="4dp"
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_marginLeft="@dimen/margin_lr"
                         android:text="html, css, sketch, jQuery, javascript, React, Redux, MVC Views"
-                        android:textColor="@color/black" />
+                         />
 
                 </LinearLayout>
             </LinearLayout>
@@ -300,8 +297,8 @@
 
         <TextView
             android:id="@+id/textView26"
-            style="@style/TextViewBody"
-            android:layout_marginTop="8dp"
+            style="@style/TextViewBody.Inactive"
+            android:layout_marginTop="@dimen/dividerHeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="More Specifications" />
@@ -314,12 +311,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="8dp">
+                android:layout_margin="@dimen/layout_margin">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -338,9 +334,8 @@
                         android:id="@+id/textView27"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TextViewDetails"
-                        android:text="Part time"
-                        android:textSize="12sp" />
+                        style="@style/TextViewDetails.Inactive"
+                        android:text="Part time" />
                 </LinearLayout>
 
                 <TextView
@@ -348,9 +343,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    style="@style/TextViewBody"
-                    android:text="Description"
-                    android:textColor="@color/text_blue"/>
+                    style="@style/TextViewBody.Active"
+                    android:text="Description"/>
 
                 <TextView
                     android:id="@+id/textView30"
@@ -359,7 +353,7 @@
                     android:layout_marginTop="8dp"
                     style="@style/TextViewDetails"
                     android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem"
-                    android:textSize="12sp" />
+                     />
             </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>

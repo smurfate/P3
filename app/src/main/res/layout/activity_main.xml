@@ -42,6 +42,8 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
+                    style="@style/TextViewBody"
+                    android:textColor="@color/white"
                     android:text="@string/app_name"
                     android:textSize="24sp"
                     android:visibility="visible" />

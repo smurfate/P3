@@ -64,11 +64,10 @@
 
                         <TextView
                             android:id="@+id/txtDone"
-                            style="@style/TextViewDetails"
+                            style="@style/TextViewDetails.Active"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/done"
-                            android:textColor="@color/text_blue" />
+                            android:text="@string/done" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -96,12 +95,10 @@
 
                         <TextView
                             android:id="@+id/textView5"
-                            style="@style/TextViewBody"
+                            style="@style/TextViewBody.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/damascus"
-
-                            android:textColor="@color/black_secondary2" />
+                            android:text="@string/damascus" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -129,12 +126,10 @@
 
                         <TextView
                             android:id="@+id/textView7"
-                            style="@style/TextViewBody"
+                            style="@style/TextViewBody.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/any"
-
-                            android:textColor="@color/black_secondary2" />
+                            android:text="@string/any" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -161,11 +156,10 @@
 
                         <TextView
                             android:id="@+id/textView3"
-                            style="@style/TextViewBody"
+                            style="@style/TextViewBody.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/syria"
-                            android:textColor="@color/black_secondary2" />
+                            android:text="@string/syria" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -193,12 +187,10 @@
 
                         <TextView
                             android:id="@+id/textView11"
-                            style="@style/TextViewBody"
+                            style="@style/TextViewBody.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/programming"
-
-                            android:textColor="@color/black_secondary2" />
+                            android:text="@string/programming" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -215,9 +207,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/job_type"
-
-                            android:textColor="@color/black" />
+                            android:text="@string/job_type" />
 
                         <Space
                             android:layout_width="wrap_content"
@@ -226,20 +216,18 @@
 
                         <TextView
                             android:id="@+id/textView13"
-                            style="@style/TextViewBody"
+                            style="@style/TextViewBody.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/any"
-
-                            android:textColor="@color/black_secondary2" />
+                            android:text="@string/any" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_marginTop="@dimen/dividerHeight"
                         android:orientation="horizontal">
 
                         <TextView
@@ -248,9 +236,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/photo"
-
-                            android:textColor="@color/black" />
+                            android:text="@string/photo" />
 
                         <Space
                             android:layout_width="wrap_content"
@@ -261,15 +247,16 @@
                             android:id="@+id/textView18"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            style="@style/TextViewBody.Inactive"
                             android:text="@string/any" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_marginTop="@dimen/dividerHeight"
                         android:orientation="horizontal">
 
                         <TextView
@@ -278,14 +265,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/cv_language"
-
-                            android:textColor="@color/black" />
+                            android:text="@string/cv_language" />
 
                         <TextView
                             android:id="@+id/textView15"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            style="@style/TextViewBody.Inactive"
                             android:text="@string/any" />
                     </LinearLayout>
                 </LinearLayout>

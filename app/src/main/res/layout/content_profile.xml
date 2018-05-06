@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
+    android:padding="@dimen/layout_padding"
     tools:showIn="@layout/fragment_profile"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.itland.irecruitment.fragments.ProfileFragment">
@@ -17,7 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/layout_margin"
             android:orientation="vertical">
 
             <LinearLayout
@@ -56,24 +56,24 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
                 android:text="City, County" />
 
             <TextView
                 android:id="@+id/textView31"
-                style="@style/TextViewDetails"
+                style="@style/TextViewBody.Inactive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="32dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:layout_marginStart="@dimen/margin_shifted_start"
                 android:text="Damascus Syria" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dividerHeight"
                 android:background="@android:color/black" />
 
             <TextView
@@ -81,24 +81,24 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
                 android:text="Adress" />
 
             <TextView
                 android:id="@+id/textView44"
-                style="@style/TextViewDetails"
+                style="@style/TextViewBody.Inactive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="32dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:layout_marginStart="@dimen/margin_shifted_start"
                 android:text="Damascus Syria" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dividerHeight"
                 android:background="@android:color/black" />
 
             <TextView
@@ -106,24 +106,24 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
                 android:text="Company Industry" />
 
             <TextView
                 android:id="@+id/textView45"
-                style="@style/TextViewDetails"
+                style="@style/TextViewBody.Inactive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="32dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:layout_marginStart="@dimen/margin_shifted_start"
                 android:text="Damascus Syria" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dividerHeight"
                 android:background="@android:color/black" />
 
             <TextView
@@ -131,24 +131,24 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
                 android:text="About" />
 
             <TextView
                 android:id="@+id/textView48"
-                style="@style/TextViewDetails"
+                style="@style/TextViewBody.Inactive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="32dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:layout_marginStart="@dimen/margin_shifted_start"
                 android:text="Damascus Syria" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dividerHeight"
                 android:background="@android:color/black" />
 
             <TextView
@@ -156,24 +156,24 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
                 android:text="Commercial Register" />
 
             <TextView
                 android:id="@+id/textView50"
-                style="@style/TextViewDetails"
+                style="@style/TextViewBody.Inactive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="32dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:layout_marginStart="@dimen/margin_shifted_start"
                 android:text="Damascus Syria" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dividerHeight"
                 android:background="@android:color/black" />
 
             <TextView
@@ -181,24 +181,24 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
                 android:text="P.O.Box" />
 
             <TextView
                 android:id="@+id/textView51"
-                style="@style/TextViewDetails"
+                style="@style/TextViewBody.Inactive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="32dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:layout_marginStart="@dimen/margin_shifted_start"
                 android:text="Damascus Syria" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dividerHeight"
                 android:background="@android:color/black" />
 
             <TextView
@@ -206,24 +206,24 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
                 android:text="Email" />
 
             <TextView
                 android:id="@+id/textView53"
-                style="@style/TextViewDetails"
+                style="@style/TextViewBody.Inactive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="32dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:layout_marginStart="@dimen/margin_shifted_start"
                 android:text="Damascus Syria" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dividerHeight"
                 android:background="@android:color/black" />
 
             <TextView
@@ -231,18 +231,18 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
                 android:text="Phone" />
 
             <TextView
                 android:id="@+id/textView55"
-                style="@style/TextViewDetails"
+                style="@style/TextViewBody.Inactive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="32dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:layout_marginStart="@dimen/margin_shifted_start"
                 android:text="Damascus Syria" />
 
 
@@ -260,24 +260,24 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
                 android:text="Full Name" />
 
             <TextView
                 android:id="@+id/textView58"
-                style="@style/TextViewDetails"
+                style="@style/TextViewBody.Inactive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="32dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:layout_marginStart="@dimen/margin_shifted_start"
                 android:text="Sami Samara" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dividerHeight"
                 android:background="@android:color/black" />
 
             <TextView
@@ -285,24 +285,24 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
                 android:text="Position" />
 
             <TextView
                 android:id="@+id/textView59"
-                style="@style/TextViewDetails"
+                style="@style/TextViewBody.Inactive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="32dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:layout_marginStart="@dimen/margin_shifted_start"
                 android:text="HR Specialist" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dividerHeight"
                 android:background="@android:color/black" />
 
             <TextView
@@ -310,24 +310,24 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
                 android:text="E-mail" />
 
             <TextView
                 android:id="@+id/textView61"
-                style="@style/TextViewDetails"
+                style="@style/TextViewBody.Inactive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="32dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:layout_marginStart="@dimen/margin_shifted_start"
                 android:text="Sami@company.com" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dividerHeight"
                 android:background="@android:color/black" />
 
             <TextView
@@ -335,18 +335,18 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
                 android:text="GSM" />
 
             <TextView
                 android:id="@+id/textView64"
-                style="@style/TextViewDetails"
+                style="@style/TextViewBody.Inactive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="32dp"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:layout_marginStart="@dimen/margin_shifted_start"
                 android:text="0999999999" />
 
             <Space

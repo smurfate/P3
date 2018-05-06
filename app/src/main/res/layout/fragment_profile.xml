@@ -27,13 +27,15 @@
                 android:weightSum="100"
                 android:layout_height="wrap_content">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/imgProfile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="25"
+                    app:civ_border_color="@color/black"
+                    app:civ_border_width="2dp"
                     android:src="@mipmap/profile"
                     app:layout_collapseMode="parallax" />
 
@@ -66,7 +68,6 @@
         android:layout_margin="@dimen/fab_margin"
         android:background="@color/colorPrimaryDark"
         android:tint="@color/white"
-        app:backgroundTint="@color/text_blue"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@drawable/ic_edit" />
