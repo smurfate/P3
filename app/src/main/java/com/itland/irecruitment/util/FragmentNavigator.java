@@ -18,6 +18,7 @@ import com.itland.irecruitment.MainActivity;
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.entities.Resume;
 import com.itland.irecruitment.fragments.ApplicationsFragment;
+import com.itland.irecruitment.fragments.HomeFragment;
 import com.itland.irecruitment.fragments.MoreFragment;
 import com.itland.irecruitment.fragments.ResumeFragment;
 import com.itland.irecruitment.fragments.VacanciesFragment;
@@ -34,17 +35,19 @@ public class FragmentNavigator {
     private int container;
     private AppCompatActivity activity;
     private BottomNavigationView navigationView;
+    private BottomNavigationView.OnNavigationItemSelectedListener listener;
 
     private FragmentManager fragmentManager;
     public boolean isBack = false;
 
 
-    public FragmentNavigator(AppCompatActivity activity, Fragment mainSection, BottomNavigationView navigationView, int container) {
+    public FragmentNavigator(AppCompatActivity activity, Fragment mainSection, BottomNavigationView navigationView, BottomNavigationView.OnNavigationItemSelectedListener listener, int container) {
         this.activity = activity;
         this.mainSection = mainSection;
         this.container = container;
         this.fragmentManager = activity.getSupportFragmentManager();
         this.navigationView = navigationView;
+        this.listener = listener;
         gotoMainSection();
         addStackListener();
     }
@@ -60,35 +63,40 @@ public class FragmentNavigator {
                     displayHamburger();
                 }
 
+                updateNavigationView();
 
-
-//                if(fragment!=null && navigationView != null)
-//                {
-//                    if(fragment == mainSection )
-//                    {
-//                        navigationView.setSelectedItemId(R.id.navigation_home);
-//                    }
-//
-//                    if(VacanciesFragment.class.isInstance(fragment))
-//                    {
-//                        navigationView.setSelectedItemId(R.id.navigation_vacancies);
-//                    }
-//                    if(ResumeFragment.class.isInstance(fragment))
-//                    {
-//                        navigationView.setSelectedItemId(R.id.navigation_resumes);
-//                    }
-//                    if(ApplicationsFragment.class.isInstance(fragment))
-//                    {
-//                        navigationView.setSelectedItemId(R.id.navigation_applications);
-//                    }
-//                    if(MoreFragment.class.isInstance(fragment))
-//                    {
-//                        navigationView.setSelectedItemId(R.id.navigation_more);
-//                    }
-//
-//                }
             }
         });
+    }
+
+    private void updateNavigationView()
+    {
+        if(navigationView != null)
+        {
+            navigationView.setOnNavigationItemSelectedListener(null);
+            if(isCurrentFragment(HomeFragment.class) )
+            {
+                navigationView.setSelectedItemId(R.id.navigation_home);
+            }else if(isCurrentFragment(VacanciesFragment.class))
+            {
+                navigationView.setSelectedItemId(R.id.navigation_vacancies);
+            }else
+            if(isCurrentFragment(ResumeFragment.class))
+            {
+                navigationView.setSelectedItemId(R.id.navigation_resumes);
+            }else
+            if(isCurrentFragment(ApplicationsFragment.class))
+            {
+                navigationView.setSelectedItemId(R.id.navigation_applications);
+            }else
+            if(isCurrentFragment(MoreFragment.class))
+            {
+                navigationView.setSelectedItemId(R.id.navigation_more);
+            }
+
+            navigationView.setOnNavigationItemSelectedListener(listener);
+        }
+
     }
 
     public void gotoSection(Fragment section)
@@ -106,6 +114,7 @@ public class FragmentNavigator {
                     .commitAllowingStateLoss();
 
             currentSection = section;
+
         }
         catch (Exception e)
         {
@@ -125,6 +134,7 @@ public class FragmentNavigator {
             fragmentManager.beginTransaction()
                     .replace(container, mainSection,mainSection.getClass().getSimpleName())
                     .commitAllowingStateLoss();
+
         }
         catch (Exception e)
         {
@@ -294,7 +304,14 @@ public class FragmentNavigator {
 
     public boolean isCurrentFragment(Class fragmentClass)
     {
+        if(getCurrentFragment()==null || fragmentClass == null) return false;
         return getCurrentFragment().getClass().getSimpleName().equals(fragmentClass.getSimpleName());
+    }
+
+    public boolean isCurrentSection(Class fragmentClass)
+    {
+        if(currentSection == null || fragmentClass == null) return false;
+        return currentSection.getClass().getSimpleName().equals(fragmentClass.getSimpleName());
     }
 
     public Fragment getCurrentSection(){return currentSection;}

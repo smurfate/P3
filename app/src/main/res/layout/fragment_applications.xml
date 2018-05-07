@@ -12,7 +12,7 @@
         android:background="@color/background"
 
         android:divider="@null"
-        android:dividerHeight="@dimen/dividerHeight"
         android:layout_marginLeft="@dimen/margin_lr"
-        android:layout_marginRight="@dimen/margin_lr" />
+        android:layout_marginRight="@dimen/margin_lr"
+        android:dividerHeight="@dimen/dividerHeight" />
 </FrameLayout>

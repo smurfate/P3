@@ -50,6 +50,8 @@ public class SignInFragment extends AbstractResistrationFragment {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, MainActivity.class);
                 startActivity(intent);
+
+                activity.finish();
             }
         });
 

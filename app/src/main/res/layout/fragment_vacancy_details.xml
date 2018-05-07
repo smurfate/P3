@@ -83,8 +83,8 @@
 
                             <ImageView
                                 android:id="@+id/imageView10"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
+                                android:layout_width="@dimen/image_details"
+                                android:layout_height="@dimen/image_details"
                                 app:srcCompat="@drawable/ic_application" />
 
                             <TextView
@@ -110,8 +110,8 @@
 
                             <ImageView
                                 android:id="@+id/imageView11"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
+                                android:layout_width="@dimen/image_details"
+                                android:layout_height="@dimen/image_details"
                                 app:srcCompat="@drawable/ic_clock" />
 
                             <TextView
@@ -133,8 +133,8 @@
 
                             <ImageView
                                 android:id="@+id/imageView12"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
+                                android:layout_width="@dimen/image_details"
+                                android:layout_height="@dimen/image_details"
                                 app:srcCompat="@drawable/ic_clock" />
 
                             <TextView
@@ -165,8 +165,8 @@
 
                     <ImageView
                         android:id="@+id/imageView16"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="@dimen/image_details"
+                        android:layout_height="@dimen/image_details"
                         app:srcCompat="@drawable/ic_view" />
 
                     <TextView
@@ -222,8 +222,8 @@
 
                     <ImageView
                         android:id="@+id/imageView2"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/image_body"
+                        android:layout_height="@dimen/image_body"
                         android:adjustViewBounds="false"
                         app:srcCompat="@drawable/ic_location" />
 
@@ -248,8 +248,8 @@
 
                     <ImageView
                         android:id="@+id/imageView3"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/image_body"
+                        android:layout_height="@dimen/image_body"
                         android:adjustViewBounds="false"
                         app:srcCompat="@drawable/ic_job" />
 
@@ -275,8 +275,8 @@
 
                     <ImageView
                         android:id="@+id/imageView4"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/image_body"
+                        android:layout_height="@dimen/image_body"
                         android:adjustViewBounds="false"
                         app:srcCompat="@drawable/ic_application" />
 

@@ -3,6 +3,7 @@ package com.itland.irecruitment.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MoreFragment extends AbstractFragment {
+
+    @Bind(R.id.toolbar_layout) CollapsingToolbarLayout toolbarLayout;
 
     public MoreFragment() {
         // Required empty public constructor
@@ -41,6 +44,7 @@ public class MoreFragment extends AbstractFragment {
     public void onStart() {
         super.onStart();
         setTitle(getString(R.string.more));
+        toolbarLayout.setTitle("More and more...");
     }
 
     @Override

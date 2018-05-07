@@ -66,8 +66,8 @@
 
                     <ImageView
                         android:id="@+id/imageView5"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="@dimen/image_details"
+                        android:layout_height="@dimen/image_details"
                         app:srcCompat="@drawable/ic_clock" />
 
                     <TextView
@@ -90,8 +90,8 @@
 
                     <ImageView
                         android:id="@+id/imageView6"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="@dimen/image_details"
+                        android:layout_height="@dimen/image_details"
                         app:srcCompat="@drawable/ic_clock" />
 
                     <TextView
@@ -157,8 +157,8 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/image_body"
+                    android:layout_height="@dimen/image_body"
                     app:srcCompat="@drawable/ic_phone" />
 
                 <TextView
@@ -181,8 +181,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/image_body"
+                    android:layout_height="@dimen/image_body"
                     app:srcCompat="@drawable/ic_email" />
 
                 <TextView
@@ -204,8 +204,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/image_body"
+                    android:layout_height="@dimen/image_body"
                     app:srcCompat="@drawable/ic_location" />
 
                 <TextView
@@ -227,8 +227,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/image_body"
+                    android:layout_height="@dimen/image_body"
                     app:srcCompat="@drawable/ic_site" />
 
                 <TextView

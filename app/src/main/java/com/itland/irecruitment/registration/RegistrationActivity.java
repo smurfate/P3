@@ -11,18 +11,24 @@ import com.itland.irecruitment.abstracts.AbstractActivity;
 import com.itland.irecruitment.registration.fragments.SignInFragment;
 import com.itland.irecruitment.util.FragmentNavigator;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class RegistrationActivity extends AbstractActivity {
 
     public FragmentNavigator navigator;
+    @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.fab) FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
+
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setVisibility(View.GONE);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,7 +39,7 @@ public class RegistrationActivity extends AbstractActivity {
 
         getSupportActionBar().hide();
 
-        navigator = new FragmentNavigator(this, SignInFragment.newInstance(),null,R.id.frmContent);
+        navigator = new FragmentNavigator(this, SignInFragment.newInstance(),null,null,R.id.frmContent);
 
     }
 

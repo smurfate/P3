@@ -17,12 +17,14 @@ import com.itland.irecruitment.entities.Resume;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeFragment extends AbstractFragment {
 
 
     @Bind(R.id.toolbar_layout) CollapsingToolbarLayout toolbar_layout;
     @Bind(R.id.fab) FloatingActionButton fab;
+    @Bind(R.id.imgProfile) CircleImageView imgProfile;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -71,6 +73,13 @@ public class HomeFragment extends AbstractFragment {
             public void onClick(View v) {
                 navigator.gotoSection(ResumeFragment.newInstance());
 
+            }
+        });
+
+        imgProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toast("Nice");
             }
         });
 

@@ -11,5 +11,7 @@
     <dimen name="layout_margin">8dp</dimen>
     <dimen name="layout_padding">8dp</dimen>
     <dimen name="margin_shifted_start">32dp</dimen>
+    <dimen name="image_body">20dp</dimen>
+    <dimen name="image_details">15dp</dimen>
 
 </resources>

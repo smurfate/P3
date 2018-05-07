@@ -30,6 +30,7 @@ import java.util.Locale;
 
 public abstract class AbstractActivity extends AppCompatActivity {
 
+
     public enum Lang { ar,en }
 
     @Override

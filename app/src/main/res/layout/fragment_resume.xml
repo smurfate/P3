@@ -12,11 +12,12 @@
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/margin_lr"
+        android:layout_marginRight="@dimen/margin_lr"
+
         android:verticalSpacing="@dimen/dividerHeight"
         android:horizontalSpacing="@dimen/dividerHeight"
-        android:numColumns="2"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp" />
+        android:numColumns="2"/>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

@@ -37,7 +37,7 @@ public class MainActivity extends AbstractActivity {
 
     @Bind(R.id.toolbar) public Toolbar toolbar;
     @Bind(R.id.pb_loading) ProgressBar pbLoading;
-    @Bind(R.id.navigation) BottomNavigationView navigation;
+    @Bind(R.id.navigation) public BottomNavigationView navigation;
     @Bind(R.id.space) Space space;
 
     @Bind(R.id.tvTitle) TextView tvTitle;
@@ -66,7 +66,7 @@ public class MainActivity extends AbstractActivity {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        navigator = new FragmentNavigator(this, HomeFragment.newInstance(),navigation,R.id.frmContent);
+        navigator = new FragmentNavigator(this, HomeFragment.newInstance(),navigation,mOnNavigationItemSelectedListener,R.id.frmContent);
 
 
         imgProfile.setOnClickListener(new View.OnClickListener() {
