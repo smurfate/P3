@@ -80,12 +80,21 @@ public class ResumeFragment extends AbstractFragment {
         lnrChoose.setVisibility(View.VISIBLE);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        activity.actionbarSearch(false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        activity.actionbarSearch(true);
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        activity.actionbarSearch(true);
 
         List<Resume> lst = new ArrayList<>(10);
         for(int i=0;i<10;i++) lst.add(new Resume());
@@ -133,9 +142,4 @@ public class ResumeFragment extends AbstractFragment {
 
     }
 
-    @Override
-    public void onPause() {
-        activity.actionbarSearch(false);
-        super.onPause();
-    }
 }

@@ -94,7 +94,7 @@ public class MainActivity extends AbstractActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    navigator.gotoSection(HomeFragment.newInstance());
+                    navigator.gotoMainSection();
                     return true;
                 case R.id.navigation_resumes:
                     navigator.gotoSection(ResumeFragment.newInstance());
