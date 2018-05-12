@@ -3,6 +3,7 @@ package com.itland.irecruitment;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
@@ -27,6 +28,7 @@ import com.itland.irecruitment.fragments.MoreFragment;
 import com.itland.irecruitment.fragments.ProfileFragment;
 import com.itland.irecruitment.fragments.ResumeFragment;
 import com.itland.irecruitment.fragments.VacanciesFragment;
+import com.itland.irecruitment.util.BottomNavigationViewHelper;
 import com.itland.irecruitment.util.FragmentNavigator;
 
 import butterknife.Bind;
@@ -48,6 +50,7 @@ public class MainActivity extends AbstractActivity {
 
     public FragmentNavigator navigator;
     public ActionBar actionBar;
+    public Handler handler = new Handler();
 
 
     @Override
@@ -65,6 +68,7 @@ public class MainActivity extends AbstractActivity {
 
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        BottomNavigationViewHelper.removeShiftMode(navigation);
 
         navigator = new FragmentNavigator(this, HomeFragment.newInstance(),navigation,mOnNavigationItemSelectedListener,R.id.frmContent);
 
@@ -97,6 +101,7 @@ public class MainActivity extends AbstractActivity {
                     navigator.gotoMainSection();
                     return true;
                 case R.id.navigation_resumes:
+
                     navigator.gotoSection(ResumeFragment.newInstance());
                     return true;
                 case R.id.navigation_applications:

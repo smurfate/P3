@@ -4,9 +4,23 @@ package com.itland.irecruitment.entities;
  * Created by Saad on 5/1/2018.
  */
 
-public class Resume {
+public class Resume extends AbstractEntity {
 
-    public String img;
-    public String name;
-    public String position;
+/*
+    {
+        "Id": 0,
+            "SeekerFullName": "string",
+            "JobTitle": "string",
+            "IsOk": true,
+            "Message": {
+        "Type": "string",
+                "Content": "string"
+    }
+    }
+*/
+    public Integer Id;
+    public String SeekerFullName;
+    public String JobTitle;
+
+
 }

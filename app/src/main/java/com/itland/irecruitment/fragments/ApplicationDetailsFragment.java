@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 
 public class ApplicationDetailsFragment extends AbstractFragment {
 
-    @Bind(R.id.toolbar_layout) CollapsingToolbarLayout toolbar_layout;
+    @Bind(R.id.toolbar) Toolbar toolbar;
 
     public ApplicationDetailsFragment() {
         // Required empty public constructor
@@ -43,7 +43,7 @@ public class ApplicationDetailsFragment extends AbstractFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        toolbar_layout.setTitle("Title");
+        toolbar.setTitle("Title");
 
 
     }

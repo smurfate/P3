@@ -8,6 +8,8 @@ import android.view.View;
 
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.abstracts.AbstractActivity;
+import com.itland.irecruitment.api.ApiCalls;
+import com.itland.irecruitment.api.Apis;
 import com.itland.irecruitment.registration.fragments.SignInFragment;
 import com.itland.irecruitment.util.FragmentNavigator;
 
@@ -20,11 +22,17 @@ public class RegistrationActivity extends AbstractActivity {
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.fab) FloatingActionButton fab;
 
+    private ApiCalls apiCalls;
+    public Apis apis;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
+
+        apiCalls = new ApiCalls();
+        apis = apiCalls.apis;
 
         setSupportActionBar(toolbar);
 

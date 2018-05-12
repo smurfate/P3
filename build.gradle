@@ -3,6 +3,7 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
@@ -15,6 +16,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        google()
     }
 }
 
@@ -24,9 +26,9 @@ task clean(type: Delete) {
 
 ext {
     buildToolsVersion = "27.0.3"
-    minSdkVersion = "15"
+    minSdkVersion = "17"
     targetSdkVersion = "27"
-    supportLibVersion = "26.0.0-alpha1"
+    supportLibVersion = "27.1.1"
     runnerVersion = "0.5"
     rulesVersion = "0.5"
     espressoVersion = "2.2.2"

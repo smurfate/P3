@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home"
+        android:showAsAction="always|withText"
         android:title="@string/title_home"/>
 
     <item
         android:id="@+id/navigation_resumes"
         android:icon="@drawable/ic_search"
+        android:showAsAction="always|withText"
+
         android:title="Resumes"/>
 
     <item
         android:id="@+id/navigation_applications"
         android:icon="@drawable/ic_application"
+        android:showAsAction="always|withText"
+
         android:title="Applications"/>
 
     <item
         android:id="@+id/navigation_vacancies"
         android:icon="@drawable/ic_vacancy"
+        android:showAsAction="always|withText"
         android:title="Vacancies"/>
 
     <item
         android:id="@+id/navigation_more"
         android:icon="@drawable/ic_more"
+        android:showAsAction="always|withText"
         android:title="More"/>
 
 </menu>

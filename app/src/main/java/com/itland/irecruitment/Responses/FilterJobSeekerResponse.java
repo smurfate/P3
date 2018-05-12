@@ -1,16 +1,15 @@
 package com.itland.irecruitment.Responses;
 
 import com.itland.irecruitment.entities.AbstractEntity;
-import com.itland.irecruitment.entities.Zone;
+import com.itland.irecruitment.entities.Resume;
 
 import java.util.List;
 
 /**
- * Created by Saad on 5/9/2018.
+ * Created by Saad on 5/10/2018.
  */
 
-public class ListZonesResponse extends AbstractEntity {
-
+public class FilterJobSeekerResponse extends AbstractEntity {
 
 
 /*
@@ -18,8 +17,8 @@ public class ListZonesResponse extends AbstractEntity {
         "Items": [
         {
             "Id": 0,
-                "Name": "string",
-                "Parent": "string",
+                "SeekerFullName": "string",
+                "JobTitle": "string",
                 "IsOk": true,
                 "Message": {
             "Type": "string",
@@ -34,7 +33,7 @@ public class ListZonesResponse extends AbstractEntity {
     }
     }
 */
-    public List<Zone> Items;
+    public List<Resume> Items;
 
 
 }

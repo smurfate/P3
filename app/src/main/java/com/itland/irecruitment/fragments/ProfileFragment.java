@@ -25,7 +25,7 @@ public class ProfileFragment extends AbstractFragment {
 
 
     @Bind(R.id.fab) FloatingActionButton fab;
-    @Bind(R.id.toolbar_layout) CollapsingToolbarLayout toolbarLayout;
+    @Bind(R.id.toolbar) Toolbar toolbar;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -55,7 +55,7 @@ public class ProfileFragment extends AbstractFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        toolbarLayout.setTitle("Hello");
+        toolbar.setTitle("Hello");
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,13 +1,13 @@
 package com.itland.irecruitment;
 
 import com.google.gson.Gson;
-import com.itland.irecruitment.Responses.BannersListResponse;
-import com.itland.irecruitment.Responses.GeneralListResponse;
-import com.itland.irecruitment.entities.Banner;
+import com.google.gson.reflect.TypeToken;
+import com.itland.irecruitment.entities.City;
 import com.itland.irecruitment.entities.Zone;
 
 import org.junit.Test;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -27,12 +27,11 @@ public class ExampleUnitTest {
         String s = "{\n" +
                 "  \"Items\": [\n" +
                 "    {\n" +
-                "      \"ImageUrl\": \"string\",\n" +
-                "      \"IsOk\": true,\n" +
-                "      \"Message\": {\n" +
-                "        \"Type\": \"string\",\n" +
-                "        \"Content\": \"string\"\n" +
-                "      }\n" +
+                "      \"Id\": 0,\n" +
+                "      \"ArName\": \"string\",\n" +
+                "      \"EnName\": \"string\",\n" +
+                "      \"IsActive\": true,\n" +
+                "      \"CountryName\": \"string\"\n" +
                 "    }\n" +
                 "  ],\n" +
                 "  \"IsOk\": true,\n" +
@@ -41,9 +40,10 @@ public class ExampleUnitTest {
                 "    \"Content\": \"string\"\n" +
                 "  }\n" +
                 "}";
-        GeneralListResponse lst = gson.fromJson(s, GeneralListResponse.class);
-        List<Banner> lstss = lst.Items();
-        Banner b = lstss.get(0);
+//        Type collectionType = new TypeToken<GeneralListResponse<City>>(){}.getType();
+//        GeneralListResponse lst = gson.fromJson(s, collectionType);
+//        List<City> lstss = lst.Items;
+//        City b = lstss.get(0);
     }
     @Test
     public void addition_isCorrect() throws Exception {
