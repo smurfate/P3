@@ -6,4 +6,5 @@ package com.itland.irecruitment.util;
 
 public class SharedPreferencesKeys {
     public static String token = "TOKEN";
+    public static String language = "LANGUAGE";
 }

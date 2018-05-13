@@ -119,6 +119,7 @@
         android:layout_gravity="bottom"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
+        app:itemBackground="@drawable/item_background"
         android:background="@color/colorPrimary"
         app:menu="@menu/navigation" />
 

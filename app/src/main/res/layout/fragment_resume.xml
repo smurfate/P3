@@ -48,14 +48,17 @@
                         android:background="@color/background"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
+                        android:paddingBottom="@dimen/dividerHeight"
+                        android:paddingTop="@dimen/dividerHeight"
                         android:orientation="horizontal">
+
 
                         <TextView
                             style="@style/TextViewDetails.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start"
+                            android:layout_gravity="start|center_vertical"
+
                             android:textAlignment="center"
                             android:text="reset" />
 
@@ -65,18 +68,18 @@
                             style="@style/TextViewTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
+                            android:layout_gravity="center|center_vertical"
                             android:layout_weight="1"
                             android:text="@string/filter" />
 
 
                         <TextView
-                            android:id="@+id/txtDone"
+                            android:id="@+id/txtDoneFilter"
                             style="@style/TextViewDetails.Active"
                             android:textAlignment="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="end"
+                            android:layout_gravity="end|center_vertical"
                             android:text="@string/done" />
                     </LinearLayout>
 
@@ -104,7 +107,7 @@
                             android:layout_weight="1" />
 
                         <TextView
-                            android:id="@+id/textView5"
+                            android:id="@+id/txtCity"
                             style="@style/TextViewBody.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -298,32 +301,35 @@
                         android:background="@color/background"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
+                        android:paddingTop="@dimen/dividerHeight"
+                        android:paddingBottom="@dimen/dividerHeight"
                         android:orientation="horizontal">
 
                         <ImageView
                             style="@style/TextViewDetails.Inactive"
                             android:layout_width="wrap_content"
+                            android:id="@+id/imgBack"
                             android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/ic_arrow_back_black_24dp"
                             android:layout_gravity="start"
                             android:textAlignment="center" />
 
                         <TextView
-                            android:textAlignment="center"
                             style="@style/TextViewTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:text="@string/filter" />
+                            android:text="Choose" />
 
 
                         <TextView
                             style="@style/TextViewDetails.Active"
                             android:textAlignment="center"
+                            android:id="@+id/txtDoneChoose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="end"
+                            android:layout_gravity="end|center_vertical"
                             android:text="@string/done" />
                     </LinearLayout>
 

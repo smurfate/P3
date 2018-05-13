@@ -35,6 +35,8 @@ import retrofit2.http.Query;
 
 public interface Apis {
 
+
+
     @FormUrlEncoded
     @POST("/IRecruitment.Api//token")
     Call<TokenResponse> token(@Field("grant_type") String grantType, @Field("username") String username, @Field("password") String password, @Field("scope") String scope);

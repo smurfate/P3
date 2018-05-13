@@ -62,48 +62,44 @@ public class SignInFragment extends AbstractResistrationFragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(activity, MainActivity.class);
-                startActivity(intent);
-                activity.finish();
+                if(txtUserName.getText().length()==0) txtUserName.setError(getString(R.string.error_required));
+                if(txtUserName.getText().length()==0) txtUserName.setError(getString(R.string.error_required));
 
-//                if(txtUserName.getText().length()==0) txtUserName.setError(getString(R.string.error_required));
-//                if(txtUserName.getText().length()==0) txtUserName.setError(getString(R.string.error_required));
-//
-//                String userName = txtUserName.getText().toString();
-//                String password = txtPassword.getText().toString();
-//
-//                if(isNullOrEmpty(userName)||isNullOrEmpty(password))
-//                {
-//                    return;
-//                }
-//
-//                activity.apis.token("password",userName,password,"JobSeeker").enqueue(new Callback<TokenResponse>() {
-//                    @Override
-//                    public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
-//                        TokenResponse tokenResponse = response.body();
-//                        if(tokenResponse==null)
-//                        {
-//                            toast(getString(R.string.error_invalid_name_password));
-//                            txtUserName.setText("");
-//                            txtPassword.setText("");
-//
-//                        }
-//                        else
-//                            {
-//                                toast(tokenResponse.access_token);
-//                                PrefUtil.setSharedPreferences(activity, SharedPreferencesKeys.token);
-//                                Intent intent = new Intent(activity, MainActivity.class);
-//                                startActivity(intent);
-//                                activity.finish();
-//
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<TokenResponse> call, Throwable throwable) {
-//
-//                    }
-//                });
+                String userName = txtUserName.getText().toString();
+                String password = txtPassword.getText().toString();
+
+                if(isNullOrEmpty(userName)||isNullOrEmpty(password))
+                {
+                    return;
+                }
+
+                activity.apiCalls.SignIn(userName, password, new Callback<TokenResponse>() {
+                    @Override
+                    public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
+                        TokenResponse tokenResponse = response.body();
+                        if(tokenResponse==null)
+                        {
+                            toast(getString(R.string.error_invalid_name_password));
+                            txtUserName.setText("");
+                            txtPassword.setText("");
+
+                        }
+                        else
+                        {
+                            PrefUtil.setStringPreference(SharedPreferencesKeys.token,"bearer "+tokenResponse.access_token);
+                            Intent intent = new Intent(activity, MainActivity.class);
+                            startActivity(intent);
+                            activity.finish();
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<TokenResponse> call, Throwable throwable) {
+
+                    }
+                });
 
 
             }

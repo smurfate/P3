@@ -1,6 +1,11 @@
 package com.itland.irecruitment.api;
 
+import com.itland.irecruitment.Requests.FilterJobSeekersRequest;
 import com.itland.irecruitment.Responses.CitiesListResponse;
+import com.itland.irecruitment.Responses.FilterJobSeekerResponse;
+import com.itland.irecruitment.Responses.TokenResponse;
+import com.itland.irecruitment.util.PrefUtil;
+import com.itland.irecruitment.util.SharedPreferencesKeys;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -16,8 +21,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiCalls {
 
     private Retrofit retrofit ;
-
-    public Apis apis;
+    private Apis apis;
+    private String authorization;
+    private String language;
 
     public ApiCalls() {
         LoggingInterceptor interceptor = new LoggingInterceptor();
@@ -32,22 +38,40 @@ public class ApiCalls {
 
         apis = retrofit.create(Apis.class);
 
+        authorization = PrefUtil.getStringPreference(SharedPreferencesKeys.token);
+
     }
 
-//    public void CitiesList()
-//    {
-//        apis.CitiesList(0).enqueue(new Callback<CitiesListResponse>() {
-//            @Override
-//            public void onResponse(Call<CitiesListResponse> call, Response<CitiesListResponse> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<CitiesListResponse> call, Throwable throwable) {
-//
-//            }
-//        });
-//    }
+    public void CitiesList(Callback<CitiesListResponse> callback)
+    {
+        apis.CitiesList(0).enqueue(callback);
+    }
+
+    public void SignIn(String userName, String password,Callback<TokenResponse> callback)
+    {
+        apis.token("password",userName,password,"JobSeeker").enqueue(callback);
+    }
+
+    public void GetResumes(Callback<FilterJobSeekerResponse> callback)
+    {
+        apis.FilterJobSeekers(authorization,new FilterJobSeekersRequest()).enqueue(callback);
+    }
+
+    public void FilterResumes(Callback<FilterJobSeekerResponse> callback,String searchQuery,Integer cityId,
+                              Integer minEduLevelId,Integer countryId,Integer fieldOfWorkId, Integer jobTypeId,
+                              Boolean photo)
+    {
+        FilterJobSeekersRequest request = new FilterJobSeekersRequest();
+        request.SearchQuery = searchQuery;
+        request.MinEducationLevelId = minEduLevelId;
+        request.CityId = cityId;
+        request.CountryId = countryId;
+        request.FieldOfWorkId = fieldOfWorkId;
+        request.JobTypeId = jobTypeId;
+        request.WithPhoto = photo;
+        apis.FilterJobSeekers(authorization,new FilterJobSeekersRequest()).enqueue(callback);
+    }
+
 
 
 }

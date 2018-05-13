@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.itland.irecruitment.MainActivity;
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.util.PrefUtil;
+import com.itland.irecruitment.util.SharedPreferencesKeys;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,7 +92,7 @@ public abstract class AbstractActivity extends AppCompatActivity {
 
     public void setLocale(Lang lang,boolean start) {
 
-        PrefUtil.setStringPreference("Lang",lang.name());
+        PrefUtil.setStringPreference(SharedPreferencesKeys.language,lang.name());
 
         Locale locale = new Locale(lang.name());
         Locale.setDefault(locale);
@@ -112,7 +113,7 @@ public abstract class AbstractActivity extends AppCompatActivity {
 
     public Lang getLocale()
     {
-        return PrefUtil.getStringPreference("Lang").equals(Lang.ar.name())?Lang.ar:Lang.en;
+        return PrefUtil.getStringPreference(SharedPreferencesKeys.language).equals(Lang.ar.name())?Lang.ar:Lang.en;
     }
 
 

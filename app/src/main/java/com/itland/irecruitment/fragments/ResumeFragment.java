@@ -39,7 +39,10 @@ public class ResumeFragment extends AbstractFragment {
 
     @Bind(R.id.lnrChoose) LinearLayout lnrChoose;
     @Bind(R.id.lnrFilter) LinearLayout lnrFilter;
-    @Bind(R.id.txtDone) TextView txtDone;
+    @Bind(R.id.txtDoneFilter) TextView txtDoneFilter;
+    @Bind(R.id.txtDoneChoose) TextView txtDoneChoose;
+    @Bind(R.id.txtCity) TextView txtCity;
+    @Bind(R.id.imgBack) ImageView imgBack;
 
 
 
@@ -72,6 +75,11 @@ public class ResumeFragment extends AbstractFragment {
     {
         lnrFilter.setVisibility(View.VISIBLE);
         lnrChoose.setVisibility(View.GONE);
+    }
+
+    private boolean isFilter()
+    {
+        return lnrFilter.getVisibility()==View.VISIBLE;
     }
 
     private void showChoose()
@@ -126,18 +134,38 @@ public class ResumeFragment extends AbstractFragment {
         activity.getFilterBtn().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showFilter();
                 drawer.openDrawer(Gravity.END);
             }
         });
 
-        showFilter();
-        txtDone.setOnClickListener(new View.OnClickListener() {
+        txtDoneFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    drawer.closeDrawer(Gravity.END);
+            }
+        });
+
+        txtDoneChoose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFilter();
+            }
+        });
+
+        txtCity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showChoose();
             }
         });
 
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFilter();
+            }
+        });
 
 
     }

@@ -22,8 +22,7 @@ public class RegistrationActivity extends AbstractActivity {
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.fab) FloatingActionButton fab;
 
-    private ApiCalls apiCalls;
-    public Apis apis;
+    public ApiCalls apiCalls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,6 @@ public class RegistrationActivity extends AbstractActivity {
         ButterKnife.bind(this);
 
         apiCalls = new ApiCalls();
-        apis = apiCalls.apis;
 
         setSupportActionBar(toolbar);
 
