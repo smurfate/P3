@@ -56,6 +56,7 @@
                         <TextView
                             android:id="@+id/textView10"
                             style="@style/TextViewDetails.Inactive"
+                            android:maxLines="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="IT-Land"/>
@@ -64,9 +65,9 @@
                             android:id="@+id/textView9"
                             style="@style/TextViewDetails"
                             android:layout_width="match_parent"
+                            android:maxLines="1"
                             android:layout_height="wrap_content"
-                            android:text="Technology Industry"
-                            android:textSize="12sp" />
+                            android:text="Technology Industry" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -151,6 +152,7 @@
 
                 </LinearLayout>
                 <View
+                    android:layout_marginTop="@dimen/dividerHeight"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@android:color/black" />

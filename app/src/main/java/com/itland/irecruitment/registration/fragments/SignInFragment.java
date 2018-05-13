@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.itland.irecruitment.MainActivity;
@@ -27,7 +28,7 @@ import retrofit2.Response;
 
 public class SignInFragment extends AbstractResistrationFragment {
 
-    @Bind(R.id.btnSignIn) FloatingActionButton btnSignIn;
+    @Bind(R.id.btnSignIn) ImageButton btnSignIn;
     @Bind(R.id.btnSignUp) Button btnSignUp;
     @Bind(R.id.txtUserName) TextView txtUserName;
     @Bind(R.id.txtPassword) TextView txtPassword;

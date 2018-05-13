@@ -45,29 +45,38 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@color/background"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginTop="8dp"
                         android:orientation="horizontal">
 
                         <TextView
+                            style="@style/TextViewDetails.Inactive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textAlignment="center"
+                            android:text="reset" />
+
+                        <TextView
+                            android:textAlignment="center"
                             android:id="@+id/textView2"
                             style="@style/TextViewTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
                             android:text="@string/filter" />
 
-                        <Space
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
 
                         <TextView
                             android:id="@+id/txtDone"
                             style="@style/TextViewDetails.Active"
+                            android:textAlignment="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="end"
                             android:text="@string/done" />
                     </LinearLayout>
 
@@ -76,7 +85,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -107,7 +116,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -138,7 +147,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -168,7 +177,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -199,7 +208,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -228,7 +237,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_marginTop="@dimen/dividerHeight"
+                        android:layout_marginTop="16dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -257,7 +266,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_marginTop="@dimen/dividerHeight"
+                        android:layout_marginTop="16dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -275,6 +284,7 @@
                             style="@style/TextViewBody.Inactive"
                             android:text="@string/any" />
                     </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -282,6 +292,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/background"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            style="@style/TextViewDetails.Inactive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:textAlignment="center"
+                            style="@style/TextViewTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/filter" />
+
+
+                        <TextView
+                            style="@style/TextViewDetails.Active"
+                            android:textAlignment="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:text="@string/done" />
+                    </LinearLayout>
 
                     <RadioGroup
                         android:layout_width="match_parent"

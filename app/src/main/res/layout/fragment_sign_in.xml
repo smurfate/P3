@@ -2,22 +2,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context="com.itland.irecruitment.registration.fragments.SignInFragment"
->
+    android:layout_margin="32dp"
+    android:orientation="vertical"
+    tools:context="com.itland.irecruitment.registration.fragments.SignInFragment">
 
 
     <RelativeLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="360dp">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="325dp"
+            android:layout_height="330dp"
             android:background="@drawable/rectangle">
 
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -109,49 +108,48 @@
 
         </android.support.constraint.ConstraintLayout>
 
-        <android.support.design.widget.FloatingActionButton
+        <ImageButton
             android:id="@+id/btnSignIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignBottom="@+id/constraintLayout"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="-25dp"
-            android:clickable="true"
-            android:tint="@color/black"
-            app:backgroundTint="@color/text_warning"
-            app:fabSize="normal"
-            app:srcCompat="@drawable/ic_read" />
+            android:background="@drawable/rectangle2"
+            android:padding="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_read"
+            android:tint="@color/white" />
 
     </RelativeLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         style="@style/TextViewBody.Inactive"
-        android:text="Verify your account"
-        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        tools:layout_editor_absoluteY="419dp"
-        tools:layout_editor_absoluteX="146dp" />
+        android:layout_marginStart="8dp"
+        android:text="Verify your account"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="419dp" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextViewBody.Inactive"
-        android:text="Forget your password?"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:id="@+id/textView75"
-        tools:layout_editor_absoluteY="451dp"
-        tools:layout_editor_absoluteX="133dp" />
+        style="@style/TextViewBody.Inactive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Forget your password?"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="451dp" />
 
     <Button
         android:id="@+id/btnSignUp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
         android:background="@color/text_warning"
         android:text="Sign Up"
         tools:layout_editor_absoluteX="32dp"

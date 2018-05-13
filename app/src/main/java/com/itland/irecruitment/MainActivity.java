@@ -160,8 +160,8 @@ public class MainActivity extends AbstractActivity {
 
     public void showActionBar(boolean show)
     {
-        if(show) actionBar.show();
-        else actionBar.hide();
+        if(show) toolbar.setVisibility(View.VISIBLE);
+        else toolbar.setVisibility(View.GONE);
     }
 
     public SearchView getSearchView()

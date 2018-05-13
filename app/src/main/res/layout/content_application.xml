@@ -177,105 +177,115 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Military"
-                        style="@style/TextViewBody.Active" />
+                        android:layout_weight="50"
+                        android:text="Military" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        style="@style/TextViewBody"
+                        android:layout_weight="50"
                         android:text="Delayed" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Driving License"
-                        style="@style/TextViewBody.Active" />
+                        android:layout_weight="50"
+                        android:text="Driving License" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        style="@style/TextViewBody"
+                        android:layout_weight="50"
                         android:text="Delayed" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Number of Dependencies"
-                        style="@style/TextViewBody.Active" />
+                        android:layout_weight="50"
+                        android:text="Number of Dependencies" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        style="@style/TextViewBody"
+                        android:layout_weight="50"
                         android:text="Delayed" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Full Address"
-                        style="@style/TextViewBody.Active" />
+                        android:layout_weight="50"
+                        android:text="Full Address" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        style="@style/TextViewBody"
+                        android:layout_weight="50"
                         android:text="Delayed" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="GSM Code"
-                        style="@style/TextViewBody.Active" />
+                        android:layout_weight="50"
+                        android:text="GSM Code" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        style="@style/TextViewBody"
+                        android:layout_weight="50"
                         android:text="Delayed" />
                 </LinearLayout>
 
@@ -324,126 +334,138 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Job Type"
-                        style="@style/TextViewBody.Active" />
+                        android:layout_weight="40"
+                        android:text="Job Type" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        style="@style/TextViewBody"
+                        android:layout_weight="60"
                         android:text="Full time" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Job category"
-                        style="@style/TextViewBody.Active" />
+                        android:layout_weight="40"
+                        android:text="Job category" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        style="@style/TextViewBody"
+                        android:layout_weight="60"
                         android:text="Web design/ Development" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Career Level"
-                        style="@style/TextViewBody.Active" />
+                        android:layout_weight="40"
+                        android:text="Career Level" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        style="@style/TextViewBody"
+                        android:layout_weight="60"
                         android:text="Entry Level (less than 3 years)" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Work County"
-                        style="@style/TextViewBody.Active" />
+                        android:layout_weight="40"
+                        android:text="Work County" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        style="@style/TextViewBody"
+                        android:layout_weight="60"
                         android:text="Syria" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Work City"
-                        style="@style/TextViewBody.Active" />
+                        android:layout_weight="40"
+                        android:text="Work City" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        style="@style/TextViewBody"
+                        android:layout_weight="60"
                         android:text="Damascus, Aleppo" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Notice period"
-                        style="@style/TextViewBody.Active" />
+                        android:layout_weight="40"
+                        android:text="Notice period" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        style="@style/TextViewBody"
+                        android:layout_weight="60"
                         android:text="Within 1 week" />
                 </LinearLayout>
 
@@ -470,42 +492,46 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Desired net Salary"
-                        style="@style/TextViewBody.Active" />
+                        android:layout_weight="50"
+                        android:text="Desired net Salary" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        style="@style/TextViewBody"
+                        android:layout_weight="50"
                         android:text="100.000 S.P." />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Last month Salary"
-                        style="@style/TextViewBody.Active" />
+                        android:layout_weight="50"
+                        android:text="Last month Salary" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        style="@style/TextViewBody"
+                        android:layout_weight="50"
                         android:text="80.000 S.P." />
                 </LinearLayout>
 
