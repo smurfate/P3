@@ -16,8 +16,11 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 
 import com.itland.irecruitment.R;
+import com.itland.irecruitment.Responses.MyVacanciesResponse;
 import com.itland.irecruitment.abstracts.AbstractFragment;
 import com.itland.irecruitment.adapters.VacanciesAdapter;
+import com.itland.irecruitment.api.CallbackWrapped;
+import com.itland.irecruitment.api.ErrorMessage;
 import com.itland.irecruitment.entities.Vacancy;
 
 import java.util.ArrayList;
@@ -36,6 +39,7 @@ public class VacanciesFragment extends AbstractFragment {
 
     @Bind(R.id.fab) FloatingActionButton fab;
 
+    private VacanciesAdapter adapter;
     public VacanciesFragment() {
         // Required empty public constructor
     }
@@ -118,13 +122,20 @@ public class VacanciesFragment extends AbstractFragment {
             }
         });
 
-        List<Vacancy> vacancies = new ArrayList<>();
-        for (int i=0;i<10;i++) vacancies.add(new Vacancy());
 
-        VacanciesAdapter adapter = new VacanciesAdapter(vacancies);
-        lstActive.setAdapter(adapter);
-//        lstInActive.setAdapter(adapter);
-        lstExpired.setAdapter(adapter);
+        apiCalls.getVacancies(0, new CallbackWrapped<MyVacanciesResponse>() {
+            @Override
+            public void onResponse(MyVacanciesResponse response) {
+                adapter = new VacanciesAdapter(response.Items);
+                lstActive.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(ErrorMessage errorMessage) {
+
+            }
+        });
+
 
         lstActive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

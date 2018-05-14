@@ -57,6 +57,10 @@ public class VacanciesAdapter extends BaseAdapter {
         Vacancy vacancy = getItem(position);
         viewHolder.imgProfile.setVisibility(View.GONE);
 
+        viewHolder.txtVacancyName.setText(vacancy.Title);
+        viewHolder.txtViews.setText(vacancy.ViewsCount);
+
+
         return convertView;
     }
 

@@ -13,9 +13,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.itland.irecruitment.R;
+import com.itland.irecruitment.Responses.JobApplicationsListResponse;
 import com.itland.irecruitment.abstracts.AbstractFragment;
 import com.itland.irecruitment.adapters.ApplicationsAdapter;
+import com.itland.irecruitment.api.CallbackWrapped;
+import com.itland.irecruitment.api.ErrorMessage;
 import com.itland.irecruitment.entities.Application;
+import com.itland.irecruitment.entities.JobApplicationDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +30,8 @@ import butterknife.ButterKnife;
 public class ApplicationsFragment extends AbstractFragment {
 
     @Bind(R.id.lstApplications) ListView lstApplications;
+
+    private ApplicationsAdapter adapter;
 
     public ApplicationsFragment() {
         // Required empty public constructor
@@ -55,15 +61,35 @@ public class ApplicationsFragment extends AbstractFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        List<Application> applications = new ArrayList<>(10);
-        for(int i=0;i<10;i++) applications.add(new Application());
-        ApplicationsAdapter adapter = new ApplicationsAdapter(applications);
-        lstApplications.setAdapter(adapter);
+
+        apiCalls.getApplicationsList(0, new CallbackWrapped<JobApplicationsListResponse>() {
+            @Override
+            public void onResponse(JobApplicationsListResponse response) {
+                adapter = new ApplicationsAdapter(response.Items);
+                lstApplications.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(ErrorMessage errorMessage) {
+
+            }
+        });
+
 
         lstApplications.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                navigator.gotoSubSection(ApplicationViewFragment.newInstance());
+                apiCalls.getApplicationDetails((int) id, new CallbackWrapped<JobApplicationDetails>() {
+                    @Override
+                    public void onResponse(JobApplicationDetails response) {
+                        navigator.gotoSubSection(ApplicationViewFragment.newInstance(response));
+                    }
+
+                    @Override
+                    public void onFailure(ErrorMessage errorMessage) {
+
+                    }
+                });
             }
         });
 

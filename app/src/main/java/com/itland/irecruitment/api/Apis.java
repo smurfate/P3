@@ -15,6 +15,7 @@ import com.itland.irecruitment.Responses.MyVacanciesResponse;
 import com.itland.irecruitment.Responses.TokenResponse;
 import com.itland.irecruitment.entities.CompanyProfile;
 import com.itland.irecruitment.entities.JobApplication;
+import com.itland.irecruitment.entities.JobApplicationDetails;
 import com.itland.irecruitment.entities.Resume;
 import com.itland.irecruitment.entities.ResumeDetails;
 import com.itland.irecruitment.entities.Vacancy;
@@ -47,7 +48,7 @@ public interface Apis {
     Call<JobApplicationsListResponse> JobApplicationsList(@Query("page") Integer page, @Header("Authorization") String authorization);
 
     @GET("/IRecruitment.Api/api/EmpApplications/Get/{id}")
-    Call<JobApplication> JobApplications(@Path("id") Integer id, @Header("Authorization") String authorization);
+    Call<JobApplicationDetails> JobApplications(@Path("id") Integer id, @Header("Authorization") String authorization);
 
     @GET("/IRecruitment.Api/api/EmpCompanies/ViewProfile")
     Call<CompanyProfile> ViewProfile(@Header("Authorization") String authorization);

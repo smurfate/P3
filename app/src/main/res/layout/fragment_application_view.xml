@@ -4,14 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp"
+    android:padding="@dimen/layout_padding"
     tools:context="com.itland.irecruitment.fragments.ApplicationViewFragment">
 
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -123,7 +122,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textView41"
+            android:id="@+id/txtCoverLetter"
             style="@style/TextViewDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -162,13 +161,13 @@
                     app:srcCompat="@drawable/ic_phone" />
 
                 <TextView
-                    android:id="@+id/textView43"
+                    android:id="@+id/txtPhone"
+                    style="@style/TextViewBody"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TextViewBody"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
+                    android:layout_weight="1"
                     android:text="(+963)991 345 379" />
 
             </LinearLayout>
@@ -186,12 +185,13 @@
                     app:srcCompat="@drawable/ic_email" />
 
                 <TextView
+                    android:id="@+id/txtEmail"
+                    style="@style/TextViewBody"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TextViewBody"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
+                    android:layout_weight="1"
                     android:text="info@something.com" />
 
             </LinearLayout>
@@ -209,12 +209,13 @@
                     app:srcCompat="@drawable/ic_location" />
 
                 <TextView
+                    android:id="@+id/txtAddress"
+                    style="@style/TextViewBody"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TextViewBody"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
+                    android:layout_weight="1"
                     android:text="Damascus, Syria" />
 
             </LinearLayout>
@@ -232,12 +233,13 @@
                     app:srcCompat="@drawable/ic_site" />
 
                 <TextView
+                    android:id="@+id/txtSite"
+                    style="@style/TextViewBody"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TextViewBody"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
+                    android:layout_weight="1"
                     android:text="www.love.com" />
 
             </LinearLayout>

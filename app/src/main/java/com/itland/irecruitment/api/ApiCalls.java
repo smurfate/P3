@@ -5,7 +5,10 @@ import com.itland.irecruitment.Requests.FilterJobSeekersRequest;
 import com.itland.irecruitment.Responses.CitiesListResponse;
 import com.itland.irecruitment.Responses.FilterJobSeekerResponse;
 import com.itland.irecruitment.Responses.IndicesListResponse;
+import com.itland.irecruitment.Responses.JobApplicationsListResponse;
+import com.itland.irecruitment.Responses.MyVacanciesResponse;
 import com.itland.irecruitment.Responses.TokenResponse;
+import com.itland.irecruitment.entities.JobApplicationDetails;
 import com.itland.irecruitment.entities.ResumeDetails;
 import com.itland.irecruitment.util.PrefUtil;
 import com.itland.irecruitment.util.SharedPreferencesKeys;
@@ -140,6 +143,23 @@ public class ApiCalls {
     {
         apis.ListLanguageNames().enqueue(convertCallback(callback));
     }
+
+    public void getApplicationsList(Integer page, CallbackWrapped<JobApplicationsListResponse> callback)
+    {
+        apis.JobApplicationsList(page,authorization).enqueue(convertCallback(callback));
+    }
+
+    public void getApplicationDetails(Integer id, CallbackWrapped<JobApplicationDetails> callback)
+    {
+        apis.JobApplications(id,authorization).enqueue(convertCallback(callback));
+    }
+
+    public void getVacancies(Integer page, CallbackWrapped<MyVacanciesResponse> callback)
+    {
+        apis.MyVacancies(authorization,page).enqueue(convertCallback(callback));
+    }
+
+
 
 
 }

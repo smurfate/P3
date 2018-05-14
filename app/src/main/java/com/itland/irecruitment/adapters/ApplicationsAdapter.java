@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.entities.Application;
+import com.itland.irecruitment.entities.JobApplication;
 
 import java.util.List;
 
@@ -20,9 +21,9 @@ import butterknife.ButterKnife;
 
 public class ApplicationsAdapter extends BaseAdapter {
 
-    private List<Application> applications;
+    private List<JobApplication> applications;
 
-    public ApplicationsAdapter(List<Application> applications) {
+    public ApplicationsAdapter(List<JobApplication> applications) {
         this.applications = applications;
     }
 
@@ -32,13 +33,13 @@ public class ApplicationsAdapter extends BaseAdapter {
     }
 
     @Override
-    public Application getItem(int position) {
+    public JobApplication getItem(int position) {
         return applications.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return getItem(position).Id;
     }
 
     @Override
@@ -52,13 +53,13 @@ public class ApplicationsAdapter extends BaseAdapter {
             convertView.setTag(viewHolder);
         }
 
-        Application application = getItem(position);
+        JobApplication application = getItem(position);
 
-        viewHolder.txtVacancy.setText("Job Vacancy title");
-        viewHolder.txtCity.setText("Damascus, Syria");
-        viewHolder.txtDays.setText("14 days ago");
+        viewHolder.txtVacancy.setText(application.VacancyTitle);
+        viewHolder.txtCity.setText(application.VacancyWorkingCity);
+        viewHolder.txtDays.setText(application.AppliedSince+"");
         viewHolder.txtRead.setText("Unread");
-        viewHolder.txtName.setText("Sami Samara");
+        viewHolder.txtName.setText(application.SeekerFullName);
 
 
         return convertView;
