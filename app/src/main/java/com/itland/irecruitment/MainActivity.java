@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.itland.irecruitment.abstracts.AbstractActivity;
+import com.itland.irecruitment.api.ApiCalls;
 import com.itland.irecruitment.fragments.ApplicationsFragment;
 import com.itland.irecruitment.fragments.HomeFragment;
 import com.itland.irecruitment.fragments.MoreFragment;
@@ -52,12 +53,15 @@ public class MainActivity extends AbstractActivity {
     public ActionBar actionBar;
     public Handler handler = new Handler();
 
+    public ApiCalls apiCalls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        apiCalls = new ApiCalls(this);
 
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();

@@ -1,52 +1,228 @@
 
-<!--<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/layout_padding">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/rectangle3"
+                android:paddingTop="55dp">
+
+                <TextView
+                    style="@style/TextViewTitle.Active"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Biggest Company"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView9"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@mipmap/profile" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextViewBody"
+                        android:layout_marginTop="@dimen/dividerHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:gravity="center_vertical"
+                        android:text="TextView"
+                        android:textAlignment="gravity" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/black" />
+
+                    <TextView
+                        style="@style/TextViewBody"
+                        android:layout_marginTop="@dimen/dividerHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:gravity="center_vertical"
+                        android:text="TextView"
+                        android:textAlignment="gravity" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/black" />
+
+                    <TextView
+                        style="@style/TextViewBody"
+                        android:layout_marginTop="@dimen/dividerHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:gravity="center_vertical"
+                        android:text="TextView"
+                        android:textAlignment="gravity" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/black" />
+
+                    <TextView
+                        style="@style/TextViewBody"
+                        android:layout_marginTop="@dimen/dividerHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:gravity="center_vertical"
+                        android:text="TextView"
+                        android:textAlignment="gravity" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/black" />
+
+                    <TextView
+                        style="@style/TextViewBody"
+                        android:layout_marginTop="@dimen/dividerHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:gravity="center_vertical"
+                        android:text="TextView"
+                        android:textAlignment="gravity" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/black" />
+
+                    <TextView
+                        style="@style/TextViewBody"
+                        android:layout_marginTop="@dimen/dividerHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:gravity="center_vertical"
+                        android:text="TextView"
+                        android:textAlignment="gravity" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/black" />
+
+                    <TextView
+                        style="@style/TextViewBody"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:gravity="center_vertical"
+                        android:text="TextView"
+                        android:textAlignment="gravity" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/black" />
+
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="64dp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>
+
+
+
+<!--<android.support.design.widget.CoordinatorLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
     <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
     <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:fitsSystemWindows="true"-->
-    <!--tools:context="com.itland.irecruitment.fragments.MoreFragment">-->
+    <!--android:layout_height="match_parent">-->
 
     <!--<android.support.design.widget.AppBarLayout-->
-        <!--android:id="@+id/app_bar"-->
+        <!--android:id="@+id/app_bar_layout"-->
+        <!--android:theme="@style/AppTheme.AppBarOverlay"-->
         <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/app_bar_height"-->
-        <!--android:fitsSystemWindows="true"-->
-        <!--android:theme="@style/AppTheme.AppBarOverlay">-->
+        <!--android:layout_height="wrap_content">-->
 
         <!--<android.support.design.widget.CollapsingToolbarLayout-->
-            <!--android:id="@+id/toolbar_layout"-->
+            <!--android:id="@+id/collapsing_toolbar"-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="match_parent"-->
-            <!--android:fitsSystemWindows="true"-->
-            <!--app:contentScrim="?attr/colorPrimary"-->
-            <!--app:layout_scrollFlags="scroll|exitUntilCollapsed">-->
+            <!--app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
+            <!--app:contentScrim="?attr/colorPrimary">-->
 
             <!--<de.hdodenhof.circleimageview.CircleImageView-->
-                <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
                 <!--android:id="@+id/imgProfile"-->
                 <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_margin="24dp"-->
+                <!--android:layout_height="200dp"-->
                 <!--android:src="@mipmap/profile"-->
-                <!--app:civ_border_color="#FF000000"-->
-                <!--app:civ_border_width="2dp"-->
-                <!--app:layout_collapseMode="parallax" />-->
+
+                <!--android:scaleType="centerCrop"-->
+                <!--app:layout_collapseMode="parallax"-->
+                <!--app:layout_collapseParallaxMultiplier="0.7"-->
+                <!--/>-->
 
             <!--<android.support.v7.widget.Toolbar-->
                 <!--android:id="@+id/toolbar"-->
                 <!--android:layout_width="match_parent"-->
+                <!--app:titleTextColor="@color/white"-->
                 <!--android:layout_height="?attr/actionBarSize"-->
-                <!--android:gravity="center_vertical"-->
-                <!--android:title="Hello"-->
                 <!--app:layout_collapseMode="pin" >-->
+
+
             <!--</android.support.v7.widget.Toolbar>-->
 
-        <!--</android.support.design.widget.CollapsingToolbarLayout>-->
-    <!--</android.support.design.widget.AppBarLayout>-->
 
-    <!--<include layout="@layout/content_more" />-->
+        <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+    <!--<android.support.v4.widget.NestedScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:paddingLeft="@dimen/margin_lr"-->
+        <!--android:paddingRight="@dimen/margin_lr"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+
+        <!--<include layout="@layout/content_more" />-->
+
+    <!--</android.support.v4.widget.NestedScrollView>-->
 
     <!--<android.support.design.widget.FloatingActionButton-->
         <!--android:id="@+id/fab"-->
@@ -55,79 +231,9 @@
         <!--android:layout_margin="@dimen/fab_margin"-->
         <!--android:background="@color/colorPrimaryDark"-->
         <!--android:tint="@color/white"-->
-        <!--app:layout_anchor="@id/app_bar"-->
+        <!--app:layout_anchor="@id/app_bar_layout"-->
         <!--app:layout_anchorGravity="bottom|end"-->
-        <!--app:srcCompat="@drawable/ic_edit" />-->
+        <!--app:srcCompat="@drawable/ic_search" />-->
 
 
 <!--</android.support.design.widget.CoordinatorLayout>-->
-
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar_layout"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="?attr/colorPrimary">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgProfile"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@mipmap/profile"
-
-                android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.7"
-                />
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                app:titleTextColor="@color/white"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" >
-
-
-            </android.support.v7.widget.Toolbar>
-
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-
-    </android.support.design.widget.AppBarLayout>
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="@dimen/margin_lr"
-        android:paddingRight="@dimen/margin_lr"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-        <include layout="@layout/content_more" />
-
-    </android.support.v4.widget.NestedScrollView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:background="@color/colorPrimaryDark"
-        android:tint="@color/white"
-        app:layout_anchor="@id/app_bar_layout"
-        app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@drawable/ic_search" />
-
-
-</android.support.design.widget.CoordinatorLayout>

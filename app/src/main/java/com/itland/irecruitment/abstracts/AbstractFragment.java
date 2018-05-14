@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.itland.irecruitment.MainActivity;
 import com.itland.irecruitment.R;
+import com.itland.irecruitment.api.ApiCalls;
+import com.itland.irecruitment.api.ErrorMessage;
 import com.itland.irecruitment.util.FragmentNavigator;
 
 import java.util.ArrayList;
@@ -26,12 +28,14 @@ public abstract class AbstractFragment extends Fragment {
 
     public MainActivity activity;
     public FragmentNavigator navigator;
+    public ApiCalls apiCalls;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         activity = (MainActivity) getActivity();
+        apiCalls = activity.apiCalls;
         navigator = activity.navigator;
         setHasOptionsMenu(true) ;
 
@@ -51,6 +55,11 @@ public abstract class AbstractFragment extends Fragment {
     public void toast(String message)
     {
         if(isSafe()) Toast.makeText(getActivity(),message,Toast.LENGTH_LONG).show();
+    }
+
+    public void toast(ErrorMessage message)
+    {
+        if(isSafe()) Toast.makeText(getActivity(),message.toString(),Toast.LENGTH_LONG).show();
     }
 
     public void log(String log)
@@ -87,7 +96,7 @@ public abstract class AbstractFragment extends Fragment {
         activity.setTitle(title);
     }
 
-    public void showProgressIndicator(boolean show)
+    public void progress(boolean show)
     {
         activity.showProgressIndicator(show);
     }

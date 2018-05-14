@@ -2,33 +2,30 @@ package com.itland.irecruitment.fragments;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.abstracts.AbstractFragment;
+import com.itland.irecruitment.entities.ResumeDetails;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MoreFragment extends AbstractFragment {
+public class ResumeDetailsFragment extends AbstractFragment {
 
-//    @Bind(R.id.toolbar)
-//    Toolbar toolbar;
+    private ResumeDetails details;
 
-    public MoreFragment() {
+    public ResumeDetailsFragment() {
         // Required empty public constructor
     }
 
-    public static MoreFragment newInstance() {
-        MoreFragment fragment = new MoreFragment();
-
+    public static ResumeDetailsFragment newInstance(ResumeDetails details) {
+        ResumeDetailsFragment fragment = new ResumeDetailsFragment();
+        fragment.details = details;
         return fragment;
     }
 
@@ -37,20 +34,14 @@ public class MoreFragment extends AbstractFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_more, container, false);
+        View view = inflater.inflate(R.layout.fragment_resume_details, container, false);
         ButterKnife.bind(this,view);
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        setTitle(getString(R.string.more));
-    }
-
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
     }

@@ -79,7 +79,7 @@ public class HomeFragment extends AbstractFragment {
 //            public void onClick(View v) {
 ////                navigator.gotoSection(ResumeFragment.newInstance());
 //                ApiCalls calls = new ApiCalls();
-////                calls.apis.CitiesList(0).enqueue(new Callback<CitiesListResponse>() {
+////                calls.apis.CitiesList(0).enqueue(new CallbackWrapped<CitiesListResponse>() {
 ////                    @Override
 ////                    public void onResponse(Call<CitiesListResponse> call, Response<CitiesListResponse> response) {
 ////                        CitiesListResponse response1 = response.body();
@@ -91,7 +91,7 @@ public class HomeFragment extends AbstractFragment {
 ////                        toast("failier");
 ////                    }
 ////                });
-//                calls.apis.token("password","client@example.com","Admin@123456","JobSeeker").enqueue(new Callback<TokenResponse>() {
+//                calls.apis.token("password","client@example.com","Admin@123456","JobSeeker").enqueue(new CallbackWrapped<TokenResponse>() {
 //                    @Override
 //                    public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
 //                        TokenResponse tokenResponse = response.body();

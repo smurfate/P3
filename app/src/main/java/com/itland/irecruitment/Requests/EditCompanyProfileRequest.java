@@ -1,7 +1,5 @@
 package com.itland.irecruitment.Requests;
 
-import com.itland.irecruitment.entities.AbstractEntity;
-
 /**
  * Created by Saad on 5/10/2018.
  */

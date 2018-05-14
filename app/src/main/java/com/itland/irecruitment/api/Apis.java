@@ -9,12 +9,14 @@ import com.itland.irecruitment.Requests.PostVacancyRequest;
 import com.itland.irecruitment.Responses.CitiesListResponse;
 import com.itland.irecruitment.Responses.FilterJobSeekerResponse;
 import com.itland.irecruitment.Responses.GeneralResponse;
+import com.itland.irecruitment.Responses.IndicesListResponse;
 import com.itland.irecruitment.Responses.JobApplicationsListResponse;
 import com.itland.irecruitment.Responses.MyVacanciesResponse;
 import com.itland.irecruitment.Responses.TokenResponse;
 import com.itland.irecruitment.entities.CompanyProfile;
 import com.itland.irecruitment.entities.JobApplication;
 import com.itland.irecruitment.entities.Resume;
+import com.itland.irecruitment.entities.ResumeDetails;
 import com.itland.irecruitment.entities.Vacancy;
 
 import retrofit2.Call;
@@ -38,11 +40,8 @@ public interface Apis {
 
 
     @FormUrlEncoded
-    @POST("/IRecruitment.Api//token")
+    @POST("/IRecruitment.Api/token")
     Call<TokenResponse> token(@Field("grant_type") String grantType, @Field("username") String username, @Field("password") String password, @Field("scope") String scope);
-
-    @GET("/IRecruitment.Api/api/Cities/List")
-    Call<CitiesListResponse> CitiesList(@Query("page") Integer page);
 
     @GET("/IRecruitment.Api/api/EmpApplications/JobApplications")
     Call<JobApplicationsListResponse> JobApplicationsList(@Query("page") Integer page, @Header("Authorization") String authorization);
@@ -62,7 +61,7 @@ public interface Apis {
     Call<FilterJobSeekerResponse> FilterJobSeekers(@Header("Authorization") String authorization, @Body FilterJobSeekersRequest request);
 
     @GET("/IRecruitment.Api/api/EmpResumes/Get/{id}")
-    Call<Resume> Resume(@Path("id") Integer id, @Header("Authorization") String authorization);
+    Call<ResumeDetails> Resume(@Path("id") Integer id, @Header("Authorization") String authorization);
 
     @GET("/IRecruitment.Api/api/EmpVacancies/MyVacancies")
     Call<MyVacanciesResponse> MyVacancies(@Header("Authorization") String authorization,@Query("page") Integer page);
@@ -85,5 +84,65 @@ public interface Apis {
     @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/EmpVacancies/EditReAddExpiredJobVacancy")
     Call<GeneralResponse> EditExpiredJobVacancy(@Header("Authorization") String authorization, @Body EditExpiredVacancyRequest request);
+
+    @GET("/IRecruitment.Api/api/Cities/List")
+    Call<CitiesListResponse> CitiesList(@Query("page") Integer page);
+
+    @GET("/IRecruitment.Api/api/Indices/ListJobTypes")
+    Call<IndicesListResponse> ListJobTypes();
+
+    @GET("/IRecruitment.Api/api/Indices/ListFieldsOfWork")
+    Call<IndicesListResponse> ListFieldsOfWork();
+
+    @GET("/IRecruitment.Api/api/Indices/ListNationalities")
+    Call<IndicesListResponse> ListNationalities();
+
+    @GET("/IRecruitment.Api/api/Indices/ListSkillLevels")
+    Call<IndicesListResponse> ListSkillLevels();
+
+    @GET("/IRecruitment.Api/api/Indices/ListLanguageLevels")
+    Call<IndicesListResponse> ListLanguageLevels();
+
+    @GET("/IRecruitment.Api/api/Indices/ListCareerLevels")
+    Call<IndicesListResponse> ListCareerLevels();
+
+    @GET("/IRecruitment.Api/api/Indices/ListRequiredYearsOfExperience")
+    Call<IndicesListResponse> ListRequiredYearsOfExperience();
+
+    @GET("/IRecruitment.Api/api/Indices/ListNoticePeriods")
+    Call<IndicesListResponse> ListNoticePeriods();
+
+    @GET("/IRecruitment.Api/api/Indices/ListLanguageNames")
+    Call<IndicesListResponse> ListLanguageNames();
+
+    @GET("/IRecruitment.Api/api/Indices/ListMilitaryServices")
+    Call<IndicesListResponse> ListMilitaryServices();
+
+    @GET("/IRecruitment.Api/api/Indices/ListDrivingLicenceTypes")
+    Call<IndicesListResponse> ListDrivingLicenceTypes();
+
+    @GET("/IRecruitment.Api/api/Indices/ListProfilePrivacies")
+    Call<IndicesListResponse> ListProfilePrivacies();
+
+    @GET("/IRecruitment.Api/api/Indices/ListCurriencies")
+    Call<IndicesListResponse> ListCurriencies();
+
+    @GET("/IRecruitment.Api/api/Indices/ListEducationDegreeLevels")
+    Call<IndicesListResponse> ListEducationDegreeLevels();
+
+    @GET("/IRecruitment.Api/api/Indices/ListEducationDegreeMajors")
+    Call<IndicesListResponse> ListEducationDegreeMajors();
+
+    @GET("/IRecruitment.Api/api/Indices/ListTitles")
+    Call<IndicesListResponse> ListTitles();
+
+    @GET("/IRecruitment.Api/api/Indices/ListSalaries")
+    Call<IndicesListResponse> ListSalaries();
+
+    @GET("/IRecruitment.Api/api/Indices/ListCountryCodes")
+    Call<IndicesListResponse> ListCountryCodes();
+
+
+
 
 }

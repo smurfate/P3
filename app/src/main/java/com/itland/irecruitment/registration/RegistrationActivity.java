@@ -1,17 +1,21 @@
 package com.itland.irecruitment.registration;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.itland.irecruitment.MainActivity;
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.abstracts.AbstractActivity;
 import com.itland.irecruitment.api.ApiCalls;
 import com.itland.irecruitment.api.Apis;
 import com.itland.irecruitment.registration.fragments.SignInFragment;
 import com.itland.irecruitment.util.FragmentNavigator;
+import com.itland.irecruitment.util.PrefUtil;
+import com.itland.irecruitment.util.SharedPreferencesKeys;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -46,6 +50,14 @@ public class RegistrationActivity extends AbstractActivity {
         getSupportActionBar().hide();
 
         navigator = new FragmentNavigator(this, SignInFragment.newInstance(),null,null,R.id.frmContent);
+
+        if(!isNullOrEmpty(PrefUtil.getStringPreference(SharedPreferencesKeys.token)))
+        {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            this.finish();
+
+        }
 
     }
 

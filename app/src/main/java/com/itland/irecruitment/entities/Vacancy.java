@@ -1,5 +1,7 @@
 package com.itland.irecruitment.entities;
 
+import com.itland.irecruitment.abstracts.AbstractEntity;
+
 /**
  * Created by Saad on 5/2/2018.
  */

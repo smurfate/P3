@@ -1,9 +1,12 @@
 package com.itland.irecruitment.api;
 
+import com.itland.irecruitment.MainActivity;
 import com.itland.irecruitment.Requests.FilterJobSeekersRequest;
 import com.itland.irecruitment.Responses.CitiesListResponse;
 import com.itland.irecruitment.Responses.FilterJobSeekerResponse;
+import com.itland.irecruitment.Responses.IndicesListResponse;
 import com.itland.irecruitment.Responses.TokenResponse;
+import com.itland.irecruitment.entities.ResumeDetails;
 import com.itland.irecruitment.util.PrefUtil;
 import com.itland.irecruitment.util.SharedPreferencesKeys;
 
@@ -24,8 +27,14 @@ public class ApiCalls {
     private Apis apis;
     private String authorization;
     private String language;
+    private MainActivity activity;
 
-    public ApiCalls() {
+    public ApiCalls()
+    {
+        this(null);
+    }
+
+    public ApiCalls(MainActivity activity) {
         LoggingInterceptor interceptor = new LoggingInterceptor();
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
@@ -39,27 +48,55 @@ public class ApiCalls {
         apis = retrofit.create(Apis.class);
 
         authorization = PrefUtil.getStringPreference(SharedPreferencesKeys.token);
+        this.activity = activity;
 
     }
 
-    public void CitiesList(Callback<CitiesListResponse> callback)
+    private<T> Callback<T> convertCallback(final CallbackWrapped<T> callback)
     {
-        apis.CitiesList(0).enqueue(callback);
+        if(activity != null) activity.showProgressIndicator(true);
+        Callback<T> cb = new Callback<T>() {
+            @Override
+            public void onResponse(Call<T> call, Response<T> response) {
+                if(activity != null) activity.showProgressIndicator(false);
+                if(response.body() != null)
+                {
+                    callback.onResponse(response.body());
+                }
+                else
+                {
+                    callback.onFailure(ErrorMessage.UNKNOWN_ERROR);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<T> call, Throwable throwable) {
+                callback.onFailure(ErrorMessage.UNKNOWN_ERROR);
+                if(activity != null) activity.showProgressIndicator(false);
+
+            }
+        };
+        return cb;
     }
 
-    public void SignIn(String userName, String password,Callback<TokenResponse> callback)
+    public void citiesList(CallbackWrapped<CitiesListResponse> callback)
     {
-        apis.token("password",userName,password,"JobSeeker").enqueue(callback);
+        apis.CitiesList(0).enqueue(convertCallback(callback));
     }
 
-    public void GetResumes(Callback<FilterJobSeekerResponse> callback)
+    public void signIn(String userName, String password,CallbackWrapped<TokenResponse> callback)
     {
-        apis.FilterJobSeekers(authorization,new FilterJobSeekersRequest()).enqueue(callback);
+        apis.token("password",userName,password,"JobSeeker").enqueue(convertCallback(callback));
     }
 
-    public void FilterResumes(Callback<FilterJobSeekerResponse> callback,String searchQuery,Integer cityId,
-                              Integer minEduLevelId,Integer countryId,Integer fieldOfWorkId, Integer jobTypeId,
-                              Boolean photo)
+    public void getResumesList(CallbackWrapped<FilterJobSeekerResponse> callback)
+    {
+        apis.FilterJobSeekers(authorization,new FilterJobSeekersRequest()).enqueue(convertCallback(callback));
+    }
+
+    public void filterResumes(String searchQuery,Integer cityId, Integer minEduLevelId,Integer countryId,
+                              Integer fieldOfWorkId, Integer jobTypeId, Boolean photo, Integer languageId,
+                              CallbackWrapped<FilterJobSeekerResponse> callback)
     {
         FilterJobSeekersRequest request = new FilterJobSeekersRequest();
         request.SearchQuery = searchQuery;
@@ -68,10 +105,41 @@ public class ApiCalls {
         request.CountryId = countryId;
         request.FieldOfWorkId = fieldOfWorkId;
         request.JobTypeId = jobTypeId;
+        request.ResumeLanguageId = languageId;
         request.WithPhoto = photo;
-        apis.FilterJobSeekers(authorization,new FilterJobSeekersRequest()).enqueue(callback);
+        apis.FilterJobSeekers(authorization,new FilterJobSeekersRequest()).enqueue(convertCallback(callback));
     }
 
+
+    public void getResume(Integer id, CallbackWrapped<ResumeDetails> callback)
+    {
+        apis.Resume(id,authorization).enqueue(convertCallback(callback));
+    }
+
+    public void getEducationLevel(CallbackWrapped<IndicesListResponse> callback)
+    {
+        apis.ListEducationDegreeLevels().enqueue(convertCallback(callback));
+    }
+
+    public void getCountries(CallbackWrapped<IndicesListResponse> callback)
+    {
+        apis.ListNationalities().enqueue(convertCallback(callback));
+    }
+
+    public void getFieldsOfWork(CallbackWrapped<IndicesListResponse> callback)
+    {
+        apis.ListFieldsOfWork().enqueue(convertCallback(callback));
+    }
+
+    public void getJobTypes(CallbackWrapped<IndicesListResponse> callback)
+    {
+        apis.ListJobTypes().enqueue(convertCallback(callback));
+    }
+
+    public void getCvLanguage(CallbackWrapped<IndicesListResponse> callback)
+    {
+        apis.ListLanguageNames().enqueue(convertCallback(callback));
+    }
 
 
 }

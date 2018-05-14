@@ -1,6 +1,6 @@
 package com.itland.irecruitment.Responses;
 
-import com.itland.irecruitment.entities.AbstractEntity;
+import com.itland.irecruitment.abstracts.AbstractEntity;
 import com.itland.irecruitment.entities.City;
 
 import java.util.List;

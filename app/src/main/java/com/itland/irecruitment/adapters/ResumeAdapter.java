@@ -39,7 +39,7 @@ public class ResumeAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return getItem(position).Id;
     }
 
     @Override
@@ -55,8 +55,8 @@ public class ResumeAdapter extends BaseAdapter {
 
         Resume resume = getItem(position);
 
-        viewHolder.tvTitle.setText("Jack Sparrow");
-        viewHolder.tvJob.setText("Developer");
+        viewHolder.tvTitle.setText(resume.SeekerFullName);
+        viewHolder.tvJob.setText(resume.JobTitle);
 
 
         return convertView;

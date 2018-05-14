@@ -6,17 +6,15 @@ package com.itland.irecruitment.entities;
 
 public class City {
 /*
-    {
-        "Id": 0,
-            "ArName": "string",
-            "EnName": "string",
-            "IsActive": true,
-            "CountryName": "string"
+{
+      "Id": 0,
+      "Name": "string",
+      "IsActive": true,
+      "CountryName": "string"
     }
 */
     public Integer Id;
-    public String EnName;
-    public String ArName;
+    public String Name;
     public Boolean IsActive;
     public String CountryName;
 }

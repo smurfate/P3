@@ -54,13 +54,14 @@
 
 
                         <TextView
+                            android:id="@+id/txtReset"
                             style="@style/TextViewDetails.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start|center_vertical"
 
-                            android:textAlignment="center"
-                            android:text="reset" />
+                            android:layout_gravity="start|center_vertical"
+                            android:text="reset"
+                            android:textAlignment="center" />
 
                         <TextView
                             android:textAlignment="center"
@@ -88,7 +89,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="24dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -111,7 +112,7 @@
                             style="@style/TextViewBody.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/damascus" />
+                            android:text="@string/any" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -119,7 +120,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="24dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -138,7 +139,7 @@
                             android:layout_weight="1" />
 
                         <TextView
-                            android:id="@+id/textView7"
+                            android:id="@+id/txtEdu"
                             style="@style/TextViewBody.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -150,7 +151,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="24dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -168,11 +169,11 @@
                             android:layout_weight="1" />
 
                         <TextView
-                            android:id="@+id/textView3"
+                            android:id="@+id/txtCounty"
                             style="@style/TextViewBody.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/syria" />
+                            android:text="@string/any" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -180,7 +181,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="24dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -199,11 +200,11 @@
                             android:layout_weight="1" />
 
                         <TextView
-                            android:id="@+id/textView11"
+                            android:id="@+id/txtFieldOfWork"
                             style="@style/TextViewBody.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/programming" />
+                            android:text="@string/any" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -211,7 +212,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="24dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -228,7 +229,7 @@
                             android:layout_weight="1" />
 
                         <TextView
-                            android:id="@+id/textView13"
+                            android:id="@+id/txtJobType"
                             style="@style/TextViewBody.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -240,7 +241,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="24dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -256,12 +257,12 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1" />
 
-                        <TextView
-                            android:id="@+id/textView18"
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switchPhoto"
+                            style="@style/TextViewBody"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/TextViewBody.Inactive"
-                            android:text="@string/any" />
+                            android:layout_height="wrap_content" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -269,7 +270,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="24dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -281,10 +282,10 @@
                             android:text="@string/cv_language" />
 
                         <TextView
-                            android:id="@+id/textView15"
+                            android:id="@+id/txtLanguage"
+                            style="@style/TextViewBody.Inactive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/TextViewBody.Inactive"
                             android:text="@string/any" />
                     </LinearLayout>
 
@@ -334,36 +335,11 @@
                     </LinearLayout>
 
                     <RadioGroup
+                        android:id="@+id/radioGroupChoose"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="24dp">
 
-                        <RadioButton
-                            android:id="@+id/radioButton8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Damascus" />
-
-                        <RadioButton
-                            android:id="@+id/radioButton7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Aleppo" />
-
-                        <RadioButton
-                            android:id="@+id/radioButton6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Homs" />
-
-                        <RadioButton
-                            android:id="@+id/radioButton5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Lattakia" />
                     </RadioGroup>
                 </LinearLayout>
 

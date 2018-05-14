@@ -74,13 +74,6 @@
                     android:visibility="gone"
                     app:srcCompat="@drawable/ic_filter" />
 
-                <ProgressBar
-                    android:id="@+id/pb_loading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:indeterminate="true"
-                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tvSave"
@@ -101,15 +94,31 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
-        android:id="@+id/frmContent"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/background"
-        android:layout_weight="1">
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@color/background">
+
+        <FrameLayout
+                android:id="@+id/frmContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/background" />
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            style="?android:attr/progressBarStyle"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center" />
 
 
-    </FrameLayout>
+    </RelativeLayout>
 
 
     <android.support.design.widget.BottomNavigationView

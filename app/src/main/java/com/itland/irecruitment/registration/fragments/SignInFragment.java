@@ -17,6 +17,8 @@ import com.itland.irecruitment.MainActivity;
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.Responses.TokenResponse;
 import com.itland.irecruitment.abstracts.AbstractResistrationFragment;
+import com.itland.irecruitment.api.CallbackWrapped;
+import com.itland.irecruitment.api.ErrorMessage;
 import com.itland.irecruitment.util.PrefUtil;
 import com.itland.irecruitment.util.SharedPreferencesKeys;
 
@@ -73,11 +75,10 @@ public class SignInFragment extends AbstractResistrationFragment {
                     return;
                 }
 
-                activity.apiCalls.SignIn(userName, password, new Callback<TokenResponse>() {
+                activity.apiCalls.signIn(userName, password, new CallbackWrapped<TokenResponse>() {
                     @Override
-                    public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
-                        TokenResponse tokenResponse = response.body();
-                        if(tokenResponse==null)
+                    public void onResponse(TokenResponse response) {
+                        if(response==null)
                         {
                             toast(getString(R.string.error_invalid_name_password));
                             txtUserName.setText("");
@@ -86,7 +87,7 @@ public class SignInFragment extends AbstractResistrationFragment {
                         }
                         else
                         {
-                            PrefUtil.setStringPreference(SharedPreferencesKeys.token,"bearer "+tokenResponse.access_token);
+                            PrefUtil.setStringPreference(SharedPreferencesKeys.token,"bearer "+response.access_token);
                             Intent intent = new Intent(activity, MainActivity.class);
                             startActivity(intent);
                             activity.finish();
@@ -96,7 +97,7 @@ public class SignInFragment extends AbstractResistrationFragment {
                     }
 
                     @Override
-                    public void onFailure(Call<TokenResponse> call, Throwable throwable) {
+                    public void onFailure(ErrorMessage errorMessage) {
 
                     }
                 });

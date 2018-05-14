@@ -3,20 +3,17 @@ package com.itland.irecruitment.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.itland.irecruitment.R;
+import com.itland.irecruitment.Responses.CitiesListResponse;
 import com.itland.irecruitment.abstracts.AbstractFragment;
-
-import org.w3c.dom.Text;
+import com.itland.irecruitment.api.CallbackWrapped;
+import com.itland.irecruitment.api.ErrorMessage;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -60,7 +57,17 @@ public class ProfileFragment extends AbstractFragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigator.gotoSubSection(EditProfileFragment.newInstance());
+                apiCalls.citiesList(new CallbackWrapped<CitiesListResponse>() {
+                    @Override
+                    public void onResponse(CitiesListResponse response) {
+                        toast(response.Message.Content);
+                    }
+
+                    @Override
+                    public void onFailure(ErrorMessage errorMessage) {
+
+                    }
+                });
             }
         });
     }

@@ -1,6 +1,6 @@
 package com.itland.irecruitment.Responses;
 
-import com.itland.irecruitment.entities.AbstractEntity;
+import com.itland.irecruitment.abstracts.AbstractEntity;
 
 /**
  * Created by Saad on 5/9/2018.
