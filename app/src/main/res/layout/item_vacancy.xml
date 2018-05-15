@@ -69,6 +69,7 @@
                     android:padding="@dimen/layout_padding">
 
                     <LinearLayout
+                        android:id="@+id/lnrActive"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -125,6 +126,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/lnrExpired"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -136,6 +138,7 @@
                             android:layout_width="@dimen/image_details"
                             android:layout_height="@dimen/image_details"
                             android:layout_weight="1"
+                            android:tint="@color/text_error"
                             app:srcCompat="@drawable/ic_clock" />
 
                         <TextView
@@ -146,7 +149,8 @@
                             android:layout_marginLeft="@dimen/margin_lr"
                             android:layout_marginRight="@dimen/margin_lr"
                             android:layout_weight="1"
-                            android:text="expiring in 2 days" />
+                            android:text="expiring in 2 days"
+                            android:textColor="@color/text_error" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -154,11 +158,13 @@
             </LinearLayout>
 
             <View
+                android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/black" />
 
             <LinearLayout
+                android:id="@+id/lnrViews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dividerHeight"
@@ -183,6 +189,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/imageView17"
+                    android:layout_width="@dimen/image_details"
+                    android:layout_height="@dimen/image_details"
+                    android:tint="@color/text_warning"
+                    app:srcCompat="@drawable/ic_job" />
 
                 <TextView
                     android:id="@+id/txtApplication"

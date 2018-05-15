@@ -51,6 +51,7 @@
                         android:id="@+id/active_layout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:paddingTop="@dimen/dividerHeight"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
                         android:orientation="vertical">

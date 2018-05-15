@@ -9,10 +9,11 @@
         android:id="@+id/lstApplications"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
-
-        android:divider="@null"
         android:layout_marginLeft="@dimen/margin_lr"
+
         android:layout_marginRight="@dimen/margin_lr"
+        android:layout_marginTop="@dimen/margin_lr"
+        android:background="@color/background"
+        android:divider="@null"
         android:dividerHeight="@dimen/dividerHeight" />
 </FrameLayout>

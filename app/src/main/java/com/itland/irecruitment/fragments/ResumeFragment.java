@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,6 +29,7 @@ import com.itland.irecruitment.Responses.CitiesListResponse;
 import com.itland.irecruitment.Responses.FilterJobSeekerResponse;
 import com.itland.irecruitment.Responses.IndicesListResponse;
 import com.itland.irecruitment.abstracts.AbstractFragment;
+import com.itland.irecruitment.adapters.AutocompleteAdapter;
 import com.itland.irecruitment.adapters.ResumeAdapter;
 import com.itland.irecruitment.api.CallbackWrapped;
 import com.itland.irecruitment.api.ErrorMessage;
@@ -75,7 +78,9 @@ public class ResumeFragment extends AbstractFragment {
     private enum ChooseType { city,edu,county,fieldOfWork,jobType, cvLanguage }
     private ChooseType chooseType;
 
+    private SearchView searchView;
     private ResumeAdapter adapter;
+    private AutocompleteAdapter autocompleteAdapter;
 
 
 
@@ -195,8 +200,10 @@ public class ResumeFragment extends AbstractFragment {
         apiCalls.filterResumes(searchQuery, cityId, eduId, countyId, fieldId, jobId, switchPhoto.isChecked(),cvId, new CallbackWrapped<FilterJobSeekerResponse>() {
             @Override
             public void onResponse(FilterJobSeekerResponse response) {
-                adapter = new ResumeAdapter(response.Items);
-                gridView.setAdapter(adapter);
+
+                    adapter = new ResumeAdapter(response.Items);
+                    gridView.setAdapter(adapter);
+
             }
 
             @Override
@@ -243,7 +250,7 @@ public class ResumeFragment extends AbstractFragment {
         });
 
 
-        SearchView searchView = activity.getSearchView();
+        searchView = activity.getSearchView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -254,6 +261,7 @@ public class ResumeFragment extends AbstractFragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 searchQuery = newText;
+                filterResumes();
                 return false;
             }
         });

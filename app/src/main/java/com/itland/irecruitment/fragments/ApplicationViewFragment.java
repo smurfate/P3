@@ -67,7 +67,6 @@ public class ApplicationViewFragment extends AbstractFragment {
         txtMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigator.gotoSubSection(ApplicationDetailsFragment.newInstance());
             }
         });
 

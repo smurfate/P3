@@ -7,21 +7,47 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.itland.irecruitment.R;
 import com.itland.irecruitment.abstracts.AbstractFragment;
+import com.itland.irecruitment.entities.VacancyDetails;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class VacancyDetailsFragment extends AbstractFragment {
+
+    private VacancyDetails details;
+
+    @Bind(R.id.txtTitle) TextView txtTitle;
+    @Bind(R.id.txtCompanyName) TextView txtCompanyName;
+    @Bind(R.id.txtCompanyIndustry) TextView txtCompanyIndustry;
+    @Bind(R.id.txtActiveStatus) TextView txtActiveStatus;
+    @Bind(R.id.txtPostedSince) TextView txtPostedSince;
+    @Bind(R.id.txtExpiredSince) TextView txtExpiredSince;
+    @Bind(R.id.txtApplications) TextView txtApplications;
+    @Bind(R.id.txtViews) TextView txtViews;
+    @Bind(R.id.lnrExpired) LinearLayout lnrExpired;
+    @Bind(R.id.lnrViews) LinearLayout lnrViews;
+    @Bind(R.id.line) View line;
+
+    @Bind(R.id.txtLocation) TextView txtLocation;
+    @Bind(R.id.txtRequiredExperience) TextView txtRequiredExperience;
+    @Bind(R.id.txtSkills) TextView txtSkills;
+    @Bind(R.id.txtCompanyIndustry2) TextView txtCompanyIndustry2;
+    @Bind(R.id.txtType) TextView txtType;
+    @Bind(R.id.txtJobDescription) TextView txtJobDescription;
 
 
     public VacancyDetailsFragment() {
         // Required empty public constructor
     }
 
-    public static VacancyDetailsFragment newInstance() {
+    public static VacancyDetailsFragment newInstance(VacancyDetails details) {
         VacancyDetailsFragment fragment = new VacancyDetailsFragment();
+        fragment.details = details;
         return fragment;
     }
 
@@ -38,8 +64,44 @@ public class VacancyDetailsFragment extends AbstractFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activity.actionbarSearch(false);
 
-        
+        txtTitle.setText(details.Title);
+        txtCompanyName.setText(details.CompanyName);
+        txtCompanyIndustry.setText(details.CompanyIndustry);
+        txtCompanyIndustry2.setText(details.CompanyIndustry);
+        txtViews.setText(details.ViewsCount.toString());
+        txtApplications.setText(details.ApplicationsCount.toString());
+        txtActiveStatus.setText(details.Status);
+
+        txtLocation.setText(details.WorkCity+", "+details.WorkCountry);
+        txtRequiredExperience.setText(details.ExperienceNeededYears.toString());
+        txtSkills.setText(details.SkillsNeeded);
+        txtType.setText(details.Type);
+        txtJobDescription.setText(details.JobDescription);
+
+        if(details.isActive())
+        {
+            lnrViews.setVisibility(View.VISIBLE);
+            lnrExpired.setVisibility(View.VISIBLE);
+            line.setVisibility(View.VISIBLE);
+            txtExpiredSince.setText(details.ExpiresIn.toString());
+        }
+
+        if(details.isInactive())
+        {
+            lnrViews.setVisibility(View.GONE);
+            lnrExpired.setVisibility(View.GONE);
+            line.setVisibility(View.GONE);
+        }
+
+        if(details.isExpired())
+        {
+            lnrViews.setVisibility(View.VISIBLE);
+            lnrExpired.setVisibility(View.VISIBLE);
+            line.setVisibility(View.VISIBLE);
+            txtExpiredSince.setText(details.ExpiredSince.toString());
+        }
+
+
     }
 }

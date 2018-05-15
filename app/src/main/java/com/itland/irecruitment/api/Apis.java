@@ -19,6 +19,7 @@ import com.itland.irecruitment.entities.JobApplicationDetails;
 import com.itland.irecruitment.entities.Resume;
 import com.itland.irecruitment.entities.ResumeDetails;
 import com.itland.irecruitment.entities.Vacancy;
+import com.itland.irecruitment.entities.VacancyDetails;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -68,7 +69,7 @@ public interface Apis {
     Call<MyVacanciesResponse> MyVacancies(@Header("Authorization") String authorization,@Query("page") Integer page);
 
     @GET("/IRecruitment.Api/api/EmpVacancies/Get/{id}")
-    Call<Vacancy> Vacancy(@Path("id") Integer id, @Header("Authorization") String authorization);
+    Call<VacancyDetails> Vacancy(@Path("id") Integer id, @Header("Authorization") String authorization);
 
     @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/EmpVacancies/PostJobVacancy")

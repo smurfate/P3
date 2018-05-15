@@ -22,6 +22,7 @@ import com.itland.irecruitment.adapters.VacanciesAdapter;
 import com.itland.irecruitment.api.CallbackWrapped;
 import com.itland.irecruitment.api.ErrorMessage;
 import com.itland.irecruitment.entities.Vacancy;
+import com.itland.irecruitment.entities.VacancyDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,11 @@ public class VacanciesFragment extends AbstractFragment {
 
     @Bind(R.id.fab) FloatingActionButton fab;
 
-    private VacanciesAdapter adapter;
+    private VacanciesAdapter activeVacanciesAdapter;
+    private VacanciesAdapter inactiveVacanciesAdapter;
+    private VacanciesAdapter expiredVacanciesAdapter;
+
+
     public VacanciesFragment() {
         // Required empty public constructor
     }
@@ -126,8 +131,13 @@ public class VacanciesFragment extends AbstractFragment {
         apiCalls.getVacancies(0, new CallbackWrapped<MyVacanciesResponse>() {
             @Override
             public void onResponse(MyVacanciesResponse response) {
-                adapter = new VacanciesAdapter(response.Items);
-                lstActive.setAdapter(adapter);
+                activeVacanciesAdapter = new VacanciesAdapter(response.Items, VacanciesAdapter.Type.active);
+                inactiveVacanciesAdapter = new VacanciesAdapter(response.Items, VacanciesAdapter.Type.inactive);
+                expiredVacanciesAdapter = new VacanciesAdapter(response.Items, VacanciesAdapter.Type.expired);
+
+                lstActive.setAdapter(activeVacanciesAdapter);
+                lstInActive.setAdapter(inactiveVacanciesAdapter);
+                lstExpired.setAdapter(expiredVacanciesAdapter);
             }
 
             @Override
@@ -140,8 +150,33 @@ public class VacanciesFragment extends AbstractFragment {
         lstActive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                navigator.gotoSubSection(EditVacancyFragment.newInstance());
+                apiCalls.getVacancyDetails((int) id, new CallbackWrapped<VacancyDetails>() {
+                    @Override
+                    public void onResponse(VacancyDetails response) {
+                        navigator.gotoSubSection(VacancyDetailsFragment.newInstance(response));
+                    }
+
+                    @Override
+                    public void onFailure(ErrorMessage errorMessage) {
+
+                    }
+                });
             }
         });
+
+        lstInActive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                toast(id+"");
+            }
+        });
+
+        lstExpired.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                toast(id+"");
+            }
+        });
+
     }
 }

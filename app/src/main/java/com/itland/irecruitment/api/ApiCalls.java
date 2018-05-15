@@ -10,6 +10,7 @@ import com.itland.irecruitment.Responses.MyVacanciesResponse;
 import com.itland.irecruitment.Responses.TokenResponse;
 import com.itland.irecruitment.entities.JobApplicationDetails;
 import com.itland.irecruitment.entities.ResumeDetails;
+import com.itland.irecruitment.entities.VacancyDetails;
 import com.itland.irecruitment.util.PrefUtil;
 import com.itland.irecruitment.util.SharedPreferencesKeys;
 
@@ -158,6 +159,12 @@ public class ApiCalls {
     {
         apis.MyVacancies(authorization,page).enqueue(convertCallback(callback));
     }
+
+    public void getVacancyDetails(Integer id, CallbackWrapped<VacancyDetails> callback)
+    {
+        apis.Vacancy(id,authorization).enqueue(convertCallback(callback));
+    }
+
 
 
 

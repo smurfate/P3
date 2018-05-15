@@ -38,4 +38,19 @@ public class Vacancy extends AbstractEntity {
     public Integer ExpiresIn;
     public Integer ExpiredSince;
     public Integer AddedSince;
+
+    public boolean isActive()
+    {
+        return Status.equals("Active");
+    }
+
+    public boolean isInactive()
+    {
+        return Status.equals("InActive");
+    }
+
+    public boolean isExpired()
+    {
+        return Status.equals("Expired");
+    }
 }

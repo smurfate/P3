@@ -82,7 +82,7 @@ public class ApplicationsFragment extends AbstractFragment {
                 apiCalls.getApplicationDetails((int) id, new CallbackWrapped<JobApplicationDetails>() {
                     @Override
                     public void onResponse(JobApplicationDetails response) {
-                        navigator.gotoSubSection(ApplicationViewFragment.newInstance(response));
+                        navigator.gotoSubSection(ApplicationDetailsFragment.newInstance(response));
                     }
 
                     @Override
