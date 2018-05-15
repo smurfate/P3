@@ -8,6 +8,7 @@ import com.itland.irecruitment.Responses.IndicesListResponse;
 import com.itland.irecruitment.Responses.JobApplicationsListResponse;
 import com.itland.irecruitment.Responses.MyVacanciesResponse;
 import com.itland.irecruitment.Responses.TokenResponse;
+import com.itland.irecruitment.entities.CompanyProfile;
 import com.itland.irecruitment.entities.JobApplicationDetails;
 import com.itland.irecruitment.entities.ResumeDetails;
 import com.itland.irecruitment.entities.VacancyDetails;
@@ -140,6 +141,11 @@ public class ApiCalls {
         apis.ListJobTypes().enqueue(convertCallback(callback));
     }
 
+    public void getContactTitlesList(CallbackWrapped<IndicesListResponse> callback)
+    {
+        apis.ListTitles().enqueue(convertCallback(callback));
+    }
+
     public void getCvLanguage(CallbackWrapped<IndicesListResponse> callback)
     {
         apis.ListLanguageNames().enqueue(convertCallback(callback));
@@ -163,6 +169,11 @@ public class ApiCalls {
     public void getVacancyDetails(Integer id, CallbackWrapped<VacancyDetails> callback)
     {
         apis.Vacancy(id,authorization).enqueue(convertCallback(callback));
+    }
+
+    public void viewProfile(CallbackWrapped<CompanyProfile> callback)
+    {
+        apis.ViewProfile(authorization).enqueue(convertCallback(callback));
     }
 
 

@@ -114,7 +114,7 @@ public class VacanciesAdapter extends BaseAdapter {
 
     static class ViewHolder {
 
-        @Bind(R.id.imgProfile) ImageView imgProfile;
+        @Bind(R.id.imgEnLogo) ImageView imgProfile;
         @Bind(R.id.txtVacancyName) TextView txtVacancyName;
         @Bind(R.id.txtCompany) TextView txtCompany;
         @Bind(R.id.txtCompanyType) TextView txtCompanyType;

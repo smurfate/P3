@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.itland.irecruitment.R;
@@ -30,6 +31,8 @@ public class HomeFragment extends AbstractFragment {
 //    @Bind(R.id.fab) FloatingActionButton fab;
 //    @Bind(R.id.imgProfile) CircleImageView imgProfile;
 //    @Bind(R.id.toolbar) Toolbar toolbar;
+
+    @Bind(R.id.btnSearch) ImageButton btnSearch;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -56,64 +59,16 @@ public class HomeFragment extends AbstractFragment {
         setTitle(getString(R.string.home));
     }
 
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        activity.showActionBar(true);
-//    }
-//
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        activity.showActionBar(false);
-//    }
-
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                navigator.gotoSection(ResumeFragment.newInstance());
-//                ApiCalls calls = new ApiCalls();
-////                calls.apis.CitiesList(0).enqueue(new CallbackWrapped<CitiesListResponse>() {
-////                    @Override
-////                    public void onResponse(Call<CitiesListResponse> call, Response<CitiesListResponse> response) {
-////                        CitiesListResponse response1 = response.body();
-////                        toast("Gooooood");
-////                    }
-////
-////                    @Override
-////                    public void onFailure(Call<CitiesListResponse> call, Throwable throwable) {
-////                        toast("failier");
-////                    }
-////                });
-//                calls.apis.token("password","client@example.com","Admin@123456","JobSeeker").enqueue(new CallbackWrapped<TokenResponse>() {
-//                    @Override
-//                    public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
-//                        TokenResponse tokenResponse = response.body();
-//                        toast(tokenResponse.access_token);
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<TokenResponse> call, Throwable throwable) {
-//
-//                    }
-//                });
-//
-//            }
-//        });
-//
-//        imgProfile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                navigator.gotoSubSection(ProfileFragment.newInstance());
-//            }
-//        });
-//        toolbar.setTitle("Title is everything");
-//        toolbar.setTitleTextColor(Color.WHITE);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigator.gotoSection(ResumeFragment.newInstance());
+            }
+        });
     }
 }

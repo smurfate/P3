@@ -23,7 +23,7 @@
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/imgProfile"
+                    android:id="@+id/imgLogoEn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -32,38 +32,54 @@
                     app:civ_border_color="#FF000000"
                     app:civ_border_width="2dp" />
 
-                <LinearLayout
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
-                    <android.support.design.widget.TextInputLayout
+                    <EditText
+                        style="@style/EditTextStyle"
+                        android:id="@+id/txtNameAr"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Name in Arabic" />
 
-                        <EditText
-                            style="@style/EditTextStyle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:hint="Name in Arabic" />
+                </android.support.design.widget.TextInputLayout>
 
-                    </android.support.design.widget.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgLogoAr"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:src="@mipmap/profile"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        style="@style/EditTextStyle"
+                        android:id="@+id/txtNameEn"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Name in English" />
 
-                        <EditText
-                            style="@style/EditTextStyle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Name in English" />
-
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
+                </android.support.design.widget.TextInputLayout>
 
 
             </LinearLayout>
@@ -76,6 +92,7 @@
 
             <Spinner
                 style="@style/SpinnerStyle"
+                android:id="@+id/spnCounty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -87,6 +104,7 @@
 
             <Spinner
                 style="@style/SpinnerStyle"
+                android:id="@+id/spnCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -97,6 +115,7 @@
 
                 <EditText
                     style="@style/EditTextStyle"
+                    android:id="@+id/txtAddressEn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -111,6 +130,7 @@
 
                 <EditText
                     style="@style/EditTextStyle"
+                    android:id="@+id/txtAddressAr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -126,6 +146,7 @@
 
             <Spinner
                 style="@style/SpinnerStyle"
+                android:id="@+id/spnIndustry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -136,6 +157,7 @@
 
                 <EditText
                     style="@style/EditTextStyle"
+                    android:id="@+id/txtAboutEn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -150,6 +172,7 @@
 
                 <EditText
                     style="@style/EditTextStyle"
+                    android:id="@+id/txtAboutAr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -164,6 +187,7 @@
 
                 <EditText
                     style="@style/EditTextStyle"
+                    android:id="@+id/txtCompanyRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -178,6 +202,7 @@
 
                 <EditText
                     style="@style/EditTextStyle"
+                    android:id="@+id/txtPBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -192,6 +217,7 @@
 
                 <EditText
                     style="@style/EditTextStyle"
+                    android:id="@+id/txtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -206,6 +232,7 @@
 
                 <EditText
                     style="@style/EditTextStyle"
+                    android:id="@+id/txtPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -220,6 +247,7 @@
 
                 <EditText
                     style="@style/EditTextStyle"
+                    android:id="@+id/txtGsm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -243,6 +271,7 @@
 
             <Spinner
                 style="@style/SpinnerStyle"
+                android:id="@+id/spnContactTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -253,6 +282,7 @@
 
                 <EditText
                     style="@style/EditTextStyle"
+                    android:id="@+id/txtContactName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -267,6 +297,7 @@
 
                 <EditText
                     style="@style/EditTextStyle"
+                    android:id="@+id/txtContactPosition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -281,6 +312,7 @@
 
                 <EditText
                     style="@style/EditTextStyle"
+                    android:id="@+id/txtContactEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -295,6 +327,7 @@
 
                 <EditText
                     style="@style/EditTextStyle"
+                    android:id="@+id/txtContactGSM"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -310,6 +343,7 @@
 
             <Spinner
                 style="@style/SpinnerStyle"
+                android:id="@+id/spnVisibility"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

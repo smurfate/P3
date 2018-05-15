@@ -1,28 +1,25 @@
 package com.itland.irecruitment;
 
-import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Space;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.itland.irecruitment.abstracts.AbstractActivity;
 import com.itland.irecruitment.api.ApiCalls;
+import com.itland.irecruitment.api.CallbackWrapped;
+import com.itland.irecruitment.api.ErrorMessage;
+import com.itland.irecruitment.entities.CompanyProfile;
 import com.itland.irecruitment.fragments.ApplicationsFragment;
 import com.itland.irecruitment.fragments.HomeFragment;
 import com.itland.irecruitment.fragments.MoreFragment;
@@ -45,7 +42,7 @@ public class MainActivity extends AbstractActivity {
 
     @Bind(R.id.tvTitle) TextView tvTitle;
     @Bind(R.id.tvSave) TextView tvSave;
-    @Bind(R.id.imgProfile) ImageView imgProfile;
+    @Bind(R.id.imgEnLogo) ImageView imgProfile;
     @Bind(R.id.searchView) SearchView searchView;
     @Bind(R.id.imgFilter) ImageView imgFilter;
 
@@ -80,8 +77,18 @@ public class MainActivity extends AbstractActivity {
         imgProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigator.gotoSubSection(ProfileFragment.newInstance());
-                navigation.setSelected(false);
+                apiCalls.viewProfile(new CallbackWrapped<CompanyProfile>() {
+                    @Override
+                    public void onResponse(CompanyProfile response) {
+                        navigator.gotoSubSection(ProfileFragment.newInstance(response));
+
+                    }
+
+                    @Override
+                    public void onFailure(ErrorMessage errorMessage) {
+
+                    }
+                });
 
             }
         });

@@ -28,7 +28,7 @@
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/imgProfile"
+                    android:id="@+id/imgEnLogo"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:src="@mipmap/profile"
@@ -126,10 +126,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:itemBackground="@drawable/item_background"
-        android:background="@color/colorPrimary"
+        app:itemIconTint="@color/colorPrimary"
         app:menu="@menu/navigation" />
 
 </LinearLayout>

@@ -261,7 +261,6 @@ public class ResumeFragment extends AbstractFragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 searchQuery = newText;
-                filterResumes();
                 return false;
             }
         });

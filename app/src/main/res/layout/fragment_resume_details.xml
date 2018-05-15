@@ -18,7 +18,7 @@
             app:contentScrim="?attr/colorPrimary">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgProfile"
+                android:id="@+id/imgEnLogo"
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
                 android:src="@mipmap/profile"

@@ -34,6 +34,19 @@
                     android:textAlignment="center" />
             </LinearLayout>
 
+            <ImageButton
+                android:id="@+id/btnSearch"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignBottom="@+id/constraintLayout"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerHorizontal="false"
+                android:background="@android:color/transparent"
+                android:padding="17dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_search" />
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView9"
                 android:layout_width="match_parent"
@@ -48,6 +61,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dividerHeight"
             android:orientation="vertical"
             tools:context="com.itland.irecruitment.fragments.HomeFragment">
 
@@ -60,9 +74,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/layout_margin"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:layout_margin="@dimen/layout_margin">
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/imageView8"
@@ -93,9 +107,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/layout_margin"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:layout_margin="@dimen/layout_margin">
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="48dp"
