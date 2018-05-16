@@ -7,7 +7,7 @@
     android:padding="@dimen/layout_padding"
     tools:showIn="@layout/fragment_home"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.itland.irecruitment.fragments.HomeFragment">
+    tools:context="com.itland.employer.fragments.HomeFragment">
 
 
 </android.support.v4.widget.NestedScrollView>

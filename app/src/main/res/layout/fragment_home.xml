@@ -63,7 +63,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/dividerHeight"
             android:orientation="vertical"
-            tools:context="com.itland.irecruitment.fragments.HomeFragment">
+            tools:context="com.itland.employer.fragments.HomeFragment">
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"

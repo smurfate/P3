@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/layout_padding"
-        tools:context="com.itland.irecruitment.fragments.ApplicationViewFragment">
+        tools:context="com.itland.employer.fragments.ApplicationViewFragment">
 
 
         <android.support.v7.widget.CardView

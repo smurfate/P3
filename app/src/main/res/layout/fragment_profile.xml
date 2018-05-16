@@ -13,7 +13,7 @@
         android:orientation="vertical"
         tools:showIn="@layout/fragment_profile"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="com.itland.irecruitment.fragments.ProfileFragment">
+        tools:context="com.itland.employer.fragments.ProfileFragment">
 
         <RelativeLayout
             android:layout_width="match_parent"

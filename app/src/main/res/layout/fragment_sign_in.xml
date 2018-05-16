@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:layout_margin="32dp"
         android:orientation="vertical"
-        tools:context="com.itland.irecruitment.registration.fragments.SignInFragment">
+        tools:context="com.itland.employer.registration.fragments.SignInFragment">
 
 
         <RelativeLayout

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:openDrawer="end"
-    tools:context="com.itland.irecruitment.fragments.ResumeFragment">
+    tools:context="com.itland.employer.fragments.ResumeFragment">
 
     <GridView
         android:id="@+id/gridView"

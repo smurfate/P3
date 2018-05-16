@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context="com.itland.irecruitment.registration.fragments.EditGSMFragment">
+    tools:context="com.itland.employer.registration.fragments.EditGSMFragment">
 
     <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
-        tools:context="com.itland.irecruitment.registration.fragments.SignUpFragment">
+        tools:context="com.itland.employer.registration.fragments.SignUpFragment">
 
 
         <android.support.constraint.ConstraintLayout
