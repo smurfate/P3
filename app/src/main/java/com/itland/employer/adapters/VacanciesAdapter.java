@@ -78,17 +78,17 @@ public class VacanciesAdapter extends BaseAdapter {
         viewHolder.txtVacancyName.setText(vacancy.Title);
         viewHolder.txtCompany.setVisibility(View.INVISIBLE);
         viewHolder.txtCompanyType.setText(vacancy.WorkingCity+", "+vacancy.WorkingCountry);
-        viewHolder.txtDaysBegining.setText(vacancy.PostedSince.toString());
+        viewHolder.txtDaysBegining.setText(vacancy.PostedSince.toString() + " days ago");
 
         switch (type)
         {
             case active:
                 viewHolder.lnrViews.setVisibility(View.VISIBLE);
                 viewHolder.line.setVisibility(View.VISIBLE);
-                viewHolder.txtViews.setText(vacancy.ViewsCount.toString());
-                viewHolder.txtApplication.setText(vacancy.ApplicationsCount.toString());
+                viewHolder.txtViews.setText(vacancy.ViewsCount.toString() + " views");
+                viewHolder.txtApplication.setText(vacancy.ApplicationsCount.toString() + " application");
                 viewHolder.lnrExpired.setVisibility(View.VISIBLE);
-                viewHolder.txtDaysExpiring.setText(vacancy.ExpiresIn.toString());
+                viewHolder.txtDaysExpiring.setText("Expiring in "+vacancy.ExpiresIn.toString()+" days");
 
                 break;
             case inactive:
@@ -100,10 +100,10 @@ public class VacanciesAdapter extends BaseAdapter {
             case expired:
                 viewHolder.lnrViews.setVisibility(View.VISIBLE);
                 viewHolder.line.setVisibility(View.VISIBLE);
-                viewHolder.txtViews.setText(vacancy.ViewsCount.toString());
-                viewHolder.txtApplication.setText(vacancy.ApplicationsCount.toString());
+                viewHolder.txtViews.setText(vacancy.ViewsCount + " views");
+                viewHolder.txtApplication.setText(vacancy.ApplicationsCount.toString() + " application");
                 viewHolder.lnrExpired.setVisibility(View.VISIBLE);
-                viewHolder.txtDaysExpiring.setText(vacancy.ExpiredSince.toString());
+                viewHolder.txtDaysExpiring.setText("Expiring in "+vacancy.ExpiresIn.toString()+" days");
 
                 break;
         }

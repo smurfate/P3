@@ -143,6 +143,7 @@
 
 
         <TextView
+            android:id="@+id/txtVerifyAccount"
             style="@style/TextViewBody.Inactive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -150,10 +151,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="Verify your account"
-            android:textAlignment="center"/>
+            android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/textView75"
+            android:id="@+id/txtForgotPassword"
             style="@style/TextViewBody.Inactive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

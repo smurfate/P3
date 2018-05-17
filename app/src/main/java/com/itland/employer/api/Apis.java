@@ -1,18 +1,28 @@
 package com.itland.employer.api;
 
-import com.itland.employer.Requests.EditActiveVacancyRequest;
-import com.itland.employer.Requests.EditCompanyProfileRequest;
-import com.itland.employer.Requests.EditExpiredVacancyRequest;
-import com.itland.employer.Requests.EditInactiveVacancyRequest;
-import com.itland.employer.Requests.FilterJobSeekersRequest;
-import com.itland.employer.Requests.PostVacancyRequest;
-import com.itland.employer.Responses.CitiesListResponse;
-import com.itland.employer.Responses.FilterJobSeekerResponse;
-import com.itland.employer.Responses.GeneralResponse;
-import com.itland.employer.Responses.IndicesListResponse;
-import com.itland.employer.Responses.JobApplicationsListResponse;
-import com.itland.employer.Responses.MyVacanciesResponse;
-import com.itland.employer.Responses.TokenResponse;
+import com.itland.employer.requests.ChangeEmailRequest;
+import com.itland.employer.requests.ChangeGsmRequest;
+import com.itland.employer.requests.EditActiveVacancyRequest;
+import com.itland.employer.requests.EditCompanyProfileRequest;
+import com.itland.employer.requests.EditExpiredVacancyRequest;
+import com.itland.employer.requests.EditInactiveVacancyRequest;
+import com.itland.employer.requests.FilterJobSeekersRequest;
+import com.itland.employer.requests.ForgotPasswordRequest;
+import com.itland.employer.requests.PostVacancyRequest;
+import com.itland.employer.requests.RegisterRequest;
+import com.itland.employer.requests.VerifyAccountRequest;
+import com.itland.employer.requests.VerifyChangeEmailRequest;
+import com.itland.employer.requests.VerifyChangeGsmRequest;
+import com.itland.employer.requests.VerifyForgotPasswordRequest;
+import com.itland.employer.responses.CitiesListResponse;
+import com.itland.employer.responses.CountyCodeResponse;
+import com.itland.employer.responses.FilterJobSeekerResponse;
+import com.itland.employer.responses.GeneralResponse;
+import com.itland.employer.responses.IndicesListResponse;
+import com.itland.employer.responses.JobApplicationsListResponse;
+import com.itland.employer.responses.MyVacanciesResponse;
+import com.itland.employer.responses.RegisterResponse;
+import com.itland.employer.responses.TokenResponse;
 import com.itland.employer.entities.CompanyProfile;
 import com.itland.employer.entities.JobApplicationDetails;
 import com.itland.employer.entities.ResumeDetails;
@@ -138,7 +148,43 @@ public interface Apis {
     Call<IndicesListResponse> ListSalaries();
 
     @GET("/IRecruitment.Api/api/Indices/ListCountryCodes")
-    Call<IndicesListResponse> ListCountryCodes();
+    Call<CountyCodeResponse> ListCountryCodes();
+
+    @POST("/IRecruitment.Api/api/Account/Register")
+    Call<RegisterResponse> Register(@Body RegisterRequest request);
+
+    @POST("/IRecruitment.Api/api/Account/ChangeGsm")
+    Call<GeneralResponse> ChangeGsm(@Header("Authorization") String authorization, @Body ChangeGsmRequest request);
+
+    @POST("/IRecruitment.Api/api/Account/ResendCodeChangeGsm")
+    Call<GeneralResponse> ResendCodeChangeGsm(@Header("Authorization") String authorization, @Body ChangeGsmRequest request);
+
+    @POST("/IRecruitment.Api/api/Account/ChangeEmail")
+    Call<GeneralResponse> ChangeEmail(@Header("Authorization") String authorization, @Body ChangeEmailRequest request);
+
+    @POST("/IRecruitment.Api/api/Account/ResendCodeChangeEmail")
+    Call<GeneralResponse> ResendCodeChangeEmail(@Header("Authorization") String authorization, @Body ChangeEmailRequest request);
+
+    @POST("/IRecruitment.Api/api/Account/VerifyChangeEmail")
+    Call<GeneralResponse> VerifyChangeEmail(@Header("Authorization") String authorization, @Body VerifyChangeEmailRequest request);
+
+    @POST("/IRecruitment.Api/api/Account/VerifyChangeGsm")
+    Call<GeneralResponse> VerifyChangeGsm(@Header("Authorization") String authorization, @Body VerifyChangeGsmRequest request);
+
+    @POST("/IRecruitment.Api/api/Account/ForgotPassowrd")
+    Call<GeneralResponse> ForegotPassword(@Body ForgotPasswordRequest request);
+
+    @POST("/IRecruitment.Api/api/Account/ConfirmForgotPassowrd")
+    Call<GeneralResponse> ConfirmForgotPassword(@Body VerifyForgotPasswordRequest request);
+
+    @POST("/IRecruitment.Api/api/Account/ResendCodeForgotPassword")
+    Call<GeneralResponse> ResendCodeForgotPassword(@Body ForgotPasswordRequest request);
+
+    @POST("/IRecruitment.Api/api/Account/VerifyAccount")
+    Call<GeneralResponse> VerifyAccount(@Body VerifyAccountRequest request);
+
+    @POST("/IRecruitment.Api/api/Account/ResendCodeRegister")
+    Call<GeneralResponse> ResendCodeRegister(@Body VerifyAccountRequest request);
 
 
 

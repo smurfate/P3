@@ -20,9 +20,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.itland.employer.R;
-import com.itland.employer.Responses.CitiesListResponse;
-import com.itland.employer.Responses.FilterJobSeekerResponse;
-import com.itland.employer.Responses.IndicesListResponse;
+import com.itland.employer.responses.CitiesListResponse;
+import com.itland.employer.responses.FilterJobSeekerResponse;
+import com.itland.employer.responses.IndicesListResponse;
 import com.itland.employer.abstracts.AbstractFragment;
 import com.itland.employer.adapters.AutocompleteAdapter;
 import com.itland.employer.adapters.ResumeAdapter;

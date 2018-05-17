@@ -74,10 +74,10 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="0dp"
             android:layout_weight="1"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutGSM">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
             <EditText
                 android:id="@+id/txtEmail"
@@ -89,40 +89,45 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <Spinner
-            android:id="@+id/spnCountyCode"
-            style="@style/SpinnerStyle"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView67" />
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayoutGSM"
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            app:layout_constraintLeft_toRightOf="@+id/spnCountyCode"
+            android:orientation="vertical"
+            android:weightSum="100"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView67">
 
-            <EditText
-                android:id="@+id/txtGsmNumber"
-                style="@style/EditTextStyle"
+            <Spinner
+                android:id="@+id/spnCountyCode"
+                style="@style/SpinnerStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="GSM number" />
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="80dp" />
 
-        </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayoutGSM"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="90dp"
+                tools:layout_editor_absoluteY="72dp">
+
+                <EditText
+                    android:id="@+id/txtGsmNumber"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="GSM number" />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayoutCode"
@@ -157,7 +162,6 @@
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0dp"
             android:layout_weight="1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -182,7 +186,6 @@
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0dp"
             android:layout_weight="1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -207,7 +210,6 @@
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0dp"
             android:layout_weight="1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -232,7 +234,6 @@
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0dp"
             android:layout_weight="1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -259,7 +260,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="@color/text_warning"
+            android:background="@color/text_warning"
             android:text="Sign Up"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -275,12 +276,11 @@
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0dp"
             android:text="I agree to the terms and conditions"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout7"
-            app:layout_constraintHorizontal_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
 
     </android.support.constraint.ConstraintLayout>
 

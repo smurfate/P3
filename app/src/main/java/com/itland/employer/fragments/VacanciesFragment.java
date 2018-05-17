@@ -14,7 +14,7 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 
 import com.itland.employer.R;
-import com.itland.employer.Responses.MyVacanciesResponse;
+import com.itland.employer.responses.MyVacanciesResponse;
 import com.itland.employer.abstracts.AbstractFragment;
 import com.itland.employer.adapters.VacanciesAdapter;
 import com.itland.employer.api.CallbackWrapped;

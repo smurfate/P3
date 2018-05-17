@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.itland.employer.MainActivity;
@@ -94,6 +96,17 @@ public abstract class AbstractFragment extends Fragment {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
+
+    public boolean required(EditText tv)
+    {
+        if(isNullOrEmpty(tv.getText().toString())) {
+            tv.setError(getString(R.string.error_required));
+            tv.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
 
     public void setTitle(String title)
     {

@@ -12,9 +12,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.itland.employer.R;
-import com.itland.employer.Responses.CitiesListResponse;
-import com.itland.employer.Responses.GeneralResponse;
-import com.itland.employer.Responses.IndicesListResponse;
+import com.itland.employer.responses.CitiesListResponse;
+import com.itland.employer.responses.GeneralResponse;
+import com.itland.employer.responses.IndicesListResponse;
 import com.itland.employer.abstracts.AbstractFragment;
 import com.itland.employer.api.CallbackWrapped;
 import com.itland.employer.api.ErrorMessage;

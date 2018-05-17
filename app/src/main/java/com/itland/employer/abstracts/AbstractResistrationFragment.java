@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.itland.employer.R;
@@ -71,6 +72,20 @@ public abstract class AbstractResistrationFragment extends Fragment {
         return list;
     }
 
+    public boolean required(EditText tv)
+    {
+        if(isNullOrEmpty(tv.getText().toString())) {
+            tv.setError(getString(R.string.error_required));
+            tv.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+    public void toast(AbstractEntity response)
+    {
+        if(isSafe()) Toast.makeText(getActivity(),response.Message.Content,Toast.LENGTH_LONG).show();
+    }
 
     public void hideSoftwareKeyboard()
     {

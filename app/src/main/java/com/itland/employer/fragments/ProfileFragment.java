@@ -108,6 +108,20 @@ public class ProfileFragment extends AbstractFragment {
                 navigator.gotoSubSection(EditProfileFragment.newInstance());
             }
         });
+
+        imgEditEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigator.gotoSubSection(ChangeEmailFragment.newInstance());
+            }
+        });
+
+        imgEditGsm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigator.gotoSubSection(ChangeGsmFragment.newInstance());
+            }
+        });
     }
 
 }

@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.itland.employer.R;
-import com.itland.employer.Responses.JobApplicationsListResponse;
+import com.itland.employer.responses.JobApplicationsListResponse;
 import com.itland.employer.abstracts.AbstractFragment;
 import com.itland.employer.adapters.ApplicationsAdapter;
 import com.itland.employer.api.CallbackWrapped;

@@ -1,19 +1,29 @@
 package com.itland.employer.api;
 
 import com.itland.employer.MainActivity;
-import com.itland.employer.Requests.EditActiveVacancyRequest;
-import com.itland.employer.Requests.EditCompanyProfileRequest;
-import com.itland.employer.Requests.EditExpiredVacancyRequest;
-import com.itland.employer.Requests.EditInactiveVacancyRequest;
-import com.itland.employer.Requests.FilterJobSeekersRequest;
-import com.itland.employer.Requests.PostVacancyRequest;
-import com.itland.employer.Responses.CitiesListResponse;
-import com.itland.employer.Responses.FilterJobSeekerResponse;
-import com.itland.employer.Responses.GeneralResponse;
-import com.itland.employer.Responses.IndicesListResponse;
-import com.itland.employer.Responses.JobApplicationsListResponse;
-import com.itland.employer.Responses.MyVacanciesResponse;
-import com.itland.employer.Responses.TokenResponse;
+import com.itland.employer.requests.ChangeEmailRequest;
+import com.itland.employer.requests.ChangeGsmRequest;
+import com.itland.employer.requests.EditActiveVacancyRequest;
+import com.itland.employer.requests.EditCompanyProfileRequest;
+import com.itland.employer.requests.EditExpiredVacancyRequest;
+import com.itland.employer.requests.EditInactiveVacancyRequest;
+import com.itland.employer.requests.FilterJobSeekersRequest;
+import com.itland.employer.requests.ForgotPasswordRequest;
+import com.itland.employer.requests.PostVacancyRequest;
+import com.itland.employer.requests.RegisterRequest;
+import com.itland.employer.requests.VerifyAccountRequest;
+import com.itland.employer.requests.VerifyChangeEmailRequest;
+import com.itland.employer.requests.VerifyChangeGsmRequest;
+import com.itland.employer.requests.VerifyForgotPasswordRequest;
+import com.itland.employer.responses.CitiesListResponse;
+import com.itland.employer.responses.CountyCodeResponse;
+import com.itland.employer.responses.FilterJobSeekerResponse;
+import com.itland.employer.responses.GeneralResponse;
+import com.itland.employer.responses.IndicesListResponse;
+import com.itland.employer.responses.JobApplicationsListResponse;
+import com.itland.employer.responses.MyVacanciesResponse;
+import com.itland.employer.responses.RegisterResponse;
+import com.itland.employer.responses.TokenResponse;
 import com.itland.employer.entities.CompanyProfile;
 import com.itland.employer.entities.JobApplicationDetails;
 import com.itland.employer.entities.ResumeDetails;
@@ -332,12 +342,125 @@ public class ApiCalls {
     }
 
 
-    public void getCountyCodes(CallbackWrapped<IndicesListResponse> callback)
+    public void getCountyCodes(CallbackWrapped<CountyCodeResponse> callback)
     {
         apis.ListCountryCodes().enqueue(convertCallback(callback));
     }
 
+    public void signUp(String countyCode, String gsm, String email, String userName, String password, String firstName, String lastName,CallbackWrapped<RegisterResponse> callback)
+    {
+        RegisterRequest request = new RegisterRequest();
+        request.GsmCountryCode = countyCode;
+        request.Gsm = gsm;
+        request.Email = email;
+        request.Password = password;
+        request.ConfirmPassword = password;
+        request.FirstName = firstName;
+        request.LastName = lastName;
 
+
+        apis.Register(request).enqueue(convertCallback(callback));
+    }
+
+    public void changeEmail(String newEmail, String password,CallbackWrapped<GeneralResponse> callback)
+    {
+        ChangeEmailRequest request = new ChangeEmailRequest();
+        request.NewEmail = newEmail;
+        request.Password = password;
+        apis.ChangeEmail(authorization,request).enqueue(convertCallback(callback));
+    }
+
+    public void resendCodeChangeEmail(String newEmail, String password,CallbackWrapped<GeneralResponse> callback)
+    {
+        ChangeEmailRequest request = new ChangeEmailRequest();
+        request.NewEmail = newEmail;
+        request.Password = password;
+        apis.ResendCodeChangeEmail(authorization,request).enqueue(convertCallback(callback));
+    }
+
+    public void verifyChangeEmail(String email, String code,CallbackWrapped<GeneralResponse> callback)
+    {
+        VerifyChangeEmailRequest request = new VerifyChangeEmailRequest();
+        request.Email = email;
+        request.Code = code;
+        apis.VerifyChangeEmail(authorization,request).enqueue(convertCallback(callback));
+    }
+
+    public void changeGsm(String gsmCountyCode,String newGsm, String password,CallbackWrapped<GeneralResponse> callback)
+    {
+        ChangeGsmRequest request = new ChangeGsmRequest();
+        request.NewGsm = newGsm;
+        request.NewGsmCountryCode = gsmCountyCode;
+        request.Password = password;
+        apis.ChangeGsm(authorization,request).enqueue(convertCallback(callback));
+    }
+
+    public void resendCodeChangeGsm(Integer gsmCountyCode,String newGsm, String password,CallbackWrapped<GeneralResponse> callback)
+    {
+        ChangeGsmRequest request = new ChangeGsmRequest();
+        request.NewGsm = newGsm;
+        request.NewGsmCountryCode = gsmCountyCode.toString();
+        request.Password = password;
+        apis.ResendCodeChangeGsm(authorization,request).enqueue(convertCallback(callback));
+    }
+
+    public void verifyChangeGsm(String countyCode,String gsm, String code,CallbackWrapped<GeneralResponse> callback)
+    {
+        VerifyChangeGsmRequest request = new VerifyChangeGsmRequest();
+        request.Gsm = gsm;
+        request.Code = code;
+        request.GsmCountryCode = countyCode;
+        apis.VerifyChangeGsm(authorization,request).enqueue(convertCallback(callback));
+    }
+
+    public void forgotPassword(String userName, String scope, CallbackWrapped<GeneralResponse> callback)
+    {
+        ForgotPasswordRequest request = new ForgotPasswordRequest();
+        request.UserName = userName;
+        request.Scope = scope;
+
+        apis.ForegotPassword(request).enqueue(convertCallback(callback));
+
+    }
+
+    public void resendCodeForgotPassword(String userName, String scope,CallbackWrapped<GeneralResponse> callback)
+    {
+        ForgotPasswordRequest request = new ForgotPasswordRequest();
+        request.UserName = userName;
+        request.Scope = scope;
+
+        apis.ResendCodeForgotPassword(request).enqueue(convertCallback(callback));
+
+    }
+
+    public void verifyForgotPassword(String userName, String scope,String code, String password,CallbackWrapped<GeneralResponse> callback)
+    {
+        VerifyForgotPasswordRequest request = new VerifyForgotPasswordRequest();
+        request.UserName = userName;
+        request.Scope = scope;
+        request.Code = code;
+        request.Password = password;
+        request.ConfirmPassword = password;
+
+        apis.ConfirmForgotPassword(request).enqueue(convertCallback(callback));
+
+    }
+
+    public void verifyAccount(String code, String name,CallbackWrapped<GeneralResponse> callback)
+    {
+        VerifyAccountRequest request = new VerifyAccountRequest();
+        request.Code = code;
+        request.Username = name;
+
+        apis.VerifyAccount(request).enqueue(convertCallback(callback));
+    }
+    public void resendCodeRegister(String name,CallbackWrapped<GeneralResponse> callback)
+    {
+        VerifyAccountRequest request = new VerifyAccountRequest();
+        request.Username = name;
+
+        apis.ResendCodeRegister(request).enqueue(convertCallback(callback));
+    }
 
 
 }
