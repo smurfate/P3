@@ -61,6 +61,25 @@ public class VacancyDetailsFragment extends AbstractFragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        setTitle("Vacancy details");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        activity.actionIcon(true).setImageResource(R.drawable.ic_edit);
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        activity.actionIcon(false);
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -100,6 +119,16 @@ public class VacancyDetailsFragment extends AbstractFragment {
             line.setVisibility(View.VISIBLE);
             txtExpiredSince.setText(details.ExpiredSince.toString());
         }
+
+        activity.actionIcon(true).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(details.isActive()) navigator.gotoSubSection(EditVacancyFragment.newInstance(details));
+                if(details.isInactive() || details.isExpired()) navigator.gotoSubSection(PostVacancyFragment.newInstance(details));
+
+
+            }
+        });
 
 
     }

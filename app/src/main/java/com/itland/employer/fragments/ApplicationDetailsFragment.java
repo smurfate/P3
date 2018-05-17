@@ -63,7 +63,7 @@ public class ApplicationDetailsFragment extends AbstractFragment {
 
         txtVacancyTitle.setText(details.VacancyTitle);
         txtCity.setText(details.City);
-        txtDays.setText(details.AppliedSince+"");
+        txtDays.setText(details.AppliedSince+" days ago");
         txtName.setText("");
         txtCoverLetter.setText(details.CoverLetter);
         txtPhone.setText("");

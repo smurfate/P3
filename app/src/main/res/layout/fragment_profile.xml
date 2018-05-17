@@ -11,9 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:showIn="@layout/fragment_profile"
+        android:paddingLeft="@dimen/margin_lr"
+        android:paddingRight="@dimen/margin_lr"
+        android:paddingTop="@dimen/margin_lr"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="com.itland.employer.fragments.ProfileFragment">
+        tools:context="com.itland.employer.fragments.ProfileFragment"
+        tools:showIn="@layout/fragment_profile">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -75,7 +78,7 @@
                     android:orientation="horizontal">
 
                     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/imgEnLogo"
+                        android:id="@+id/actionLogo"
                         android:layout_width="75dp"
                         android:layout_height="75dp"
                         android:layout_gravity="center"
@@ -303,14 +306,29 @@
                     android:layout_marginTop="@dimen/dividerHeight"
                     android:background="@android:color/black" />
 
-                <TextView
-                    android:id="@+id/textView54"
-                    style="@style/TextViewBody"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_lr"
-                    android:layout_marginRight="@dimen/margin_lr"
-                    android:text="Email" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView54"
+                        style="@style/TextViewBody"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_weight="1"
+                        android:text="Email" />
+
+                    <ImageView
+                        android:id="@+id/imgEditEmail"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        app:srcCompat="@drawable/ic_edit" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/txtEmail"
@@ -328,14 +346,30 @@
                     android:layout_marginTop="@dimen/dividerHeight"
                     android:background="@android:color/black" />
 
-                <TextView
-                    android:id="@+id/textView56"
-                    style="@style/TextViewBody"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_lr"
-                    android:layout_marginRight="@dimen/margin_lr"
-                    android:text="Phone" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView56"
+                        style="@style/TextViewBody"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_weight="1"
+                        android:text="Phone" />
+
+                    <ImageView
+                        android:id="@+id/imgEditGsm"
+
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        app:srcCompat="@drawable/ic_edit" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/txtPhone"

@@ -23,12 +23,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="start"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/imgEnLogo"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/actionLogo"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:src="@mipmap/profile"
@@ -36,15 +36,15 @@
                     app:civ_border_width="2dp" />
 
                 <TextView
-                    android:id="@+id/tvTitle"
+                    android:id="@+id/actionTitle"
+                    style="@style/TextViewBody"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    style="@style/TextViewBody"
-                    android:textColor="@color/white"
                     android:text="@string/app_name"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     android:visibility="visible" />
 
@@ -58,14 +58,13 @@
                     app:queryHint="@string/search" />
 
                 <Space
+                    android:layout_width="0dp"
                     android:id="@+id/space"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:visibility="visible" />
+                    android:layout_height="wrap_content" />
 
                 <ImageView
-                    android:id="@+id/imgFilter"
+                    android:id="@+id/actionIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="8dp"
@@ -76,11 +75,10 @@
 
 
                 <TextView
-                    android:id="@+id/tvSave"
+                    android:id="@+id/actionText"
                     style="@style/TextViewBody"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center_vertical"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:text="Save"
@@ -106,16 +104,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:background="@color/background" />
+                android:background="@color/background" >
 
-        <ProgressBar
-            android:id="@+id/pb_loading"
-            style="?android:attr/progressBarStyle"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frmOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:alpha="0.5"
+            android:background="@color/white"
+            android:clickable="true"
+            android:visibility="gone">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/pb_loading"
+                style="@style/SpinKitView.Small.DoubleBounce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:visibility="visible"
+                app:SpinKit_Color="@color/colorPrimary" />
+        </FrameLayout>
 
 
     </RelativeLayout>

@@ -12,15 +12,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.itland.employer.R;
-import com.itland.employer.Responses.CitiesListResponse;
 import com.itland.employer.Responses.GeneralResponse;
 import com.itland.employer.Responses.IndicesListResponse;
 import com.itland.employer.abstracts.AbstractFragment;
 import com.itland.employer.api.CallbackWrapped;
 import com.itland.employer.api.ErrorMessage;
-import com.itland.employer.entities.City;
 import com.itland.employer.entities.Indice;
-import com.itland.employer.entities.Vacancy;
 import com.itland.employer.entities.VacancyDetails;
 
 import java.util.ArrayList;
@@ -78,7 +75,13 @@ public class EditVacancyFragment extends AbstractFragment {
     @Override
     public void onPause() {
         super.onPause();
-        activity.showSave(false);
+        activity.actionText(false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        activity.actionText(true);
     }
 
     private void initSpinners()
@@ -251,7 +254,7 @@ public class EditVacancyFragment extends AbstractFragment {
 
         initSpinners();
 
-        TextView txtSave = activity.showSave(true);
+        TextView txtSave = activity.actionText(true);
         txtSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

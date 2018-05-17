@@ -20,6 +20,7 @@ import com.itland.employer.api.CallbackWrapped;
 import com.itland.employer.api.ErrorMessage;
 import com.itland.employer.entities.City;
 import com.itland.employer.entities.Indice;
+import com.itland.employer.entities.VacancyDetails;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -63,6 +64,7 @@ public class PostVacancyFragment extends AbstractFragment {
     private HashMap<String,Indice> name2cvLang = new HashMap<>();
     private HashMap<String,Indice> name2hide = new HashMap<>();
 
+    private VacancyDetails details;
 
     public PostVacancyFragment() {
         // Required empty public constructor
@@ -70,6 +72,12 @@ public class PostVacancyFragment extends AbstractFragment {
 
     public static PostVacancyFragment newInstance() {
         PostVacancyFragment fragment = new PostVacancyFragment();
+        return fragment;
+    }
+
+    public static PostVacancyFragment newInstance(VacancyDetails details) {
+        PostVacancyFragment fragment = new PostVacancyFragment();
+        fragment.details = details;
         return fragment;
     }
 
@@ -83,23 +91,30 @@ public class PostVacancyFragment extends AbstractFragment {
         return view;
     }
 
+    private boolean isEdit()
+    {
+        return details != null;
+    }
+
     @Override
     public void onStart() {
         super.onStart();
-        activity.showSave(true);
-        setTitle("Post Job");
+        activity.actionText(true);
+        if(isEdit()) setTitle("Edit Vacancy");
+        else setTitle("Post Vacancy");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        activity.showSave(false);
+        activity.actionText(false);
     }
 
     private boolean required(TextView tv)
     {
         if(isNullOrEmpty(tv.getText().toString())) {
             tv.setError(getString(R.string.error_required));
+            tv.requestFocus();
             return false;
         }
         return true;
@@ -133,6 +148,14 @@ public class PostVacancyFragment extends AbstractFragment {
                 {
                     ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
                     spnCounty.setAdapter(adapter);
+
+                    if(isEdit())
+                    {
+                        for (int i=0;i<adapter.getCount();i++)
+                        {
+                            if(adapter.getItem(i).toString().equals(details.WorkCountry)) spnCounty.setSelection(i);
+                        }
+                    }
                 }
 
             }
@@ -159,6 +182,15 @@ public class PostVacancyFragment extends AbstractFragment {
                 {
                     ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
                     spnCity.setAdapter(adapter);
+
+                    if(isEdit())
+                    {
+                        for (int i=0;i<adapter.getCount();i++)
+                        {
+                            if(adapter.getItem(i).toString().equals(details.WorkCity)) spnCity.setSelection(i);
+                        }
+                    }
+
                 }
 
             }
@@ -185,6 +217,15 @@ public class PostVacancyFragment extends AbstractFragment {
                 {
                     ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
                     spnMinEduDegree.setAdapter(adapter);
+
+                    if(isEdit())
+                    {
+                        for (int i=0;i<adapter.getCount();i++)
+                        {
+                            if(adapter.getItem(i).toString().equals(details.MinRequiredEducationLevel)) spnMinEduDegree.setSelection(i);
+                        }
+                    }
+
                 }
 
             }
@@ -211,6 +252,15 @@ public class PostVacancyFragment extends AbstractFragment {
                 {
                     ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
                     spnFieldOfWork.setAdapter(adapter);
+
+                    if(isEdit())
+                    {
+                        for (int i=0;i<adapter.getCount();i++)
+                        {
+                            if(adapter.getItem(i).toString().equals(details.WorkCountry)) spnCounty.setSelection(i);
+                        }
+                    }
+
                 }
 
             }
@@ -237,6 +287,15 @@ public class PostVacancyFragment extends AbstractFragment {
                 {
                     ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
                     spnJobTitle.setAdapter(adapter);
+
+                    if(isEdit())
+                    {
+                        for (int i=0;i<adapter.getCount();i++)
+                        {
+                            if(adapter.getItem(i).toString().equals(details.Title)) spnJobTitle.setSelection(i);
+                        }
+                    }
+
                 }
 
             }
@@ -263,6 +322,15 @@ public class PostVacancyFragment extends AbstractFragment {
                 {
                     ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
                     spnMilitaryService.setAdapter(adapter);
+
+                    if(isEdit())
+                    {
+                        for (int i=0;i<adapter.getCount();i++)
+                        {
+                            if(adapter.getItem(i).toString().equals(details.MilitaryService)) spnMilitaryService.setSelection(i);
+                        }
+                    }
+
                 }
 
             }
@@ -289,6 +357,15 @@ public class PostVacancyFragment extends AbstractFragment {
                 {
                     ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
                     spnSalary.setAdapter(adapter);
+
+                    if(isEdit())
+                    {
+                        for (int i=0;i<adapter.getCount();i++)
+                        {
+                            if(adapter.getItem(i).toString().equals(details.Salary.toString())) spnSalary.setSelection(i);
+                        }
+                    }
+
                 }
 
             }
@@ -315,6 +392,15 @@ public class PostVacancyFragment extends AbstractFragment {
                 {
                     ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
                     spnCvLanguage.setAdapter(adapter);
+
+                    if(isEdit())
+                    {
+                        for (int i=0;i<adapter.getCount();i++)
+                        {
+                            if(adapter.getItem(i).toString().equals(details.RequestedCVLanguage)) spnCvLanguage.setSelection(i);
+                        }
+                    }
+
                 }
 
             }
@@ -336,7 +422,8 @@ public class PostVacancyFragment extends AbstractFragment {
 
 
 
-        TextView txtSave = activity.showSave(true);
+
+        TextView txtSave = activity.actionText(true);
         txtSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -362,20 +449,62 @@ public class PostVacancyFragment extends AbstractFragment {
                 Integer cvLangId = name2cvLang.get(spnCvLanguage.getSelectedItem().toString()).Id;
 
 
-                apiCalls.postJobVacancy(positionTitle, jobDescription, preRequisits, skillsNeeded,
-                        benefits, about, countyId, cityId, yearsId, eduId, fieldId, titleId, militaryId,
-                        salaryId, employeeNumberId, switchPhoto.isChecked(), cvLangId,
-                        switchHideCompanyName.isChecked(), new CallbackWrapped<GeneralResponse>() {
-                    @Override
-                    public void onResponse(GeneralResponse response) {
-                        toast(response);
-                    }
+                if(!isEdit())
+                {
+                    apiCalls.postJobVacancy(positionTitle, jobDescription, preRequisits, skillsNeeded,
+                            benefits, about, countyId, cityId, yearsId, eduId, fieldId, titleId, militaryId,
+                            salaryId, employeeNumberId, switchPhoto.isChecked(), cvLangId,
+                            switchHideCompanyName.isChecked(), new CallbackWrapped<GeneralResponse>() {
+                                @Override
+                                public void onResponse(GeneralResponse response) {
+                                    toast(response);
+                                }
 
-                    @Override
-                    public void onFailure(ErrorMessage errorMessage) {
+                                @Override
+                                public void onFailure(ErrorMessage errorMessage) {
+
+                                }
+                            });
+
+                }
+                else
+                {
+                    if(details.isExpired())
+                    {
+                        apiCalls.editExpiredVacancy(positionTitle, jobDescription, preRequisits, skillsNeeded,
+                                benefits, about, countyId, cityId, yearsId, eduId, fieldId, titleId, militaryId,
+                                salaryId, employeeNumberId, switchPhoto.isChecked(), cvLangId,
+                                switchHideCompanyName.isChecked(), new CallbackWrapped<GeneralResponse>() {
+                                    @Override
+                                    public void onResponse(GeneralResponse response) {
+                                        toast(response);
+                                    }
+
+                                    @Override
+                                    public void onFailure(ErrorMessage errorMessage) {
+
+                                    }
+                                });
+
+                    }else if(details.isInactive())
+                    {
+                        apiCalls.editInActiveVacancy(positionTitle, jobDescription, preRequisits, skillsNeeded,
+                                benefits, about, countyId, cityId, yearsId, eduId, fieldId, titleId, militaryId,
+                                salaryId, employeeNumberId, switchPhoto.isChecked(), cvLangId,
+                                switchHideCompanyName.isChecked(), new CallbackWrapped<GeneralResponse>() {
+                                    @Override
+                                    public void onResponse(GeneralResponse response) {
+                                        toast(response);
+                                    }
+
+                                    @Override
+                                    public void onFailure(ErrorMessage errorMessage) {
+
+                                    }
+                                });
 
                     }
-                });
+                }
 
                 toast("Saved");
             }

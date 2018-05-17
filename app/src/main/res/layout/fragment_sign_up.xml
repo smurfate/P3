@@ -80,6 +80,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutGSM">
 
             <EditText
+                android:id="@+id/txtEmail"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,7 +90,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spnCountyCode"
             style="@style/SpinnerStyle"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
@@ -109,11 +110,12 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
-            app:layout_constraintLeft_toRightOf="@+id/spinner"
+            app:layout_constraintLeft_toRightOf="@+id/spnCountyCode"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView67">
 
             <EditText
+                android:id="@+id/txtGsmNumber"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -138,6 +140,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
             <EditText
+                android:id="@+id/txtUserName"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -162,6 +165,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCode">
 
             <EditText
+                android:id="@+id/txtPassword"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -186,6 +190,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
             <EditText
+                android:id="@+id/txtConfirmPassword"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -210,6 +215,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
 
             <EditText
+                android:id="@+id/txtFirstName"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -234,6 +240,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
 
             <EditText
+                android:id="@+id/txtLastName"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -243,7 +250,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnSignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
@@ -257,10 +264,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+            app:layout_constraintTop_toBottomOf="@+id/chkAgree" />
 
         <CheckBox
-            android:id="@+id/spinner2"
+            android:id="@+id/chkAgree"
             style="@style/TextViewBody"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

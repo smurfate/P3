@@ -2,6 +2,7 @@ package com.itland.employer.registration.fragments;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,8 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.github.ybq.android.spinkit.style.ChasingDots;
+import com.github.ybq.android.spinkit.style.Circle;
+import com.github.ybq.android.spinkit.style.DoubleBounce;
+import com.github.ybq.android.spinkit.style.RotatingCircle;
 import com.itland.employer.MainActivity;
 import com.itland.employer.R;
 import com.itland.employer.Responses.TokenResponse;
@@ -25,10 +32,12 @@ import butterknife.ButterKnife;
 
 public class SignInFragment extends AbstractResistrationFragment {
 
-    @Bind(R.id.btnSignIn) ImageButton btnSignIn;
+    @Bind(R.id.btnSignIn) ImageView btnSignIn;
     @Bind(R.id.btnSignUp) Button btnSignUp;
     @Bind(R.id.txtUserName) TextView txtUserName;
     @Bind(R.id.txtPassword) TextView txtPassword;
+
+    @Bind(R.id.pb_loading) ProgressBar pbLoading;
 
     public SignInFragment() {
         // Required empty public constructor
@@ -58,6 +67,11 @@ public class SignInFragment extends AbstractResistrationFragment {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            }
+        });
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
                 if(txtUserName.getText().length()==0) txtUserName.setError(getString(R.string.error_required));
                 if(txtUserName.getText().length()==0) txtUserName.setError(getString(R.string.error_required));
@@ -70,9 +84,12 @@ public class SignInFragment extends AbstractResistrationFragment {
                     return;
                 }
 
+                pbLoading.setVisibility(View.VISIBLE);
                 activity.apiCalls.signIn(userName, password, new CallbackWrapped<TokenResponse>() {
                     @Override
                     public void onResponse(TokenResponse response) {
+                        pbLoading.setVisibility(View.INVISIBLE);
+
                         if(response==null)
                         {
                             toast(getString(R.string.error_invalid_name_password));
@@ -93,6 +110,7 @@ public class SignInFragment extends AbstractResistrationFragment {
 
                     @Override
                     public void onFailure(ErrorMessage errorMessage) {
+                        pbLoading.setVisibility(View.INVISIBLE);
 
                     }
                 });

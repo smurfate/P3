@@ -10,6 +10,7 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Space;
@@ -36,15 +37,16 @@ public class MainActivity extends AbstractActivity {
 
 
     @Bind(R.id.toolbar) public Toolbar toolbar;
-    @Bind(R.id.pb_loading) ProgressBar pbLoading;
+    @Bind(R.id.frmOverlay) FrameLayout frmOverlay;
     @Bind(R.id.navigation) public BottomNavigationView navigation;
+    
     @Bind(R.id.space) Space space;
-
-    @Bind(R.id.tvTitle) TextView tvTitle;
-    @Bind(R.id.tvSave) TextView tvSave;
-    @Bind(R.id.imgEnLogo) ImageView imgProfile;
+    @Bind(R.id.actionTitle) TextView actionTitle;
+    @Bind(R.id.actionText) TextView actionText;
+    @Bind(R.id.actionIcon) ImageView actionIcon;
+    @Bind(R.id.actionLogo) ImageView actionLogo;
+    
     @Bind(R.id.searchView) SearchView searchView;
-    @Bind(R.id.imgFilter) ImageView imgFilter;
 
     public FragmentNavigator navigator;
     public ActionBar actionBar;
@@ -74,7 +76,7 @@ public class MainActivity extends AbstractActivity {
         navigator = new FragmentNavigator(this, HomeFragment.newInstance(),navigation,mOnNavigationItemSelectedListener,R.id.frmContent);
 
 
-        imgProfile.setOnClickListener(new View.OnClickListener() {
+        actionLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 apiCalls.viewProfile(new CallbackWrapped<CompanyProfile>() {
@@ -134,39 +136,35 @@ public class MainActivity extends AbstractActivity {
 
     public void showProgressIndicator(boolean indeterminate) {
 
-        if(pbLoading != null)
-        {
-            if (indeterminate) {
-                pbLoading.setVisibility(View.VISIBLE);
-                space.setVisibility(View.VISIBLE);
-            }else {
-                pbLoading.setVisibility(View.GONE);
-                space.setVisibility(View.GONE);
-            }
+        if (indeterminate) {
+            frmOverlay.setVisibility(View.VISIBLE);
+        }else {
+            frmOverlay.setVisibility(View.GONE);
         }
     }
 
     public void setTitle(String title)
     {
-        tvTitle.setText(title);
+        actionTitle.setText(title);
     }
 
-    public void actionbarSearch(boolean search)
+    public SearchView actionSearch(boolean show)
     {
-        if(search)
+        if(show)
         {
-            imgFilter.setVisibility(View.VISIBLE);
+            actionIcon.setVisibility(View.VISIBLE);
             searchView.setVisibility(View.VISIBLE);
-            tvTitle.setVisibility(View.GONE);
+            actionTitle.setVisibility(View.GONE);
             space.setVisibility(View.GONE);
         }
         else
         {
-            imgFilter.setVisibility(View.GONE);
+            actionIcon.setVisibility(View.GONE);
             searchView.setVisibility(View.GONE);
             space.setVisibility(View.VISIBLE);
-            tvTitle.setVisibility(View.VISIBLE);
+            actionTitle.setVisibility(View.VISIBLE);
         }
+        return searchView;
     }
 
     public void showActionBar(boolean show)
@@ -175,24 +173,32 @@ public class MainActivity extends AbstractActivity {
         else toolbar.setVisibility(View.GONE);
     }
 
-    public SearchView getSearchView()
-    {
-        return searchView;
-    }
 
-    public ImageView getFilterBtn() { return imgFilter; }
-
-    public TextView showSave(boolean show)
+    public ImageView actionIcon(boolean show)
     {
         if(show) {
-            tvSave.setVisibility(View.VISIBLE);
+            actionIcon.setVisibility(View.VISIBLE);
             space.setVisibility(View.VISIBLE);
         }
         else {
-            tvSave.setVisibility(View.GONE);
+            actionIcon.setVisibility(View.GONE);
             space.setVisibility(View.VISIBLE);
         }
-        return tvSave;
+
+        return actionIcon;
+    }
+
+    public TextView actionText(boolean show)
+    {
+        if(show) {
+            actionText.setVisibility(View.VISIBLE);
+            space.setVisibility(View.VISIBLE);
+        }
+        else {
+            actionText.setVisibility(View.GONE);
+            space.setVisibility(View.VISIBLE);
+        }
+        return actionText;
     }
 
 }

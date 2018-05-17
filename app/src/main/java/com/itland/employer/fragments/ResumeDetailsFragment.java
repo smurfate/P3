@@ -111,7 +111,7 @@ public class ResumeDetailsFragment extends AbstractFragment {
             WorkExperienceViewHolder holder = new WorkExperienceViewHolder(activity);
             holder.txtCompanyName.setText(experience.CompanyName);
             holder.txtCompanyType.setText(experience.FieldOfWork);
-            holder.txtSince.setText(experience.StartDate+"-"+experience.EndDate);
+            holder.txtSince.setText(experience.StartDate+"-"+experience.EndDate!=null?experience.EndDate:"present");
             holder.txtYearsOfExperience.setText(experience.YearsOfExperience.toString());
             lnrExperience.addView(holder.getView());
         }
@@ -133,7 +133,7 @@ public class ResumeDetailsFragment extends AbstractFragment {
             holder.txtName.setText(skill.Name);
             holder.txtLevel.setText(skill.Level);
             holder.txtYearsOfExperience.setText(skill.YearsOfExperiences.toString());
-            holder.txtLastUsedYear.setText(skill.LastUsedYear.toString());
+            holder.txtLastUsedYear.setText("Last used:" + skill.LastUsedYear.toString());
             lnrSkill.addView(holder.getView());
         }
 

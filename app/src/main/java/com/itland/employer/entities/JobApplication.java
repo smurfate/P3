@@ -30,4 +30,9 @@ public class JobApplication extends AbstractEntity {
     public String SeekerFullName;
     public Integer AppliedSince;
     public String ApplicationReadStatus;
+
+    public boolean isRead()
+    {
+        return ApplicationReadStatus.equals("Read");
+    }
 }

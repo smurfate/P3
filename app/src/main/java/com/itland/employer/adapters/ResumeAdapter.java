@@ -64,7 +64,7 @@ public class ResumeAdapter extends BaseAdapter {
 
     static class ViewHolder {
 
-        @Bind(R.id.imgEnLogo) ImageView imgProfile;
+        @Bind(R.id.actionLogo) ImageView imgProfile;
         @Bind(R.id.tvName) TextView tvTitle;
         @Bind(R.id.tvJob) TextView tvJob;
 

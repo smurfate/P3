@@ -271,7 +271,71 @@ public class ApiCalls {
         apis.EditActiveJobVacancy(authorization,request).enqueue(convertCallback(callback));
     }
 
+    public void editInActiveVacancy(String positionTitle, String jobDescription, String preRequisites,
+                               String keySkills, String benefits,String aboutCompany, Integer countyId,
+                               Integer cityId, Integer requiredYearsExperience, Integer minEduDegree,
+                               Integer fieldOfWork, Integer jobTitle, Integer militaryService, Integer salary,
+                               Integer requiredEmployeeNumber, Boolean photo,Integer cvLanguage,
+                               Boolean hidCompanyName,CallbackWrapped<GeneralResponse> callback)
+    {
+        EditInactiveVacancyRequest request = new EditInactiveVacancyRequest();
 
+        request.Title = positionTitle;
+        request.JobDescription = jobDescription;
+        request.PreRequisites = preRequisites;
+        request.Benefits = benefits;
+        request.About = aboutCompany;
+        request.CityId = cityId;
+        request.RequiredYearsOfExperienceId = requiredYearsExperience;
+        request.MinEducationDegreeId = minEduDegree;
+        request.FieldOfWorkId = fieldOfWork;
+        request.JobTypeId = jobTitle;
+        request.MilitaryServiceId = militaryService;
+        request.SalaryId = salary;
+        request.RequiredEmployeesCount = requiredEmployeeNumber;
+        request.PhotoIsRequired = photo;
+        request.RequiredCVLanguageId = cvLanguage;
+        request.IsNameHidden = hidCompanyName;
+
+
+        apis.EditInActiveJobVacancy(authorization,request).enqueue(convertCallback(callback));
+    }
+
+    public void editExpiredVacancy(String positionTitle, String jobDescription, String preRequisites,
+                               String keySkills, String benefits,String aboutCompany, Integer countyId,
+                               Integer cityId, Integer requiredYearsExperience, Integer minEduDegree,
+                               Integer fieldOfWork, Integer jobTitle, Integer militaryService, Integer salary,
+                               Integer requiredEmployeeNumber, Boolean photo,Integer cvLanguage,
+                               Boolean hidCompanyName,CallbackWrapped<GeneralResponse> callback)
+    {
+        EditExpiredVacancyRequest request = new EditExpiredVacancyRequest();
+
+        request.Title = positionTitle;
+        request.JobDescription = jobDescription;
+        request.PreRequisites = preRequisites;
+        request.Benefits = benefits;
+        request.About = aboutCompany;
+        request.CityId = cityId;
+        request.RequiredYearsOfExperienceId = requiredYearsExperience;
+        request.MinEducationDegreeId = minEduDegree;
+        request.FieldOfWorkId = fieldOfWork;
+        request.JobTypeId = jobTitle;
+        request.MilitaryServiceId = militaryService;
+        request.SalaryId = salary;
+        request.RequiredEmployeesCount = requiredEmployeeNumber;
+        request.PhotoIsRequired = photo;
+        request.RequiredCVLanguageId = cvLanguage;
+        request.IsNameHidden = hidCompanyName;
+
+
+        apis.EditExpiredJobVacancy(authorization,request).enqueue(convertCallback(callback));
+    }
+
+
+    public void getCountyCodes(CallbackWrapped<IndicesListResponse> callback)
+    {
+        apis.ListCountryCodes().enqueue(convertCallback(callback));
+    }
 
 
 

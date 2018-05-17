@@ -161,14 +161,34 @@ public class VacanciesFragment extends AbstractFragment {
         lstInActive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                toast(id+"");
+                apiCalls.getVacancyDetails((int) id, new CallbackWrapped<VacancyDetails>() {
+                    @Override
+                    public void onResponse(VacancyDetails response) {
+                        navigator.gotoSubSection(VacancyDetailsFragment.newInstance(response));
+                    }
+
+                    @Override
+                    public void onFailure(ErrorMessage errorMessage) {
+
+                    }
+                });
             }
         });
 
         lstExpired.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                toast(id+"");
+                apiCalls.getVacancyDetails((int) id, new CallbackWrapped<VacancyDetails>() {
+                    @Override
+                    public void onResponse(VacancyDetails response) {
+                        navigator.gotoSubSection(VacancyDetailsFragment.newInstance(response));
+                    }
+
+                    @Override
+                    public void onFailure(ErrorMessage errorMessage) {
+
+                    }
+                });
             }
         });
 

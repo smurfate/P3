@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.itland.employer.R;
@@ -43,6 +44,8 @@ public class ProfileFragment extends AbstractFragment {
     @Bind(R.id.txtContactPositionAr) TextView txtContactPositionAr;
 
     @Bind(R.id.btnEdit) ImageButton btnEdit;
+    @Bind(R.id.imgEditEmail) ImageView imgEditEmail;
+    @Bind(R.id.imgEditGsm) ImageView imgEditGsm;
 
     private CompanyProfile profile;
 

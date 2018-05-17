@@ -84,19 +84,20 @@ public class EditProfileFragment extends AbstractFragment {
     @Override
     public void onResume() {
         super.onResume();
-        activity.showSave(true);
+        activity.actionText(true);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        activity.showSave(false);
+        activity.actionText(false);
     }
 
     private boolean required(TextView tv)
     {
         if(isNullOrEmpty(tv.getText().toString())) {
             tv.setError(getString(R.string.error_required));
+            tv.requestFocus();
             return false;
         }
         return true;
@@ -125,7 +126,9 @@ public class EditProfileFragment extends AbstractFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView txtSave = activity.showSave(true);
+        TextView txtSave = activity.actionText(true);
+
+
         txtSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -35,10 +35,10 @@ public class EditInactiveVacancyRequest {
     public Integer JobTypeId;
     public Integer MilitaryServiceId;
     public Integer SalaryId;
-    public Integer Benefits;
+    public String Benefits;
     public Integer RequiredEmployeesCount;
     public Boolean PhotoIsRequired;
     public Integer RequiredCVLanguageId;
     public Boolean IsNameHidden;
-    public Integer About;
+    public String About;
 }

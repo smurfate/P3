@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.itland.employer.R;
@@ -56,8 +57,17 @@ public class ApplicationsAdapter extends BaseAdapter {
 
         viewHolder.txtVacancy.setText(application.VacancyTitle);
         viewHolder.txtCity.setText(application.VacancyWorkingCity);
-        viewHolder.txtDays.setText(application.AppliedSince+"");
-        viewHolder.txtRead.setText("Unread");
+        viewHolder.txtDays.setText(application.AppliedSince+" days ago");
+        if(application.isRead())
+        {
+            viewHolder.txtRead.setText("Read");
+            viewHolder.imgRead.setImageResource(R.drawable.ic_read);
+        }
+        else
+        {
+            viewHolder.txtRead.setText("Unread");
+            viewHolder.imgRead.setImageResource(R.drawable.ic_unread);
+        }
         viewHolder.txtName.setText(application.SeekerFullName);
 
 
@@ -71,6 +81,7 @@ public class ApplicationsAdapter extends BaseAdapter {
         @Bind(R.id.txtCity) TextView txtCity;
         @Bind(R.id.txtRead) TextView txtRead;
         @Bind(R.id.txtName) TextView txtName;
+        @Bind(R.id.imgRead) ImageView imgRead;
 
         public ViewHolder(View view) {
             ButterKnife.bind(this, view);

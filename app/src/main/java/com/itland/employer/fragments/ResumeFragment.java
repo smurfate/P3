@@ -41,6 +41,7 @@ public class ResumeFragment extends AbstractFragment {
     @Bind(R.id.gridView) GridView gridView;
     @Bind(R.id.drawer_layout) public DrawerLayout drawer;
     @Bind(R.id.nav_view) NavigationView navigationView;
+    @Bind(R.id.txtChoose) TextView txtChoose;
 
 
     @Bind(R.id.lnrChoose) LinearLayout lnrChoose;
@@ -135,6 +136,7 @@ public class ResumeFragment extends AbstractFragment {
         lnrFilter.setVisibility(View.GONE);
         lnrChoose.setVisibility(View.VISIBLE);
         chooseType = ChooseType.city;
+        txtChoose.setText("Choose city");
 
         radioGroup.removeAllViews();
         for (City city:response.Items)
@@ -152,7 +154,37 @@ public class ResumeFragment extends AbstractFragment {
         lnrChoose.setVisibility(View.VISIBLE);
         chooseType = type;
 
+        switch (chooseType)
+        {
+            case city:
+                txtChoose.setText("Choose City");
+                break;
+            case edu:
+                txtChoose.setText("Choose Edu level");
+                break;
+            case county:
+                txtChoose.setText("Choose county");
+                break;
+            case fieldOfWork:
+                txtChoose.setText("Choose field of work");
+                break;
+            case jobType:
+                txtChoose.setText("Choose job type");
+                break;
+            case cvLanguage:
+                txtChoose.setText("Choose cv language");
+                break;
+        }
+
+
         radioGroup.removeAllViews();
+
+        RadioButton rb = new RadioButton(activity);
+        rb.setText("Any");
+        rb.setTag(null);
+        radioGroup.addView(rb);
+
+
         for (Indice indice:response.Items)
         {
             RadioButton radioButton = new RadioButton(activity);
@@ -166,13 +198,14 @@ public class ResumeFragment extends AbstractFragment {
     @Override
     public void onPause() {
         super.onPause();
-        activity.actionbarSearch(false);
+        activity.actionSearch(false);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        activity.actionbarSearch(true);
+        activity.actionIcon(true).setImageResource(R.drawable.ic_filter);
+        activity.actionSearch(true);
     }
 
     private void filterResumes()
@@ -238,7 +271,7 @@ public class ResumeFragment extends AbstractFragment {
         });
 
 
-        searchView = activity.getSearchView();
+        searchView = activity.actionSearch(true);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -253,7 +286,7 @@ public class ResumeFragment extends AbstractFragment {
             }
         });
 
-        activity.getFilterBtn().setOnClickListener(new View.OnClickListener() {
+        activity.actionIcon(true).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showFilter();
@@ -280,27 +313,27 @@ public class ResumeFragment extends AbstractFragment {
                     {
                         case city:
                             city = (City) radioButton.getTag();
-                            txtCity.setText(city.Name);
+                            if(city != null) txtCity.setText(city.Name); else txtCity.setText("Any");
                             break;
                         case edu:
                             eduLevel = (Indice) radioButton.getTag();
-                            txtEdu.setText(eduLevel.Value);
+                            if(eduLevel != null) txtEdu.setText(eduLevel.Value); else txtEdu.setText("Any");
                             break;
                         case county:
                             county = (Indice) radioButton.getTag();
-                            txtCounty.setText(county.Value);
+                            if(county != null) txtCounty.setText(county.Value); else txtCounty.setText("Any");
                             break;
                         case fieldOfWork:
                             fieldOfWork = (Indice) radioButton.getTag();
-                            txtFieldOfWork.setText(fieldOfWork.Value);
+                            if(fieldOfWork != null) txtFieldOfWork.setText(fieldOfWork.Value); else txtFieldOfWork.setText("Any");
                             break;
                         case jobType:
                             jobType = (Indice) radioButton.getTag();
-                            txtJobType.setText(jobType.Value);
+                            if(jobType != null) txtJobType.setText(jobType.Value); else txtJobType.setText("Any");
                             break;
                         case cvLanguage:
                             cvLanguage = (Indice) radioButton.getTag();
-                            txtLanguage.setText(cvLanguage.Value);
+                            if(cvLanguage != null) txtLanguage.setText(cvLanguage.Value); else txtLanguage.setText("Any");
                             break;
                     }
 

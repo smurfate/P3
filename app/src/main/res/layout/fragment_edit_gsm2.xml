@@ -40,7 +40,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toRightOf="@+id/spinner"
+                app:layout_constraintLeft_toRightOf="@+id/spnCountyCode"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView74">
 
@@ -54,7 +54,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/spnCountyCode"
                 style="@style/SpinnerStyle"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
