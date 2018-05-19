@@ -61,7 +61,7 @@
                             android:layout_gravity="start|center_vertical"
                             android:layout_marginLeft="@dimen/margin_lr"
                             android:layout_marginRight="@dimen/margin_lr"
-                            android:text="reset"
+                            android:text="@string/reset"
                             android:textAlignment="center" />
 
                         <TextView
@@ -326,7 +326,7 @@
                             android:layout_marginLeft="@dimen/margin_lr"
                             android:layout_marginRight="@dimen/margin_lr"
                             android:layout_weight="1"
-                            android:text="Choose" />
+                            android:text="@string/choose" />
 
 
                         <TextView

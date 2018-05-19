@@ -2,6 +2,7 @@ package com.itland.employer.registration.fragments;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.github.ybq.android.spinkit.SpinKitView;
 import com.itland.employer.MainActivity;
 import com.itland.employer.R;
 import com.itland.employer.responses.TokenResponse;
@@ -36,7 +38,7 @@ public class SignInFragment extends AbstractResistrationFragment {
     @Bind(R.id.txtVerifyAccount) TextView txtVerifyAccount;
 
 
-    @Bind(R.id.pb_loading) ProgressBar pbLoading;
+    @Bind(R.id.pb_loading) SpinKitView pbLoading;
 
     public SignInFragment() {
         // Required empty public constructor
@@ -66,7 +68,7 @@ public class SignInFragment extends AbstractResistrationFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        pbLoading.setVisibility(View.INVISIBLE);
 
         btnSignIn.requestFocus();
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -123,14 +125,18 @@ public class SignInFragment extends AbstractResistrationFragment {
         txtForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigator.gotoSubSection(ForgotPasswordFragment.newInstance());
+                if(!required(txtUserName)) return;
+                String username = txtUserName.getText().toString();
+                navigator.gotoSubSection(ForgotPasswordFragment.newInstance(username));
             }
         });
 
         txtVerifyAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigator.gotoSubSection(VerifyFragment.newInstance());
+                if(!required(txtUserName)) return;
+                String username = txtUserName.getText().toString();
+                navigator.gotoSubSection(VerifyFragment.newInstance(username));
             }
         });
     }

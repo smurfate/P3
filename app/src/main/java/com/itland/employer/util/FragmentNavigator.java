@@ -13,6 +13,7 @@ import com.itland.employer.R;
 import com.itland.employer.fragments.ApplicationsFragment;
 import com.itland.employer.fragments.HomeFragment;
 import com.itland.employer.fragments.MoreFragment;
+import com.itland.employer.fragments.ProfileFragment;
 import com.itland.employer.fragments.ResumeFragment;
 import com.itland.employer.fragments.VacanciesFragment;
 
@@ -81,8 +82,11 @@ public class FragmentNavigator {
             if(isCurrentFragment(ApplicationsFragment.class))
             {
                 navigationView.setSelectedItemId(R.id.navigation_applications);
-            }else
-            if(isCurrentFragment(MoreFragment.class))
+            }else if(isCurrentFragment(MoreFragment.class))
+            {
+                navigationView.setSelectedItemId(R.id.navigation_more);
+
+            }else if(isCurrentFragment(ProfileFragment.class))
             {
                 navigationView.setSelectedItemId(R.id.navigation_more);
             }
@@ -277,7 +281,13 @@ public class FragmentNavigator {
 //        {
 //            fr = fragmentManager.getFragments().get(fragmentManager.getBackStackEntryCount());
 //        }
-        return fragmentManager.getFragments() != null && fragmentManager.getFragments().size()>fragmentManager.getBackStackEntryCount()?fragmentManager.getFragments().get(fragmentManager.getBackStackEntryCount()):null;
+
+
+        //this one works for support version 26.0.0-alpha
+//        return fragmentManager.getFragments() != null && fragmentManager.getFragments().size() > fragmentManager.getBackStackEntryCount() ? fragmentManager.getFragments().get(fragmentManager.getBackStackEntryCount()) : null;
+
+        //this one works on support version 27.0.3
+        return fragmentManager.getFragments().get(0);
 //        return fragmentManager.findFragmentById(container);
 
 //        return fragmentManager.findFragmentById(container);

@@ -28,12 +28,15 @@ public class VerifyFragment extends AbstractResistrationFragment {
     @Bind(R.id.txtResend) TextView txtResend;
     @Bind(R.id.btnVerify) Button btnVerify;
 
+    private String username;
+
     public VerifyFragment() {
         // Required empty public constructor
     }
 
-    public static VerifyFragment newInstance() {
+    public static VerifyFragment newInstance(String username) {
         VerifyFragment fragment = new VerifyFragment();
+        fragment.username = username;
         return fragment;
     }
 
@@ -61,7 +64,8 @@ public class VerifyFragment extends AbstractResistrationFragment {
                 if(!validateInputs()) return;
 
                 String code = txtCode.getText().toString();
-                activity.apiCalls.verifyAccount(code, "", new CallbackWrapped<GeneralResponse>() {
+
+                activity.apiCalls.verifyAccount(code, username, new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);
@@ -78,7 +82,8 @@ public class VerifyFragment extends AbstractResistrationFragment {
         txtResend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.apiCalls.resendCodeRegister("", new CallbackWrapped<GeneralResponse>() {
+
+                activity.apiCalls.resendCodeRegister(username, new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);

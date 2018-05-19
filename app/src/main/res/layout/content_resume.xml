@@ -9,8 +9,6 @@
 
     >
 
-    <!--tools:showIn="@layout/fragment_application_details"-->
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Main Information" />
+            android:text="@string/main_information" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -166,169 +164,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="More" />
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="100">
-
-                    <TextView
-                        style="@style/TextViewBody.Active"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:text="Military" />
-
-                    <TextView
-                        android:id="@+id/txtMelitary"
-                        style="@style/TextViewBody"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_lr"
-                        android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="50"
-                        android:text="Delayed" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="100">
-
-                    <TextView
-                        style="@style/TextViewBody.Active"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:text="Driving License" />
-
-                    <TextView
-                        android:id="@+id/txtDrivingLicense"
-                        style="@style/TextViewBody"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_lr"
-                        android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="50"
-                        android:text="Delayed" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="100">
-
-                    <TextView
-                        style="@style/TextViewBody.Active"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:text="Number of Dependencies" />
-
-                    <TextView
-                        android:id="@+id/txtDependancyNumber"
-                        style="@style/TextViewBody"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_lr"
-                        android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="50"
-                        android:text="Delayed" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="100">
-
-                    <TextView
-                        style="@style/TextViewBody.Active"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:text="Full Address" />
-
-                    <TextView
-                        android:id="@+id/txtFullAddress"
-                        style="@style/TextViewBody"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_lr"
-                        android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="50"
-                        android:text="Delayed" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="100">
-
-                    <TextView
-                        style="@style/TextViewBody.Active"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:text="GSM Code" />
-
-                    <TextView
-                        android:id="@+id/txtGSMCode"
-                        style="@style/TextViewBody"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_lr"
-                        android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="50"
-                        android:text="Delayed" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-        <TextView
-            android:id="@+id/textView20"
-            style="@style/TextViewBody.Inactive"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Objective" />
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/txtObjective"
-                style="@style/TextViewDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem" />
-        </android.support.v7.widget.CardView>
-
-
-        <TextView
-            style="@style/TextViewBody.Inactive"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Main interests" />
+            android:text="@string/more" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -351,7 +187,169 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="40"
-                        android:text="Job Type" />
+                        android:text="@string/military" />
+
+                    <TextView
+                        android:id="@+id/txtMelitary"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_weight="60"
+                        android:text="Delayed" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="40"
+                        android:text="@string/driving_license" />
+
+                    <TextView
+                        android:id="@+id/txtDrivingLicense"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_weight="60"
+                        android:text="Delayed" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="40"
+                        android:text="@string/dependencies_number" />
+
+                    <TextView
+                        android:id="@+id/txtDependancyNumber"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_weight="60"
+                        android:text="Delayed" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="40"
+                        android:text="@string/full_address" />
+
+                    <TextView
+                        android:id="@+id/txtFullAddress"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_weight="60"
+                        android:text="Delayed" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="40"
+                        android:text="@string/gsm_code" />
+
+                    <TextView
+                        android:id="@+id/txtGSMCode"
+                        style="@style/TextViewBody"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_weight="60"
+                        android:text="Delayed" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView20"
+            style="@style/TextViewBody.Inactive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/objective" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtObjective"
+                style="@style/TextViewDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem" />
+        </android.support.v7.widget.CardView>
+
+
+        <TextView
+            style="@style/TextViewBody.Inactive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/main_interests" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/TextViewBody.Active"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="40"
+                        android:text="@string/job_type" />
 
                     <TextView
                         android:id="@+id/txtJobType"
@@ -375,7 +373,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="40"
-                        android:text="Job category" />
+                        android:text="@string/job_category" />
 
                     <TextView
                         android:id="@+id/txtJobCompany"
@@ -399,7 +397,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="40"
-                        android:text="Career Level" />
+                        android:text="@string/career_level" />
 
                     <TextView
                         android:id="@+id/txtCareerLevel"
@@ -423,7 +421,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="40"
-                        android:text="Work County" />
+                        android:text="@string/work_county" />
 
                     <TextView
                         android:id="@+id/txtWorkCounty"
@@ -447,7 +445,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="40"
-                        android:text="Work City" />
+                        android:text="@string/work_city" />
 
                     <TextView
                         android:id="@+id/txtWorkCity"
@@ -471,7 +469,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="40"
-                        android:text="Notice period" />
+                        android:text="@string/notice_period" />
 
                     <TextView
                         android:id="@+id/txtWorkPeriod"
@@ -492,7 +490,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Salary" />
+            android:text="@string/salary" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -515,7 +513,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
-                        android:text="Desired net Salary" />
+                        android:text="@string/desired_net_salary" />
 
                     <TextView
                         android:id="@+id/txtDesiredSalary"
@@ -539,7 +537,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
-                        android:text="Last month Salary" />
+                        android:text="@string/last_month_salary" />
 
                     <TextView
                         android:id="@+id/txtLastMonthSalary"
@@ -562,7 +560,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Work Experiences" />
+            android:text="@string/work_experiences" />
 
 
         <LinearLayout
@@ -572,85 +570,13 @@
             android:layout_height="wrap_content">
 
         </LinearLayout>
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal"
-                android:weightSum="100">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="70"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/TextViewBody"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Company Name" />
-
-                    <TextView
-                        style="@style/TextViewDetails.Inactive"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Front-end Developer" />
-
-                    <TextView
-                        style="@style/TextViewDetails"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_weight="1"
-                        android:text="2009-present" />
-
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="30"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/TextViewBody.Active"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="7"
-                        android:textAlignment="center" />
-
-                    <TextView
-                        style="@style/TextViewDetails.Inactive"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Years of experience"
-                        android:textAlignment="center" />
-
-                </LinearLayout>
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
 
         <TextView
             style="@style/TextViewBody.Inactive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="References" />
+            android:text="@string/references" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -660,105 +586,12 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal"
-                android:weightSum="100">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="50"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/TextViewBody"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Dr. Some One" />
-
-                    <TextView
-                        style="@style/TextViewBody.Inactive"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Smatel" />
-
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="50"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="@dimen/image_details"
-                            android:layout_height="@dimen/image_details"
-                            app:srcCompat="@drawable/ic_home" />
-
-                        <TextView
-                            style="@style/TextViewDetails"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_lr"
-                            android:layout_marginRight="@dimen/margin_lr"
-                            android:text="(+963) 991 345 379" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/dividerHeight"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="@dimen/image_details"
-                            android:layout_height="@dimen/image_details"
-                            app:srcCompat="@drawable/ic_email" />
-
-                        <TextView
-                            style="@style/TextViewDetails"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_lr"
-                            android:layout_marginRight="@dimen/margin_lr"
-                            android:text="info@site.com" />
-
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
         <TextView
             style="@style/TextViewBody.Inactive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Skills" />
+            android:text="@string/skills" />
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -767,86 +600,12 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal"
-                android:weightSum="100">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="70"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/TextViewBody"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Photoshop" />
-
-                    <TextView
-                        style="@style/TextViewBody.Inactive"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Intermediate" />
-
-                    <TextView
-                        style="@style/TextViewDetails"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_weight="1"
-                        android:text="Last used 7007" />
-
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="30"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/TextViewBody.Active"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="3"
-                        android:textAlignment="center"
-                        />
-
-                    <TextView
-                        style="@style/TextViewDetails.Inactive"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Years of experience"
-                        android:textAlignment="center" />
-
-                </LinearLayout>
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
         <TextView
             style="@style/TextViewBody.Inactive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Languages" />
+            android:text="@string/languages" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -873,7 +632,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Mother tong" />
+                    android:text="@string/mother_tong" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -884,212 +643,18 @@
             android:id="@+id/lnrLanguage"
             android:layout_height="wrap_content"/>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:weightSum="100">
-
-                <TextView
-                    style="@style/TextViewBody"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="English" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/TextViewDetails"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Reading" />
-
-                        <TextView
-                            style="@style/TextViewDetails"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="7/10" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="@android:color/black" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/TextViewDetails"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Reading" />
-
-                        <TextView
-                            style="@style/TextViewDetails"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="7/10" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="@android:color/black" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/TextViewDetails"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Reading" />
-
-                        <TextView
-                            style="@style/TextViewDetails"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="7/10" />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
         <TextView
             style="@style/TextViewBody.Inactive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Education Degree" />
+            android:text="@string/education_degree" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:id="@+id/lnrEducationDegree"
             android:layout_height="wrap_content"/>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal"
-                android:weightSum="100">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="30"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <TextView
-                        style="@style/TextViewBody.Active"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="2016"
-                        />
-
-                    <TextView
-                        style="@style/TextViewBody"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_weight="1"
-                        android:text="Graduated" />
-
-                    <TextView
-                        style="@style/TextViewBody"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="88%" />
-
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:layout_weight="70"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/TextViewBody"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Bachelor's Degree" />
-
-                    <TextView
-                        style="@style/TextViewDetails.Inactive"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Damascus University" />
-
-                    <TextView
-                        style="@style/TextViewDetails"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem" />
-
-                </LinearLayout>
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
 
         <Space
             android:layout_width="match_parent"

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -31,12 +32,12 @@ import butterknife.ButterKnife;
 
 public class PostVacancyFragment extends AbstractFragment {
 
-    @Bind(R.id.txtPositionTitle) TextView txtPositionTitle;
-    @Bind(R.id.txtJobDescription) TextView txtJobDescription;
-    @Bind(R.id.txtPreRequirement) TextView txtPreRequirements;
-    @Bind(R.id.txtSkillsNeeded) TextView txtSkillsNeeded;
-    @Bind(R.id.txtBenefits) TextView txtBenefits;
-    @Bind(R.id.txtAboutCompany) TextView txtAboutCompany;
+    @Bind(R.id.txtPositionTitle) EditText txtPositionTitle;
+    @Bind(R.id.txtJobDescription) EditText txtJobDescription;
+    @Bind(R.id.txtPreRequirement) EditText txtPreRequirements;
+    @Bind(R.id.txtSkillsNeeded) EditText txtSkillsNeeded;
+    @Bind(R.id.txtBenefits) EditText txtBenefits;
+    @Bind(R.id.txtAboutCompany) EditText txtAboutCompany;
 
     @Bind(R.id.spnCounty) Spinner spnCounty;
     @Bind(R.id.spnCity) Spinner spnCity;
@@ -100,8 +101,8 @@ public class PostVacancyFragment extends AbstractFragment {
     public void onStart() {
         super.onStart();
         activity.actionText(true);
-        if(isEdit()) setTitle("Edit Vacancy");
-        else setTitle("Post Vacancy");
+        if(isEdit()) setTitle(getString(R.string.edit_vacancy));
+        else setTitle(getString(R.string.post_vacancy));
     }
 
     @Override
@@ -110,15 +111,6 @@ public class PostVacancyFragment extends AbstractFragment {
         activity.actionText(false);
     }
 
-    private boolean required(TextView tv)
-    {
-        if(isNullOrEmpty(tv.getText().toString())) {
-            tv.setError(getString(R.string.error_required));
-            tv.requestFocus();
-            return false;
-        }
-        return true;
-    }
 
     private boolean validateInputs()
     {
@@ -458,6 +450,7 @@ public class PostVacancyFragment extends AbstractFragment {
                                 @Override
                                 public void onResponse(GeneralResponse response) {
                                     toast(response);
+                                    navigator.goBackTo(VacanciesFragment.class);
                                 }
 
                                 @Override

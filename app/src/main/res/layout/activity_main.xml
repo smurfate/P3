@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:text="Save"
+                    android:text="@string/save"
                     android:textColor="@color/white"
                     android:visibility="gone" />
 
@@ -120,7 +120,7 @@
 
             <com.github.ybq.android.spinkit.SpinKitView
                 android:id="@+id/pb_loading"
-                style="@style/SpinKitView.Small.DoubleBounce"
+                style="@style/SpinKitView.Small.ChasingDots"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"

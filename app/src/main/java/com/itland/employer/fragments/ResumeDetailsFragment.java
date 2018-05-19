@@ -31,11 +31,11 @@ public class ResumeDetailsFragment extends AbstractFragment {
     @Bind(R.id.txtPhone) TextView txtPhone;
     @Bind(R.id.txtEmail) TextView txtEmail;
     @Bind(R.id.txtAddress) TextView txtAddress;
-    @Bind(R.id.txtLandline) TextView txtLandline;
+    @Bind(R.id.txtLandline) TextView txtLandLine;
     @Bind(R.id.txtSite) TextView txtSite;
     @Bind(R.id.txtMelitary) TextView txtMilitary;
     @Bind(R.id.txtDrivingLicense) TextView txtDrivingLicense;
-    @Bind(R.id.txtDependancyNumber) TextView txtDependancyNumber;
+    @Bind(R.id.txtDependancyNumber) TextView txtDependacyNumber;
     @Bind(R.id.txtFullAddress) TextView txtFullAddress;
     @Bind(R.id.txtGSMCode) TextView txtGSMCode;
     @Bind(R.id.txtObjective) TextView txtObjective;
@@ -87,11 +87,11 @@ public class ResumeDetailsFragment extends AbstractFragment {
         txtPhone.setText(details.PersonalDetails.MobilePhone);
         txtEmail.setText(details.PersonalDetails.Email);
         txtAddress.setText(details.PersonalDetails.City+", "+details.PersonalDetails.Country);
-        txtLandline.setText(details.PersonalDetails.PhoneNumber);
+        txtLandLine.setText(details.PersonalDetails.PhoneNumber);
         txtSite.setText(details.PersonalDetails.UploadedResumeUrl);
         txtMilitary.setText(details.PersonalDetails.MilitaryServiceStatus);
         txtDrivingLicense.setText(details.PersonalDetails.DrivingLicenceType);
-        txtDependancyNumber.setText(details.PersonalDetails.NumberOfDependencies.toString());
+        txtDependacyNumber.setText(details.PersonalDetails.NumberOfDependencies.toString());
         txtFullAddress.setText(details.PersonalDetails.Address);
         txtGSMCode.setText(details.PersonalDetails.MobilePhone);
         txtObjective.setText(details.JobTarget.CareerObjectives);
@@ -100,8 +100,8 @@ public class ResumeDetailsFragment extends AbstractFragment {
         txtCareerLevel.setText(details.JobTarget.CareerLevel);
         txtWorkCountry.setText(details.JobTarget.City);
         txtWorkPeriod.setText(details.JobTarget.NoticePeriod);
-        txtDesiredSalary.setText(details.JobTarget.DesiredNetSalary + details.JobTarget.DesiredNetSalaryCurrency);
-        txtLastMonthSalary.setText(details.JobTarget.LastMonthSalary + details.JobTarget.LastMonthSalaryCurrency);
+        txtDesiredSalary.setText(details.JobTarget.DesiredNetSalary + " " + details.JobTarget.DesiredNetSalaryCurrency);
+        txtLastMonthSalary.setText(details.JobTarget.LastMonthSalary + " " + details.JobTarget.LastMonthSalaryCurrency);
         txtMotherLanguage.setText(details.PersonalDetails.MotherLanguage);
         txtWorkCity.setText(details.JobTarget.City);
 
@@ -111,7 +111,8 @@ public class ResumeDetailsFragment extends AbstractFragment {
             WorkExperienceViewHolder holder = new WorkExperienceViewHolder(activity);
             holder.txtCompanyName.setText(experience.CompanyName);
             holder.txtCompanyType.setText(experience.FieldOfWork);
-            holder.txtSince.setText(experience.StartDate+"-"+experience.EndDate!=null?experience.EndDate:"present");
+            String endDate = (experience.EndDate!=null)?experience.EndDate:getString(R.string.present);
+            holder.txtSince.setText(experience.StartDate + "-" + endDate);
             holder.txtYearsOfExperience.setText(experience.YearsOfExperience.toString());
             lnrExperience.addView(holder.getView());
         }

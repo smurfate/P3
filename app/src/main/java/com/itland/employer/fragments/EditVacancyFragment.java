@@ -69,7 +69,7 @@ public class EditVacancyFragment extends AbstractFragment {
     @Override
     public void onStart() {
         super.onStart();
-        setTitle("Edit Vacancy");
+        setTitle(getString(R.string.edit_vacancy));
     }
 
     @Override

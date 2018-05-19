@@ -40,7 +40,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Reading" />
+                        android:text="@string/reading" />
 
                     <TextView
                         android:id="@+id/txtReading"
@@ -70,7 +70,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Writing" />
+                        android:text="@string/writing" />
 
                     <TextView
                         android:id="@+id/txtWriting"
@@ -100,7 +100,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Speaking" />
+                        android:text="@string/speaking" />
 
                     <TextView
                         android:id="@+id/txtSpeaking"

@@ -22,19 +22,21 @@ import butterknife.ButterKnife;
 
 public class ForgotPasswordFragment extends AbstractResistrationFragment {
 
-    @Bind(R.id.txtGsm) EditText txtGsm;
     @Bind(R.id.txtCode) EditText txtCode;
     @Bind(R.id.txtPassword) EditText txtPassword;
     @Bind(R.id.txtConfirmPassword) EditText txtConfirmPassword;
     @Bind(R.id.txtResend) TextView txtResend;
     @Bind(R.id.btnVerify) Button btnVerify;
 
+    private String username;
+
     public ForgotPasswordFragment() {
         // Required empty public constructor
     }
 
-    public static ForgotPasswordFragment newInstance() {
+    public static ForgotPasswordFragment newInstance(String username) {
         ForgotPasswordFragment fragment = new ForgotPasswordFragment();
+        fragment.username = username;
         return fragment;
     }
 
@@ -50,8 +52,7 @@ public class ForgotPasswordFragment extends AbstractResistrationFragment {
 
     private boolean validateInputs()
     {
-        return required(txtGsm)&&
-                required(txtCode)&&
+        return required(txtCode)&&
                 required(txtPassword)&&
                 required(txtConfirmPassword);
     }
@@ -60,7 +61,7 @@ public class ForgotPasswordFragment extends AbstractResistrationFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        activity.apiCalls.forgotPassword("", "", new CallbackWrapped<GeneralResponse>() {
+        activity.apiCalls.forgotPassword(username, new CallbackWrapped<GeneralResponse>() {
             @Override
             public void onResponse(GeneralResponse response) {
                 toast(response);
@@ -82,16 +83,15 @@ public class ForgotPasswordFragment extends AbstractResistrationFragment {
 
                 if(txtPassword.getText().equals(txtConfirmPassword.getText()))
                 {
-                    txtConfirmPassword.setError("Password does not match");
+                    txtConfirmPassword.setError(getString(R.string.error_password_not_matched));
                     txtConfirmPassword.requestFocus();
                     return;
                 }
 
                 String code = txtCode.getText().toString();
                 String password = txtPassword.getText().toString();
-                String gsm = txtGsm.getText().toString();
 
-                activity.apiCalls.verifyForgotPassword("", "", code, password, new CallbackWrapped<GeneralResponse>() {
+                activity.apiCalls.verifyForgotPassword(username, code, password, new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);
@@ -109,7 +109,7 @@ public class ForgotPasswordFragment extends AbstractResistrationFragment {
         txtResend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.apiCalls.resendCodeForgotPassword("", "", new CallbackWrapped<GeneralResponse>() {
+                activity.apiCalls.resendCodeForgotPassword(username, new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);

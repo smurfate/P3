@@ -50,13 +50,15 @@ public class MainActivity extends AbstractActivity {
 
     public FragmentNavigator navigator;
     public ActionBar actionBar;
-    public Handler handler = new Handler();
 
     public ApiCalls apiCalls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setLocale(getLocale(),false);
+
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 

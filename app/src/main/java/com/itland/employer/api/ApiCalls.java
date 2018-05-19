@@ -1,8 +1,12 @@
 package com.itland.employer.api;
 
+import android.util.Log;
+
 import com.itland.employer.MainActivity;
+import com.itland.employer.abstracts.AbstractEntity;
 import com.itland.employer.requests.ChangeEmailRequest;
 import com.itland.employer.requests.ChangeGsmRequest;
+import com.itland.employer.requests.ChangePasswordRequest;
 import com.itland.employer.requests.EditActiveVacancyRequest;
 import com.itland.employer.requests.EditCompanyProfileRequest;
 import com.itland.employer.requests.EditExpiredVacancyRequest;
@@ -44,10 +48,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiCalls {
 
+    private String TAG = getClass().getSimpleName();
     private Retrofit retrofit ;
     private Apis apis;
     private String authorization;
     private String language;
+    private String scope;
     private MainActivity activity;
 
     public ApiCalls()
@@ -69,6 +75,9 @@ public class ApiCalls {
         apis = retrofit.create(Apis.class);
 
         authorization = PrefUtil.getStringPreference(SharedPreferencesKeys.token);
+        language = PrefUtil.getStringPreference(SharedPreferencesKeys.language);
+        scope = "Employer";
+
         this.activity = activity;
 
     }
@@ -82,11 +91,24 @@ public class ApiCalls {
                 if(activity != null) activity.showProgressIndicator(false);
                 if(response.body() != null)
                 {
-                    callback.onResponse(response.body());
+                    T body = response.body();
+                    callback.onResponse(body);
+
+
+                    try{
+                        if(!((AbstractEntity)body).IsOk)
+                        {
+                            activity.toast(((AbstractEntity)body).Message.Content);
+                        }
+                    } catch (Exception ex)
+                    {
+
+                    }
 
                 }
                 else
                 {
+                    Log.d(TAG, "onResponse: Empty body");
                     callback.onFailure(ErrorMessage.UNKNOWN_ERROR);
                 }
             }
@@ -94,6 +116,7 @@ public class ApiCalls {
             @Override
             public void onFailure(Call<T> call, Throwable throwable) {
                 callback.onFailure(ErrorMessage.UNKNOWN_ERROR);
+                Log.d(TAG, "onFailure: "+throwable.getMessage());
                 if(activity != null) activity.showProgressIndicator(false);
 
             }
@@ -103,17 +126,17 @@ public class ApiCalls {
 
     public void citiesList(CallbackWrapped<CitiesListResponse> callback)
     {
-        apis.CitiesList(0).enqueue(convertCallback(callback));
+        apis.CitiesList(language,0).enqueue(convertCallback(callback));
     }
 
     public void signIn(String userName, String password,CallbackWrapped<TokenResponse> callback)
     {
-        apis.token("password",userName,password,"JobSeeker").enqueue(convertCallback(callback));
+        apis.token(language,"password",userName,password,"JobSeeker").enqueue(convertCallback(callback));
     }
 
     public void getResumesList(CallbackWrapped<FilterJobSeekerResponse> callback)
     {
-        apis.FilterJobSeekers(authorization,new FilterJobSeekersRequest()).enqueue(convertCallback(callback));
+        apis.FilterJobSeekers(language,authorization,new FilterJobSeekersRequest()).enqueue(convertCallback(callback));
     }
 
     public void filterResumes(String searchQuery,Integer cityId, Integer minEduLevelId,Integer countryId,
@@ -129,83 +152,83 @@ public class ApiCalls {
         request.JobTypeId = jobTypeId;
         request.ResumeLanguageId = languageId;
         request.WithPhoto = photo;
-        apis.FilterJobSeekers(authorization,new FilterJobSeekersRequest()).enqueue(convertCallback(callback));
+        apis.FilterJobSeekers(language,authorization,new FilterJobSeekersRequest()).enqueue(convertCallback(callback));
     }
 
 
     public void getResume(Integer id, CallbackWrapped<ResumeDetails> callback)
     {
-        apis.Resume(id,authorization).enqueue(convertCallback(callback));
+        apis.Resume(language,id,authorization).enqueue(convertCallback(callback));
     }
 
     public void getEducationLevel(CallbackWrapped<IndicesListResponse> callback)
     {
-        apis.ListEducationDegreeLevels().enqueue(convertCallback(callback));
+        apis.ListEducationDegreeLevels(language).enqueue(convertCallback(callback));
     }
 
     public void getCountries(CallbackWrapped<IndicesListResponse> callback)
     {
-        apis.ListNationalities().enqueue(convertCallback(callback));
+        apis.ListNationalities(language).enqueue(convertCallback(callback));
     }
 
     public void getFieldsOfWork(CallbackWrapped<IndicesListResponse> callback)
     {
-        apis.ListFieldsOfWork().enqueue(convertCallback(callback));
+        apis.ListFieldsOfWork(language).enqueue(convertCallback(callback));
     }
 
     public void getJobTypes(CallbackWrapped<IndicesListResponse> callback)
     {
-        apis.ListJobTypes().enqueue(convertCallback(callback));
+        apis.ListJobTypes(language).enqueue(convertCallback(callback));
     }
 
     public void getContactTitlesList(CallbackWrapped<IndicesListResponse> callback)
     {
-        apis.ListTitles().enqueue(convertCallback(callback));
+        apis.ListTitles(language).enqueue(convertCallback(callback));
     }
 
     public void getCvLanguage(CallbackWrapped<IndicesListResponse> callback)
     {
-        apis.ListLanguageNames().enqueue(convertCallback(callback));
+        apis.ListLanguageNames(language).enqueue(convertCallback(callback));
     }
 
     public void getListMilitaryServices(CallbackWrapped<IndicesListResponse> callback)
     {
-        apis.ListMilitaryServices().enqueue(convertCallback(callback));
+        apis.ListMilitaryServices(language).enqueue(convertCallback(callback));
     }
 
     public void getListSalary(CallbackWrapped<IndicesListResponse> callback)
     {
-        apis.ListSalaries().enqueue(convertCallback(callback));
+        apis.ListSalaries(language).enqueue(convertCallback(callback));
     }
 
     public void getListCurrencies(CallbackWrapped<IndicesListResponse> callback)
     {
-        apis.ListCurriencies().enqueue(convertCallback(callback));
+        apis.ListCurriencies(language).enqueue(convertCallback(callback));
     }
 
     public void getApplicationsList(Integer page, CallbackWrapped<JobApplicationsListResponse> callback)
     {
-        apis.JobApplicationsList(page,authorization).enqueue(convertCallback(callback));
+        apis.JobApplicationsList(language,page,authorization).enqueue(convertCallback(callback));
     }
 
     public void getApplicationDetails(Integer id, CallbackWrapped<JobApplicationDetails> callback)
     {
-        apis.JobApplications(id,authorization).enqueue(convertCallback(callback));
+        apis.JobApplications(language,id,authorization).enqueue(convertCallback(callback));
     }
 
     public void getVacancies(Integer page, CallbackWrapped<MyVacanciesResponse> callback)
     {
-        apis.MyVacancies(authorization,page).enqueue(convertCallback(callback));
+        apis.MyVacancies(language,authorization,page).enqueue(convertCallback(callback));
     }
 
     public void getVacancyDetails(Integer id, CallbackWrapped<VacancyDetails> callback)
     {
-        apis.Vacancy(id,authorization).enqueue(convertCallback(callback));
+        apis.Vacancy(language,id,authorization).enqueue(convertCallback(callback));
     }
 
     public void viewProfile(CallbackWrapped<CompanyProfile> callback)
     {
-        apis.ViewProfile(authorization).enqueue(convertCallback(callback));
+        apis.ViewProfile(language,authorization).enqueue(convertCallback(callback));
     }
 
     public void editProfile(String nameEn, String nameAr,String aboutAr,String aboutEn,String addressAr,
@@ -231,7 +254,7 @@ public class ApiCalls {
 
 
 
-        apis.EditProfile(authorization,request).enqueue(convertCallback(callback));
+        apis.EditProfile(language,authorization,request).enqueue(convertCallback(callback));
     }
 
 
@@ -262,7 +285,7 @@ public class ApiCalls {
         request.IsNameHidden = hidCompanyName;
 
 
-        apis.PostJobVacancy(authorization,request).enqueue(convertCallback(callback));
+        apis.PostJobVacancy(language,authorization,request).enqueue(convertCallback(callback));
     }
 
     public void editActiveVacancy(Integer eduId,Integer cvLang, Integer salaryId, Integer currencyId,
@@ -278,7 +301,7 @@ public class ApiCalls {
         request.RequiredCVLanguageId = cvLang;
 
 
-        apis.EditActiveJobVacancy(authorization,request).enqueue(convertCallback(callback));
+        apis.EditActiveJobVacancy(language,authorization,request).enqueue(convertCallback(callback));
     }
 
     public void editInActiveVacancy(String positionTitle, String jobDescription, String preRequisites,
@@ -308,7 +331,7 @@ public class ApiCalls {
         request.IsNameHidden = hidCompanyName;
 
 
-        apis.EditInActiveJobVacancy(authorization,request).enqueue(convertCallback(callback));
+        apis.EditInActiveJobVacancy(language,authorization,request).enqueue(convertCallback(callback));
     }
 
     public void editExpiredVacancy(String positionTitle, String jobDescription, String preRequisites,
@@ -338,13 +361,13 @@ public class ApiCalls {
         request.IsNameHidden = hidCompanyName;
 
 
-        apis.EditExpiredJobVacancy(authorization,request).enqueue(convertCallback(callback));
+        apis.EditExpiredJobVacancy(language,authorization,request).enqueue(convertCallback(callback));
     }
 
 
     public void getCountyCodes(CallbackWrapped<CountyCodeResponse> callback)
     {
-        apis.ListCountryCodes().enqueue(convertCallback(callback));
+        apis.ListCountryCodes(language).enqueue(convertCallback(callback));
     }
 
     public void signUp(String countyCode, String gsm, String email, String userName, String password, String firstName, String lastName,CallbackWrapped<RegisterResponse> callback)
@@ -357,9 +380,10 @@ public class ApiCalls {
         request.ConfirmPassword = password;
         request.FirstName = firstName;
         request.LastName = lastName;
+        request.Username = userName;
 
 
-        apis.Register(request).enqueue(convertCallback(callback));
+        apis.Register(language,request).enqueue(convertCallback(callback));
     }
 
     public void changeEmail(String newEmail, String password,CallbackWrapped<GeneralResponse> callback)
@@ -367,7 +391,7 @@ public class ApiCalls {
         ChangeEmailRequest request = new ChangeEmailRequest();
         request.NewEmail = newEmail;
         request.Password = password;
-        apis.ChangeEmail(authorization,request).enqueue(convertCallback(callback));
+        apis.ChangeEmail(language,authorization,request).enqueue(convertCallback(callback));
     }
 
     public void resendCodeChangeEmail(String newEmail, String password,CallbackWrapped<GeneralResponse> callback)
@@ -375,7 +399,7 @@ public class ApiCalls {
         ChangeEmailRequest request = new ChangeEmailRequest();
         request.NewEmail = newEmail;
         request.Password = password;
-        apis.ResendCodeChangeEmail(authorization,request).enqueue(convertCallback(callback));
+        apis.ResendCodeChangeEmail(language,authorization,request).enqueue(convertCallback(callback));
     }
 
     public void verifyChangeEmail(String email, String code,CallbackWrapped<GeneralResponse> callback)
@@ -383,7 +407,7 @@ public class ApiCalls {
         VerifyChangeEmailRequest request = new VerifyChangeEmailRequest();
         request.Email = email;
         request.Code = code;
-        apis.VerifyChangeEmail(authorization,request).enqueue(convertCallback(callback));
+        apis.VerifyChangeEmail(language,authorization,request).enqueue(convertCallback(callback));
     }
 
     public void changeGsm(String gsmCountyCode,String newGsm, String password,CallbackWrapped<GeneralResponse> callback)
@@ -392,16 +416,16 @@ public class ApiCalls {
         request.NewGsm = newGsm;
         request.NewGsmCountryCode = gsmCountyCode;
         request.Password = password;
-        apis.ChangeGsm(authorization,request).enqueue(convertCallback(callback));
+        apis.ChangeGsm(language,authorization,request).enqueue(convertCallback(callback));
     }
 
-    public void resendCodeChangeGsm(Integer gsmCountyCode,String newGsm, String password,CallbackWrapped<GeneralResponse> callback)
+    public void resendCodeChangeGsm(String gsmCountyCode,String newGsm, String password,CallbackWrapped<GeneralResponse> callback)
     {
         ChangeGsmRequest request = new ChangeGsmRequest();
         request.NewGsm = newGsm;
-        request.NewGsmCountryCode = gsmCountyCode.toString();
+        request.NewGsmCountryCode = gsmCountyCode;
         request.Password = password;
-        apis.ResendCodeChangeGsm(authorization,request).enqueue(convertCallback(callback));
+        apis.ResendCodeChangeGsm(language,authorization,request).enqueue(convertCallback(callback));
     }
 
     public void verifyChangeGsm(String countyCode,String gsm, String code,CallbackWrapped<GeneralResponse> callback)
@@ -410,30 +434,30 @@ public class ApiCalls {
         request.Gsm = gsm;
         request.Code = code;
         request.GsmCountryCode = countyCode;
-        apis.VerifyChangeGsm(authorization,request).enqueue(convertCallback(callback));
+        apis.VerifyChangeGsm(language,authorization,request).enqueue(convertCallback(callback));
     }
 
-    public void forgotPassword(String userName, String scope, CallbackWrapped<GeneralResponse> callback)
+    public void forgotPassword(String userName, CallbackWrapped<GeneralResponse> callback)
     {
         ForgotPasswordRequest request = new ForgotPasswordRequest();
         request.UserName = userName;
         request.Scope = scope;
 
-        apis.ForegotPassword(request).enqueue(convertCallback(callback));
+        apis.ForegotPassword(language,request).enqueue(convertCallback(callback));
 
     }
 
-    public void resendCodeForgotPassword(String userName, String scope,CallbackWrapped<GeneralResponse> callback)
+    public void resendCodeForgotPassword(String userName,CallbackWrapped<GeneralResponse> callback)
     {
         ForgotPasswordRequest request = new ForgotPasswordRequest();
         request.UserName = userName;
         request.Scope = scope;
 
-        apis.ResendCodeForgotPassword(request).enqueue(convertCallback(callback));
+        apis.ResendCodeForgotPassword(language,request).enqueue(convertCallback(callback));
 
     }
 
-    public void verifyForgotPassword(String userName, String scope,String code, String password,CallbackWrapped<GeneralResponse> callback)
+    public void verifyForgotPassword(String userName,String code, String password,CallbackWrapped<GeneralResponse> callback)
     {
         VerifyForgotPasswordRequest request = new VerifyForgotPasswordRequest();
         request.UserName = userName;
@@ -442,24 +466,34 @@ public class ApiCalls {
         request.Password = password;
         request.ConfirmPassword = password;
 
-        apis.ConfirmForgotPassword(request).enqueue(convertCallback(callback));
+        apis.ConfirmForgotPassword(language,request).enqueue(convertCallback(callback));
 
     }
 
-    public void verifyAccount(String code, String name,CallbackWrapped<GeneralResponse> callback)
+    public void verifyAccount(String code, String userName,CallbackWrapped<GeneralResponse> callback)
     {
         VerifyAccountRequest request = new VerifyAccountRequest();
         request.Code = code;
-        request.Username = name;
+        request.Username = userName;
 
-        apis.VerifyAccount(request).enqueue(convertCallback(callback));
+        apis.VerifyAccount(language,request).enqueue(convertCallback(callback));
     }
     public void resendCodeRegister(String name,CallbackWrapped<GeneralResponse> callback)
     {
         VerifyAccountRequest request = new VerifyAccountRequest();
         request.Username = name;
 
-        apis.ResendCodeRegister(request).enqueue(convertCallback(callback));
+        apis.ResendCodeRegister(language,request).enqueue(convertCallback(callback));
+    }
+
+    public void changePassword(String oldPassword, String newPassword, CallbackWrapped<GeneralResponse> callback)
+    {
+        ChangePasswordRequest request = new ChangePasswordRequest();
+        request.OldPassword = oldPassword;
+        request.NewPassword = newPassword;
+        request.ConfirmPassword = newPassword;
+
+        apis.ChangePassword(language,authorization,request).enqueue(convertCallback(callback));
     }
 
 

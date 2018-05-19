@@ -21,7 +21,7 @@ public class ProfileFragment extends AbstractFragment {
 
 
     @Bind(R.id.txtCompanyName) TextView txtCompanyName;
-    @Bind(R.id.txtCompanyName2) TextView txtCompanyName2;
+    @Bind(R.id.txtCompanyNameEn) TextView txtCompanyNameEn;
     @Bind(R.id.txtCityCounty) TextView txtCityCounty;
     @Bind(R.id.txtAddress) TextView txtAddress;
     @Bind(R.id.txtIndustry) TextView txtCompanyIndustry;
@@ -36,9 +36,7 @@ public class ProfileFragment extends AbstractFragment {
     @Bind(R.id.txtContactPosition) TextView txtContactPosition;
 
     @Bind(R.id.txtCompanyNameAr) TextView txtCompanyNameAr;
-    @Bind(R.id.txtCityCountyAr) TextView txtCityCountyAr;
     @Bind(R.id.txtAddressAr) TextView txtAddressAr;
-    @Bind(R.id.txtIndustryAr) TextView txtCompanyIndustryAr;
     @Bind(R.id.txtAboutAr) TextView txtAboutAr;
     @Bind(R.id.txtContactNameAr) TextView txtContactNameAr;
     @Bind(R.id.txtContactPositionAr) TextView txtContactPositionAr;
@@ -75,11 +73,19 @@ public class ProfileFragment extends AbstractFragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        setTitle(getString(R.string.profile));
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         txtCompanyName.setText(profile.EnName);
-        txtCompanyName2.setText(profile.ArName);
+        txtCompanyNameEn.setText(profile.EnName);
+        txtCompanyNameAr.setText(profile.ArName);
+
         txtCityCounty.setText(profile.City +", "+profile.Country);
         txtAddress.setText(profile.EnAddress);
         txtCompanyIndustry.setText(profile.Industry);
@@ -93,10 +99,7 @@ public class ProfileFragment extends AbstractFragment {
         txtContactEmail.setText(profile.PersonalDetailsEmail);
         txtContactGSM.setText(profile.PersonalDetailsGsm);
 
-        txtCompanyNameAr.setText(profile.ArName);
-        txtCityCountyAr.setText(profile.City +", "+profile.Country);
         txtAddressAr.setText(profile.ArAddress);
-        txtCompanyIndustryAr.setText(profile.Industry);
         txtAboutAr.setText(profile.ArAbout);
         txtContactNameAr.setText(profile.PersonalDetailsFullName);
         txtContactPositionAr.setText(profile.PersonalDetailsposition);

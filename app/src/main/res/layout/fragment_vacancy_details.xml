@@ -24,7 +24,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="100">
 
@@ -32,6 +32,7 @@
                         android:id="@+id/actionLogo"
                         android:layout_width="0dp"
                         android:layout_height="75dp"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="25"
                         android:src="@mipmap/profile"
                         app:civ_border_color="#FF000000"
@@ -74,7 +75,7 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="35"
                         android:orientation="vertical"
                         android:padding="@dimen/layout_padding">
@@ -220,7 +221,7 @@
             android:layout_height="wrap_content"
             style="@style/TextViewBody.Inactive"
             android:layout_marginTop="@dimen/dividerHeight"
-            android:text="Main Details" />
+            android:text="@string/main_information" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -318,7 +319,7 @@
             android:layout_marginTop="@dimen/dividerHeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="More Specifications" />
+            android:text="@string/more_specifications" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -361,7 +362,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     style="@style/TextViewBody.Active"
-                    android:text="Description"/>
+                    android:text="@string/description"/>
 
                 <TextView
                     android:id="@+id/txtJobDescription"

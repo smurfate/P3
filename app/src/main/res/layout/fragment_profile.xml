@@ -50,7 +50,8 @@
                 android:background="@android:color/transparent"
                 android:padding="17dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_edit" />
+                android:src="@drawable/ic_edit"
+                android:tint="@color/text_active" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView9"
@@ -94,7 +95,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/txtCompanyName2"
+                            android:id="@+id/txtCompanyNameEn"
                             style="@style/TextViewTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -123,20 +124,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
-                    android:text="City, County" />
+                    android:text="@string/city_county" />
 
                 <TextView
                     android:id="@+id/txtCityCounty"
-                    style="@style/TextViewBody.Inactive"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_lr"
-                    android:layout_marginRight="@dimen/margin_lr"
-                    android:layout_marginStart="@dimen/margin_shifted_start"
-                    android:text="Damascus Syria" />
-
-                <TextView
-                    android:id="@+id/txtCityCountyAr"
                     style="@style/TextViewBody.Inactive"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -158,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
-                    android:text="Adress" />
+                    android:text="@string/address" />
 
                 <TextView
                     android:id="@+id/txtAddress"
@@ -193,20 +184,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
-                    android:text="Company Industry" />
+                    android:text="@string/company_industry" />
 
                 <TextView
                     android:id="@+id/txtIndustry"
-                    style="@style/TextViewBody.Inactive"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_lr"
-                    android:layout_marginRight="@dimen/margin_lr"
-                    android:layout_marginStart="@dimen/margin_shifted_start"
-                    android:text="Damascus Syria" />
-
-                <TextView
-                    android:id="@+id/txtIndustryAr"
                     style="@style/TextViewBody.Inactive"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -228,11 +209,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
-                    android:text="About" />
+                    android:text="@string/about" />
 
                 <TextView
                     android:id="@+id/txtAbout"
-                    style="@style/TextViewBody.Inactive"
+                    style="@style/TextViewDetails.Inactive"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_lr"
@@ -242,7 +223,7 @@
 
                 <TextView
                     android:id="@+id/txtAboutAr"
-                    style="@style/TextViewBody.Inactive"
+                    style="@style/TextViewDetails.Inactive"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_lr"
@@ -263,7 +244,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
-                    android:text="Commercial Register" />
+                    android:text="@string/commercial_register" />
 
                 <TextView
                     android:id="@+id/txtCommercialRegister"
@@ -288,7 +269,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
-                    android:text="P.O.Box" />
+                    android:text="@string/p_o_box" />
 
                 <TextView
                     android:id="@+id/txtPBox"
@@ -320,7 +301,7 @@
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
                         android:layout_weight="1"
-                        android:text="Email" />
+                        android:text="@string/email" />
 
                     <ImageView
                         android:id="@+id/imgEditEmail"
@@ -360,7 +341,7 @@
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
                         android:layout_weight="1"
-                        android:text="Phone" />
+                        android:text="@string/phone" />
 
                     <ImageView
                         android:id="@+id/imgEditGsm"
@@ -388,7 +369,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorPrimary"
-                    android:text="Contact Person"
+                    android:text="@string/contact_person"
                     android:textColor="@color/white" />
 
                 <TextView
@@ -398,7 +379,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
-                    android:text="Full Name" />
+                    android:text="@string/full_name" />
 
                 <TextView
                     android:id="@+id/txtContactName"
@@ -433,7 +414,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
-                    android:text="Position" />
+                    android:text="@string/position" />
 
                 <TextView
                     android:id="@+id/txtContactPosition"
@@ -468,7 +449,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
-                    android:text="E-mail" />
+                    android:text="@string/email" />
 
                 <TextView
                     android:id="@+id/txtContactEmail"
@@ -493,7 +474,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_lr"
                     android:layout_marginRight="@dimen/margin_lr"
-                    android:text="GSM" />
+                    android:text="@string/gsm" />
 
                 <TextView
                     android:id="@+id/txtContactGSM"
@@ -505,18 +486,7 @@
                     android:layout_marginStart="@dimen/margin_shifted_start"
                     android:text="0999999999" />
 
-                <TextView
-                    style="@style/TextViewBody.Inactive"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_lr"
-                    android:layout_marginRight="@dimen/margin_lr"
-                    android:layout_marginStart="@dimen/margin_shifted_start"
-                    android:text="0999999999" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp" />
 
             </LinearLayout>
 

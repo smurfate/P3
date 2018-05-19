@@ -63,7 +63,7 @@ public class VacancyDetailsFragment extends AbstractFragment {
     @Override
     public void onStart() {
         super.onStart();
-        setTitle("Vacancy details");
+        setTitle(getString(R.string.vacancy_details));
     }
 
     @Override
@@ -87,9 +87,11 @@ public class VacancyDetailsFragment extends AbstractFragment {
         txtCompanyName.setText(details.CompanyName);
         txtCompanyIndustry.setText(details.CompanyIndustry);
         txtCompanyIndustry2.setText(details.CompanyIndustry);
-        txtViews.setText(details.ViewsCount.toString());
-        txtApplications.setText(details.ApplicationsCount.toString());
-        txtActiveStatus.setText(details.Status);
+        txtViews.setText(getString(R.string.views,details.ViewsCount));
+        txtApplications.setText(getString(R.string.napplications,details.ApplicationsCount));
+
+
+        txtPostedSince.setText(getString(R.string.days_ago,details.AddedSince));
 
         txtLocation.setText(details.WorkCity+", "+details.WorkCountry);
         txtRequiredExperience.setText(details.ExperienceNeededYears.toString());
@@ -102,7 +104,8 @@ public class VacancyDetailsFragment extends AbstractFragment {
             lnrViews.setVisibility(View.VISIBLE);
             lnrExpired.setVisibility(View.VISIBLE);
             line.setVisibility(View.VISIBLE);
-            txtExpiredSince.setText(details.ExpiresIn.toString());
+            txtActiveStatus.setText(R.string.active);
+            txtExpiredSince.setText(getString(R.string.expires_in,details.ExpiresIn));
         }
 
         if(details.isInactive())
@@ -110,6 +113,8 @@ public class VacancyDetailsFragment extends AbstractFragment {
             lnrViews.setVisibility(View.GONE);
             lnrExpired.setVisibility(View.GONE);
             line.setVisibility(View.GONE);
+            txtActiveStatus.setText(R.string.inactive);
+
         }
 
         if(details.isExpired())
@@ -117,7 +122,9 @@ public class VacancyDetailsFragment extends AbstractFragment {
             lnrViews.setVisibility(View.VISIBLE);
             lnrExpired.setVisibility(View.VISIBLE);
             line.setVisibility(View.VISIBLE);
-            txtExpiredSince.setText(details.ExpiredSince.toString());
+            txtExpiredSince.setText(getString(R.string.expired_since,details.ExpiredSince));
+            txtActiveStatus.setText(R.string.expired);
+
         }
 
         activity.actionIcon(true).setOnClickListener(new View.OnClickListener() {

@@ -7,17 +7,15 @@ package com.itland.employer.requests;
 public class RegisterRequest {
 /*
     {
-        "GsmCountryCode": "string",
-            "Gsm": "string",
-            "Email": "string",
-            "Password": "string",
-            "ConfirmPassword": "string",
-            "FirstName": "string",
-            "LastName": "string",
-            "ImageUrl": "string",
-            "BirthDate": "2018-05-09T15:45:15.696Z",
-            "Gender": 0,
-            "Scope": "string"
+      "GsmCountryCode": "string",
+      "Gsm": "string",
+      "Email": "string",
+      "Password": "string",
+      "ConfirmPassword": "string",
+      "FirstName": "string",
+      "LastName": "string",
+      "Username": "string",
+      "Scope": "string"
     }
 */
 
@@ -28,9 +26,7 @@ public class RegisterRequest {
     public String ConfirmPassword;
     public String FirstName;
     public String LastName;
-    public String ImageUrl;
-    public String BirthDate;
-    public Integer Gender;
+    public String Username;
     public String Scope;
 
 }

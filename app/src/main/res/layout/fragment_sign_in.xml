@@ -66,7 +66,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="Password"
+                        android:hint="@string/password"
                         android:inputType="textPassword"
                         android:text="Admin@123456" />
 
@@ -82,7 +82,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Login"
+                    android:text="@string/sign_in"
                     app:layout_constraintHorizontal_bias="0.502"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -109,7 +109,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="GSM/ E-mail/ Username"
+                        android:hint="@string/gsm_e_mail_username"
                         android:text="client@example.com" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -135,10 +135,9 @@
             style="@style/SpinKitView.Small.DoubleBounce"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:padding="10dp"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:SpinKit_Color="@color/colorPrimary" />
 
 
@@ -150,7 +149,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="Verify your account"
+            android:text="@string/verify_your_account"
             android:textAlignment="center" />
 
         <TextView
@@ -161,7 +160,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="Forget your password?"
+            android:text="@string/forget_your_password"
             android:textAlignment="center" />
 
 
@@ -170,7 +169,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/text_warning"
-            android:text="Sign Up"
+            android:text="@string/sign_up"
             android:textColor="@color/white" />
 
 

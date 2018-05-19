@@ -2,211 +2,207 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shadow"
     android:orientation="vertical">
 
-    <android.support.v7.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/layout_margin"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/actionLogo"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@mipmap/profile"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp" />
+
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/actionLogo"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:src="@mipmap/profile"
-                    app:civ_border_color="#FF000000"
-                    app:civ_border_width="2dp" />
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:layout_marginRight="@dimen/margin_lr"
-                    android:layout_marginLeft="@dimen/margin_lr"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/txtVacancyName"
-                        style="@style/TextViewBody"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        android:text="Front-end Developer"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/txtCompany"
-                        style="@style/TextViewDetails.Inactive"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="IT-Land" />
-
-                    <TextView
-                        android:id="@+id/txtCompanyType"
-                        style="@style/TextViewDetails"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Technology Industry" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="@dimen/layout_padding">
-
-                    <LinearLayout
-                        android:id="@+id/lnrActive"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView7"
-                            android:layout_width="@dimen/image_details"
-                            android:layout_height="@dimen/image_details"
-                            android:layout_weight="1"
-                            app:srcCompat="@drawable/ic_application" />
-
-                        <TextView
-                            android:id="@+id/txtActive"
-                            style="@style/TextViewDetails"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_lr"
-                            android:layout_marginRight="@dimen/margin_lr"
-                            android:layout_weight="1"
-                            android:text="In-active" />
-
-                    </LinearLayout>
-
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView13"
-                            android:layout_width="@dimen/image_details"
-                            android:layout_height="@dimen/image_details"
-                            android:layout_weight="1"
-                            app:srcCompat="@drawable/ic_clock" />
-
-                        <TextView
-                            android:id="@+id/txtDaysBegining"
-                            style="@style/TextViewDetails"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_lr"
-                            android:layout_marginRight="@dimen/margin_lr"
-                            android:layout_weight="1"
-                            android:text="14 days ago" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lnrExpired"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView14"
-                            android:layout_width="@dimen/image_details"
-                            android:layout_height="@dimen/image_details"
-                            android:layout_weight="1"
-                            android:tint="@color/text_error"
-                            app:srcCompat="@drawable/ic_clock" />
-
-                        <TextView
-                            android:id="@+id/txtDaysExpiring"
-                            style="@style/TextViewDetails"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_lr"
-                            android:layout_marginRight="@dimen/margin_lr"
-                            android:layout_weight="1"
-                            android:text="expiring in 2 days"
-                            android:textColor="@color/text_error" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <View
-                android:id="@+id/line"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/black" />
-
-            <LinearLayout
-                android:id="@+id/lnrViews"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dividerHeight"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView15"
-                    android:layout_width="@dimen/image_details"
-                    android:layout_height="@dimen/image_details"
-                    app:srcCompat="@drawable/ic_view" />
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txtViews"
+                    android:id="@+id/txtVacancyName"
+                    style="@style/TextViewBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="Front-end Developer"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txtCompany"
+                    style="@style/TextViewDetails.Inactive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="IT-Land" />
+
+                <TextView
+                    android:id="@+id/txtCompanyType"
                     style="@style/TextViewDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Technology Industry" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/layout_padding">
+
+                <LinearLayout
+                    android:id="@+id/lnrActive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_lr"
-                    android:layout_marginRight="@dimen/margin_lr"
-                    android:text="335 views" />
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="@dimen/image_details"
+                        android:layout_height="@dimen/image_details"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/ic_application" />
+
+                    <TextView
+                        android:id="@+id/txtActive"
+                        style="@style/TextViewDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_weight="1"
+                        android:text="In-active" />
+
+                </LinearLayout>
 
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <ImageView
-                    android:id="@+id/imageView17"
-                    android:layout_width="@dimen/image_details"
-                    android:layout_height="@dimen/image_details"
-                    android:tint="@color/text_warning"
-                    app:srcCompat="@drawable/ic_job" />
-
-                <TextView
-                    android:id="@+id/txtApplication"
-                    style="@style/TextViewDetails"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_lr"
-                    android:layout_marginRight="@dimen/margin_lr"
-                    android:text="Expired" />
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView13"
+                        android:layout_width="@dimen/image_details"
+                        android:layout_height="@dimen/image_details"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/ic_clock" />
+
+                    <TextView
+                        android:id="@+id/txtDaysBegining"
+                        style="@style/TextViewDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_weight="1"
+                        android:text="14 days ago" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnrExpired"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView14"
+                        android:layout_width="@dimen/image_details"
+                        android:layout_height="@dimen/image_details"
+                        android:layout_weight="1"
+                        android:tint="@color/text_error"
+                        app:srcCompat="@drawable/ic_clock" />
+
+                    <TextView
+                        android:id="@+id/txtDaysExpiring"
+                        style="@style/TextViewDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_lr"
+                        android:layout_marginRight="@dimen/margin_lr"
+                        android:layout_weight="1"
+                        android:text="expiring in 2 days"
+                        android:textColor="@color/text_error" />
+                </LinearLayout>
+
             </LinearLayout>
+
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+        <LinearLayout
+            android:id="@+id/lnrViews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dividerHeight"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="@dimen/image_details"
+                android:layout_height="@dimen/image_details"
+                app:srcCompat="@drawable/ic_view" />
+
+            <TextView
+                android:id="@+id/txtViews"
+                style="@style/TextViewDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:text="335 views" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/imageView17"
+                android:layout_width="@dimen/image_details"
+                android:layout_height="@dimen/image_details"
+                android:tint="@color/text_warning"
+                app:srcCompat="@drawable/ic_job" />
+
+            <TextView
+                android:id="@+id/txtApplication"
+                style="@style/TextViewDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_lr"
+                android:layout_marginRight="@dimen/margin_lr"
+                android:text="Expired" />
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

@@ -136,7 +136,7 @@ public class ResumeFragment extends AbstractFragment {
         lnrFilter.setVisibility(View.GONE);
         lnrChoose.setVisibility(View.VISIBLE);
         chooseType = ChooseType.city;
-        txtChoose.setText("Choose city");
+        txtChoose.setText(R.string.choose_city);
 
         radioGroup.removeAllViews();
         for (City city:response.Items)
@@ -157,22 +157,22 @@ public class ResumeFragment extends AbstractFragment {
         switch (chooseType)
         {
             case city:
-                txtChoose.setText("Choose City");
+                txtChoose.setText(getString(R.string.choose_city));
                 break;
             case edu:
-                txtChoose.setText("Choose Edu level");
+                txtChoose.setText(R.string.choose_edu);
                 break;
             case county:
-                txtChoose.setText("Choose county");
+                txtChoose.setText(R.string.choose_county);
                 break;
             case fieldOfWork:
-                txtChoose.setText("Choose field of work");
+                txtChoose.setText(R.string.choose_field_of_work);
                 break;
             case jobType:
-                txtChoose.setText("Choose job type");
+                txtChoose.setText(R.string.choose_job_type);
                 break;
             case cvLanguage:
-                txtChoose.setText("Choose cv language");
+                txtChoose.setText(R.string.choose_cv_language);
                 break;
         }
 
@@ -180,7 +180,7 @@ public class ResumeFragment extends AbstractFragment {
         radioGroup.removeAllViews();
 
         RadioButton rb = new RadioButton(activity);
-        rb.setText("Any");
+        rb.setText(getString(R.string.any));
         rb.setTag(null);
         radioGroup.addView(rb);
 
@@ -313,27 +313,27 @@ public class ResumeFragment extends AbstractFragment {
                     {
                         case city:
                             city = (City) radioButton.getTag();
-                            if(city != null) txtCity.setText(city.Name); else txtCity.setText("Any");
+                            if(city != null) txtCity.setText(city.Name); else txtCity.setText(getString(R.string.any));
                             break;
                         case edu:
                             eduLevel = (Indice) radioButton.getTag();
-                            if(eduLevel != null) txtEdu.setText(eduLevel.Value); else txtEdu.setText("Any");
+                            if(eduLevel != null) txtEdu.setText(eduLevel.Value); else txtEdu.setText(getString(R.string.any));
                             break;
                         case county:
                             county = (Indice) radioButton.getTag();
-                            if(county != null) txtCounty.setText(county.Value); else txtCounty.setText("Any");
+                            if(county != null) txtCounty.setText(county.Value); else txtCounty.setText(getString(R.string.any));
                             break;
                         case fieldOfWork:
                             fieldOfWork = (Indice) radioButton.getTag();
-                            if(fieldOfWork != null) txtFieldOfWork.setText(fieldOfWork.Value); else txtFieldOfWork.setText("Any");
+                            if(fieldOfWork != null) txtFieldOfWork.setText(fieldOfWork.Value); else txtFieldOfWork.setText(getString(R.string.any));
                             break;
                         case jobType:
                             jobType = (Indice) radioButton.getTag();
-                            if(jobType != null) txtJobType.setText(jobType.Value); else txtJobType.setText("Any");
+                            if(jobType != null) txtJobType.setText(jobType.Value); else txtJobType.setText(getString(R.string.any));
                             break;
                         case cvLanguage:
                             cvLanguage = (Indice) radioButton.getTag();
-                            if(cvLanguage != null) txtLanguage.setText(cvLanguage.Value); else txtLanguage.setText("Any");
+                            if(cvLanguage != null) txtLanguage.setText(cvLanguage.Value); else txtLanguage.setText(getString(R.string.any));
                             break;
                     }
 

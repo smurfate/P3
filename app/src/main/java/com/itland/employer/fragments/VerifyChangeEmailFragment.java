@@ -24,24 +24,25 @@ public class VerifyChangeEmailFragment extends AbstractFragment {
 
     @Bind(R.id.txtEmail) EditText txtEmail;
     @Bind(R.id.txtCode) EditText txtCode;
-    @Bind(R.id.txtPassword) EditText txtPassword;
     @Bind(R.id.txtResend) TextView txtResend;
     @Bind(R.id.btnSave)Button btnSave;
+
+    private String password;
 
     public VerifyChangeEmailFragment() {
         // Required empty public constructor
     }
 
-    public static VerifyChangeEmailFragment newInstance() {
+    public static VerifyChangeEmailFragment newInstance(String password) {
         VerifyChangeEmailFragment fragment = new VerifyChangeEmailFragment();
+        fragment.password = password;
         return fragment;
     }
 
     private boolean validateInputs()
     {
         return required(txtEmail)&&
-                required(txtCode)&&
-                required(txtPassword);
+                required(txtCode);
     }
 
     @Override
@@ -63,7 +64,6 @@ public class VerifyChangeEmailFragment extends AbstractFragment {
                 if(!validateInputs()) return;
                 String email = txtEmail.getText().toString();
                 String code = txtCode.getText().toString();
-                String password = txtPassword.getText().toString();
 
                 apiCalls.verifyChangeEmail(email, code, new CallbackWrapped<GeneralResponse>() {
                     @Override
@@ -83,7 +83,9 @@ public class VerifyChangeEmailFragment extends AbstractFragment {
         txtResend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiCalls.resendCodeChangeEmail("", "", new CallbackWrapped<GeneralResponse>() {
+                String email = txtEmail.getText().toString();
+
+                apiCalls.resendCodeChangeEmail(email, password, new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);

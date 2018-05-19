@@ -26,7 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Position Title" />
+                    android:hint="@string/position_title" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -34,7 +34,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Country" />
+                android:text="@string/country" />
 
             <Spinner
                 android:id="@+id/spnCounty"
@@ -46,7 +46,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="City" />
+                android:text="@string/city" />
 
             <Spinner
                 android:id="@+id/spnCity"
@@ -58,7 +58,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Required years of experience"
+                android:text="@string/required_years_of_experience"
                  />
 
             <Spinner
@@ -71,7 +71,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Minimum education degree level"
+                android:text="@string/min_edu_level"
                  />
 
             <Spinner
@@ -91,7 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Job description" />
+                    android:hint="@string/job_description" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -106,7 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Pre-requisites" />
+                    android:hint="@string/pre_requisites" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -114,7 +114,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Field of work" />
+                android:text="@string/field_of_work" />
 
             <Spinner
                 android:id="@+id/spnFieldOfWork"
@@ -126,7 +126,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Job title" />
+                android:text="@string/job_type" />
 
             <Spinner
                 android:id="@+id/spnJobTitle"
@@ -138,7 +138,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Military services" />
+                android:text="@string/military" />
 
             <Spinner
                 android:id="@+id/spnMilitaryService"
@@ -157,7 +157,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Key skills needed" />
+                    android:hint="@string/skills_needed" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -165,7 +165,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Salary" />
+                android:text="@string/salary" />
 
             <Spinner
                 android:id="@+id/spnSalary"
@@ -184,7 +184,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Benefits" />
+                    android:hint="@string/benefits" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -192,7 +192,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Required employees number"
+                android:text="@string/required_employees_number"
                  />
 
             <Spinner
@@ -214,7 +214,7 @@
                 style="@style/TextViewBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CV language" />
+                android:text="@string/cv_language" />
 
             <Spinner
                 android:id="@+id/spnCvLanguage"
@@ -225,7 +225,7 @@
             <android.support.v7.widget.SwitchCompat
                 android:id="@+id/switchHide"
                 style="@style/TextViewBody"
-                android:text="Hide Company Name"
+                android:text="@string/hide_company_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -241,7 +241,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="About the company" />
+                    android:hint="@string/about_the_company" />
 
             </android.support.design.widget.TextInputLayout>
 

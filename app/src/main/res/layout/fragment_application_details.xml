@@ -122,7 +122,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dividerHeight"
-            android:text="Cover letter" />
+            android:text="@string/cover_letter" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -143,7 +143,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dividerHeight"
-            android:text="Main Information" />
+            android:text="@string/main_information" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -260,7 +260,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dividerHeight"
-            android:text="View More"
+            android:text="@string/view_more"
             android:textAlignment="center"
             android:textSize="25sp" />
 

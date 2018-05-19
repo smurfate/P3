@@ -115,10 +115,10 @@ public class SignUpFragment extends AbstractResistrationFragment {
             @Override
             public void onClick(View v) {
 
-                validateInput();
+                if(!validateInput())return;
 
                 if(!txtPassword.getText().equals(txtConfirmPassword.getText())) {
-                    txtConfirmPassword.setError("Not matched");
+                    txtConfirmPassword.setError(getString(R.string.error_password_not_matched));
                     txtConfirmPassword.requestFocus();
                     return;
                 }

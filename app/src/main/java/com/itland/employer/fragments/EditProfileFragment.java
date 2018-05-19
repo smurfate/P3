@@ -3,6 +3,7 @@ package com.itland.employer.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,8 @@ public class EditProfileFragment extends AbstractFragment {
     @Bind(R.id.txtEmail) EditText txtEmail;
     @Bind(R.id.txtPhone) EditText txtPhone;
     @Bind(R.id.txtGsm) EditText txtGsm;
-    @Bind(R.id.txtContactName) EditText txtContactName;
+    @Bind(R.id.txtContactFirstName) EditText txtContactFirstName;
+    @Bind(R.id.txtContactLastName) EditText txtContactLastName;
     @Bind(R.id.txtContactPosition) EditText txtContactPosition;
     @Bind(R.id.txtContactEmail) EditText txtContactEmail;
     @Bind(R.id.txtContactGSM) EditText txtContactGSM;
@@ -49,13 +51,12 @@ public class EditProfileFragment extends AbstractFragment {
     @Bind(R.id.spnCity) Spinner spnCity;
     @Bind(R.id.spnIndustry) Spinner spnIndustry;
     @Bind(R.id.spnContactTitle) Spinner spnContactTitle;
-    @Bind(R.id.spnVisibility) Spinner spnVisibility;
+    @Bind(R.id.switchVisible) SwitchCompat switchCompat;
 
     HashMap<String,Indice> name2county = new HashMap<>();
     HashMap<String,City> name2city = new HashMap<>();
     HashMap<String,Indice> name2Industry = new HashMap<>();
     HashMap<String,Indice> name2ContactTitle = new HashMap<>();
-    HashMap<String,Indice> name2Visibility = new HashMap<>();
 
     public EditProfileFragment() {
         // Required empty public constructor
@@ -79,7 +80,7 @@ public class EditProfileFragment extends AbstractFragment {
     @Override
     public void onStart() {
         super.onStart();
-        setTitle("Edit Profile");
+        setTitle(getString(R.string.edit_profile));
     }
 
     @Override
@@ -94,15 +95,6 @@ public class EditProfileFragment extends AbstractFragment {
         activity.actionText(false);
     }
 
-    private boolean required(TextView tv)
-    {
-        if(isNullOrEmpty(tv.getText().toString())) {
-            tv.setError(getString(R.string.error_required));
-            tv.requestFocus();
-            return false;
-        }
-        return true;
-    }
 
     private boolean validateInput()
     {
@@ -113,7 +105,8 @@ public class EditProfileFragment extends AbstractFragment {
         required(txtCommercialRegister)&&
         required(txtContactEmail)&&
         required(txtContactGSM)&&
-        required(txtContactName)&&
+        required(txtContactFirstName)&&
+        required(txtContactLastName)&&
         required(txtContactPosition)&&
         required(txtEmail)&&
         required(txtGsm)&&
@@ -141,7 +134,8 @@ public class EditProfileFragment extends AbstractFragment {
                 String nameAr = txtNameAr.getText().toString();
                 String nameEn = txtNameEn.getText().toString();
                 String commercialRegister = txtCommercialRegister.getText().toString();
-                String contactFullName = txtContactName.getText().toString();
+                String contactFirstName = txtContactFirstName.getText().toString();
+                String contactLastName = txtContactLastName.getText().toString();
 
                 String contactEmail = txtContactEmail.getText().toString();
                 String contactGsm = txtContactGSM.getText().toString();
@@ -155,9 +149,9 @@ public class EditProfileFragment extends AbstractFragment {
                 Integer cityId = name2city.get(spnCity.getSelectedItem().toString()).Id;
                 Integer industryId = name2Industry.get(spnIndustry.getSelectedItem().toString()).Id;
                 Integer titleId = name2ContactTitle.get(spnContactTitle.getSelectedItem().toString()).Id;
-                Integer visibilityId = name2Visibility.get(spnVisibility.getSelectedItem().toString()).Id;
+                boolean visibility = switchCompat.isChecked();
 
-                apiCalls.editProfile(nameEn, nameAr, aboutAr, aboutEn, addressAr, addressEn, cityId, industryId, commercialRegister, Integer.parseInt(pbox), titleId, contactFullName, contactFullName, contactPosition, new CallbackWrapped<GeneralResponse>() {
+                apiCalls.editProfile(nameEn, nameAr, aboutAr, aboutEn, addressAr, addressEn, cityId, industryId, commercialRegister, Integer.parseInt(pbox), titleId, contactFirstName, contactLastName, contactPosition, new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);
@@ -257,6 +251,30 @@ public class EditProfileFragment extends AbstractFragment {
             }
         });
 
+        apiCalls.getFieldsOfWork(new CallbackWrapped<IndicesListResponse>() {
+            @Override
+            public void onResponse(IndicesListResponse response) {
+                List<String> indiceName = new ArrayList<>();
+                name2Industry.clear();
+
+                for(Indice indice : response.Items)
+                {
+                    name2Industry.put(indice.Value,indice);
+                    indiceName.add(indice.Value);
+
+                }
+                if(isSafe())
+                {
+                    ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
+                    spnIndustry.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(ErrorMessage errorMessage) {
+
+            }
+        });
 
 
 

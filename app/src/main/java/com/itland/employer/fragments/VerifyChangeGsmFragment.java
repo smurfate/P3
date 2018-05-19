@@ -35,9 +35,10 @@ public class VerifyChangeGsmFragment extends AbstractFragment {
     @Bind(R.id.spnCountyCode) Spinner spnCountyCode;
     @Bind(R.id.txtGsm) EditText txtGsm;
     @Bind(R.id.txtCode) EditText txtCode;
-    @Bind(R.id.txtPassword) EditText txtPassword;
     @Bind(R.id.txtResend) TextView txtResend;
     @Bind(R.id.btnSave) Button btnSave;
+
+    private String password;
 
     private HashMap<String,CountyCode> name2code = new HashMap<>();
 
@@ -45,8 +46,9 @@ public class VerifyChangeGsmFragment extends AbstractFragment {
         // Required empty public constructor
     }
 
-    public static VerifyChangeGsmFragment newInstance() {
+    public static VerifyChangeGsmFragment newInstance(String password) {
         VerifyChangeGsmFragment fragment = new VerifyChangeGsmFragment();
+        fragment.password = password;
         return fragment;
     }
 
@@ -63,8 +65,7 @@ public class VerifyChangeGsmFragment extends AbstractFragment {
     private boolean validateInput()
     {
         return required(txtGsm)&&
-                required(txtCode)&&
-                required(txtPassword);
+                required(txtCode);
     }
 
 
@@ -101,9 +102,11 @@ public class VerifyChangeGsmFragment extends AbstractFragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(!validateInput()) return;
+
                 String countyCode = name2code.get(spnCountyCode.getSelectedItem().toString()).DialCode;
                 String gsm = txtGsm.getText().toString();
-                String password = txtPassword.getText().toString();
                 String code = txtCode.getText().toString();
 
                 apiCalls.verifyChangeGsm(countyCode, gsm, code, new CallbackWrapped<GeneralResponse>() {
@@ -123,7 +126,12 @@ public class VerifyChangeGsmFragment extends AbstractFragment {
         txtResend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiCalls.resendCodeChangeGsm(0, "", "", new CallbackWrapped<GeneralResponse>() {
+                if(!required(txtGsm)) return;
+
+                String countyCode = name2code.get(spnCountyCode.getSelectedItem().toString()).DialCode;
+                String gsm = txtGsm.getText().toString();
+
+                apiCalls.resendCodeChangeGsm(countyCode, gsm, password, new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);

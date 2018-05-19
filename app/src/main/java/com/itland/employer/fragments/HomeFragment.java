@@ -17,10 +17,6 @@ import butterknife.ButterKnife;
 public class HomeFragment extends AbstractFragment {
 
 
-//    @Bind(R.id.fab) FloatingActionButton fab;
-//    @Bind(R.id.imgProfile) CircleImageView imgProfile;
-//    @Bind(R.id.toolbar) Toolbar toolbar;
-
     @Bind(R.id.btnSearch) ImageButton btnSearch;
 
     public HomeFragment() {

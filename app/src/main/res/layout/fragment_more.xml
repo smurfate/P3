@@ -88,6 +88,17 @@
                         android:layout_height="1dp"
                         android:background="@android:color/black" />
 
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/switchLanguage"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:text="English"
+                        android:textAlignment="center" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/black" />
+
                     <TextView
                         style="@style/TextViewBody"
                         android:layout_width="match_parent"

@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextViewBody"
-                android:text="Minimum education degree level" />
+                android:text="@string/minimum_education_degree_level" />
 
             <Spinner
                 android:id="@+id/spnMinEduDegree"
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextViewBody"
-                android:text="CV language" />
+                android:text="@string/cv_language" />
 
             <Spinner
                 android:id="@+id/spnCvLanguage"
@@ -50,7 +50,7 @@
             <android.support.v7.widget.SwitchCompat
                 android:id="@+id/switchHide"
                 style="@style/TextViewBody"
-                android:text="Hide Company Name"
+                android:text="@string/hide_company_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextViewBody"
-                android:text="Salary" />
+                android:text="@string/salary" />
 
             <Spinner
                 android:id="@+id/spnSalary"
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextViewBody"
-                android:text="Currency" />
+                android:text="@string/currency" />
 
             <Spinner
                 android:id="@+id/spnCurrency"
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextViewBody"
-                android:text="Field of work" />
+                android:text="@string/field_of_work" />
 
             <Spinner
                 android:id="@+id/spnFieldOfWork"
@@ -93,7 +93,7 @@
             <android.support.v7.widget.SwitchCompat
                 android:id="@+id/switchIsActive"
                 style="@style/TextViewBody"
-                android:text="Is active?"
+                android:text="@string/is_active"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

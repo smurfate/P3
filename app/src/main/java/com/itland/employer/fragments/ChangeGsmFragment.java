@@ -102,17 +102,17 @@ public class ChangeGsmFragment extends AbstractFragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateInput();
+                if(!validateInput()) return;
 
                 String countyCode = name2code.get(spnCountyCode.getSelectedItem().toString()).DialCode;
                 String gsm = txtGsm.getText().toString();
-                String password = txtPassword.getText().toString();
+                final String password = txtPassword.getText().toString();
 
                 apiCalls.changeGsm(countyCode, gsm, password, new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);
-                        navigator.gotoSubSection(VerifyChangeGsmFragment.newInstance());
+                        navigator.gotoSubSection(VerifyChangeGsmFragment.newInstance(password));
                     }
 
                     @Override

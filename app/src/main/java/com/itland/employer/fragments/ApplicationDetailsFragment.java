@@ -29,7 +29,7 @@ public class ApplicationDetailsFragment extends AbstractFragment {
     @Bind(R.id.txtCoverLetter) TextView txtCoverLetter;
     @Bind(R.id.txtPhone) TextView txtPhone;
     @Bind(R.id.txtEmail) TextView txtEmail;
-    @Bind(R.id.txtAddress) TextView txtAddrss;
+    @Bind(R.id.txtAddress) TextView txtAddress;
     @Bind(R.id.txtSite) TextView txtSite;
 
     @Bind(R.id.txtMore) TextView txtMore;
@@ -56,6 +56,11 @@ public class ApplicationDetailsFragment extends AbstractFragment {
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        setTitle(getString(R.string.application_details));
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -63,7 +68,7 @@ public class ApplicationDetailsFragment extends AbstractFragment {
 
         txtVacancyTitle.setText(details.VacancyTitle);
         txtCity.setText(details.City);
-        txtDays.setText(details.AppliedSince+" days ago");
+        txtDays.setText(getString(R.string.days_ago,details.AppliedSince));
         txtName.setText("");
         txtCoverLetter.setText(details.CoverLetter);
         txtPhone.setText("");

@@ -89,7 +89,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Years of experience"
+                    android:text="@string/years_of_experience"
                     android:textAlignment="center" />
 
             </LinearLayout>
