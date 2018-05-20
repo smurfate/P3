@@ -471,6 +471,8 @@ public class PostVacancyFragment extends AbstractFragment {
                                     @Override
                                     public void onResponse(GeneralResponse response) {
                                         toast(response);
+                                        navigator.goBackTo(VacanciesFragment.class);
+
                                     }
 
                                     @Override
@@ -488,6 +490,8 @@ public class PostVacancyFragment extends AbstractFragment {
                                     @Override
                                     public void onResponse(GeneralResponse response) {
                                         toast(response);
+                                        navigator.goBackTo(VacanciesFragment.class);
+
                                     }
 
                                     @Override

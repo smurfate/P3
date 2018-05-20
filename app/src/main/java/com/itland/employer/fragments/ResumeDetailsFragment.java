@@ -50,6 +50,7 @@ public class ResumeDetailsFragment extends AbstractFragment {
     @Bind(R.id.txtLastMonthSalary) TextView txtLastMonthSalary;
     @Bind(R.id.lnrExperience) LinearLayout lnrExperience;
     @Bind(R.id.lnrReference) LinearLayout lnrReference;
+    @Bind(R.id.lnrEducationDegree) LinearLayout lnrEducationDegree;
     @Bind(R.id.lnrSkills) LinearLayout lnrSkill;
     @Bind(R.id.lnrLanguage) LinearLayout lnrLanguage;
 
@@ -134,7 +135,7 @@ public class ResumeDetailsFragment extends AbstractFragment {
             holder.txtName.setText(skill.Name);
             holder.txtLevel.setText(skill.Level);
             holder.txtYearsOfExperience.setText(skill.YearsOfExperiences.toString());
-            holder.txtLastUsedYear.setText("Last used:" + skill.LastUsedYear.toString());
+            holder.txtLastUsedYear.setText(getString(R.string.last_used,skill.LastUsedYear));
             lnrSkill.addView(holder.getView());
         }
 
@@ -155,6 +156,7 @@ public class ResumeDetailsFragment extends AbstractFragment {
             holder.txtDescription.setText(degree.Description);
             holder.txtGraduationYear.setText(degree.GraduationYear.toString());
             holder.txtInstitution.setText(degree.EducationInstitution);
+            lnrEducationDegree.addView(holder.getView());
         }
 
     }

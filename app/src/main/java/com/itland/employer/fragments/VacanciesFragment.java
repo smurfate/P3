@@ -83,7 +83,7 @@ public class VacanciesFragment extends AbstractFragment {
         TabLayout.Tab activeTab = tabLayout.newTab();
         TabLayout.Tab inactiveTab = tabLayout.newTab();
         TabLayout.Tab expiredTab = tabLayout.newTab();
-        activeTab.setText(R.string.Active);
+        activeTab.setText(R.string.active);
         inactiveTab.setText(R.string.inactive);
         expiredTab.setText(R.string.expired);
         tabLayout.addTab(activeTab);

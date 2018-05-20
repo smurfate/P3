@@ -78,32 +78,35 @@ public class VacanciesAdapter extends BaseAdapter {
         viewHolder.txtVacancyName.setText(vacancy.Title);
         viewHolder.txtCompany.setVisibility(View.INVISIBLE);
         viewHolder.txtCompanyType.setText(vacancy.WorkingCity+", "+vacancy.WorkingCountry);
-        viewHolder.txtDaysBegining.setText(vacancy.PostedSince.toString() + " days ago");
+        viewHolder.txtDaysBegining.setText(parent.getContext().getString(R.string.days_ago,vacancy.PostedSince.toString()));
 
         switch (type)
         {
             case active:
                 viewHolder.lnrViews.setVisibility(View.VISIBLE);
                 viewHolder.line.setVisibility(View.VISIBLE);
-                viewHolder.txtViews.setText(vacancy.ViewsCount.toString() + " views");
-                viewHolder.txtApplication.setText(vacancy.ApplicationsCount.toString() + " application");
+                viewHolder.txtViews.setText(parent.getContext().getString(R.string.views,vacancy.ViewsCount));
+                viewHolder.txtApplication.setText(parent.getContext().getString(R.string.n_applications,vacancy.ApplicationsCount));
                 viewHolder.lnrExpired.setVisibility(View.VISIBLE);
-                viewHolder.txtDaysExpiring.setText("Expiring in "+vacancy.ExpiresIn.toString()+" days");
+                viewHolder.txtDaysExpiring.setText(parent.getContext().getString(R.string.expires_in,vacancy.ExpiresIn));
+                viewHolder.txtActive.setText(R.string.active);
 
                 break;
             case inactive:
                 viewHolder.lnrViews.setVisibility(View.GONE);
                 viewHolder.line.setVisibility(View.GONE);
                 viewHolder.lnrExpired.setVisibility(View.GONE);
+                viewHolder.txtActive.setText(R.string.inactive);
 
                 break;
             case expired:
                 viewHolder.lnrViews.setVisibility(View.VISIBLE);
                 viewHolder.line.setVisibility(View.VISIBLE);
-                viewHolder.txtViews.setText(vacancy.ViewsCount + " views");
-                viewHolder.txtApplication.setText(vacancy.ApplicationsCount.toString() + " application");
+                viewHolder.txtViews.setText(parent.getContext().getString(R.string.views,vacancy.ViewsCount));
+                viewHolder.txtApplication.setText(parent.getContext().getString(R.string.n_applications,vacancy.ApplicationsCount));
                 viewHolder.lnrExpired.setVisibility(View.VISIBLE);
-                viewHolder.txtDaysExpiring.setText("Expiring in "+vacancy.ExpiresIn.toString()+" days");
+                viewHolder.txtDaysExpiring.setText(parent.getContext().getString(R.string.expires_in,vacancy.ExpiresIn));
+                viewHolder.txtActive.setText(R.string.expired);
 
                 break;
         }

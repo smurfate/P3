@@ -88,13 +88,13 @@ public class VacancyDetailsFragment extends AbstractFragment {
         txtCompanyIndustry.setText(details.CompanyIndustry);
         txtCompanyIndustry2.setText(details.CompanyIndustry);
         txtViews.setText(getString(R.string.views,details.ViewsCount));
-        txtApplications.setText(getString(R.string.napplications,details.ApplicationsCount));
+        txtApplications.setText(getString(R.string.n_applications,details.ApplicationsCount));
 
 
-        txtPostedSince.setText(getString(R.string.days_ago,details.AddedSince));
+        txtPostedSince.setText(getString(R.string.days_ago,details.AddedSince.toString()));
 
         txtLocation.setText(details.WorkCity+", "+details.WorkCountry);
-        txtRequiredExperience.setText(details.ExperienceNeededYears.toString());
+        txtRequiredExperience.setText(getString(R.string.n_years_of_experience,details.ExperienceNeededYears));
         txtSkills.setText(details.SkillsNeeded);
         txtType.setText(details.Type);
         txtJobDescription.setText(details.JobDescription);

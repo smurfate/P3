@@ -203,6 +203,7 @@
     <string name="writing">الكتابة</string>
     <string name="speaking">المحادثة</string>
     <string name="years_of_experience">سنوات الخبرة</string>
+    <string name="n_years_of_experience">%1$s سنة خبرة</string>
     <string name="application_details">تفاصيل الطلب</string>
     <string name="days_ago">%1$s يوم</string>
     <string name="error_password_not_matched">لكمة المرور غير متطابقة</string>
@@ -216,14 +217,18 @@
     <string name="choose_field_of_work">حدد مجال عمل</string>
     <string name="choose_job_type">حدد نوع العمل </string>
     <string name="choose_cv_language">حدد لغة السيرة</string>
-    <string name="Active">فعالة</string>
+    <string name="active">فعالة</string>
     <string name="inactive">غير فعالة</string>
     <string name="expired">منتهية</string>
     <string name="vacancy_details">تفاصيل السيرة</string>
     <string name="views">%1$d مشاهدة</string>
-    <string name="napplications">%1$d طلب</string>
+    <string name="n_applications">%1$d طلب</string>
     <string name="expires_in">ينتهي خلال %1$d</string>
     <string name="expired_since">منتهي من %1$d</string>
     <string name="profile">الحساب</string>
+    <string name="read">مقروء</string>
+    <string name="unread">غير مقروء</string>
+    <string name="last_used">اخر استخدام %1$d</string>
+
 
 </resources>

@@ -57,15 +57,15 @@ public class ApplicationsAdapter extends BaseAdapter {
 
         viewHolder.txtVacancy.setText(application.VacancyTitle);
         viewHolder.txtCity.setText(application.VacancyWorkingCity);
-        viewHolder.txtDays.setText(application.AppliedSince+" days ago");
+        viewHolder.txtDays.setText(parent.getContext().getString(R.string.days_ago,application.AppliedSince.toString()));
         if(application.isRead())
         {
-            viewHolder.txtRead.setText("Read");
+            viewHolder.txtRead.setText(R.string.read);
             viewHolder.imgRead.setImageResource(R.drawable.ic_read);
         }
         else
         {
-            viewHolder.txtRead.setText("Unread");
+            viewHolder.txtRead.setText(R.string.unread);
             viewHolder.imgRead.setImageResource(R.drawable.ic_unread);
         }
         viewHolder.txtName.setText(application.SeekerFullName);
