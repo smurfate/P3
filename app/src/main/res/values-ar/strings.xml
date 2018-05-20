@@ -229,6 +229,9 @@
     <string name="read">مقروء</string>
     <string name="unread">غير مقروء</string>
     <string name="last_used">اخر استخدام %1$d</string>
+    <string name="n_active_vacancies">%1$d شواغر فعالة</string>
+    <string name="n_expired_vacancies">%1$d شواغر منتهية</string>
+    <string name="n_views_this_week">%1$d مشاهدة لهذا الاسبوع</string>
 
 
 </resources>

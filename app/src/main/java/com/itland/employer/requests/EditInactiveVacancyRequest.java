@@ -25,8 +25,10 @@ public class EditInactiveVacancyRequest {
             "About": "string"
     }
 */
+    public Integer Id;
     public String Title;
     public Integer CityId;
+    public String SkillsNeeded;
     public Integer RequiredYearsOfExperienceId;
     public Integer MinEducationDegreeId;
     public String JobDescription;

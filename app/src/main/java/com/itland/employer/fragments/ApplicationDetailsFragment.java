@@ -67,17 +67,18 @@ public class ApplicationDetailsFragment extends AbstractFragment {
         super.onViewCreated(view, savedInstanceState);
 
         txtVacancyTitle.setText(details.VacancyTitle);
-        txtCity.setText(details.City);
+        txtCity.setText(details.City +", "+details.Country);
         txtDays.setText(getString(R.string.days_ago,details.AppliedSince));
-        txtName.setText("");
+        txtName.setText(details.Name);
         txtCoverLetter.setText(details.CoverLetter);
-        txtPhone.setText("");
+        txtPhone.setText(details.PhoneNumber);
         txtEmail.setText("");
+        txtSite.setText(details.Website);
 
         txtMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiCalls.getResume(Integer.parseInt(details.ResumeId), new CallbackWrapped<ResumeDetails>() {
+                apiCalls.getResume(details.ResumeId, new CallbackWrapped<ResumeDetails>() {
                     @Override
                     public void onResponse(ResumeDetails response) {
                         navigator.gotoSubSection(ResumeDetailsFragment.newInstance(response));

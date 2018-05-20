@@ -13,7 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.itland.employer.R;
+import com.itland.employer.entities.Country;
 import com.itland.employer.responses.CitiesListResponse;
+import com.itland.employer.responses.CountyListResponse;
 import com.itland.employer.responses.GeneralResponse;
 import com.itland.employer.responses.IndicesListResponse;
 import com.itland.employer.abstracts.AbstractFragment;
@@ -52,7 +54,7 @@ public class PostVacancyFragment extends AbstractFragment {
     @Bind(R.id.spnCvLanguage) Spinner spnCvLanguage;
     @Bind(R.id.switchPhoto) SwitchCompat switchPhoto;
 
-    private HashMap<String,Indice> name2county = new HashMap<>();
+    private HashMap<String,Country> name2county = new HashMap<>();
     private HashMap<String,City> name2city = new HashMap<>();
     private HashMap<String,Indice> name2years = new HashMap<>();
     private HashMap<String,Indice> name2edu = new HashMap<>();
@@ -124,16 +126,16 @@ public class PostVacancyFragment extends AbstractFragment {
 
     private void initSpinners()
     {
-        apiCalls.getCountries(new CallbackWrapped<IndicesListResponse>() {
+        apiCalls.getCountries(new CallbackWrapped<CountyListResponse>() {
             @Override
-            public void onResponse(IndicesListResponse response) {
+            public void onResponse(CountyListResponse response) {
                 List<String> indiceName = new ArrayList<>();
                 name2county.clear();
 
-                for(Indice indice : response.Items)
+                for(Country indice : response.Items)
                 {
-                    name2county.put(indice.Value,indice);
-                    indiceName.add(indice.Value);
+                    name2county.put(indice.Name,indice);
+                    indiceName.add(indice.Name);
 
                 }
                 if(isSafe())
@@ -464,7 +466,7 @@ public class PostVacancyFragment extends AbstractFragment {
                 {
                     if(details.isExpired())
                     {
-                        apiCalls.editExpiredVacancy(positionTitle, jobDescription, preRequisits, skillsNeeded,
+                        apiCalls.editExpiredVacancy(details.Id,positionTitle, jobDescription, preRequisits, skillsNeeded,
                                 benefits, about, countyId, cityId, yearsId, eduId, fieldId, titleId, militaryId,
                                 salaryId, employeeNumberId, switchPhoto.isChecked(), cvLangId,
                                 switchHideCompanyName.isChecked(), new CallbackWrapped<GeneralResponse>() {
@@ -483,7 +485,7 @@ public class PostVacancyFragment extends AbstractFragment {
 
                     }else if(details.isInactive())
                     {
-                        apiCalls.editInActiveVacancy(positionTitle, jobDescription, preRequisits, skillsNeeded,
+                        apiCalls.editInActiveVacancy(details.Id,positionTitle, jobDescription, preRequisits, skillsNeeded,
                                 benefits, about, countyId, cityId, yearsId, eduId, fieldId, titleId, militaryId,
                                 salaryId, employeeNumberId, switchPhoto.isChecked(), cvLangId,
                                 switchHideCompanyName.isChecked(), new CallbackWrapped<GeneralResponse>() {
@@ -503,7 +505,6 @@ public class PostVacancyFragment extends AbstractFragment {
                     }
                 }
 
-                toast("Saved");
             }
         });
     }

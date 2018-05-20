@@ -13,7 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.itland.employer.R;
+import com.itland.employer.entities.Country;
 import com.itland.employer.responses.CitiesListResponse;
+import com.itland.employer.responses.CountyListResponse;
 import com.itland.employer.responses.GeneralResponse;
 import com.itland.employer.responses.IndicesListResponse;
 import com.itland.employer.abstracts.AbstractFragment;
@@ -53,17 +55,20 @@ public class EditProfileFragment extends AbstractFragment {
     @Bind(R.id.spnContactTitle) Spinner spnContactTitle;
     @Bind(R.id.switchVisible) SwitchCompat switchCompat;
 
-    HashMap<String,Indice> name2county = new HashMap<>();
+    HashMap<String,Country> name2county = new HashMap<>();
     HashMap<String,City> name2city = new HashMap<>();
     HashMap<String,Indice> name2Industry = new HashMap<>();
     HashMap<String,Indice> name2ContactTitle = new HashMap<>();
+
+    private Integer profileId;
 
     public EditProfileFragment() {
         // Required empty public constructor
     }
 
-    public static EditProfileFragment newInstance() {
+    public static EditProfileFragment newInstance(Integer id) {
         EditProfileFragment fragment = new EditProfileFragment();
+        fragment.profileId = id;
         return fragment;
     }
 
@@ -151,7 +156,7 @@ public class EditProfileFragment extends AbstractFragment {
                 Integer titleId = name2ContactTitle.get(spnContactTitle.getSelectedItem().toString()).Id;
                 boolean visibility = switchCompat.isChecked();
 
-                apiCalls.editProfile(nameEn, nameAr, aboutAr, aboutEn, addressAr, addressEn, cityId, industryId, commercialRegister, Integer.parseInt(pbox), titleId, contactFirstName, contactLastName, contactPosition, new CallbackWrapped<GeneralResponse>() {
+                apiCalls.editProfile(profileId,nameEn, nameAr, aboutAr, aboutEn, addressAr, addressEn, cityId, industryId, commercialRegister, Integer.parseInt(pbox), titleId, contactFirstName, contactLastName, contactPosition, new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);
@@ -198,16 +203,16 @@ public class EditProfileFragment extends AbstractFragment {
             }
         });
 
-        apiCalls.getCountries(new CallbackWrapped<IndicesListResponse>() {
+        apiCalls.getCountries(new CallbackWrapped<CountyListResponse>() {
             @Override
-            public void onResponse(IndicesListResponse response) {
+            public void onResponse(CountyListResponse response) {
                 List<String> indiceName = new ArrayList<>();
                 name2county.clear();
 
-                for(Indice indice : response.Items)
+                for(Country indice : response.Items)
                 {
-                    name2county.put(indice.Value,indice);
-                    indiceName.add(indice.Value);
+                    name2county.put(indice.Name,indice);
+                    indiceName.add(indice.Name);
 
                 }
                 if(isSafe())

@@ -16,6 +16,7 @@ public class PostVacancyRequest {
             "FieldOfWorkId": 0,
             "JobTypeId": 0,
             "MilitaryServiceId": 0,
+            "SkillsNeeded": "string",
             "SalaryId": 0,
             "Benefits": "string",
             "RequiredEmployeesCount": 0,
@@ -31,6 +32,7 @@ public class PostVacancyRequest {
     public Integer MinEducationDegreeId;
     public String JobDescription;
     public String PreRequisites;
+    public String SkillsNeeded;
     public Integer FieldOfWorkId;
     public Integer JobTypeId;
     public Integer MilitaryServiceId;

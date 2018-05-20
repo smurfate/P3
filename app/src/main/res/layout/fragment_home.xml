@@ -2,6 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -27,10 +28,10 @@
                 android:paddingTop="55dp">
 
                 <TextView
+                    android:id="@+id/txtCompanyName"
                     style="@style/TextViewTitle.Active"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Biggest Company"
                     android:textAlignment="center" />
             </LinearLayout>
 
@@ -65,257 +66,109 @@
             android:orientation="vertical"
             tools:context="com.itland.employer.fragments.HomeFragment">
 
-            <android.support.v7.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dividerHeight">
+                android:background="@drawable/gradient"
+                android:padding="@dimen/layout_padding"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:srcCompat="@drawable/ic_application" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txtApplications"
+                    style="@style/TextViewTitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/layout_margin"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/imageView8"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:srcCompat="@drawable/ic_company" />
-
-                    <TextView
-                        style="@style/TextViewTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_lr"
-                        android:layout_marginRight="@dimen/margin_lr"
-                        android:text="first item"
-                        android:textStyle="bold" />
+                    android:layout_marginLeft="@dimen/margin_lr"
+                    android:layout_marginRight="@dimen/margin_lr"
+                    android:textStyle="bold" />
 
 
-                </LinearLayout>
+            </LinearLayout>
 
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dividerHeight">
+                android:layout_marginTop="@dimen/dividerHeight"
+                android:padding="@dimen/layout_padding"
+                android:background="@drawable/gradient2"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:srcCompat="@drawable/ic_vacancy" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txtActiveVacancy"
+                    style="@style/TextViewTitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/layout_margin"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:srcCompat="@drawable/ic_company" />
-
-                    <TextView
-                        style="@style/TextViewTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_lr"
-                        android:layout_marginRight="@dimen/margin_lr"
-                        android:text="first item"
-                        android:textStyle="bold" />
+                    android:layout_marginLeft="@dimen/margin_lr"
+                    android:layout_marginRight="@dimen/margin_lr"
+                    android:textStyle="bold" />
 
 
-                </LinearLayout>
+            </LinearLayout>
 
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dividerHeight">
+                android:layout_marginTop="@dimen/dividerHeight"
+                android:gravity="center_vertical"
+                android:background="@drawable/gradient3"
+                android:orientation="horizontal"
+                android:padding="8dp">
 
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:srcCompat="@drawable/ic_vacancy" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txtExpiredVacancy"
+                    style="@style/TextViewTitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:srcCompat="@drawable/ic_company" />
-
-                    <TextView
-                        style="@style/TextViewTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_lr"
-                        android:layout_marginRight="@dimen/margin_lr"
-                        android:text="first item"
-                        android:textStyle="bold" />
+                    android:layout_marginLeft="@dimen/margin_lr"
+                    android:layout_marginRight="@dimen/margin_lr"
+                    android:textStyle="bold" />
 
 
-                </LinearLayout>
+            </LinearLayout>
 
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dividerHeight">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="@drawable/gradient4"
+                android:layout_marginTop="@dimen/dividerHeight"
+                android:padding="@dimen/layout_padding"
+                >
 
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:srcCompat="@drawable/ic_view" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txtViews"
+                    style="@style/TextViewTitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:srcCompat="@drawable/ic_company" />
-
-                    <TextView
-                        style="@style/TextViewTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_lr"
-                        android:layout_marginRight="@dimen/margin_lr"
-                        android:text="first item" />
+                    android:layout_marginLeft="@dimen/margin_lr"
+                    android:layout_marginRight="@dimen/margin_lr" />
 
 
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dividerHeight">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:srcCompat="@drawable/ic_company" />
-
-                    <TextView
-                        style="@style/TextViewTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_lr"
-                        android:layout_marginRight="@dimen/margin_lr"
-                        android:text="first item" />
-
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dividerHeight">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:srcCompat="@drawable/ic_company" />
-
-                    <TextView
-                        style="@style/TextViewTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_lr"
-                        android:layout_marginRight="@dimen/margin_lr"
-                        android:text="first item" />
-
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dividerHeight">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:srcCompat="@drawable/ic_company" />
-
-                    <TextView
-                        style="@style/TextViewTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_lr"
-                        android:layout_marginRight="@dimen/margin_lr"
-                        android:text="first item" />
-
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dividerHeight">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:srcCompat="@drawable/ic_company" />
-
-                    <TextView
-                        style="@style/TextViewTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_lr"
-                        android:layout_marginRight="@dimen/margin_lr"
-                        android:text="first item" />
-
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
+            </LinearLayout>
 
 
         </LinearLayout>

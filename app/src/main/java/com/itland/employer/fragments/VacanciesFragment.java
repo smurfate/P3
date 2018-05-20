@@ -8,6 +8,7 @@ import android.support.design.widget.TabLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -37,6 +38,8 @@ public class VacanciesFragment extends AbstractFragment {
     private VacanciesAdapter activeVacanciesAdapter;
     private VacanciesAdapter inactiveVacanciesAdapter;
     private VacanciesAdapter expiredVacanciesAdapter;
+
+    private int index = 0;
 
 
     public VacanciesFragment() {
@@ -122,7 +125,7 @@ public class VacanciesFragment extends AbstractFragment {
         });
 
 
-        apiCalls.getVacancies(0, new CallbackWrapped<MyVacanciesResponse>() {
+        apiCalls.getVacancies(index, new CallbackWrapped<MyVacanciesResponse>() {
             @Override
             public void onResponse(MyVacanciesResponse response) {
                 activeVacanciesAdapter = new VacanciesAdapter(response.Items, VacanciesAdapter.Type.active);
@@ -155,8 +158,38 @@ public class VacanciesFragment extends AbstractFragment {
 
                     }
                 });
+
             }
         });
+
+        lstActive.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if(lstActive.getLastVisiblePosition()==totalItemCount)
+                {
+                    index +=1;
+                    apiCalls.getVacancies(index, new CallbackWrapped<MyVacanciesResponse>() {
+                        @Override
+                        public void onResponse(MyVacanciesResponse response) {
+                            activeVacanciesAdapter.loadMore(response.Items);
+                            inactiveVacanciesAdapter.loadMore(response.Items);
+                            expiredVacanciesAdapter.loadMore(response.Items);
+                        }
+
+                        @Override
+                        public void onFailure(ErrorMessage errorMessage) {
+
+                        }
+                    });
+                }
+            }
+        });
+
 
         lstInActive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -236,4 +236,7 @@
     <string name="read">Read</string>
     <string name="unread">Unread</string>
     <string name="last_used">Last used: %1$d</string>
+    <string name="n_active_vacancies">%1$d Active Vacancies</string>
+    <string name="n_expired_vacancies">%1$d Expired Vacancies</string>
+    <string name="n_views_this_week">%1$d Views this week</string>
 </resources>

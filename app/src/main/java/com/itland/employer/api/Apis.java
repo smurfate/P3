@@ -17,8 +17,10 @@ import com.itland.employer.requests.VerifyChangeGsmRequest;
 import com.itland.employer.requests.VerifyForgotPasswordRequest;
 import com.itland.employer.responses.CitiesListResponse;
 import com.itland.employer.responses.CountyCodeResponse;
+import com.itland.employer.responses.CountyListResponse;
 import com.itland.employer.responses.FilterJobSeekerResponse;
 import com.itland.employer.responses.GeneralResponse;
+import com.itland.employer.responses.HomeResponse;
 import com.itland.employer.responses.IndicesListResponse;
 import com.itland.employer.responses.JobApplicationsListResponse;
 import com.itland.employer.responses.MyVacanciesResponse;
@@ -95,7 +97,13 @@ public interface Apis {
     Call<GeneralResponse> EditExpiredJobVacancy(@Header("Language") String language,@Header("Authorization") String authorization, @Body EditExpiredVacancyRequest request);
 
     @GET("/IRecruitment.Api/api/Cities/List")
-    Call<CitiesListResponse> CitiesList(@Header("Language") String language,@Query("page") Integer page);
+    Call<CitiesListResponse> CitiesList(@Header("Language") String language,@Query("page") Integer page,@Query("pageLength") Integer pageLength);
+
+    @GET("/IRecruitment.Api/api/Countries/List")
+    Call<CountyListResponse> CountriesList(@Header("Language") String language, @Query("page") Integer page, @Query("pageLength") Integer pageLength);
+
+    @GET("/IRecruitment.Api/api/Cities/ListCountryCities")
+    Call<CitiesListResponse> ListCountryCities(@Header("Language") String language,@Query("page") Integer page,@Query("pageLength") Integer pageLength,@Query("countryId") Integer countryId);
 
     @GET("/IRecruitment.Api/api/Indices/ListJobTypes")
     Call<IndicesListResponse> ListJobTypes(@Header("Language") String language);
@@ -172,10 +180,10 @@ public interface Apis {
     @POST("/IRecruitment.Api/api/Account/VerifyChangeGsm")
     Call<GeneralResponse> VerifyChangeGsm(@Header("Language") String language,@Header("Authorization") String authorization, @Body VerifyChangeGsmRequest request);
 
-    @POST("/IRecruitment.Api/api/Account/ForgotPassowrd")
+    @POST("/IRecruitment.Api/api/Account/ForgotPassword")
     Call<GeneralResponse> ForegotPassword(@Header("Language") String language,@Body ForgotPasswordRequest request);
 
-    @POST("/IRecruitment.Api/api/Account/ConfirmForgotPassowrd")
+    @POST("/IRecruitment.Api/api/Account/ConfirmForgotPassword")
     Call<GeneralResponse> ConfirmForgotPassword(@Header("Language") String language,@Body VerifyForgotPasswordRequest request);
 
     @POST("/IRecruitment.Api/api/Account/ResendCodeForgotPassword")
@@ -189,6 +197,12 @@ public interface Apis {
 
     @POST("/IRecruitment.Api/api/Account/ChangePassword")
     Call<GeneralResponse> ChangePassword(@Header("Language") String language,@Header("Authorization") String authorization, @Body ChangePasswordRequest request);
+
+    @POST("/IRecruitment.Api/api/Account/Logout")
+    Call<GeneralResponse> Logout(@Header("Language") String language);
+
+    @POST("/IRecruitment.Api/api/EmpHome/Home")
+    Call<HomeResponse> Home(@Header("Language") String language,@Header("Authorization") String authorization);
 
 
 

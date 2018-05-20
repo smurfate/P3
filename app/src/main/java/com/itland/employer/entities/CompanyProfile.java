@@ -9,6 +9,7 @@ import com.itland.employer.abstracts.AbstractEntity;
 public class CompanyProfile extends AbstractEntity {
 /*
     {
+        "Id":0
         "ArName": "string",
             "EnName": "string",
             "ArAddress": "string",
@@ -36,6 +37,7 @@ public class CompanyProfile extends AbstractEntity {
     }
 */
 
+    public Integer Id;
     public String ArName;
     public String EnName;
     public String ArAddress;

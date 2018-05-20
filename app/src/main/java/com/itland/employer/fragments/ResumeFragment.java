@@ -20,7 +20,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.itland.employer.R;
+import com.itland.employer.entities.Country;
 import com.itland.employer.responses.CitiesListResponse;
+import com.itland.employer.responses.CountyListResponse;
 import com.itland.employer.responses.FilterJobSeekerResponse;
 import com.itland.employer.responses.IndicesListResponse;
 import com.itland.employer.abstracts.AbstractFragment;
@@ -139,7 +141,24 @@ public class ResumeFragment extends AbstractFragment {
         txtChoose.setText(R.string.choose_city);
 
         radioGroup.removeAllViews();
-        for (City city:response.Items)
+        for (City city:response.getActiveCities())
+        {
+            RadioButton radioButton = new RadioButton(activity);
+            radioButton.setText(city.Name);
+            radioButton.setTag(city);
+            radioGroup.addView(radioButton);
+        }
+    }
+
+    private void showChoose(CountyListResponse response)
+    {
+        lnrFilter.setVisibility(View.GONE);
+        lnrChoose.setVisibility(View.VISIBLE);
+        chooseType = ChooseType.city;
+        txtChoose.setText(R.string.choose_county);
+
+        radioGroup.removeAllViews();
+        for (Country city:response.getActiveCounties())
         {
             RadioButton radioButton = new RadioButton(activity);
             radioButton.setText(city.Name);
@@ -389,10 +408,10 @@ public class ResumeFragment extends AbstractFragment {
         txtCounty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiCalls.getCountries(new CallbackWrapped<IndicesListResponse>() {
+                apiCalls.getCountries(new CallbackWrapped<CountyListResponse>() {
                     @Override
-                    public void onResponse(IndicesListResponse response) {
-                        showChoose(response,ChooseType.county);
+                    public void onResponse(CountyListResponse response) {
+                        showChoose(response);
                     }
 
                     @Override

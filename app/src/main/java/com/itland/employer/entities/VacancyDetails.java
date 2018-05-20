@@ -9,7 +9,8 @@ import com.itland.employer.abstracts.AbstractEntity;
 public class VacancyDetails extends AbstractEntity {
 /*
     {
-        "Title": "string",
+            "Id": 0,
+            "Title": "string",
             "CompanyLogoUrl": "string",
             "CompanyName": "string",
             "CompanyIndustry": "string",
@@ -45,6 +46,7 @@ public class VacancyDetails extends AbstractEntity {
     }
 */
 
+    public Integer Id;
     public String Title;
     public String CompanyLogoUrl;
     public String CompanyName;

@@ -1,6 +1,7 @@
 package com.itland.employer.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.SwitchCompat;
@@ -8,10 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.TextView;
 
 import com.itland.employer.R;
 import com.itland.employer.abstracts.AbstractActivity;
 import com.itland.employer.abstracts.AbstractFragment;
+import com.itland.employer.api.CallbackWrapped;
+import com.itland.employer.api.ErrorMessage;
+import com.itland.employer.registration.RegistrationActivity;
+import com.itland.employer.responses.GeneralResponse;
+import com.itland.employer.util.PrefUtil;
+import com.itland.employer.util.SharedPreferencesKeys;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,6 +28,7 @@ public class MoreFragment extends AbstractFragment {
 
 
     @Bind(R.id.switchLanguage) SwitchCompat switchLanguage;
+    @Bind(R.id.txtSignout) TextView txtSignout;
 
     public MoreFragment() {
         // Required empty public constructor
@@ -66,6 +75,27 @@ public class MoreFragment extends AbstractFragment {
                 AbstractActivity.Lang lang;
                 if(activity.getLocale().equals(AbstractActivity.Lang.ar)) lang = AbstractActivity.Lang.en; else lang= AbstractActivity.Lang.ar;
                 activity.setLocale(lang,true);
+            }
+        });
+
+        txtSignout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                apiCalls.signOut(new CallbackWrapped<GeneralResponse>() {
+                    @Override
+                    public void onResponse(GeneralResponse response) {
+                        PrefUtil.setStringPreference(SharedPreferencesKeys.token,"");
+                    }
+
+                    @Override
+                    public void onFailure(ErrorMessage errorMessage) {
+                        PrefUtil.setStringPreference(SharedPreferencesKeys.token,"");
+                        Intent intent = new Intent(activity, RegistrationActivity.class);
+                        startActivity(intent);
+                        activity.finish();
+
+                    }
+                });
             }
         });
 

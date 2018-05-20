@@ -7,23 +7,23 @@ package com.itland.employer.requests;
 public class EditCompanyProfileRequest {
 /*
     {
-        "Id": 0,
-            "ArLogoUrl": "string",
-            "EnLogoUrl": "string",
-            "ArName": "string",
-            "EnName": "string",
-            "CityId": 0,
-            "ArAddress": "string",
-            "EnAddress": "string",
-            "IndustryId": 0,
-            "ArAbout": "string",
-            "EnAbout": "string",
-            "CommercialRegister": "string",
-            "POBox": 0,
-            "PersonalDetailsTitleId": 0,
-            "PersonalDetailsFirstName": "string",
-            "PersonalDetailsLastName": "string",
-            "PersonalDetailsposition": "string"
+      "Id": 0,
+      "ArLogoUrl": "string",
+      "EnLogoUrl": "string",
+      "ArName": "string",
+      "EnName": "string",
+      "CityId": 0,
+      "ArAddress": "string",
+      "EnAddress": "string",
+      "IndustryId": 0,
+      "ArAbout": "string",
+      "EnAbout": "string",
+      "CommercialRegister": "string",
+      "POBox": 0,
+      "PersonalDetailsTitleId": 0,
+      "PersonalDetailsFirstName": "string",
+      "PersonalDetailsLastName": "string",
+      "PersonalDetailsposition": "string"
     }
 */
     public Integer Id;

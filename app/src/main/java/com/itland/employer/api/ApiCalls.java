@@ -21,8 +21,10 @@ import com.itland.employer.requests.VerifyChangeGsmRequest;
 import com.itland.employer.requests.VerifyForgotPasswordRequest;
 import com.itland.employer.responses.CitiesListResponse;
 import com.itland.employer.responses.CountyCodeResponse;
+import com.itland.employer.responses.CountyListResponse;
 import com.itland.employer.responses.FilterJobSeekerResponse;
 import com.itland.employer.responses.GeneralResponse;
+import com.itland.employer.responses.HomeResponse;
 import com.itland.employer.responses.IndicesListResponse;
 import com.itland.employer.responses.JobApplicationsListResponse;
 import com.itland.employer.responses.MyVacanciesResponse;
@@ -126,7 +128,7 @@ public class ApiCalls {
 
     public void citiesList(CallbackWrapped<CitiesListResponse> callback)
     {
-        apis.CitiesList(language,0).enqueue(convertCallback(callback));
+        apis.CitiesList(language,0,10).enqueue(convertCallback(callback));
     }
 
     public void signIn(String userName, String password,CallbackWrapped<TokenResponse> callback)
@@ -166,9 +168,9 @@ public class ApiCalls {
         apis.ListEducationDegreeLevels(language).enqueue(convertCallback(callback));
     }
 
-    public void getCountries(CallbackWrapped<IndicesListResponse> callback)
+    public void getCountries(CallbackWrapped<CountyListResponse> callback)
     {
-        apis.ListNationalities(language).enqueue(convertCallback(callback));
+        apis.CountriesList(language,0,10).enqueue(convertCallback(callback));
     }
 
     public void getFieldsOfWork(CallbackWrapped<IndicesListResponse> callback)
@@ -231,12 +233,13 @@ public class ApiCalls {
         apis.ViewProfile(language,authorization).enqueue(convertCallback(callback));
     }
 
-    public void editProfile(String nameEn, String nameAr,String aboutAr,String aboutEn,String addressAr,
+    public void editProfile(Integer id, String nameEn, String nameAr,String aboutAr,String aboutEn,String addressAr,
                             String addressEn,Integer cityId, Integer industryId, String commercialRegister,
                             Integer pBox, Integer contactTitleId,String contactFirstName, String contactLastName,
                             String contactPosition, CallbackWrapped<GeneralResponse> callback)
     {
         EditCompanyProfileRequest request = new EditCompanyProfileRequest();
+        request.Id = id;
         request.ArAbout = aboutAr;
         request.EnAbout = aboutEn;
         request.ArAddress = addressAr;
@@ -272,6 +275,7 @@ public class ApiCalls {
         request.PreRequisites = preRequisites;
         request.Benefits = benefits;
         request.About = aboutCompany;
+        request.SkillsNeeded = keySkills;
         request.CityId = cityId;
         request.RequiredYearsOfExperienceId = requiredYearsExperience;
         request.MinEducationDegreeId = minEduDegree;
@@ -288,11 +292,12 @@ public class ApiCalls {
         apis.PostJobVacancy(language,authorization,request).enqueue(convertCallback(callback));
     }
 
-    public void editActiveVacancy(Integer eduId,Integer cvLang, Integer salaryId, Integer currencyId,
+    public void editActiveVacancy(Integer vacancyId,Integer eduId,Integer cvLang, Integer salaryId, Integer currencyId,
                             Integer fieldOfWorkId, Boolean photo, Boolean hideCompanyName,
                             Boolean isActive,CallbackWrapped<GeneralResponse> callback)
     {
         EditActiveVacancyRequest request = new EditActiveVacancyRequest();
+        request.Id = vacancyId;
         request.MinEducationDegreeId = eduId;
         request.FieldOfWorkId = fieldOfWorkId;
         request.IsActive = isActive;
@@ -304,7 +309,7 @@ public class ApiCalls {
         apis.EditActiveJobVacancy(language,authorization,request).enqueue(convertCallback(callback));
     }
 
-    public void editInActiveVacancy(String positionTitle, String jobDescription, String preRequisites,
+    public void editInActiveVacancy(Integer vacanyId, String positionTitle, String jobDescription, String preRequisites,
                                String keySkills, String benefits,String aboutCompany, Integer countyId,
                                Integer cityId, Integer requiredYearsExperience, Integer minEduDegree,
                                Integer fieldOfWork, Integer jobTitle, Integer militaryService, Integer salary,
@@ -313,6 +318,8 @@ public class ApiCalls {
     {
         EditInactiveVacancyRequest request = new EditInactiveVacancyRequest();
 
+        request.Id = vacanyId;
+        request.SkillsNeeded = keySkills;
         request.Title = positionTitle;
         request.JobDescription = jobDescription;
         request.PreRequisites = preRequisites;
@@ -334,7 +341,7 @@ public class ApiCalls {
         apis.EditInActiveJobVacancy(language,authorization,request).enqueue(convertCallback(callback));
     }
 
-    public void editExpiredVacancy(String positionTitle, String jobDescription, String preRequisites,
+    public void editExpiredVacancy(Integer vacancyId, String positionTitle, String jobDescription, String preRequisites,
                                String keySkills, String benefits,String aboutCompany, Integer countyId,
                                Integer cityId, Integer requiredYearsExperience, Integer minEduDegree,
                                Integer fieldOfWork, Integer jobTitle, Integer militaryService, Integer salary,
@@ -343,6 +350,8 @@ public class ApiCalls {
     {
         EditExpiredVacancyRequest request = new EditExpiredVacancyRequest();
 
+        request.SkillsNeeded = keySkills;
+        request.Id = vacancyId;
         request.Title = positionTitle;
         request.JobDescription = jobDescription;
         request.PreRequisites = preRequisites;
@@ -494,6 +503,16 @@ public class ApiCalls {
         request.ConfirmPassword = newPassword;
 
         apis.ChangePassword(language,authorization,request).enqueue(convertCallback(callback));
+    }
+
+    public void signOut(CallbackWrapped<GeneralResponse> callback)
+    {
+        apis.Logout(language).enqueue(convertCallback(callback));
+    }
+
+    public void getHomeData(CallbackWrapped<HomeResponse> callback)
+    {
+        apis.Home(language,authorization).enqueue(convertCallback(callback));
     }
 
 

@@ -25,6 +25,8 @@ public class EditExpiredVacancyRequest {
             "About": "string"
     }
 */
+    public Integer Id;
+    public String SkillsNeeded;
     public String Title;
     public Integer CityId;
     public Integer RequiredYearsOfExperienceId;

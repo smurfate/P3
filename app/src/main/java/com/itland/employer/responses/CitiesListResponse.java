@@ -3,6 +3,7 @@ package com.itland.employer.responses;
 import com.itland.employer.abstracts.AbstractEntity;
 import com.itland.employer.entities.City;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,4 +30,13 @@ public class CitiesListResponse extends AbstractEntity {
     }
 */
     public List<City> Items;
+
+    public List<City> getActiveCities()
+    {
+        List<City> activeCities = new ArrayList<>();
+        for (City c : Items) {
+            if (c.IsActive) activeCities.add(c);
+        }
+        return activeCities;
+    }
 }

@@ -266,7 +266,7 @@ public class EditVacancyFragment extends AbstractFragment {
                 Integer fieldId = name2field.get(spnFieldOfWork.getSelectedItem().toString()).Id;
 
 
-                apiCalls.editActiveVacancy(eduId, cvLangId, salaryId, currencyId, fieldId, switchPhoto.isChecked(), switchHideCompanyName.isChecked(), switchIsActive.isChecked(), new CallbackWrapped<GeneralResponse>() {
+                apiCalls.editActiveVacancy(vacancy.Id,eduId, cvLangId, salaryId, currencyId, fieldId, switchPhoto.isChecked(), switchHideCompanyName.isChecked(), switchIsActive.isChecked(), new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);

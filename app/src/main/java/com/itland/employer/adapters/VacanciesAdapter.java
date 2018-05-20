@@ -59,6 +59,21 @@ public class VacanciesAdapter extends BaseAdapter {
         return getItem(position).Id;
     }
 
+    public void loadMore(List<Vacancy> vacancies)
+    {
+        for(Vacancy v : vacancies)
+        {
+            if(type==Type.active && v.isActive()) this.vacancies.add(v);
+
+            if(type==Type.inactive && v.isInactive()) this.vacancies.add(v);
+
+            if(type==Type.expired && v.isExpired()) this.vacancies.add(v);
+
+        }
+
+        notifyDataSetChanged();
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
