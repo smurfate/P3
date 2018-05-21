@@ -30,6 +30,7 @@ public class HomeResponse extends AbstractEntity {
     public Integer ActiveVacancies;
     public Integer InactiveVacancies;
     public Integer ExpiredVacancies;
+    public String ImageUrl;
     public Integer ViewsCount;
 
 

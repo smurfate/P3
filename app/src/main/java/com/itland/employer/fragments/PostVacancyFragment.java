@@ -40,32 +40,29 @@ public class PostVacancyFragment extends AbstractFragment {
     @Bind(R.id.txtSkillsNeeded) EditText txtSkillsNeeded;
     @Bind(R.id.txtBenefits) EditText txtBenefits;
     @Bind(R.id.txtAboutCompany) EditText txtAboutCompany;
+    @Bind(R.id.txtExperience) EditText txtExperience;
+    @Bind(R.id.txtRequiredNumber) EditText txtNumber;
+
 
     @Bind(R.id.spnCounty) Spinner spnCounty;
     @Bind(R.id.spnCity) Spinner spnCity;
-    @Bind(R.id.spnRequiredYears) Spinner spnRequiredYears;
     @Bind(R.id.spnMinEduDegree) Spinner spnMinEduDegree;
     @Bind(R.id.spnFieldOfWork) Spinner spnFieldOfWork;
     @Bind(R.id.spnJobTitle) Spinner spnJobTitle;
     @Bind(R.id.spnMilitaryService) Spinner spnMilitaryService;
     @Bind(R.id.spnSalary) Spinner spnSalary;
-    @Bind(R.id.spnRequiredNumber) Spinner spnRequiredNumber;
     @Bind(R.id.switchHide) SwitchCompat switchHideCompanyName;
     @Bind(R.id.spnCvLanguage) Spinner spnCvLanguage;
     @Bind(R.id.switchPhoto) SwitchCompat switchPhoto;
 
     private HashMap<String,Country> name2county = new HashMap<>();
     private HashMap<String,City> name2city = new HashMap<>();
-    private HashMap<String,Indice> name2years = new HashMap<>();
     private HashMap<String,Indice> name2edu = new HashMap<>();
     private HashMap<String,Indice> name2field = new HashMap<>();
     private HashMap<String,Indice> name2title = new HashMap<>();
     private HashMap<String,Indice> name2military = new HashMap<>();
     private HashMap<String,Indice> name2salary = new HashMap<>();
-    private HashMap<String,Indice> name2number = new HashMap<>();
-    private HashMap<String,Indice> name2photo = new HashMap<>();
     private HashMap<String,Indice> name2cvLang = new HashMap<>();
-    private HashMap<String,Indice> name2hide = new HashMap<>();
 
     private VacancyDetails details;
 
@@ -117,10 +114,12 @@ public class PostVacancyFragment extends AbstractFragment {
     private boolean validateInputs()
     {
         return required(txtPositionTitle)&&
+                required(txtExperience)&&
                 required(txtJobDescription)&&
                 required(txtPreRequirements)&&
                 required(txtSkillsNeeded)&&
                 required(txtBenefits)&&
+                required(txtNumber)&&
                 required(txtAboutCompany);
     }
 
@@ -430,24 +429,24 @@ public class PostVacancyFragment extends AbstractFragment {
                 String skillsNeeded = txtSkillsNeeded.getText().toString();
                 String benefits = txtBenefits.getText().toString();
                 String about = txtAboutCompany.getText().toString();
+                Integer experience = Integer.parseInt(txtExperience.getText().toString());
 
                 Integer countyId = name2county.get(spnCounty.getSelectedItem().toString()).Id;
                 Integer cityId = name2city.get(spnCity.getSelectedItem().toString()).Id;
-                Integer yearsId = name2years.get(spnRequiredYears.getSelectedItem().toString()).Id;
                 Integer eduId = name2edu.get(spnMinEduDegree.getSelectedItem().toString()).Id;
                 Integer fieldId = name2field.get(spnFieldOfWork.getSelectedItem().toString()).Id;
                 Integer titleId = name2title.get(spnJobTitle.getSelectedItem().toString()).Id;
                 Integer militaryId = name2military.get(spnMilitaryService.getSelectedItem().toString()).Id;
                 Integer salaryId = name2salary.get(spnSalary.getSelectedItem().toString()).Id;
-                Integer employeeNumberId = name2number.get(spnRequiredNumber.getSelectedItem().toString()).Id;
+                Integer employeeNumber = Integer.parseInt(txtNumber.getText().toString());
                 Integer cvLangId = name2cvLang.get(spnCvLanguage.getSelectedItem().toString()).Id;
 
 
                 if(!isEdit())
                 {
                     apiCalls.postJobVacancy(positionTitle, jobDescription, preRequisits, skillsNeeded,
-                            benefits, about, countyId, cityId, yearsId, eduId, fieldId, titleId, militaryId,
-                            salaryId, employeeNumberId, switchPhoto.isChecked(), cvLangId,
+                            benefits, about, countyId, cityId, experience, eduId, fieldId, titleId, militaryId,
+                            salaryId, employeeNumber, switchPhoto.isChecked(), cvLangId,
                             switchHideCompanyName.isChecked(), new CallbackWrapped<GeneralResponse>() {
                                 @Override
                                 public void onResponse(GeneralResponse response) {
@@ -466,9 +465,9 @@ public class PostVacancyFragment extends AbstractFragment {
                 {
                     if(details.isExpired())
                     {
-                        apiCalls.editExpiredVacancy(details.Id,positionTitle, jobDescription, preRequisits, skillsNeeded,
-                                benefits, about, countyId, cityId, yearsId, eduId, fieldId, titleId, militaryId,
-                                salaryId, employeeNumberId, switchPhoto.isChecked(), cvLangId,
+                        apiCalls.editExpiredVacancy(positionTitle, jobDescription, preRequisits, skillsNeeded,
+                                benefits, about, countyId, cityId, experience, eduId, fieldId, titleId, militaryId,
+                                salaryId, employeeNumber, switchPhoto.isChecked(), cvLangId,
                                 switchHideCompanyName.isChecked(), new CallbackWrapped<GeneralResponse>() {
                                     @Override
                                     public void onResponse(GeneralResponse response) {
@@ -485,9 +484,9 @@ public class PostVacancyFragment extends AbstractFragment {
 
                     }else if(details.isInactive())
                     {
-                        apiCalls.editInActiveVacancy(details.Id,positionTitle, jobDescription, preRequisits, skillsNeeded,
-                                benefits, about, countyId, cityId, yearsId, eduId, fieldId, titleId, militaryId,
-                                salaryId, employeeNumberId, switchPhoto.isChecked(), cvLangId,
+                        apiCalls.editInActiveVacancy(positionTitle, jobDescription, preRequisits, skillsNeeded,
+                                benefits, about, countyId, cityId, experience, eduId, fieldId, titleId, militaryId,
+                                salaryId, employeeNumber, switchPhoto.isChecked(), cvLangId,
                                 switchHideCompanyName.isChecked(), new CallbackWrapped<GeneralResponse>() {
                                     @Override
                                     public void onResponse(GeneralResponse response) {

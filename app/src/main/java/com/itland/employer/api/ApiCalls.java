@@ -141,7 +141,7 @@ public class ApiCalls {
         apis.FilterJobSeekers(language,authorization,new FilterJobSeekersRequest()).enqueue(convertCallback(callback));
     }
 
-    public void filterResumes(String searchQuery,Integer cityId, Integer minEduLevelId,Integer countryId,
+    public void filterResumes(Integer page,String searchQuery,Integer cityId, Integer minEduLevelId,Integer countryId,
                               Integer fieldOfWorkId, Integer jobTypeId, Boolean photo, Integer languageId,
                               CallbackWrapped<FilterJobSeekerResponse> callback)
     {
@@ -152,6 +152,7 @@ public class ApiCalls {
         request.CountryId = countryId;
         request.FieldOfWorkId = fieldOfWorkId;
         request.JobTypeId = jobTypeId;
+        request.Page = page;
         request.ResumeLanguageId = languageId;
         request.WithPhoto = photo;
         apis.FilterJobSeekers(language,authorization,new FilterJobSeekersRequest()).enqueue(convertCallback(callback));
@@ -309,7 +310,7 @@ public class ApiCalls {
         apis.EditActiveJobVacancy(language,authorization,request).enqueue(convertCallback(callback));
     }
 
-    public void editInActiveVacancy(Integer vacanyId, String positionTitle, String jobDescription, String preRequisites,
+    public void editInActiveVacancy(String positionTitle, String jobDescription, String preRequisites,
                                String keySkills, String benefits,String aboutCompany, Integer countyId,
                                Integer cityId, Integer requiredYearsExperience, Integer minEduDegree,
                                Integer fieldOfWork, Integer jobTitle, Integer militaryService, Integer salary,
@@ -318,7 +319,6 @@ public class ApiCalls {
     {
         EditInactiveVacancyRequest request = new EditInactiveVacancyRequest();
 
-        request.Id = vacanyId;
         request.SkillsNeeded = keySkills;
         request.Title = positionTitle;
         request.JobDescription = jobDescription;
@@ -341,7 +341,7 @@ public class ApiCalls {
         apis.EditInActiveJobVacancy(language,authorization,request).enqueue(convertCallback(callback));
     }
 
-    public void editExpiredVacancy(Integer vacancyId, String positionTitle, String jobDescription, String preRequisites,
+    public void editExpiredVacancy(String positionTitle, String jobDescription, String preRequisites,
                                String keySkills, String benefits,String aboutCompany, Integer countyId,
                                Integer cityId, Integer requiredYearsExperience, Integer minEduDegree,
                                Integer fieldOfWork, Integer jobTitle, Integer militaryService, Integer salary,
@@ -351,7 +351,6 @@ public class ApiCalls {
         EditExpiredVacancyRequest request = new EditExpiredVacancyRequest();
 
         request.SkillsNeeded = keySkills;
-        request.Id = vacancyId;
         request.Title = positionTitle;
         request.JobDescription = jobDescription;
         request.PreRequisites = preRequisites;
@@ -505,9 +504,9 @@ public class ApiCalls {
         apis.ChangePassword(language,authorization,request).enqueue(convertCallback(callback));
     }
 
-    public void signOut(CallbackWrapped<GeneralResponse> callback)
+    public void signOut(CallbackWrapped<Object> callback)
     {
-        apis.Logout(language).enqueue(convertCallback(callback));
+        apis.Logout(language,authorization).enqueue(convertCallback(callback));
     }
 
     public void getHomeData(CallbackWrapped<HomeResponse> callback)

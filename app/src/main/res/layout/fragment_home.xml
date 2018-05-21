@@ -49,7 +49,7 @@
                 android:src="@drawable/ic_search" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/imgProfile"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:src="@mipmap/profile" />

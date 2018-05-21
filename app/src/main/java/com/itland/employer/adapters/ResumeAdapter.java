@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.itland.employer.R;
 import com.itland.employer.entities.Resume;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -23,8 +24,8 @@ public class ResumeAdapter extends BaseAdapter {
 
     private List<Resume> resumeList;
 
-    public ResumeAdapter(List<Resume> resumeList) {
-        this.resumeList = resumeList;
+    public ResumeAdapter() {
+        this.resumeList = new ArrayList<>();
     }
 
     @Override
@@ -40,6 +41,18 @@ public class ResumeAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {
         return getItem(position).Id;
+    }
+
+    public void loadMore(List<Resume> resumes)
+    {
+        this.resumeList.addAll(resumes);
+        notifyDataSetChanged();
+    }
+
+    public void clearItems()
+    {
+        this.resumeList.clear();
+        notifyDataSetChanged();
     }
 
     @Override
@@ -64,7 +77,7 @@ public class ResumeAdapter extends BaseAdapter {
 
     static class ViewHolder {
 
-        @Bind(R.id.actionLogo) ImageView imgProfile;
+        @Bind(R.id.imgProfile2) ImageView imgProfile;
         @Bind(R.id.tvName) TextView tvTitle;
         @Bind(R.id.tvJob) TextView tvJob;
 

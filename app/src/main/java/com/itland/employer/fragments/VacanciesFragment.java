@@ -40,6 +40,7 @@ public class VacanciesFragment extends AbstractFragment {
     private VacanciesAdapter expiredVacanciesAdapter;
 
     private int index = 0;
+    private boolean isDone = false; //got all list items
 
 
     public VacanciesFragment() {
@@ -65,6 +66,35 @@ public class VacanciesFragment extends AbstractFragment {
     public void onStart() {
         super.onStart();
         setTitle(getString(R.string.vacancies));
+    }
+
+    private void loadMore()
+    {
+        if(!isDone && activeVacanciesAdapter!=null)
+        {
+            if(lstActive.getLastVisiblePosition()==activeVacanciesAdapter.getCount()-1)
+            {
+                index +=1;
+                apiCalls.getVacancies(index, new CallbackWrapped<MyVacanciesResponse>() {
+                    @Override
+                    public void onResponse(MyVacanciesResponse response) {
+
+                        if(response.Items.size()==0) isDone=true;
+
+                        activeVacanciesAdapter.loadMore(response.Items);
+                        inactiveVacanciesAdapter.loadMore(response.Items);
+                        expiredVacanciesAdapter.loadMore(response.Items);
+                    }
+
+                    @Override
+                    public void onFailure(ErrorMessage errorMessage) {
+
+                    }
+                });
+            }
+
+        }
+
     }
 
     private void setupTabs()
@@ -162,31 +192,15 @@ public class VacanciesFragment extends AbstractFragment {
             }
         });
 
+
         lstActive.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-
             }
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if(lstActive.getLastVisiblePosition()==totalItemCount)
-                {
-                    index +=1;
-                    apiCalls.getVacancies(index, new CallbackWrapped<MyVacanciesResponse>() {
-                        @Override
-                        public void onResponse(MyVacanciesResponse response) {
-                            activeVacanciesAdapter.loadMore(response.Items);
-                            inactiveVacanciesAdapter.loadMore(response.Items);
-                            expiredVacanciesAdapter.loadMore(response.Items);
-                        }
-
-                        @Override
-                        public void onFailure(ErrorMessage errorMessage) {
-
-                        }
-                    });
-                }
+                loadMore();
             }
         });
 

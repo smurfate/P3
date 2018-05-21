@@ -1,5 +1,6 @@
 package com.itland.employer.adapters;
 
+import android.app.Application;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,6 +73,12 @@ public class ApplicationsAdapter extends BaseAdapter {
 
 
         return convertView;
+    }
+
+    public void loadMore(List<JobApplication> applications)
+    {
+        this.applications.addAll(applications);
+        notifyDataSetChanged();
     }
 
     static class ViewHolder {

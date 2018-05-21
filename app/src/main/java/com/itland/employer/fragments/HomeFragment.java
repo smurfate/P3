@@ -14,9 +14,11 @@ import com.itland.employer.abstracts.AbstractFragment;
 import com.itland.employer.api.CallbackWrapped;
 import com.itland.employer.api.ErrorMessage;
 import com.itland.employer.responses.HomeResponse;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeFragment extends AbstractFragment {
 
@@ -28,6 +30,7 @@ public class HomeFragment extends AbstractFragment {
     @Bind(R.id.txtActiveVacancy) TextView txtActiveVacancy;
     @Bind(R.id.txtExpiredVacancy) TextView txtExpiredVacancy;
     @Bind(R.id.txtViews) TextView txtViews;
+    @Bind(R.id.imgProfile) CircleImageView imgProfile;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -68,6 +71,11 @@ public class HomeFragment extends AbstractFragment {
                 txtActiveVacancy.setText(getString(R.string.n_active_vacancies,response.ActiveVacancies));
                 txtExpiredVacancy.setText(getString(R.string.n_expired_vacancies,response.ExpiredVacancies));
                 txtViews.setText(getString(R.string.n_views_this_week,response.ViewsCount));
+                Picasso.with(activity).load(response.ImageUrl).error(R.mipmap.profile).into(imgProfile);
+
+                Picasso.with(activity).load(response.ImageUrl).error(R.mipmap.profile).into(activity.actionLogo);
+
+
 
             }
 

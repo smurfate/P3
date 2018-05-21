@@ -2,7 +2,6 @@ package com.itland.employer;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
@@ -12,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Space;
 import android.widget.TextView;
 
@@ -44,7 +42,7 @@ public class MainActivity extends AbstractActivity {
     @Bind(R.id.actionTitle) TextView actionTitle;
     @Bind(R.id.actionText) TextView actionText;
     @Bind(R.id.actionIcon) ImageView actionIcon;
-    @Bind(R.id.actionLogo) ImageView actionLogo;
+    @Bind(R.id.imgProfile2) public ImageView actionLogo;
     
     @Bind(R.id.searchView) SearchView searchView;
 

@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -69,14 +70,16 @@ public class ResumeFragment extends AbstractFragment {
     private ChooseType chooseType;
 
     private SearchView searchView;
+
+    private boolean isDone = false;
+    private int index = 0;
     private ResumeAdapter adapter;
-    private AutocompleteAdapter autocompleteAdapter;
 
 
 
     private City city;
     private Indice eduLevel;
-    private Indice county;
+    private Country county;
     private Indice fieldOfWork;
     private Indice jobType;
     private Indice photo;
@@ -115,7 +118,7 @@ public class ResumeFragment extends AbstractFragment {
         lnrChoose.setVisibility(View.GONE);
         if(city!=null) txtCity.setText(city.Name);
         if(eduLevel!=null) txtEdu.setText(eduLevel.Value);
-        if(county!=null) txtCounty.setText(county.Value);
+        if(county!=null) txtCounty.setText(county.Name);
         if(fieldOfWork!=null) txtFieldOfWork.setText(fieldOfWork.Value);
         if(jobType!=null) txtJobType.setText(jobType.Value);
         if(cvLanguage!=null) txtLanguage.setText(cvLanguage.Value);
@@ -214,6 +217,22 @@ public class ResumeFragment extends AbstractFragment {
 
     }
 
+    private void loadMore()
+    {
+        if(!isDone && adapter!=null)
+        {
+            if(gridView.getLastVisiblePosition()==adapter.getCount()-1)
+            {
+                index += 1;
+
+                filterResumes(index);
+
+            }
+
+        }
+
+    }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -227,7 +246,7 @@ public class ResumeFragment extends AbstractFragment {
         activity.actionSearch(true);
     }
 
-    private void filterResumes()
+    private void filterResumes(int page)
     {
         Integer cityId = city!=null?city.Id:null;
         Integer eduId = eduLevel!=null?eduLevel.Id:null;
@@ -236,13 +255,12 @@ public class ResumeFragment extends AbstractFragment {
         Integer jobId = jobType!=null?jobType.Id:null;
         Integer cvId = cvLanguage!=null?cvLanguage.Id:null;
 
-        apiCalls.filterResumes(searchQuery, cityId, eduId, countyId, fieldId, jobId, switchPhoto.isChecked(),
+        apiCalls.filterResumes(page,searchQuery, cityId, eduId, countyId, fieldId, jobId, switchPhoto.isChecked(),
                 cvId, new CallbackWrapped<FilterJobSeekerResponse>() {
             @Override
             public void onResponse(FilterJobSeekerResponse response) {
 
-                    adapter = new ResumeAdapter(response.Items);
-                    gridView.setAdapter(adapter);
+                    adapter.loadMore(response.Items);
 
             }
 
@@ -257,17 +275,31 @@ public class ResumeFragment extends AbstractFragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        adapter = new ResumeAdapter();
+        gridView.setAdapter(adapter);
+
         apiCalls.getResumesList(new CallbackWrapped<FilterJobSeekerResponse>() {
             @Override
             public void onResponse(FilterJobSeekerResponse response) {
-                adapter = new ResumeAdapter(response.Items);
-                gridView.setAdapter(adapter);
+                adapter.loadMore(response.Items);
             }
 
             @Override
             public void onFailure(ErrorMessage errorMessage) {
                 toast(errorMessage);
 
+            }
+        });
+
+        gridView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                loadMore();
             }
         });
 
@@ -294,7 +326,10 @@ public class ResumeFragment extends AbstractFragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                filterResumes();
+                index = 0;
+                adapter.clearItems();
+
+                filterResumes(index);
                 return false;
             }
 
@@ -318,7 +353,10 @@ public class ResumeFragment extends AbstractFragment {
             public void onClick(View v) {
                     drawer.closeDrawer(Gravity.END);
 
-                filterResumes();
+                index = 0;
+                adapter.clearItems();
+
+                filterResumes(index);
 
             }
         });
@@ -339,8 +377,8 @@ public class ResumeFragment extends AbstractFragment {
                             if(eduLevel != null) txtEdu.setText(eduLevel.Value); else txtEdu.setText(getString(R.string.any));
                             break;
                         case county:
-                            county = (Indice) radioButton.getTag();
-                            if(county != null) txtCounty.setText(county.Value); else txtCounty.setText(getString(R.string.any));
+                            county = (Country) radioButton.getTag();
+                            if(county != null) txtCounty.setText(county.Name); else txtCounty.setText(getString(R.string.any));
                             break;
                         case fieldOfWork:
                             fieldOfWork = (Indice) radioButton.getTag();

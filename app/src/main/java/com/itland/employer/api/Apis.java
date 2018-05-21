@@ -63,6 +63,9 @@ public interface Apis {
     @GET("/IRecruitment.Api/api/EmpCompanies/ViewProfile")
     Call<CompanyProfile> ViewProfile(@Header("Language") String language,@Header("Authorization") String authorization);
 
+    @GET("/IRecruitment.Api/api/Account/UserInfo")
+    Call<GeneralResponse> UserInfo(@Header("Language") String language,@Header("Authorization") String authorization);
+
     @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/EmpCompanies/EditProfile")
     Call<GeneralResponse> EditProfile(@Header("Language") String language,@Header("Authorization") String authorization, @Body EditCompanyProfileRequest request);
@@ -199,9 +202,9 @@ public interface Apis {
     Call<GeneralResponse> ChangePassword(@Header("Language") String language,@Header("Authorization") String authorization, @Body ChangePasswordRequest request);
 
     @POST("/IRecruitment.Api/api/Account/Logout")
-    Call<GeneralResponse> Logout(@Header("Language") String language);
+    Call<Object> Logout(@Header("Language") String language,@Header("Authorization") String authorization);
 
-    @POST("/IRecruitment.Api/api/EmpHome/Home")
+    @GET("/IRecruitment.Api/api/EmpHome/Home")
     Call<HomeResponse> Home(@Header("Language") String language,@Header("Authorization") String authorization);
 
 

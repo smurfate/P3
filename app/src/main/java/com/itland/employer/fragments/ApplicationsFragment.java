@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -23,6 +24,9 @@ public class ApplicationsFragment extends AbstractFragment {
 
     @Bind(R.id.lstApplications) ListView lstApplications;
 
+
+    private boolean isDone = false;
+    private int index = 0;
     private ApplicationsAdapter adapter;
 
     public ApplicationsFragment() {
@@ -49,12 +53,41 @@ public class ApplicationsFragment extends AbstractFragment {
         setTitle(getString(R.string.applications));
     }
 
+    private void loadMore()
+    {
+        if(!isDone && adapter!=null)
+        {
+            if(lstApplications.getLastVisiblePosition()==adapter.getCount()-1)
+            {
+                index += 1;
+
+                apiCalls.getApplicationsList(index, new CallbackWrapped<JobApplicationsListResponse>() {
+                    @Override
+                    public void onResponse(JobApplicationsListResponse response) {
+                        if(response.Items.size()==0) isDone=true;
+
+                        adapter.loadMore(response.Items);
+                    }
+
+                    @Override
+                    public void onFailure(ErrorMessage errorMessage) {
+
+                    }
+                });
+
+
+            }
+
+        }
+
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
 
-        apiCalls.getApplicationsList(0, new CallbackWrapped<JobApplicationsListResponse>() {
+        apiCalls.getApplicationsList(index, new CallbackWrapped<JobApplicationsListResponse>() {
             @Override
             public void onResponse(JobApplicationsListResponse response) {
                 adapter = new ApplicationsAdapter(response.Items);
@@ -64,6 +97,18 @@ public class ApplicationsFragment extends AbstractFragment {
             @Override
             public void onFailure(ErrorMessage errorMessage) {
 
+            }
+        });
+
+        lstApplications.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                loadMore();
             }
         });
 

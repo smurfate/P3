@@ -63,7 +63,7 @@ public class AutocompleteAdapter extends BaseAdapter {
     static class ViewHolder {
 
         @Bind(R.id.txtVacancyName) TextView txtVacancy;
-        @Bind(R.id.actionLogo) ImageView imgProfile;
+        @Bind(R.id.imgProfile2) ImageView imgProfile;
         @Bind(R.id.txtCity) TextView txtCity;
 
         private ViewHolder(View view) {

@@ -81,9 +81,9 @@ public class MoreFragment extends AbstractFragment {
         txtSignout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiCalls.signOut(new CallbackWrapped<GeneralResponse>() {
+                apiCalls.signOut(new CallbackWrapped<Object>() {
                     @Override
-                    public void onResponse(GeneralResponse response) {
+                    public void onResponse(Object response) {
                         PrefUtil.setStringPreference(SharedPreferencesKeys.token,"");
                     }
 

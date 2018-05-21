@@ -13,9 +13,11 @@ import android.widget.TextView;
 import com.itland.employer.R;
 import com.itland.employer.abstracts.AbstractFragment;
 import com.itland.employer.entities.CompanyProfile;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends AbstractFragment {
 
@@ -34,6 +36,9 @@ public class ProfileFragment extends AbstractFragment {
     @Bind(R.id.txtContactEmail) TextView txtContactEmail;
     @Bind(R.id.txtContactGSM) TextView txtContactGSM;
     @Bind(R.id.txtContactPosition) TextView txtContactPosition;
+
+    @Bind(R.id.imgProfile) CircleImageView imgProfile;
+    @Bind(R.id.imgProfile2) CircleImageView imgProfile2;
 
     @Bind(R.id.txtCompanyNameAr) TextView txtCompanyNameAr;
     @Bind(R.id.txtAddressAr) TextView txtAddressAr;
@@ -104,6 +109,8 @@ public class ProfileFragment extends AbstractFragment {
         txtContactNameAr.setText(profile.PersonalDetailsFullName);
         txtContactPositionAr.setText(profile.PersonalDetailsposition);
 
+        Picasso.with(activity).load(profile.EnLogoUrl).error(R.mipmap.profile).into(imgProfile);
+        Picasso.with(activity).load(profile.ArLogoUrl).error(R.mipmap.profile).into(imgProfile2);
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
