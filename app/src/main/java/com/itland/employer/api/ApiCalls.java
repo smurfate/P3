@@ -94,13 +94,15 @@ public class ApiCalls {
                 if(response.body() != null)
                 {
                     T body = response.body();
-                    callback.onResponse(body);
 
 
                     try{
                         if(!((AbstractEntity)body).IsOk)
                         {
                             activity.toast(((AbstractEntity)body).Message.Content);
+                        }else
+                        {
+                            callback.onResponse(body);
                         }
                     } catch (Exception ex)
                     {

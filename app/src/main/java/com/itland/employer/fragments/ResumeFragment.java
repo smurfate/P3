@@ -224,9 +224,7 @@ public class ResumeFragment extends AbstractFragment {
             if(gridView.getLastVisiblePosition()==adapter.getCount()-1)
             {
                 index += 1;
-
                 filterResumes(index);
-
             }
 
         }
@@ -260,6 +258,10 @@ public class ResumeFragment extends AbstractFragment {
             @Override
             public void onResponse(FilterJobSeekerResponse response) {
 
+                if(response.Items.size()==0)
+                {
+                    isDone = true;
+                }
                     adapter.loadMore(response.Items);
 
             }
