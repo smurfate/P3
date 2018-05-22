@@ -37,6 +37,8 @@ public class HomeFragment extends AbstractFragment {
     @Bind(R.id.txtViews) TextView txtViews;
     @Bind(R.id.imgProfile) CircleImageView imgProfile;
 
+    private HomeResponse response;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -62,49 +64,41 @@ public class HomeFragment extends AbstractFragment {
         setTitle(getString(R.string.home));
     }
 
+    private void renderResponse(HomeResponse response)
+    {
+        txtCompanyName.setText(response.CompanyName);
+        txtApplications.setText(getString(R.string.n_applications,response.ApplicationsCount));
+        txtActiveVacancy.setText(getString(R.string.n_active_vacancies,response.ActiveVacancies));
+        txtExpiredVacancy.setText(getString(R.string.n_expired_vacancies,response.ExpiredVacancies));
+        txtViews.setText(getString(R.string.n_views_this_week,response.ViewsCount));
+        Picasso.with(activity).load(response.ImageUrl).error(R.mipmap.profile).into(imgProfile);
+
+        Picasso.with(activity).load(response.ImageUrl).error(R.mipmap.profile).into(activity.actionLogo);
+
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        apiCalls.getHomeData(new CallbackWrapped<HomeResponse>() {
-            @Override
-            public void onResponse(HomeResponse response) {
-
-                txtCompanyName.setText(response.CompanyName);
-                txtApplications.setText(getString(R.string.n_applications,response.ApplicationsCount));
-                txtActiveVacancy.setText(getString(R.string.n_active_vacancies,response.ActiveVacancies));
-                txtExpiredVacancy.setText(getString(R.string.n_expired_vacancies,response.ExpiredVacancies));
-                txtViews.setText(getString(R.string.n_views_this_week,response.ViewsCount));
-                Picasso.with(activity).load(response.ImageUrl).error(R.mipmap.profile).into(imgProfile);
-
-                Picasso.with(activity).load(response.ImageUrl).error(R.mipmap.profile).into(activity.actionLogo);
+        if(response == null)
+        {
+            apiCalls.getHomeData(new CallbackWrapped<HomeResponse>() {
+                @Override
+                public void onResponse(HomeResponse response) {
+                    HomeFragment.this.response = response;
+                    renderResponse(response);
 
 
+                }
 
-            }
+                @Override
+                public void onFailure(ErrorMessage errorMessage) {
 
-            @Override
-            public void onFailure(ErrorMessage errorMessage) {
+                }
+            });
 
-            }
-        });
-
-        apiCalls.getUserInfo(new CallbackWrapped<GeneralResponse>() {
-            @Override
-            public void onResponse(GeneralResponse response) {
-
-            }
-
-            @Override
-            public void onFailure(ErrorMessage errorMessage) {
-                PrefUtil.setStringPreference(SharedPreferencesKeys.token,"");
-                Intent intent = new Intent(activity, RegistrationActivity.class);
-                startActivity(intent);
-                activity.finish();
-
-            }
-        });
+        }else renderResponse(response);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override

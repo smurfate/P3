@@ -1,1 +1,1 @@
-include ':app', ':circleimageview', ':spinkit'
+include ':app', ':circleimageview', ':spinkit', ':lottie'
