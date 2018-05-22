@@ -1,6 +1,7 @@
 package com.itland.employer.registration.fragments;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -117,19 +118,22 @@ public class SignUpFragment extends AbstractResistrationFragment {
 
                 if(!validateInput())return;
 
-                if(!txtPassword.getText().equals(txtConfirmPassword.getText())) {
-                    txtConfirmPassword.setError(getString(R.string.error_password_not_matched));
-                    txtConfirmPassword.requestFocus();
-                    return;
-                }
 
                 String code = name2code.get(spnCountryCode.getSelectedItem().toString()).DialCode;
                 String gsm = txtGsm.getText().toString();
                 String email = txtEmail.getText().toString();
                 String userName = txtUserName.getText().toString();
                 String password = txtPassword.getText().toString();
+                String confirm = txtConfirmPassword.getText().toString();
                 String firstName = txtFirstName.getText().toString();
                 String lastName = txtLastName.getText().toString();
+
+                if(!password.equals(confirm)) {
+                    txtConfirmPassword.setError(getString(R.string.error_password_not_matched));
+                    txtConfirmPassword.requestFocus();
+                    return;
+                }
+
 
                 if(chkAgree.isChecked())
                 {
@@ -137,11 +141,11 @@ public class SignUpFragment extends AbstractResistrationFragment {
                         @Override
                         public void onResponse(RegisterResponse response) {
                             toast(response);
+
                         }
 
                         @Override
                         public void onFailure(ErrorMessage errorMessage) {
-
                         }
                     });
                 }

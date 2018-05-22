@@ -1,6 +1,7 @@
 package com.itland.employer.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,7 +14,11 @@ import com.itland.employer.R;
 import com.itland.employer.abstracts.AbstractFragment;
 import com.itland.employer.api.CallbackWrapped;
 import com.itland.employer.api.ErrorMessage;
+import com.itland.employer.registration.RegistrationActivity;
+import com.itland.employer.responses.GeneralResponse;
 import com.itland.employer.responses.HomeResponse;
+import com.itland.employer.util.PrefUtil;
+import com.itland.employer.util.SharedPreferencesKeys;
 import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
@@ -81,6 +86,22 @@ public class HomeFragment extends AbstractFragment {
 
             @Override
             public void onFailure(ErrorMessage errorMessage) {
+
+            }
+        });
+
+        apiCalls.getUserInfo(new CallbackWrapped<GeneralResponse>() {
+            @Override
+            public void onResponse(GeneralResponse response) {
+
+            }
+
+            @Override
+            public void onFailure(ErrorMessage errorMessage) {
+                PrefUtil.setStringPreference(SharedPreferencesKeys.token,"");
+                Intent intent = new Intent(activity, RegistrationActivity.class);
+                startActivity(intent);
+                activity.finish();
 
             }
         });

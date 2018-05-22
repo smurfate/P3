@@ -68,11 +68,11 @@ public class VacanciesFragment extends AbstractFragment {
         setTitle(getString(R.string.vacancies));
     }
 
-    private void loadMore()
+    private void loadMore(ListView lst)
     {
         if(!isDone && activeVacanciesAdapter!=null)
         {
-            if(lstActive.getLastVisiblePosition()==activeVacanciesAdapter.getCount()-1)
+            if(lst.getLastVisiblePosition()==activeVacanciesAdapter.getCount()-1)
             {
                 index +=1;
                 apiCalls.getVacancies(index, new CallbackWrapped<MyVacanciesResponse>() {
@@ -200,7 +200,29 @@ public class VacanciesFragment extends AbstractFragment {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                loadMore();
+                loadMore(lstActive);
+            }
+        });
+
+        lstInActive.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                loadMore(lstInActive);
+            }
+        });
+
+        lstExpired.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                loadMore(lstExpired);
             }
         });
 

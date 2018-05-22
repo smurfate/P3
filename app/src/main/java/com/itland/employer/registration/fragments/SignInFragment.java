@@ -38,8 +38,6 @@ public class SignInFragment extends AbstractResistrationFragment {
     @Bind(R.id.txtVerifyAccount) TextView txtVerifyAccount;
 
 
-    @Bind(R.id.pb_loading) SpinKitView pbLoading;
-
     public SignInFragment() {
         // Required empty public constructor
     }
@@ -68,7 +66,6 @@ public class SignInFragment extends AbstractResistrationFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        pbLoading.setVisibility(View.INVISIBLE);
 
         btnSignIn.requestFocus();
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -80,12 +77,13 @@ public class SignInFragment extends AbstractResistrationFragment {
                 String userName = txtUserName.getText().toString();
                 String password = txtPassword.getText().toString();
 
-                pbLoading.setVisibility(View.VISIBLE);
+                btnSignIn.setColorFilter(Color.GRAY);
+                btnSignIn.setEnabled(false);
                 activity.apiCalls.signIn(userName, password, new CallbackWrapped<TokenResponse>() {
                     @Override
                     public void onResponse(TokenResponse response) {
-                        pbLoading.setVisibility(View.INVISIBLE);
-
+                        btnSignIn.setEnabled(true);
+                        btnSignIn.setColorFilter(Color.WHITE);
                         if(response==null)
                         {
                             toast(getString(R.string.error_invalid_name_password));
@@ -106,7 +104,14 @@ public class SignInFragment extends AbstractResistrationFragment {
 
                     @Override
                     public void onFailure(ErrorMessage errorMessage) {
-                        pbLoading.setVisibility(View.INVISIBLE);
+                        btnSignIn.setEnabled(true);
+                        btnSignIn.setColorFilter(Color.WHITE);
+                        if(errorMessage.equals(ErrorMessage.EMPTY_BODY))
+                        {
+                            toast(getString(R.string.error_invalid_name_password));
+                            txtUserName.setText("");
+                            txtPassword.setText("");
+                        }
 
                     }
                 });

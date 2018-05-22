@@ -19,6 +19,7 @@ import com.itland.employer.api.ApiCalls;
 import com.itland.employer.api.CallbackWrapped;
 import com.itland.employer.api.ErrorMessage;
 import com.itland.employer.entities.CompanyProfile;
+import com.itland.employer.entities.Message;
 import com.itland.employer.fragments.ApplicationsFragment;
 import com.itland.employer.fragments.HomeFragment;
 import com.itland.employer.fragments.MoreFragment;
@@ -60,7 +61,17 @@ public class MainActivity extends AbstractActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        apiCalls = new ApiCalls(this);
+        apiCalls = new ApiCalls() {
+            @Override
+            public void showProgress(boolean show) {
+                showProgressIndicator(show);
+            }
+
+            @Override
+            public void toastError(Message message) {
+                toast(message.Content);
+            }
+        };
 
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();

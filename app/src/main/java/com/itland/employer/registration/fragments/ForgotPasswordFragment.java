@@ -1,6 +1,7 @@
 package com.itland.employer.registration.fragments;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -91,10 +92,12 @@ public class ForgotPasswordFragment extends AbstractResistrationFragment {
                 String code = txtCode.getText().toString();
                 String password = txtPassword.getText().toString();
 
+
                 activity.apiCalls.verifyForgotPassword(username, code, password, new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);
+
                     }
 
                     @Override

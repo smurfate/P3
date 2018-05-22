@@ -144,6 +144,11 @@ public class ResumeFragment extends AbstractFragment {
         txtChoose.setText(R.string.choose_city);
 
         radioGroup.removeAllViews();
+        RadioButton rb = new RadioButton(activity);
+        rb.setText(getString(R.string.any));
+        rb.setTag(null);
+        radioGroup.addView(rb);
+
         for (City city:response.getActiveCities())
         {
             RadioButton radioButton = new RadioButton(activity);
@@ -157,10 +162,15 @@ public class ResumeFragment extends AbstractFragment {
     {
         lnrFilter.setVisibility(View.GONE);
         lnrChoose.setVisibility(View.VISIBLE);
-        chooseType = ChooseType.city;
+        chooseType = ChooseType.county;
         txtChoose.setText(R.string.choose_county);
 
         radioGroup.removeAllViews();
+        RadioButton rb = new RadioButton(activity);
+        rb.setText(getString(R.string.any));
+        rb.setTag(null);
+        radioGroup.addView(rb);
+
         for (Country city:response.getActiveCounties())
         {
             RadioButton radioButton = new RadioButton(activity);
@@ -399,6 +409,8 @@ public class ResumeFragment extends AbstractFragment {
                 }
 
                 showFilter();
+                radioGroup.removeAllViews();
+
             }
         });
 
@@ -406,6 +418,8 @@ public class ResumeFragment extends AbstractFragment {
             @Override
             public void onClick(View v) {
                 showFilter();
+                radioGroup.removeAllViews();
+
             }
         });
 

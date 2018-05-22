@@ -8,6 +8,8 @@ public enum  ErrorMessage {
     NO_INTERNET,
     SOCKET_TIMEOUT,
     UNKNOWN_HOST,
+    NOT_OK,
+    EMPTY_BODY,
     UNKNOWN_ERROR
 
 }

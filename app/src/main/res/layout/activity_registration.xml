@@ -20,12 +20,47 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:id="@id/frmContent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@color/background">
 
-    </FrameLayout>
+        <FrameLayout
+            android:id="@+id/frmContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/background" >
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frmOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:alpha="0.5"
+            android:background="@color/white"
+            android:clickable="true"
+            android:visibility="gone">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/pb_loading"
+                style="@style/SpinKitView.Small.DoubleBounce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:visibility="visible"
+                app:SpinKit_Color="@color/colorPrimary" />
+        </FrameLayout>
+
+
+    </RelativeLayout>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

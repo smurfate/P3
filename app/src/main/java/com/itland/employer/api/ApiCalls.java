@@ -1,9 +1,13 @@
 package com.itland.employer.api;
 
+import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import com.itland.employer.MainActivity;
 import com.itland.employer.abstracts.AbstractEntity;
+import com.itland.employer.entities.Message;
+import com.itland.employer.registration.RegistrationActivity;
 import com.itland.employer.requests.ChangeEmailRequest;
 import com.itland.employer.requests.ChangeGsmRequest;
 import com.itland.employer.requests.ChangePasswordRequest;
@@ -48,7 +52,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Saad on 5/11/2018.
  */
 
-public class ApiCalls {
+public abstract class ApiCalls {
 
     private String TAG = getClass().getSimpleName();
     private Retrofit retrofit ;
@@ -56,14 +60,10 @@ public class ApiCalls {
     private String authorization;
     private String language;
     private String scope;
-    private MainActivity activity;
 
-    public ApiCalls()
-    {
-        this(null);
-    }
 
-    public ApiCalls(MainActivity activity) {
+
+    public ApiCalls() {
         LoggingInterceptor interceptor = new LoggingInterceptor();
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
@@ -80,40 +80,42 @@ public class ApiCalls {
         language = PrefUtil.getStringPreference(SharedPreferencesKeys.language);
         scope = "Employer";
 
-        this.activity = activity;
-
     }
+
 
     private<T> Callback<T> convertCallback(final CallbackWrapped<T> callback)
     {
-        if(activity != null) activity.showProgressIndicator(true);
+        showProgress(true);
         Callback<T> cb = new Callback<T>() {
             @Override
             public void onResponse(Call<T> call, Response<T> response) {
-                if(activity != null) activity.showProgressIndicator(false);
+                showProgress(false);
                 if(response.body() != null)
                 {
                     T body = response.body();
 
-
                     try{
-                        if(!((AbstractEntity)body).IsOk)
+                        if(body.getClass().getSimpleName().equals("TokenResponse"))
                         {
-                            activity.toast(((AbstractEntity)body).Message.Content);
+                            callback.onResponse(body);//the only response that doesn't extend AbstractEntity
+                        }else if(!((AbstractEntity)body).IsOk)
+                        {
+                            toastError(((AbstractEntity)body).Message);
+                            callback.onFailure(ErrorMessage.NOT_OK);
                         }else
                         {
                             callback.onResponse(body);
                         }
                     } catch (Exception ex)
                     {
-
+                        callback.onFailure(ErrorMessage.NOT_OK);
                     }
 
                 }
                 else
                 {
                     Log.d(TAG, "onResponse: Empty body");
-                    callback.onFailure(ErrorMessage.UNKNOWN_ERROR);
+                    callback.onFailure(ErrorMessage.EMPTY_BODY);
                 }
             }
 
@@ -121,12 +123,15 @@ public class ApiCalls {
             public void onFailure(Call<T> call, Throwable throwable) {
                 callback.onFailure(ErrorMessage.UNKNOWN_ERROR);
                 Log.d(TAG, "onFailure: "+throwable.getMessage());
-                if(activity != null) activity.showProgressIndicator(false);
+                showProgress(false);
 
             }
         };
         return cb;
     }
+
+    public abstract void showProgress(boolean show);
+    public abstract void toastError(Message message);
 
     public void citiesList(CallbackWrapped<CitiesListResponse> callback)
     {
@@ -135,7 +140,7 @@ public class ApiCalls {
 
     public void signIn(String userName, String password,CallbackWrapped<TokenResponse> callback)
     {
-        apis.token(language,"password",userName,password,"JobSeeker").enqueue(convertCallback(callback));
+        apis.token(language,"password",userName,password,scope).enqueue(convertCallback(callback));
     }
 
     public void getResumesList(CallbackWrapped<FilterJobSeekerResponse> callback)
@@ -506,7 +511,7 @@ public class ApiCalls {
         apis.ChangePassword(language,authorization,request).enqueue(convertCallback(callback));
     }
 
-    public void signOut(CallbackWrapped<Object> callback)
+    public void signOut(CallbackWrapped<GeneralResponse> callback)
     {
         apis.Logout(language,authorization).enqueue(convertCallback(callback));
     }
@@ -514,6 +519,11 @@ public class ApiCalls {
     public void getHomeData(CallbackWrapped<HomeResponse> callback)
     {
         apis.Home(language,authorization).enqueue(convertCallback(callback));
+    }
+
+    public void getUserInfo(CallbackWrapped<GeneralResponse> callback)
+    {
+        apis.UserInfo(language,authorization).enqueue(convertCallback(callback));
     }
 
 

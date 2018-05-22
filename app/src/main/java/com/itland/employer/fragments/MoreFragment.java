@@ -29,6 +29,7 @@ public class MoreFragment extends AbstractFragment {
 
     @Bind(R.id.switchLanguage) SwitchCompat switchLanguage;
     @Bind(R.id.txtSignout) TextView txtSignout;
+    @Bind(R.id.txtAbout) TextView txtAbout;
 
     public MoreFragment() {
         // Required empty public constructor
@@ -78,12 +79,13 @@ public class MoreFragment extends AbstractFragment {
             }
         });
 
+
         txtSignout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiCalls.signOut(new CallbackWrapped<Object>() {
+                apiCalls.signOut(new CallbackWrapped<GeneralResponse>() {
                     @Override
-                    public void onResponse(Object response) {
+                    public void onResponse(GeneralResponse response) {
                         PrefUtil.setStringPreference(SharedPreferencesKeys.token,"");
                     }
 

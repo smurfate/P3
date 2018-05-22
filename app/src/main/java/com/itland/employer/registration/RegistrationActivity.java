@@ -6,11 +6,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.itland.employer.MainActivity;
 import com.itland.employer.R;
 import com.itland.employer.abstracts.AbstractActivity;
 import com.itland.employer.api.ApiCalls;
+import com.itland.employer.entities.Message;
 import com.itland.employer.registration.fragments.SignInFragment;
 import com.itland.employer.util.FragmentNavigator;
 import com.itland.employer.util.PrefUtil;
@@ -24,6 +26,7 @@ public class RegistrationActivity extends AbstractActivity {
     public FragmentNavigator navigator;
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.fab) FloatingActionButton fab;
+    @Bind(R.id.frmOverlay) public FrameLayout frmOverlay;
 
     public ApiCalls apiCalls;
 
@@ -33,7 +36,17 @@ public class RegistrationActivity extends AbstractActivity {
         setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
 
-        apiCalls = new ApiCalls();
+        apiCalls = new ApiCalls() {
+            @Override
+            public void showProgress(boolean show) {
+                showProgressIndicator(show);
+            }
+
+            @Override
+            public void toastError(Message message) {
+                toast(message.Content);
+            }
+        };
 
         setSupportActionBar(toolbar);
 
@@ -58,6 +71,17 @@ public class RegistrationActivity extends AbstractActivity {
 
         }
 
+
     }
+
+    public void showProgressIndicator(boolean indeterminate) {
+
+        if (indeterminate) {
+            frmOverlay.setVisibility(View.VISIBLE);
+        }else {
+            frmOverlay.setVisibility(View.GONE);
+        }
+    }
+
 
 }
