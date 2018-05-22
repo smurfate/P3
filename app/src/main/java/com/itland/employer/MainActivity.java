@@ -125,7 +125,6 @@ public class MainActivity extends AbstractActivity {
                     navigator.gotoMainSection();
                     return true;
                 case R.id.navigation_resumes:
-
                     navigator.gotoSection(ResumeFragment.newInstance());
                     return true;
                 case R.id.navigation_applications:
