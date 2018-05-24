@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.itland.employer.R;
 import com.itland.employer.abstracts.AbstractFragment;
 import com.itland.employer.api.CallbackWrapped;
 import com.itland.employer.api.ErrorMessage;
+import com.itland.employer.entities.CompanyProfile;
 import com.itland.employer.registration.RegistrationActivity;
 import com.itland.employer.responses.GeneralResponse;
 import com.itland.employer.responses.HomeResponse;
@@ -37,7 +39,10 @@ public class HomeFragment extends AbstractFragment {
     @Bind(R.id.txtViews) TextView txtViews;
     @Bind(R.id.imgProfile) CircleImageView imgProfile;
 
-    private HomeResponse response;
+    @Bind(R.id.lnrApplications) LinearLayout lnrApplications;
+    @Bind(R.id.lnrActiveVacancies) LinearLayout lnrActiveVacancies;
+    @Bind(R.id.lnrExpiredVacancy) LinearLayout lnrExpiredVacancy;
+    @Bind(R.id.lnrViews) LinearLayout lnrViews;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -81,24 +86,18 @@ public class HomeFragment extends AbstractFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if(response == null)
-        {
-            apiCalls.getHomeData(new CallbackWrapped<HomeResponse>() {
-                @Override
-                public void onResponse(HomeResponse response) {
-                    HomeFragment.this.response = response;
-                    renderResponse(response);
+        apiCalls.getHomeData(new CallbackWrapped<HomeResponse>() {
+            @Override
+            public void onResponse(HomeResponse response) {
+                renderResponse(response);
+            }
 
+            @Override
+            public void onFailure(ErrorMessage errorMessage) {
 
-                }
+            }
+        });
 
-                @Override
-                public void onFailure(ErrorMessage errorMessage) {
-
-                }
-            });
-
-        }else renderResponse(response);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,5 +105,45 @@ public class HomeFragment extends AbstractFragment {
                 navigator.gotoSection(ResumeFragment.newInstance());
             }
         });
+
+        lnrActiveVacancies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigator.gotoSection(VacanciesFragment.newInstance());
+            }
+        });
+
+        lnrExpiredVacancy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigator.gotoSection(VacanciesFragment.newInstance());
+            }
+        });
+
+        lnrApplications.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigator.gotoSection(ApplicationsFragment.newInstance());
+            }
+        });
+
+        lnrViews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                apiCalls.viewProfile(new CallbackWrapped<CompanyProfile>() {
+                    @Override
+                    public void onResponse(CompanyProfile response) {
+                        navigator.gotoSection(ProfileFragment.newInstance(response));
+
+                    }
+
+                    @Override
+                    public void onFailure(ErrorMessage errorMessage) {
+
+                    }
+                });
+            }
+        });
+
     }
 }

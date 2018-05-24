@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -103,6 +104,18 @@ public abstract class AbstractFragment extends Fragment {
             tv.setError(getString(R.string.error_required));
             tv.requestFocus();
             return false;
+        }
+        return true;
+    }
+
+    public boolean required(Spinner spn)
+    {
+        if(spn.getAdapter() == null || spn.getAdapter().getCount() == 0)
+        {
+            toast(getString(R.string.error_check_internet));
+            spn.requestFocus();
+            return false;
+
         }
         return true;
     }

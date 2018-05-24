@@ -72,6 +72,7 @@ public class SignUpFragment extends AbstractResistrationFragment {
     private boolean validateInput()
     {
         return required(txtGsm)&&
+                required(spnCountryCode)&&
                 required(txtEmail)&&
                 required(txtUserName)&&
                 required(txtPassword)&&

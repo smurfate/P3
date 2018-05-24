@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.itland.employer.R;
@@ -81,6 +82,19 @@ public abstract class AbstractResistrationFragment extends Fragment {
         }
         return true;
     }
+
+    public boolean required(Spinner spn)
+    {
+        if(spn.getAdapter().getCount() == 0)
+        {
+            toast(getString(R.string.error_check_internet));
+            spn.requestFocus();
+            return false;
+
+        }
+        return true;
+    }
+
 
     public void toast(AbstractEntity response)
     {

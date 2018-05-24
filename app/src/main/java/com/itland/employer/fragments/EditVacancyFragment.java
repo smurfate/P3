@@ -36,13 +36,11 @@ public class EditVacancyFragment extends AbstractFragment {
     @Bind(R.id.spnCvLanguage) Spinner spnCvLanguage;
     @Bind(R.id.switchPhoto) SwitchCompat switchPhoto;
     @Bind(R.id.switchIsActive) SwitchCompat switchIsActive;
-    @Bind(R.id.spnCurrency) Spinner spnCurrency;
 
     private HashMap<String,Indice> name2edu = new HashMap<>();
     private HashMap<String,Indice> name2field = new HashMap<>();
     private HashMap<String,Indice> name2salary = new HashMap<>();
     private HashMap<String,Indice> name2cvLang = new HashMap<>();
-    private HashMap<String,Indice> name2currency = new HashMap<>();
 
     private VacancyDetails vacancy;
 
@@ -84,39 +82,47 @@ public class EditVacancyFragment extends AbstractFragment {
         activity.actionText(true);
     }
 
+    private boolean validateInput()
+    {
+        return required(spnMinEduDegree)&&
+                required(spnFieldOfWork)&&
+                required(spnSalary)&&
+                required(spnCvLanguage);
+    }
+
     private void initSpinners()
     {
-        apiCalls.getListCurrencies(new CallbackWrapped<IndicesListResponse>() {
-            @Override
-            public void onResponse(IndicesListResponse response) {
-                List<String> indiceName = new ArrayList<>();
-                name2currency.clear();
-
-                for(Indice indice : response.Items)
-                {
-                    name2currency.put(indice.Value,indice);
-                    indiceName.add(indice.Value);
-
-                }
-                if(isSafe())
-                {
-                    ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
-                    spnCurrency.setAdapter(adapter);
-
-                    for (int i=0;i<adapter.getCount();i++)
-                    {
-                        if(adapter.getItem(i).toString().equals(vacancy.Currency)) spnCurrency.setSelection(i);
-                    }
-
-                }
-
-            }
-
-            @Override
-            public void onFailure(ErrorMessage errorMessage) {
-
-            }
-        });
+//        apiCalls.getListCurrencies(new CallbackWrapped<IndicesListResponse>() {
+//            @Override
+//            public void onResponse(IndicesListResponse response) {
+//                List<String> indiceName = new ArrayList<>();
+//                name2currency.clear();
+//
+//                for(Indice indice : response.Items)
+//                {
+//                    name2currency.put(indice.Value,indice);
+//                    indiceName.add(indice.Value);
+//
+//                }
+//                if(isSafe())
+//                {
+//                    ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
+//                    spnCurrency.setAdapter(adapter);
+//
+//                    for (int i=0;i<adapter.getCount();i++)
+//                    {
+//                        if(adapter.getItem(i).toString().equals(vacancy.Currency)) spnCurrency.setSelection(i);
+//                    }
+//
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(ErrorMessage errorMessage) {
+//
+//            }
+//        });
 
         apiCalls.getEducationLevel(new CallbackWrapped<IndicesListResponse>() {
             @Override
@@ -259,14 +265,15 @@ public class EditVacancyFragment extends AbstractFragment {
             @Override
             public void onClick(View v) {
 
+                if(!validateInput()) return;
+
                 Integer eduId = name2edu.get(spnMinEduDegree.getSelectedItem().toString()).Id;
                 Integer cvLangId = name2cvLang.get(spnCvLanguage.getSelectedItem().toString()).Id;
                 Integer salaryId = name2salary.get(spnSalary.getSelectedItem().toString()).Id;
-                Integer currencyId = name2currency.get(spnCurrency.getSelectedItem().toString()).Id;
                 Integer fieldId = name2field.get(spnFieldOfWork.getSelectedItem().toString()).Id;
 
 
-                apiCalls.editActiveVacancy(vacancy.Id,eduId, cvLangId, salaryId, currencyId, fieldId, switchPhoto.isChecked(), switchHideCompanyName.isChecked(), switchIsActive.isChecked(), new CallbackWrapped<GeneralResponse>() {
+                apiCalls.editActiveVacancy(vacancy.Id,eduId, cvLangId, salaryId, 0, fieldId, switchPhoto.isChecked(), switchHideCompanyName.isChecked(), switchIsActive.isChecked(), new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);

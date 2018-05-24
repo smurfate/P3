@@ -67,12 +67,13 @@
             tools:context="com.itland.employer.fragments.HomeFragment">
 
             <LinearLayout
+                android:id="@+id/lnrApplications"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/gradient"
-                android:padding="@dimen/layout_padding"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="@dimen/layout_padding">
 
                 <ImageView
                     android:id="@+id/imageView8"
@@ -93,13 +94,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/lnrActiveVacancies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dividerHeight"
-                android:padding="@dimen/layout_padding"
                 android:background="@drawable/gradient2"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="@dimen/layout_padding">
 
                 <ImageView
                     android:layout_width="48dp"
@@ -119,11 +121,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/lnrExpiredVacancy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dividerHeight"
-                android:gravity="center_vertical"
                 android:background="@drawable/gradient3"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="8dp">
 
@@ -145,14 +148,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/lnrViews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dividerHeight"
+                android:background="@drawable/gradient4"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:background="@drawable/gradient4"
-                android:layout_marginTop="@dimen/dividerHeight"
-                android:padding="@dimen/layout_padding"
-                >
+                android:padding="@dimen/layout_padding">
 
                 <ImageView
                     android:layout_width="48dp"

@@ -120,6 +120,14 @@ public class PostVacancyFragment extends AbstractFragment {
                 required(txtSkillsNeeded)&&
                 required(txtBenefits)&&
                 required(txtNumber)&&
+                required(spnCounty)&&
+                required(spnCity)&&
+                required(spnMinEduDegree)&&
+                required(spnFieldOfWork)&&
+                required(spnJobTitle)&&
+                required(spnMilitaryService)&&
+                required(spnSalary)&&
+                required(spnCvLanguage)&&
                 required(txtAboutCompany);
     }
 

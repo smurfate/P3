@@ -1,5 +1,6 @@
 package com.itland.employer.responses;
 
+import com.google.gson.Gson;
 import com.itland.employer.abstracts.AbstractEntity;
 
 /**

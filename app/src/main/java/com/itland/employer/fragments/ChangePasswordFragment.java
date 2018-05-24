@@ -66,15 +66,18 @@ public class ChangePasswordFragment extends AbstractFragment {
             public void onClick(View v) {
                 if(!validateInputs()) return;
 
-                if(!txtNewPassword.getText().equals(txtConfirmPassword.getText()))
+                String oldPassword = txtOldPassword.getText().toString();
+                String newPassword = txtNewPassword.getText().toString();
+                String confirmPassword = txtConfirmPassword.getText().toString();
+
+
+                if(!confirmPassword.equals(newPassword))
                 {
                     txtConfirmPassword.setError(getString(R.string.error_password_not_matched));
                     txtConfirmPassword.requestFocus();
                     return;
                 }
 
-                String oldPassword = txtOldPassword.getText().toString();
-                String newPassword = txtNewPassword.getText().toString();
 
                 apiCalls.changePassword(oldPassword, newPassword, new CallbackWrapped<GeneralResponse>() {
                     @Override

@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.itland.employer.R;
+import com.itland.employer.entities.CompanyProfile;
 import com.itland.employer.entities.Country;
 import com.itland.employer.responses.CitiesListResponse;
 import com.itland.employer.responses.CountyListResponse;
@@ -23,6 +24,7 @@ import com.itland.employer.api.CallbackWrapped;
 import com.itland.employer.api.ErrorMessage;
 import com.itland.employer.entities.City;
 import com.itland.employer.entities.Indice;
+import com.itland.employer.responses.ProfileInfoResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,15 +62,15 @@ public class EditProfileFragment extends AbstractFragment {
     HashMap<String,Indice> name2Industry = new HashMap<>();
     HashMap<String,Indice> name2ContactTitle = new HashMap<>();
 
-    private Integer profileId;
+    private CompanyProfile profile;
 
     public EditProfileFragment() {
         // Required empty public constructor
     }
 
-    public static EditProfileFragment newInstance(Integer id) {
+    public static EditProfileFragment newInstance(CompanyProfile profile) {
         EditProfileFragment fragment = new EditProfileFragment();
-        fragment.profileId = id;
+        fragment.profile = profile;
         return fragment;
     }
 
@@ -118,16 +120,169 @@ public class EditProfileFragment extends AbstractFragment {
         required(txtNameAr)&&
         required(txtNameEn)&&
         required(txtPBox)&&
+        required(spnCity)&&
+        required(spnCounty)&&
+        required(spnContactTitle)&&
+        required(spnIndustry)&&
         required(txtPhone);
+    }
+
+    private void initiateSpinners()
+    {
+        apiCalls.citiesList(new CallbackWrapped<CitiesListResponse>() {
+            @Override
+            public void onResponse(CitiesListResponse response) {
+
+                List<String> indiceName = new ArrayList<>();
+                name2city.clear();
+
+                for(City city : response.Items)
+                {
+                    if(city.IsActive)
+                    {
+                        name2city.put(city.Name,city);
+                        indiceName.add(city.Name);
+                    }
+                }
+                if(isSafe())
+                {
+                    ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
+                    spnCity.setAdapter(adapter);
+
+                    for (int i=0;i<adapter.getCount();i++)
+                    {
+                        if(adapter.getItem(i).toString().equals(profile.City)) spnCity.setSelection(i);
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(ErrorMessage errorMessage) {
+
+            }
+        });
+
+        apiCalls.getCountries(new CallbackWrapped<CountyListResponse>() {
+            @Override
+            public void onResponse(CountyListResponse response) {
+                List<String> indiceName = new ArrayList<>();
+                name2county.clear();
+
+                for(Country indice : response.Items)
+                {
+                    name2county.put(indice.Name,indice);
+                    indiceName.add(indice.Name);
+
+                }
+                if(isSafe())
+                {
+                    ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
+                    spnCounty.setAdapter(adapter);
+
+                    for (int i=0;i<adapter.getCount();i++)
+                    {
+                        if(adapter.getItem(i).toString().equals(profile.Country)) spnCounty.setSelection(i);
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(ErrorMessage errorMessage) {
+
+            }
+        });
+
+
+        apiCalls.getContactTitlesList(new CallbackWrapped<IndicesListResponse>() {
+            @Override
+            public void onResponse(IndicesListResponse response) {
+                List<String> indiceName = new ArrayList<>();
+                name2ContactTitle.clear();
+
+                for(Indice indice : response.Items)
+                {
+                    name2ContactTitle.put(indice.Value,indice);
+                    indiceName.add(indice.Value);
+
+                }
+                if(isSafe())
+                {
+                    ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
+                    spnContactTitle.setAdapter(adapter);
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(ErrorMessage errorMessage) {
+
+            }
+        });
+
+        apiCalls.getFieldsOfWork(new CallbackWrapped<IndicesListResponse>() {
+            @Override
+            public void onResponse(IndicesListResponse response) {
+                List<String> indiceName = new ArrayList<>();
+                name2Industry.clear();
+
+                for(Indice indice : response.Items)
+                {
+                    name2Industry.put(indice.Value,indice);
+                    indiceName.add(indice.Value);
+
+                }
+                if(isSafe())
+                {
+                    ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
+                    spnIndustry.setAdapter(adapter);
+
+                    for (int i=0;i<adapter.getCount();i++)
+                    {
+                        if(adapter.getItem(i).toString().equals(profile.Industry)) spnIndustry.setSelection(i);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(ErrorMessage errorMessage) {
+
+            }
+        });
+
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        txtNameEn.setText(profile.EnName);
+        txtNameAr.setText(profile.ArName);
+        txtAddressEn.setText(profile.EnAddress);
+        txtAddressAr.setText(profile.ArAddress);
+        txtAboutEn.setText(profile.EnAbout);
+        txtAboutAr.setText(profile.ArAbout);
+        txtCommercialRegister.setText(profile.CommercialRegister);
+        txtPBox.setText(profile.POBox.toString());
+        txtEmail.setText(profile.Email);
+        txtPhone.setText(profile.Phone);
+        txtGsm.setText(profile.Phone);
+        txtContactFirstName.setText(profile.PersonalDetailsFullName.split(" ")[0]);
+        txtContactLastName.setText(profile.PersonalDetailsFullName.split(" ")[1]);
+        txtContactPosition.setText(profile.PersonalDetailsposition);
+        txtContactEmail.setText(profile.PersonalDetailsEmail);
+        txtContactGSM.setText(profile.PersonalDetailsGsm);
+
+
+        initiateSpinners();
+
+
         TextView txtSave = activity.actionText(true);
-
-
         txtSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,10 +311,11 @@ public class EditProfileFragment extends AbstractFragment {
                 Integer titleId = name2ContactTitle.get(spnContactTitle.getSelectedItem().toString()).Id;
                 boolean visibility = switchCompat.isChecked();
 
-                apiCalls.editProfile(profileId,nameEn, nameAr, aboutAr, aboutEn, addressAr, addressEn, cityId, industryId, commercialRegister, Integer.parseInt(pbox), titleId, contactFirstName, contactLastName, contactPosition, new CallbackWrapped<GeneralResponse>() {
+                apiCalls.editProfile(profile.Id,nameEn, nameAr, aboutAr, aboutEn, addressAr, addressEn, cityId, industryId, commercialRegister, Integer.parseInt(pbox), titleId, contactFirstName, contactLastName, contactPosition, new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);
+                        navigator.goBackTo(ProfileFragment.class);
                     }
 
                     @Override
@@ -168,118 +324,10 @@ public class EditProfileFragment extends AbstractFragment {
                     }
                 });
 
-
-                toast("Saved");
             }
         });
 
 
-        apiCalls.citiesList(new CallbackWrapped<CitiesListResponse>() {
-            @Override
-            public void onResponse(CitiesListResponse response) {
-
-                List<String> indiceName = new ArrayList<>();
-                name2city.clear();
-
-                for(City city : response.Items)
-                {
-                    if(city.IsActive)
-                    {
-                        name2city.put(city.Name,city);
-                        indiceName.add(city.Name);
-                    }
-                }
-                if(isSafe())
-                {
-                    ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
-                    spnCity.setAdapter(adapter);
-                }
-
-            }
-
-            @Override
-            public void onFailure(ErrorMessage errorMessage) {
-
-            }
-        });
-
-        apiCalls.getCountries(new CallbackWrapped<CountyListResponse>() {
-            @Override
-            public void onResponse(CountyListResponse response) {
-                List<String> indiceName = new ArrayList<>();
-                name2county.clear();
-
-                for(Country indice : response.Items)
-                {
-                    name2county.put(indice.Name,indice);
-                    indiceName.add(indice.Name);
-
-                }
-                if(isSafe())
-                {
-                    ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
-                    spnCounty.setAdapter(adapter);
-                }
-
-            }
-
-            @Override
-            public void onFailure(ErrorMessage errorMessage) {
-
-            }
-        });
-
-
-        apiCalls.getContactTitlesList(new CallbackWrapped<IndicesListResponse>() {
-            @Override
-            public void onResponse(IndicesListResponse response) {
-                List<String> indiceName = new ArrayList<>();
-                name2ContactTitle.clear();
-
-                for(Indice indice : response.Items)
-                {
-                    name2ContactTitle.put(indice.Value,indice);
-                    indiceName.add(indice.Value);
-
-                }
-                if(isSafe())
-                {
-                    ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
-                    spnContactTitle.setAdapter(adapter);
-                }
-
-            }
-
-            @Override
-            public void onFailure(ErrorMessage errorMessage) {
-
-            }
-        });
-
-        apiCalls.getFieldsOfWork(new CallbackWrapped<IndicesListResponse>() {
-            @Override
-            public void onResponse(IndicesListResponse response) {
-                List<String> indiceName = new ArrayList<>();
-                name2Industry.clear();
-
-                for(Indice indice : response.Items)
-                {
-                    name2Industry.put(indice.Value,indice);
-                    indiceName.add(indice.Value);
-
-                }
-                if(isSafe())
-                {
-                    ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
-                    spnIndustry.setAdapter(adapter);
-                }
-            }
-
-            @Override
-            public void onFailure(ErrorMessage errorMessage) {
-
-            }
-        });
 
 
 

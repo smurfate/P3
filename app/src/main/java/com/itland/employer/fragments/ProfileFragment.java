@@ -115,7 +115,7 @@ public class ProfileFragment extends AbstractFragment {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigator.gotoSubSection(EditProfileFragment.newInstance(profile.Id));
+                navigator.gotoSubSection(EditProfileFragment.newInstance(profile));
             }
         });
 

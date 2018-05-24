@@ -41,6 +41,7 @@ public class VacanciesFragment extends AbstractFragment {
 
     private int index = 0;
     private boolean isDone = false; //got all list items
+    private boolean expired = false;
 
 
     public VacanciesFragment() {
@@ -49,6 +50,12 @@ public class VacanciesFragment extends AbstractFragment {
 
     public static VacanciesFragment newInstance() {
         VacanciesFragment fragment = new VacanciesFragment();
+        return fragment;
+    }
+
+    public static VacanciesFragment newInstance(boolean expired) {
+        VacanciesFragment fragment = new VacanciesFragment();
+        fragment.expired = expired;
         return fragment;
     }
 
@@ -122,6 +129,9 @@ public class VacanciesFragment extends AbstractFragment {
         tabLayout.addTab(activeTab);
         tabLayout.addTab(inactiveTab);
         tabLayout.addTab(expiredTab);
+
+        if(expired) expiredTab.select();
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -146,6 +156,7 @@ public class VacanciesFragment extends AbstractFragment {
         super.onViewCreated(view, savedInstanceState);
 
         setupTabs();
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

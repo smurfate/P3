@@ -28,6 +28,8 @@ import com.itland.employer.fragments.ResumeFragment;
 import com.itland.employer.fragments.VacanciesFragment;
 import com.itland.employer.util.BottomNavigationViewHelper;
 import com.itland.employer.util.FragmentNavigator;
+import com.itland.employer.util.PrefUtil;
+import com.itland.employer.util.SharedPreferencesKeys;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

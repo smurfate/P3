@@ -62,6 +62,7 @@ public class ChangeGsmFragment extends AbstractFragment {
     private boolean validateInput()
     {
         return required(txtGsm)&&
+                required(spnCountyCode)&&
                 required(txtPassword);
     }
 
