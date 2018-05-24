@@ -86,7 +86,10 @@ public class VacanciesFragment extends AbstractFragment {
                     @Override
                     public void onResponse(MyVacanciesResponse response) {
 
-                        if(response.Items.size()==0) isDone=true;
+                        if(response.Items.size()==0) {
+                            isDone=true;
+                            index = 0;
+                        }
 
                         activeVacanciesAdapter.loadMore(response.Items);
                         inactiveVacanciesAdapter.loadMore(response.Items);
@@ -136,6 +139,9 @@ public class VacanciesFragment extends AbstractFragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 tabHost.setCurrentTab(tab.getPosition());
+
+                if(tab.getPosition()==1 && inactiveVacanciesAdapter.getCount()==0) toast(getString(R.string.no_results));
+                if(tab.getPosition()==2 && expiredVacanciesAdapter.getCount()==0) toast(getString(R.string.no_results));
             }
 
             @Override
@@ -155,6 +161,7 @@ public class VacanciesFragment extends AbstractFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         setupTabs();
 
 
@@ -172,6 +179,8 @@ public class VacanciesFragment extends AbstractFragment {
                 activeVacanciesAdapter = new VacanciesAdapter(response.Items, VacanciesAdapter.Type.active);
                 inactiveVacanciesAdapter = new VacanciesAdapter(response.Items, VacanciesAdapter.Type.inactive);
                 expiredVacanciesAdapter = new VacanciesAdapter(response.Items, VacanciesAdapter.Type.expired);
+
+                if(activeVacanciesAdapter.getCount() == 0) toast(getString(R.string.no_results));
 
                 lstActive.setAdapter(activeVacanciesAdapter);
                 lstInActive.setAdapter(inactiveVacanciesAdapter);

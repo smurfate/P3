@@ -271,8 +271,11 @@ public class ResumeFragment extends AbstractFragment {
                 if(response.Items.size()==0)
                 {
                     isDone = true;
+                    index = 0;
                 }
-                    adapter.loadMore(response.Items);
+                adapter.loadMore(response.Items);
+                if(adapter.getCount()==0) toast(getString(R.string.no_results));
+
 
             }
 

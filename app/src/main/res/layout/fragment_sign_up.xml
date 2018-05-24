@@ -82,6 +82,7 @@
             <EditText
                 android:id="@+id/txtEmail"
                 style="@style/EditTextStyle"
+                android:nextFocusDown="@id/txtUserName"
                 android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -122,6 +123,7 @@
                     android:id="@+id/txtGsmNumber"
                     style="@style/EditTextStyle"
                     android:inputType="number"
+                    android:nextFocusDown="@id/txtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -149,6 +151,7 @@
             <EditText
                 android:id="@+id/txtUserName"
                 style="@style/EditTextStyle"
+                android:nextFocusDown="@id/txtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -173,6 +176,7 @@
             <EditText
                 android:id="@+id/txtPassword"
                 style="@style/EditTextStyle"
+                android:nextFocusDown="@id/txtConfirmPassword"
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

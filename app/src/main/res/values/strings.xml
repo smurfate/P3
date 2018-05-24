@@ -240,4 +240,5 @@
     <string name="n_expired_vacancies">%1$d Expired Vacancies</string>
     <string name="n_views_this_week">%1$d Views this week</string>
     <string name="error_check_internet">Check your internet connection</string>
+    <string name="no_results">No Results</string>
 </resources>

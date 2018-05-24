@@ -64,7 +64,10 @@ public class ApplicationsFragment extends AbstractFragment {
                 apiCalls.getApplicationsList(index, new CallbackWrapped<JobApplicationsListResponse>() {
                     @Override
                     public void onResponse(JobApplicationsListResponse response) {
-                        if(response.Items.size()==0) isDone=true;
+                        if(response.Items.size()==0) {
+                            isDone=true;
+                            index = 0;
+                        }
 
                         adapter.loadMore(response.Items);
                     }
@@ -92,6 +95,8 @@ public class ApplicationsFragment extends AbstractFragment {
             public void onResponse(JobApplicationsListResponse response) {
                 adapter = new ApplicationsAdapter(response.Items);
                 lstApplications.setAdapter(adapter);
+
+                if(adapter.getCount()==0) toast(getString(R.string.no_results));
             }
 
             @Override

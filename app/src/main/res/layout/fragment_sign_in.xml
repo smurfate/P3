@@ -63,6 +63,7 @@
                     <EditText
                         android:id="@+id/txtPassword"
                         style="@style/EditTextStyle"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -109,6 +110,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:nextFocusDown="@id/txtPassword"
                         android:hint="@string/gsm_e_mail_username"
                         android:text="employer@example.com" />
 
