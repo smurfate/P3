@@ -66,13 +66,15 @@ public class ApplicationDetailsFragment extends AbstractFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        setTitle(details.VacancyTitle);
+
         txtVacancyTitle.setText(details.VacancyTitle);
         txtCity.setText(details.City +", "+details.Country);
         txtDays.setText(getString(R.string.days_ago,details.AppliedSince));
         txtName.setText(details.Name);
         txtCoverLetter.setText(details.CoverLetter);
-        txtPhone.setText(details.PhoneNumber);
-        txtEmail.setText("");
+        txtPhone.setText(details.Mobile);
+        txtEmail.setText(details.Email);
         txtSite.setText(details.Website);
 
         txtMore.setOnClickListener(new View.OnClickListener() {

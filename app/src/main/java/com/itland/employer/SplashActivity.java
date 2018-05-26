@@ -23,14 +23,14 @@ public class SplashActivity extends AbstractActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
-        apiCalls = new ApiCalls() {
+        apiCalls = new ApiCalls(null) {
             @Override
             public void showProgress(boolean show) {
 
             }
 
             @Override
-            public void toastError(Message message) {
+            public void toastError(String message) {
 
             }
         };

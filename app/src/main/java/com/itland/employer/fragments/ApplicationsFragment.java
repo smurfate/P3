@@ -2,12 +2,15 @@ package com.itland.employer.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Space;
+import android.widget.TextView;
 
 import com.itland.employer.R;
 import com.itland.employer.responses.JobApplicationsListResponse;
@@ -16,6 +19,7 @@ import com.itland.employer.adapters.ApplicationsAdapter;
 import com.itland.employer.api.CallbackWrapped;
 import com.itland.employer.api.ErrorMessage;
 import com.itland.employer.entities.JobApplicationDetails;
+import com.yalantis.phoenix.PullToRefreshView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -23,6 +27,8 @@ import butterknife.ButterKnife;
 public class ApplicationsFragment extends AbstractFragment {
 
     @Bind(R.id.lstApplications) ListView lstApplications;
+    @Bind(R.id.txtNoResult) TextView txtNoResult;
+    @Bind(R.id.pull_to_refresh) PullToRefreshView swipeLayout;
 
 
     private boolean isDone = false;
@@ -85,25 +91,45 @@ public class ApplicationsFragment extends AbstractFragment {
 
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
 
-        apiCalls.getApplicationsList(index, new CallbackWrapped<JobApplicationsListResponse>() {
+    private void getData()
+    {
+        swipeLayout.setRefreshing(true);
+        txtNoResult.setVisibility(View.GONE);
+        apiCalls.getApplicationsList(0, new CallbackWrapped<JobApplicationsListResponse>() {
             @Override
             public void onResponse(JobApplicationsListResponse response) {
+                swipeLayout.setRefreshing(false);
                 adapter = new ApplicationsAdapter(response.Items);
                 lstApplications.setAdapter(adapter);
 
-                if(adapter.getCount()==0) toast(getString(R.string.no_results));
+                if(adapter.getCount()==0){
+                    txtNoResult.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
             public void onFailure(ErrorMessage errorMessage) {
-
+                swipeLayout.setRefreshing(false);
             }
         });
+
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        swipeLayout.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData();
+            }
+        });
+
+
+        getData();
 
         lstApplications.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override

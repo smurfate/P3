@@ -18,11 +18,14 @@ import com.itland.employer.api.CallbackWrapped;
 import com.itland.employer.api.ErrorMessage;
 import com.itland.employer.registration.RegistrationActivity;
 import com.itland.employer.responses.GeneralResponse;
+import com.itland.employer.responses.HomeResponse;
 import com.itland.employer.util.PrefUtil;
 import com.itland.employer.util.SharedPreferencesKeys;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MoreFragment extends AbstractFragment {
 
@@ -30,6 +33,8 @@ public class MoreFragment extends AbstractFragment {
     @Bind(R.id.switchLanguage) SwitchCompat switchLanguage;
     @Bind(R.id.txtSignout) TextView txtSignout;
     @Bind(R.id.txtAbout) TextView txtAbout;
+    @Bind(R.id.txtCompanyName) TextView txtComapnyName;
+    @Bind(R.id.imgLogo) CircleImageView imgLogo;
 
     public MoreFragment() {
         // Required empty public constructor
@@ -61,6 +66,21 @@ public class MoreFragment extends AbstractFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        apiCalls.getHomeData(new CallbackWrapped<HomeResponse>() {
+            @Override
+            public void onResponse(HomeResponse response) {
+
+                Picasso.with(activity).load(response.ImageUrl).error(R.mipmap.profile).into(imgLogo);
+                txtComapnyName.setText(response.CompanyName);
+            }
+
+            @Override
+            public void onFailure(ErrorMessage errorMessage) {
+
+            }
+        });
+
 
         if(activity.getLocale().equals(AbstractActivity.Lang.ar)) {
             switchLanguage.setText("Arabic");

@@ -46,11 +46,12 @@
                 <EditText
                     android:id="@+id/txtEmail"
                     style="@style/EditTextStyle"
-                    android:inputType="textEmailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/new_email" />
+                    android:hint="@string/new_email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -70,11 +71,12 @@
                 <EditText
                     android:id="@+id/txtPassword"
                     style="@style/EditTextStyle"
-                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/password" />
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 

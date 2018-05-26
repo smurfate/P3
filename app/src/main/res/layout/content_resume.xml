@@ -54,8 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        android:text="(+963) 991 345 379" />
+                        android:layout_weight="1" />
 
                 </LinearLayout>
 
@@ -78,8 +77,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        android:text="info@site.com" />
+                        android:layout_weight="1"/>
 
                 </LinearLayout>
 
@@ -102,8 +100,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        android:text="Damascus, Syria" />
+                        android:layout_weight="1" />
 
                 </LinearLayout>
 
@@ -126,8 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        android:text="(+963) 011 222 3332" />
+                        android:layout_weight="1"/>
 
                 </LinearLayout>
 
@@ -150,8 +146,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="1"
-                        android:text="site.com" />
+                        android:layout_weight="1"/>
 
                 </LinearLayout>
 
@@ -196,8 +191,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="60"
-                        android:text="Delayed" />
+                        android:layout_weight="60" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -220,8 +214,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="60"
-                        android:text="Delayed" />
+                        android:layout_weight="60"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -244,8 +237,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="60"
-                        android:text="Delayed" />
+                        android:layout_weight="60"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -268,8 +260,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="60"
-                        android:text="Delayed" />
+                        android:layout_weight="60"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -293,8 +284,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="60"
-                        android:text="Delayed" />
+                        android:layout_weight="60" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -317,8 +307,7 @@
                 style="@style/TextViewDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem" />
+                android:layout_margin="8dp"/>
         </android.support.v7.widget.CardView>
 
 
@@ -359,8 +348,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="60"
-                        android:text="Full time" />
+                        android:layout_weight="60" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -383,8 +371,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="60"
-                        android:text="Web design/ Development" />
+                        android:layout_weight="60"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -407,8 +394,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="60"
-                        android:text="Entry Level (less than 3 years)" />
+                        android:layout_weight="60"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -432,8 +418,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="60"
-                        android:text="Syria" />
+                        android:layout_weight="60"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -456,8 +441,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="60"
-                        android:text="Damascus, Aleppo" />
+                        android:layout_weight="60"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -480,8 +464,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="60"
-                        android:text="Within 1 week" />
+                        android:layout_weight="60"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -524,8 +507,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="50"
-                        android:text="100.000 S.P." />
+                        android:layout_weight="50"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -548,8 +530,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_lr"
                         android:layout_marginRight="@dimen/margin_lr"
-                        android:layout_weight="50"
-                        android:text="80.000 S.P." />
+                        android:layout_weight="50"/>
                 </LinearLayout>
 
 
@@ -626,8 +607,7 @@
                     android:id="@+id/txtMotherLanguage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Arabic" />
+                    android:layout_weight="1"/>
 
                 <TextView
                     style="@style/TextViewDetails.Inactive"

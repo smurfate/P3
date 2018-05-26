@@ -2,11 +2,13 @@ package com.itland.employer.api;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.itland.employer.MainActivity;
 import com.itland.employer.abstracts.AbstractEntity;
 import com.itland.employer.entities.Message;
+import com.itland.employer.fragments.ReloadFragment;
 import com.itland.employer.registration.RegistrationActivity;
 import com.itland.employer.requests.ChangeEmailRequest;
 import com.itland.employer.requests.ChangeGsmRequest;
@@ -38,8 +40,18 @@ import com.itland.employer.entities.CompanyProfile;
 import com.itland.employer.entities.JobApplicationDetails;
 import com.itland.employer.entities.ResumeDetails;
 import com.itland.employer.entities.VacancyDetails;
+import com.itland.employer.util.FragmentNavigator;
 import com.itland.employer.util.PrefUtil;
 import com.itland.employer.util.SharedPreferencesKeys;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -60,10 +72,11 @@ public abstract class ApiCalls {
     private String authorization;
     private String language;
     private String scope;
+    private FragmentNavigator navigator;
 
 
 
-    public ApiCalls() {
+    public ApiCalls(FragmentNavigator navigator) {
         LoggingInterceptor interceptor = new LoggingInterceptor();
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
@@ -79,6 +92,7 @@ public abstract class ApiCalls {
         authorization = PrefUtil.getStringPreference(SharedPreferencesKeys.token);
         language = PrefUtil.getStringPreference(SharedPreferencesKeys.language);
         scope = "Employer";
+        this.navigator = navigator;
 
     }
 
@@ -90,6 +104,13 @@ public abstract class ApiCalls {
             @Override
             public void onResponse(Call<T> call, Response<T> response) {
                 showProgress(false);
+
+                if(response.errorBody()!=null)
+                {
+                    toastError(response.errorBody().toString());
+                    callback.onFailure(ErrorMessage.ERROR_MESSAGE);
+                    return;
+                }
                 if(response.body() != null)
                 {
                     T body = response.body();
@@ -100,7 +121,7 @@ public abstract class ApiCalls {
                             callback.onResponse(body);//the only response that doesn't extend AbstractEntity
                         }else if(!((AbstractEntity)body).IsOk)
                         {
-                            toastError(((AbstractEntity)body).Message);
+                            toastError(((AbstractEntity)body).Message.Content);
                             callback.onFailure(ErrorMessage.NOT_OK);
                         }else
                         {
@@ -121,6 +142,11 @@ public abstract class ApiCalls {
 
             @Override
             public void onFailure(Call<T> call, Throwable throwable) {
+
+                if(navigator != null)
+                {
+                    navigator.gotoSubSection(ReloadFragment.newInstance(navigator));
+                }
                 callback.onFailure(ErrorMessage.UNKNOWN_ERROR);
                 Log.d(TAG, "onFailure: "+throwable.getMessage());
                 showProgress(false);
@@ -130,8 +156,72 @@ public abstract class ApiCalls {
         return cb;
     }
 
+    public String uploadFile(Bitmap bitmap, String upLoadServerUri) {
+        String lineEnd = "\r\n";
+        String twoHyphens = "--";
+        String boundary = "*****";
+        String attachmentName = "file";
+        String attachmentFileName = "bitmap.bmp";
+        String crlf = "\r\n";
+
+        try {
+            HttpURLConnection httpUrlConnection = null;
+            URL url = new URL(upLoadServerUri);
+            httpUrlConnection = (HttpURLConnection) url.openConnection();
+            httpUrlConnection.setUseCaches(false);
+            httpUrlConnection.setDoOutput(true);
+            httpUrlConnection.setRequestMethod("POST");
+            httpUrlConnection.setRequestProperty("Connection", "Keep-Alive");
+            httpUrlConnection.setRequestProperty("User-Agent", "Android Multipart HTTP Client 1.0");
+            httpUrlConnection.setRequestProperty("Cache-Control", "no-cache");
+            httpUrlConnection.setRequestProperty(
+                    "Content-Type", "multipart/form-data;boundary=" + boundary);
+            DataOutputStream request = new DataOutputStream(
+                    httpUrlConnection.getOutputStream());
+            request.writeBytes(twoHyphens + boundary + crlf);
+            request.writeBytes("Content-Disposition: form-data; name=\"" + attachmentName + "\";filename=\"" +
+                    attachmentFileName + "\"" + lineEnd);
+            request.writeBytes("Content-Type: image/png" + lineEnd);
+            request.writeBytes("Content-Transfer-Encoding: binary" + lineEnd);
+            request.writeBytes(lineEnd);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+            byte[] pixels = bos.toByteArray();
+            request.write(pixels);
+            request.writeBytes(lineEnd);
+            request.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+            InputStream responseStream = new
+                    BufferedInputStream(httpUrlConnection.getInputStream());
+            BufferedReader responseStreamReader =
+                    new BufferedReader(new InputStreamReader(responseStream));
+            String line = "";
+            StringBuilder stringBuilder = new StringBuilder();
+            while ((line = responseStreamReader.readLine()) != null) {
+                stringBuilder.append(line).append("\n");
+            }
+            responseStreamReader.close();
+            String response = stringBuilder.toString();
+            if(!response.contains("File")) {
+                String imageURL = response.substring(0, response.length() - 1);
+                return imageURL;
+            }
+            request.flush();
+            request.close();
+            responseStream.close();
+            httpUrlConnection.disconnect();
+            return response;
+        } catch (Exception ex) {
+            Log.v("File", ex.getMessage());
+            ex.printStackTrace();
+
+        } finally {
+
+        }
+        return "Error";
+    }
+
     public abstract void showProgress(boolean show);
-    public abstract void toastError(Message message);
+    public abstract void toastError(String message);
 
     public void citiesList(CallbackWrapped<CitiesListResponse> callback)
     {
@@ -162,7 +252,7 @@ public abstract class ApiCalls {
         request.Page = page;
         request.ResumeLanguageId = languageId;
         request.WithPhoto = photo;
-        apis.FilterJobSeekers(language,authorization,new FilterJobSeekersRequest()).enqueue(convertCallback(callback));
+        apis.FilterJobSeekers(language,authorization,request).enqueue(convertCallback(callback));
     }
 
 
@@ -523,6 +613,7 @@ public abstract class ApiCalls {
 
     public void getUserInfo(CallbackWrapped<GeneralResponse> callback)
     {
+
         apis.UserInfo(language,authorization).enqueue(convertCallback(callback));
     }
 

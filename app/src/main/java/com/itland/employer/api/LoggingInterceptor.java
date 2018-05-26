@@ -30,7 +30,7 @@ public class LoggingInterceptor implements Interceptor {
         if(request.body()!=null){
             Buffer requestBuffer = new Buffer();
             request.body().writeTo(requestBuffer);
-            Log.d(TAG,String.format("Sent: %s",requestBuffer.readUtf8()) );
+            Log.d(TAG,String.format("Sent body for %s %n%s",request.url(),requestBuffer.readUtf8()) );
         }
 
         Response response = chain.proceed(request);
@@ -38,12 +38,12 @@ public class LoggingInterceptor implements Interceptor {
         long t2 = System.nanoTime();
 //        logger.info(String.format("Received response for %s in %.1fms%n%s",
 //                request.url(), (t2 - t1) / 1e6d, response.headers()));
-        Log.d(TAG,String.format("Received response for %s in %.1fms%n%s",
+        Log.d(TAG,String.format("Received headers for %s in %.1fms%n%s",
                 request.url(), (t2 - t1) / 1e6d, response.headers()));
 
         String rawJson = response.body().string();
 
-        Log.d(TAG, String.format("Received: %s", rawJson));
+        Log.d(TAG, String.format("Received body for %s %n%s", request.url(),rawJson));
 //        if(response.body()!=null)
 //        {
 //            MediaType contentType = response.body().contentType();

@@ -34,6 +34,7 @@ import com.itland.employer.api.ErrorMessage;
 import com.itland.employer.entities.City;
 import com.itland.employer.entities.Indice;
 import com.itland.employer.entities.ResumeDetails;
+import com.yalantis.phoenix.PullToRefreshView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -45,6 +46,9 @@ public class ResumeFragment extends AbstractFragment {
     @Bind(R.id.drawer_layout) public DrawerLayout drawer;
     @Bind(R.id.nav_view) NavigationView navigationView;
     @Bind(R.id.txtChoose) TextView txtChoose;
+    @Bind(R.id.txtNoResult) TextView txtNoResults;
+    @Bind(R.id.pull_to_refresh) PullToRefreshView pullToRefreshView;
+
 
 
     @Bind(R.id.lnrChoose) LinearLayout lnrChoose;
@@ -274,8 +278,6 @@ public class ResumeFragment extends AbstractFragment {
                     index = 0;
                 }
                 adapter.loadMore(response.Items);
-                if(adapter.getCount()==0) toast(getString(R.string.no_results));
-
 
             }
 
@@ -286,6 +288,33 @@ public class ResumeFragment extends AbstractFragment {
         });
     }
 
+    private void getData()
+    {
+        pullToRefreshView.setRefreshing(true);
+        txtNoResults.setVisibility(View.GONE);
+
+        apiCalls.getResumesList(new CallbackWrapped<FilterJobSeekerResponse>() {
+            @Override
+            public void onResponse(FilterJobSeekerResponse response) {
+                pullToRefreshView.setRefreshing(false);
+                adapter.clearItems();
+                adapter.loadMore(response.Items);
+
+                if(adapter.getCount()==0){
+                    txtNoResults.setVisibility(View.VISIBLE);
+                }
+
+            }
+
+            @Override
+            public void onFailure(ErrorMessage errorMessage) {
+                pullToRefreshView.setRefreshing(false);
+
+            }
+        });
+
+    }
+
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -293,16 +322,12 @@ public class ResumeFragment extends AbstractFragment {
         adapter = new ResumeAdapter();
         gridView.setAdapter(adapter);
 
-        apiCalls.getResumesList(new CallbackWrapped<FilterJobSeekerResponse>() {
-            @Override
-            public void onResponse(FilterJobSeekerResponse response) {
-                adapter.loadMore(response.Items);
-            }
+        getData();
 
+        pullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
             @Override
-            public void onFailure(ErrorMessage errorMessage) {
-                toast(errorMessage);
-
+            public void onRefresh() {
+                getData();
             }
         });
 

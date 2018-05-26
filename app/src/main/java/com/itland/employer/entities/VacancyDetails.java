@@ -54,7 +54,7 @@ public class VacancyDetails extends AbstractEntity {
     public String AboutCompany;
     public String MinRequiredEducationLevel;
     public String ExperienceNeededYears;
-    public String WorkCountry;
+//    public String WorkCountry;
     public String WorkCity;
     public String Type;
     public String FieldOfWork;
@@ -62,7 +62,7 @@ public class VacancyDetails extends AbstractEntity {
     public String JobDescription;
     public String PreRequisites;
     public String SkillsNeeded;
-    public Integer Salary;
+    public String Salary;
     public String Currency;
     public String Benefits;
     public Integer AvailablePositions;

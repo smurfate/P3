@@ -233,5 +233,10 @@
     <string name="n_expired_vacancies">%1$d شواغر منتهية</string>
     <string name="n_views_this_week">%1$d مشاهدة لهذا الاسبوع</string>
 
+    <string name="error_check_internet">تأكد من الاتصال بالانترنت</string>
+    <string name="no_results">لا يوجد نتائج</string>
+    <string name="error_reload">لم نستطع الوصول إلى المخدم, تأكد من أنك متصل بالانترنت\nإضغط في أي مكان لإعادة المحاولة</string>
+    <string name="confirm">تأكيد</string>
+
 
 </resources>

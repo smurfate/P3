@@ -44,7 +44,7 @@ public class PostVacancyFragment extends AbstractFragment {
     @Bind(R.id.txtRequiredNumber) EditText txtNumber;
 
 
-    @Bind(R.id.spnCounty) Spinner spnCounty;
+//    @Bind(R.id.spnCounty) Spinner spnCounty;
     @Bind(R.id.spnCity) Spinner spnCity;
     @Bind(R.id.spnMinEduDegree) Spinner spnMinEduDegree;
     @Bind(R.id.spnFieldOfWork) Spinner spnFieldOfWork;
@@ -120,7 +120,7 @@ public class PostVacancyFragment extends AbstractFragment {
                 required(txtSkillsNeeded)&&
                 required(txtBenefits)&&
                 required(txtNumber)&&
-                required(spnCounty)&&
+//                required(spnCounty)&&
                 required(spnCity)&&
                 required(spnMinEduDegree)&&
                 required(spnFieldOfWork)&&
@@ -133,39 +133,39 @@ public class PostVacancyFragment extends AbstractFragment {
 
     private void initSpinners()
     {
-        apiCalls.getCountries(new CallbackWrapped<CountyListResponse>() {
-            @Override
-            public void onResponse(CountyListResponse response) {
-                List<String> indiceName = new ArrayList<>();
-                name2county.clear();
-
-                for(Country indice : response.Items)
-                {
-                    name2county.put(indice.Name,indice);
-                    indiceName.add(indice.Name);
-
-                }
-                if(isSafe())
-                {
-                    ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
-                    spnCounty.setAdapter(adapter);
-
-                    if(isEdit())
-                    {
-                        for (int i=0;i<adapter.getCount();i++)
-                        {
-                            if(adapter.getItem(i).toString().equals(details.WorkCountry)) spnCounty.setSelection(i);
-                        }
-                    }
-                }
-
-            }
-
-            @Override
-            public void onFailure(ErrorMessage errorMessage) {
-
-            }
-        });
+//        apiCalls.getCountries(new CallbackWrapped<CountyListResponse>() {
+//            @Override
+//            public void onResponse(CountyListResponse response) {
+//                List<String> indiceName = new ArrayList<>();
+//                name2county.clear();
+//
+//                for(Country indice : response.Items)
+//                {
+//                    name2county.put(indice.Name,indice);
+//                    indiceName.add(indice.Name);
+//
+//                }
+//                if(isSafe())
+//                {
+//                    ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.item_spinner,indiceName);
+//                    spnCounty.setAdapter(adapter);
+//
+//                    if(isEdit())
+//                    {
+//                        for (int i=0;i<adapter.getCount();i++)
+//                        {
+//                            if(adapter.getItem(i).toString().equals(details.WorkCountry)) spnCounty.setSelection(i);
+//                        }
+//                    }
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(ErrorMessage errorMessage) {
+//
+//            }
+//        });
 
         apiCalls.citiesList(new CallbackWrapped<CitiesListResponse>() {
             @Override
@@ -258,7 +258,7 @@ public class PostVacancyFragment extends AbstractFragment {
                     {
                         for (int i=0;i<adapter.getCount();i++)
                         {
-                            if(adapter.getItem(i).toString().equals(details.WorkCountry)) spnCounty.setSelection(i);
+                            if(adapter.getItem(i).toString().equals(details.FieldOfWork)) spnFieldOfWork.setSelection(i);
                         }
                     }
 
@@ -439,7 +439,7 @@ public class PostVacancyFragment extends AbstractFragment {
                 String about = txtAboutCompany.getText().toString();
                 Integer experience = Integer.parseInt(txtExperience.getText().toString());
 
-                Integer countyId = name2county.get(spnCounty.getSelectedItem().toString()).Id;
+//                Integer countyId = name2county.get(spnCounty.getSelectedItem().toString()).Id;
                 Integer cityId = name2city.get(spnCity.getSelectedItem().toString()).Id;
                 Integer eduId = name2edu.get(spnMinEduDegree.getSelectedItem().toString()).Id;
                 Integer fieldId = name2field.get(spnFieldOfWork.getSelectedItem().toString()).Id;
@@ -453,7 +453,7 @@ public class PostVacancyFragment extends AbstractFragment {
                 if(!isEdit())
                 {
                     apiCalls.postJobVacancy(positionTitle, jobDescription, preRequisits, skillsNeeded,
-                            benefits, about, countyId, cityId, experience, eduId, fieldId, titleId, militaryId,
+                            benefits, about, 0, cityId, experience, eduId, fieldId, titleId, militaryId,
                             salaryId, employeeNumber, switchPhoto.isChecked(), cvLangId,
                             switchHideCompanyName.isChecked(), new CallbackWrapped<GeneralResponse>() {
                                 @Override
@@ -474,7 +474,7 @@ public class PostVacancyFragment extends AbstractFragment {
                     if(details.isExpired())
                     {
                         apiCalls.editExpiredVacancy(positionTitle, jobDescription, preRequisits, skillsNeeded,
-                                benefits, about, countyId, cityId, experience, eduId, fieldId, titleId, militaryId,
+                                benefits, about, 0, cityId, experience, eduId, fieldId, titleId, militaryId,
                                 salaryId, employeeNumber, switchPhoto.isChecked(), cvLangId,
                                 switchHideCompanyName.isChecked(), new CallbackWrapped<GeneralResponse>() {
                                     @Override
@@ -493,7 +493,7 @@ public class PostVacancyFragment extends AbstractFragment {
                     }else if(details.isInactive())
                     {
                         apiCalls.editInActiveVacancy(positionTitle, jobDescription, preRequisits, skillsNeeded,
-                                benefits, about, countyId, cityId, experience, eduId, fieldId, titleId, militaryId,
+                                benefits, about, 0, cityId, experience, eduId, fieldId, titleId, militaryId,
                                 salaryId, employeeNumber, switchPhoto.isChecked(), cvLangId,
                                 switchHideCompanyName.isChecked(), new CallbackWrapped<GeneralResponse>() {
                                     @Override

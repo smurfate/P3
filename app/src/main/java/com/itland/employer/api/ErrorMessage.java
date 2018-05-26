@@ -9,6 +9,7 @@ public enum  ErrorMessage {
     SOCKET_TIMEOUT,
     UNKNOWN_HOST,
     NOT_OK,
+    ERROR_MESSAGE,
     EMPTY_BODY,
     UNKNOWN_ERROR
 

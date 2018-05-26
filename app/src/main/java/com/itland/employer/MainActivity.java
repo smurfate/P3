@@ -63,18 +63,6 @@ public class MainActivity extends AbstractActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        apiCalls = new ApiCalls() {
-            @Override
-            public void showProgress(boolean show) {
-                showProgressIndicator(show);
-            }
-
-            @Override
-            public void toastError(Message message) {
-                toast(message.Content);
-            }
-        };
-
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false);
@@ -88,6 +76,19 @@ public class MainActivity extends AbstractActivity {
 
         navigator = new FragmentNavigator(this, HomeFragment.newInstance(),navigation,mOnNavigationItemSelectedListener,R.id.frmContent);
 
+        apiCalls = new ApiCalls(navigator) {
+            @Override
+            public void showProgress(boolean show) {
+                showProgressIndicator(show);
+            }
+
+            @Override
+            public void toastError(String message) {
+                toast(message);
+            }
+        };
+
+
 
         actionLogo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +96,7 @@ public class MainActivity extends AbstractActivity {
                 apiCalls.viewProfile(new CallbackWrapped<CompanyProfile>() {
                     @Override
                     public void onResponse(CompanyProfile response) {
-                        navigator.gotoSubSection(ProfileFragment.newInstance(response));
+                        navigator.gotoSection(ProfileFragment.newInstance(response));
 
                     }
 

@@ -51,6 +51,7 @@ public class JobApplicationDetails extends AbstractEntity {
     public String CoverLetter;
     public Integer ResumeId;
     public String Name;
+    public String Email;
     public String Mobile;
     public String Address;
     public String PhoneNumber;

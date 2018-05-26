@@ -29,6 +29,7 @@ public class JobApplication extends AbstractEntity {
     public String VacancyWorkingCity;
     public String SeekerFullName;
     public Integer AppliedSince;
+    public String Email;
     public String ApplicationReadStatus;
 
     public boolean isRead()

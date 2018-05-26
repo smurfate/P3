@@ -7,5 +7,5 @@ import com.itland.employer.abstracts.AbstractEntity;
  */
 
 public class RegisterResponse extends AbstractEntity {
-    public String UserId;
+    public String Username;
 }

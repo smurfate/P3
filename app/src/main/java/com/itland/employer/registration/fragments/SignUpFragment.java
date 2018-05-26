@@ -142,6 +142,7 @@ public class SignUpFragment extends AbstractResistrationFragment {
                         @Override
                         public void onResponse(RegisterResponse response) {
                             toast(response);
+                            navigator.gotoSection(VerifyFragment.newInstance(response.Username));
 
                         }
 

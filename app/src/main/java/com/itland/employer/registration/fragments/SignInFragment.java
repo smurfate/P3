@@ -5,16 +5,16 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.github.ybq.android.spinkit.SpinKitView;
 import com.itland.employer.MainActivity;
 import com.itland.employer.R;
 import com.itland.employer.responses.TokenResponse;
@@ -130,18 +130,25 @@ public class SignInFragment extends AbstractResistrationFragment {
         txtForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!required(txtUserName)) return;
-                String username = txtUserName.getText().toString();
-                navigator.gotoSubSection(ForgotPasswordFragment.newInstance(username));
+                navigator.gotoSubSection(ForgotPasswordFragment.newInstance());
             }
         });
 
         txtVerifyAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!required(txtUserName)) return;
-                String username = txtUserName.getText().toString();
-                navigator.gotoSubSection(VerifyFragment.newInstance(username));
+                navigator.gotoSubSection(VerifyFragment.newInstance());
+            }
+        });
+
+        txtPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    btnSignIn.callOnClick();
+                    return true;
+                }
+                return false;
             }
         });
     }

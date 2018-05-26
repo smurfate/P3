@@ -16,6 +16,7 @@ import com.itland.employer.fragments.MoreFragment;
 import com.itland.employer.fragments.ProfileFragment;
 import com.itland.employer.fragments.ResumeFragment;
 import com.itland.employer.fragments.VacanciesFragment;
+import com.itland.employer.fragments.VacancyPageFragment;
 
 
 /**
@@ -44,6 +45,11 @@ public class FragmentNavigator {
         this.listener = listener;
         gotoMainSection();
         addStackListener();
+    }
+
+    public AppCompatActivity getActivity()
+    {
+        return activity;
     }
 
     private void addStackListener()
@@ -97,6 +103,30 @@ public class FragmentNavigator {
     }
 
     public void gotoSection(Fragment section)
+    {
+        try
+        {
+            displayHamburger();
+            hideSoftwareKeyboard();
+
+            if(currentSection != mainSection) fragmentManager.popBackStack(currentSection.getClass().getSimpleName(),FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+            fragmentManager.beginTransaction()
+                    .replace(container,section,section.getClass().getSimpleName())
+                    .addToBackStack(section.getClass().getSimpleName())
+                    .commitAllowingStateLoss();
+
+            currentSection = section;
+
+        }
+        catch (Exception e)
+        {
+
+        }
+
+    }
+
+    public void gotoSection(Fragment section,int container)
     {
         try
         {

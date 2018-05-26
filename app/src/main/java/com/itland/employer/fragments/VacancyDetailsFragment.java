@@ -83,6 +83,8 @@ public class VacancyDetailsFragment extends AbstractFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        setTitle(details.Title);
+
         txtTitle.setText(details.Title);
         txtCompanyName.setText(details.CompanyName);
         txtCompanyIndustry.setText(details.CompanyIndustry);
@@ -93,7 +95,7 @@ public class VacancyDetailsFragment extends AbstractFragment {
 
         txtPostedSince.setText(getString(R.string.days_ago,details.AddedSince.toString()));
 
-        txtLocation.setText(details.WorkCity+", "+details.WorkCountry);
+        txtLocation.setText(details.WorkCity);
         txtRequiredExperience.setText(getString(R.string.n_years_of_experience,details.ExperienceNeededYears));
         txtSkills.setText(details.SkillsNeeded);
         txtType.setText(details.Type);

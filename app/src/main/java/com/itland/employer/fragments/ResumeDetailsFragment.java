@@ -1,6 +1,7 @@
 package com.itland.employer.fragments;
 
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -83,28 +84,38 @@ public class ResumeDetailsFragment extends AbstractFragment {
 
 
         toolbar.setTitle(details.Name);
-        setTitle(details.JobTarget.Title);
 
-        txtPhone.setText(details.PersonalDetails.MobilePhone);
-        txtEmail.setText(details.PersonalDetails.Email);
-        txtAddress.setText(details.PersonalDetails.City+", "+details.PersonalDetails.Country);
-        txtLandLine.setText(details.PersonalDetails.PhoneNumber);
-        txtSite.setText(details.PersonalDetails.UploadedResumeUrl);
-        txtMilitary.setText(details.PersonalDetails.MilitaryServiceStatus);
-        txtDrivingLicense.setText(details.PersonalDetails.DrivingLicenceType);
-        txtDependacyNumber.setText(details.PersonalDetails.NumberOfDependencies.toString());
-        txtFullAddress.setText(details.PersonalDetails.Address);
-        txtGSMCode.setText(details.PersonalDetails.MobilePhone);
-        txtObjective.setText(details.JobTarget.CareerObjectives);
-        txtJobType.setText(details.JobTarget.JobType);
-        txtJopCategory.setText(details.JobTarget.Category);
-        txtCareerLevel.setText(details.JobTarget.CareerLevel);
-        txtWorkCountry.setText(details.JobTarget.City);
-        txtWorkPeriod.setText(details.JobTarget.NoticePeriod);
-        txtDesiredSalary.setText(details.JobTarget.DesiredNetSalary + " " + details.JobTarget.DesiredNetSalaryCurrency);
-        txtLastMonthSalary.setText(details.JobTarget.LastMonthSalary + " " + details.JobTarget.LastMonthSalaryCurrency);
-        txtMotherLanguage.setText(details.PersonalDetails.MotherLanguage);
-        txtWorkCity.setText(details.JobTarget.City);
+        if(details.PersonalDetails != null)
+        {
+            txtPhone.setText(details.PersonalDetails.MobilePhone);
+            txtEmail.setText(details.PersonalDetails.Email);
+            txtAddress.setText(details.PersonalDetails.City+", "+details.PersonalDetails.Country);
+            txtLandLine.setText(details.PersonalDetails.PhoneNumber);
+            txtSite.setText(details.PersonalDetails.UploadedResumeUrl);
+            txtMilitary.setText(details.PersonalDetails.MilitaryServiceStatus);
+            txtDrivingLicense.setText(details.PersonalDetails.DrivingLicenceType);
+            txtDependacyNumber.setText(details.PersonalDetails.NumberOfDependencies.toString());
+            txtFullAddress.setText(details.PersonalDetails.Address);
+            txtGSMCode.setText(details.PersonalDetails.MobilePhone);
+
+        }
+
+        if(details.JobTarget != null)
+        {
+            setTitle(details.JobTarget.Title);
+
+            txtObjective.setText(details.JobTarget.CareerObjectives);
+            txtJobType.setText(details.JobTarget.JobType);
+            txtJopCategory.setText(details.JobTarget.Category);
+            txtCareerLevel.setText(details.JobTarget.CareerLevel);
+            txtWorkCountry.setText(details.JobTarget.City);
+            txtWorkPeriod.setText(details.JobTarget.NoticePeriod);
+            txtDesiredSalary.setText(details.JobTarget.DesiredNetSalary + " " + details.JobTarget.DesiredNetSalaryCurrency);
+            txtLastMonthSalary.setText(details.JobTarget.LastMonthSalary + " " + details.JobTarget.LastMonthSalaryCurrency);
+            txtMotherLanguage.setText(details.PersonalDetails.MotherLanguage);
+            txtWorkCity.setText(details.JobTarget.City);
+
+        }
 
 
         for(WorkExperience experience : details.WorkExperiences)

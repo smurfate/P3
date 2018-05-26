@@ -36,17 +36,6 @@ public class RegistrationActivity extends AbstractActivity {
         setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
 
-        apiCalls = new ApiCalls() {
-            @Override
-            public void showProgress(boolean show) {
-                showProgressIndicator(show);
-            }
-
-            @Override
-            public void toastError(Message message) {
-                toast(message.Content);
-            }
-        };
 
         setSupportActionBar(toolbar);
 
@@ -62,14 +51,18 @@ public class RegistrationActivity extends AbstractActivity {
         getSupportActionBar().hide();
 
         navigator = new FragmentNavigator(this, SignInFragment.newInstance(),null,null,R.id.frmContent);
+        apiCalls = new ApiCalls(navigator) {
+            @Override
+            public void showProgress(boolean show) {
+                showProgressIndicator(show);
+            }
 
-        if(!isNullOrEmpty(PrefUtil.getStringPreference(SharedPreferencesKeys.token)))
-        {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            this.finish();
+            @Override
+            public void toastError(String message) {
+                toast(message);
+            }
+        };
 
-        }
 
 
     }

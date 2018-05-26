@@ -116,7 +116,7 @@ public class HomeFragment extends AbstractFragment {
         lnrExpiredVacancy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigator.gotoSection(VacanciesFragment.newInstance());
+                navigator.gotoSection(VacanciesFragment.newInstance(true));
             }
         });
 
