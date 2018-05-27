@@ -46,7 +46,8 @@ public class MainActivity extends AbstractActivity {
     @Bind(R.id.actionText) TextView actionText;
     @Bind(R.id.actionIcon) ImageView actionIcon;
     @Bind(R.id.imgProfile2) public ImageView actionLogo;
-    
+    @Bind(R.id.imgBack) public ImageView actionBack;
+
     @Bind(R.id.searchView) SearchView searchView;
 
     public FragmentNavigator navigator;
@@ -74,7 +75,7 @@ public class MainActivity extends AbstractActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         BottomNavigationViewHelper.removeShiftMode(navigation);
 
-        navigator = new FragmentNavigator(this, HomeFragment.newInstance(),navigation,mOnNavigationItemSelectedListener,R.id.frmContent);
+        navigator = new FragmentNavigator(this, actionBack,HomeFragment.newInstance(),navigation,mOnNavigationItemSelectedListener,R.id.frmContent);
 
         apiCalls = new ApiCalls(navigator) {
             @Override

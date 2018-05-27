@@ -50,7 +50,7 @@ public class RegistrationActivity extends AbstractActivity {
 
         getSupportActionBar().hide();
 
-        navigator = new FragmentNavigator(this, SignInFragment.newInstance(),null,null,R.id.frmContent);
+        navigator = new FragmentNavigator(this, null,SignInFragment.newInstance(),null,null,R.id.frmContent);
         apiCalls = new ApiCalls(navigator) {
             @Override
             public void showProgress(boolean show) {

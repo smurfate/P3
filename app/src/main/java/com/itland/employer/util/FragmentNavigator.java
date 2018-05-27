@@ -8,7 +8,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 
+import com.itland.employer.MainActivity;
 import com.itland.employer.R;
 import com.itland.employer.fragments.ApplicationsFragment;
 import com.itland.employer.fragments.HomeFragment;
@@ -34,15 +36,18 @@ public class FragmentNavigator {
 
     private FragmentManager fragmentManager;
     public boolean isBack = false;
+    private ImageView imgBack;
 
 
-    public FragmentNavigator(AppCompatActivity activity, Fragment mainSection, BottomNavigationView navigationView, BottomNavigationView.OnNavigationItemSelectedListener listener, int container) {
+    public FragmentNavigator(AppCompatActivity activity,ImageView imgBack, Fragment mainSection, BottomNavigationView navigationView,
+                             BottomNavigationView.OnNavigationItemSelectedListener listener, int container) {
         this.activity = activity;
         this.mainSection = mainSection;
         this.container = container;
         this.fragmentManager = activity.getSupportFragmentManager();
         this.navigationView = navigationView;
         this.listener = listener;
+        this.imgBack = imgBack;
         gotoMainSection();
         addStackListener();
     }
@@ -262,6 +267,18 @@ public class FragmentNavigator {
     {
         isBack = true;
 
+        if(imgBack!=null)
+        {
+            imgBack.setVisibility(View.VISIBLE);
+            imgBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    goBack();
+                }
+            });
+
+        }
+
 //        activity.toggle.setDrawerIndicatorEnabled(false);
 //        activity.actionBar.setDisplayHomeAsUpEnabled(true);
 //
@@ -279,6 +296,9 @@ public class FragmentNavigator {
     public void displayHamburger()
     {
         isBack = false;
+        if(imgBack!=null)
+        imgBack.setVisibility(View.GONE);
+
 //        activity.actionBar.setDisplayHomeAsUpEnabled(false);
 //        activity.toggle.setDrawerIndicatorEnabled(true);
 //
