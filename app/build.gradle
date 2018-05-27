@@ -7,8 +7,8 @@ android {
         applicationId "com.itland.irecruitment"
         minSdkVersion Integer.parseInt(rootProject.minSdkVersion)
         targetSdkVersion Integer.parseInt(rootProject.targetSdkVersion)
-        versionCode 3
-        versionName "1.2"
+        versionCode 4
+        versionName "1.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
