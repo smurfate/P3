@@ -46,7 +46,7 @@ public class Vacancy extends AbstractEntity {
 
     public boolean isInactive()
     {
-        return Status.equals("InActive");
+        return Status.equals("Inactive");
     }
 
     public boolean isExpired()

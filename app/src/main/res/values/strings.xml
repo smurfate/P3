@@ -239,4 +239,5 @@
     <string name="no_results">No Results</string>
     <string name="error_reload">We are having trouble reaching our server, would you please check your internet connection\nclick anywhere to retry</string>
     <string name="confirm">Confirm</string>
+    <string name="error_server_issue">Something went wrong, please try again later</string>
 </resources>

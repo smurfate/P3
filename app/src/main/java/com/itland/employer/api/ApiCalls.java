@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.itland.employer.MainActivity;
+import com.itland.employer.R;
 import com.itland.employer.abstracts.AbstractEntity;
 import com.itland.employer.entities.Message;
 import com.itland.employer.fragments.ReloadFragment;
@@ -90,8 +91,9 @@ public abstract class ApiCalls {
         apis = retrofit.create(Apis.class);
 
         authorization = PrefUtil.getStringPreference(SharedPreferencesKeys.token);
-        language = PrefUtil.getStringPreference(SharedPreferencesKeys.language);
+        language = PrefUtil.getStringPreference(SharedPreferencesKeys.language).equals("")?"en":PrefUtil.getStringPreference(SharedPreferencesKeys.language);
         scope = "Employer";
+
         this.navigator = navigator;
 
     }
@@ -105,12 +107,13 @@ public abstract class ApiCalls {
             public void onResponse(Call<T> call, Response<T> response) {
                 showProgress(false);
 
-                if(response.errorBody()!=null)
+                if(response.errorBody() != null)
                 {
-                    toastError(response.errorBody().toString());
+                    if(navigator!=null) toastError(navigator.getActivity().getString(R.string.error_server_issue));
                     callback.onFailure(ErrorMessage.ERROR_MESSAGE);
                     return;
                 }
+
                 if(response.body() != null)
                 {
                     T body = response.body();
@@ -119,11 +122,13 @@ public abstract class ApiCalls {
                         if(body.getClass().getSimpleName().equals("TokenResponse"))
                         {
                             callback.onResponse(body);//the only response that doesn't extend AbstractEntity
-                        }else if(!((AbstractEntity)body).IsOk)
+                        }
+                        else if(!((AbstractEntity)body).IsOk)
                         {
                             toastError(((AbstractEntity)body).Message.Content);
                             callback.onFailure(ErrorMessage.NOT_OK);
-                        }else
+                        }
+                        else
                         {
                             callback.onResponse(body);
                         }
@@ -147,7 +152,7 @@ public abstract class ApiCalls {
                 {
                     navigator.gotoSubSection(ReloadFragment.newInstance(navigator));
                 }
-                callback.onFailure(ErrorMessage.UNKNOWN_ERROR);
+                callback.onFailure(ErrorMessage.NO_INTERNET);
                 Log.d(TAG, "onFailure: "+throwable.getMessage());
                 showProgress(false);
 
@@ -486,6 +491,7 @@ public abstract class ApiCalls {
         request.FirstName = firstName;
         request.LastName = lastName;
         request.Username = userName;
+        request.Scope = scope;
 
 
         apis.Register(language,request).enqueue(convertCallback(callback));

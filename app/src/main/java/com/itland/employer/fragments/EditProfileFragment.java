@@ -272,8 +272,8 @@ public class EditProfileFragment extends AbstractFragment {
         txtEmail.setText(profile.Email);
         txtPhone.setText(profile.Phone);
         txtGsm.setText(profile.Phone);
-        txtContactFirstName.setText(profile.PersonalDetailsFullName.split(" ")[0]);
-        txtContactLastName.setText(profile.PersonalDetailsFullName.split(" ")[1]);
+        txtContactFirstName.setText(profile.PersonalDetailsFullName);
+        txtContactLastName.setText(profile.PersonalDetailsFullName);
         txtContactPosition.setText(profile.PersonalDetailsposition);
         txtContactEmail.setText(profile.PersonalDetailsEmail);
         txtContactGSM.setText(profile.PersonalDetailsGsm);

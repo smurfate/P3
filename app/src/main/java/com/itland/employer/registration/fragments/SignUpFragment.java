@@ -81,6 +81,11 @@ public class SignUpFragment extends AbstractResistrationFragment {
                 required(txtLastName);
     }
 
+    private String getName(CountyCode code)
+    {
+        return code.CountryCode+"(+"+code.DialCode+")";
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -93,8 +98,8 @@ public class SignUpFragment extends AbstractResistrationFragment {
 
                 for(CountyCode indice : response.Items)
                 {
-                    name2code.put(indice.CountryCode,indice);
-                    indiceName.add(indice.CountryCode);
+                    name2code.put(getName(indice),indice);
+                    indiceName.add(getName(indice));
 
                 }
                 if(isSafe())
@@ -111,6 +116,8 @@ public class SignUpFragment extends AbstractResistrationFragment {
 
             }
         });
+
+
 
 
         btnSignup.setOnClickListener(new View.OnClickListener() {

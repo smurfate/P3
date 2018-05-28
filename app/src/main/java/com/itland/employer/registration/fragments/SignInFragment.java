@@ -137,7 +137,7 @@ public class SignInFragment extends AbstractResistrationFragment {
         txtVerifyAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigator.gotoSubSection(VerifyFragment.newInstance());
+                navigator.gotoSubSection(Verify1Fragment.newInstance());
             }
         });
 

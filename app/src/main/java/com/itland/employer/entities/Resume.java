@@ -13,6 +13,7 @@ public class Resume extends AbstractEntity {
         "Id": 0,
             "SeekerFullName": "string",
             "JobTitle": "string",
+             "SeekerImage": "string",
             "IsOk": true,
             "Message": {
         "Type": "string",
@@ -22,6 +23,7 @@ public class Resume extends AbstractEntity {
 */
     public Integer Id;
     public String SeekerFullName;
+    public String SeekerImage;
     public String JobTitle;
 
 

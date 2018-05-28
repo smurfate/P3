@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.itland.employer.R;
 import com.itland.employer.entities.Resume;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,7 @@ public class ResumeAdapter extends BaseAdapter {
 
         viewHolder.tvTitle.setText(resume.SeekerFullName);
         viewHolder.tvJob.setText(resume.JobTitle);
+        Picasso.with(parent.getContext()).load(resume.SeekerImage).error(R.mipmap.profile).into(viewHolder.imgProfile);
 
 
         return convertView;
