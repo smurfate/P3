@@ -202,7 +202,7 @@ public interface Apis {
     Call<GeneralResponse> ChangePassword(@Header("Language") String language,@Header("Authorization") String authorization, @Body ChangePasswordRequest request);
 
     @POST("/IRecruitment.Api/api/Account/Logout")
-    Call<GeneralResponse> Logout(@Header("Language") String language,@Header("Authorization") String authorization);
+    Call<Void> Logout(@Header("Language") String language,@Header("Authorization") String authorization);
 
     @GET("/IRecruitment.Api/api/EmpHome/Home")
     Call<HomeResponse> Home(@Header("Language") String language,@Header("Authorization") String authorization);

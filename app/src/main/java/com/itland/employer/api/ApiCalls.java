@@ -607,7 +607,7 @@ public abstract class ApiCalls {
         apis.ChangePassword(language,authorization,request).enqueue(convertCallback(callback));
     }
 
-    public void signOut(CallbackWrapped<GeneralResponse> callback)
+    public void signOut(CallbackWrapped<Void> callback)
     {
         apis.Logout(language,authorization).enqueue(convertCallback(callback));
     }

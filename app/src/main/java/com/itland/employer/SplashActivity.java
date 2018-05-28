@@ -58,6 +58,6 @@ public class SplashActivity extends AbstractActivity {
                     }
                 });
             }
-        },5000);
+        },3000);
     }
 }
