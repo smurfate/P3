@@ -71,7 +71,9 @@ public class ResumeAdapter extends BaseAdapter {
 
         viewHolder.tvTitle.setText(resume.SeekerFullName);
         viewHolder.tvJob.setText(resume.JobTitle);
-        Picasso.with(parent.getContext()).load(resume.SeekerImage).error(R.mipmap.profile).into(viewHolder.imgProfile);
+
+        if(resume.SeekerImage!=null && !resume.SeekerImage.equals(""))
+            Picasso.with(parent.getContext()).load(resume.SeekerImage).error(R.mipmap.profile).into(viewHolder.imgProfile);
 
 
         return convertView;

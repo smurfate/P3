@@ -17,7 +17,6 @@ import com.itland.employer.abstracts.AbstractFragment;
 import com.itland.employer.api.CallbackWrapped;
 import com.itland.employer.api.ErrorMessage;
 import com.itland.employer.registration.RegistrationActivity;
-import com.itland.employer.responses.GeneralResponse;
 import com.itland.employer.responses.HomeResponse;
 import com.itland.employer.util.PrefUtil;
 import com.itland.employer.util.SharedPreferencesKeys;
@@ -31,9 +30,9 @@ public class MoreFragment extends AbstractFragment {
 
 
     @Bind(R.id.switchLanguage) SwitchCompat switchLanguage;
-    @Bind(R.id.txtSignout) TextView txtSignout;
+    @Bind(R.id.txtSignout) TextView txtSignOut;
     @Bind(R.id.txtAbout) TextView txtAbout;
-    @Bind(R.id.txtCompanyName) TextView txtComapnyName;
+    @Bind(R.id.txtCompanyName) TextView txtCompanyName;
     @Bind(R.id.imgLogo) CircleImageView imgLogo;
 
     public MoreFragment() {
@@ -72,7 +71,7 @@ public class MoreFragment extends AbstractFragment {
             public void onResponse(HomeResponse response) {
 
                 Picasso.with(activity).load(response.ImageUrl).error(R.mipmap.profile).into(imgLogo);
-                txtComapnyName.setText(response.CompanyName);
+                txtCompanyName.setText(response.CompanyName);
             }
 
             @Override
@@ -100,7 +99,7 @@ public class MoreFragment extends AbstractFragment {
         });
 
 
-        txtSignout.setOnClickListener(new View.OnClickListener() {
+        txtSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

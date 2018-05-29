@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DecorContentParent;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -118,6 +119,7 @@ public class ResumeDetailsFragment extends AbstractFragment {
         }
 
 
+        if(details.WorkExperiences != null)
         for(WorkExperience experience : details.WorkExperiences)
         {
             WorkExperienceViewHolder holder = new WorkExperienceViewHolder(activity);
@@ -129,6 +131,7 @@ public class ResumeDetailsFragment extends AbstractFragment {
             lnrExperience.addView(holder.getView());
         }
 
+        if(details.References != null)
         for(Reference reference : details.References)
         {
             ReferenceViewHolder holder = new ReferenceViewHolder(activity);
@@ -140,6 +143,7 @@ public class ResumeDetailsFragment extends AbstractFragment {
             lnrReference.addView(holder.getView());
         }
 
+        if(details.Skills != null)
         for (Skill skill : details.Skills)
         {
             SkillViewHolder holder = new SkillViewHolder(activity);
@@ -150,6 +154,7 @@ public class ResumeDetailsFragment extends AbstractFragment {
             lnrSkill.addView(holder.getView());
         }
 
+        if(details.Languages != null)
         for (Language language : details.Languages)
         {
             LanguageViewHolder holder = new LanguageViewHolder(activity);
@@ -160,6 +165,7 @@ public class ResumeDetailsFragment extends AbstractFragment {
             lnrLanguage.addView(holder.getView());
         }
 
+        if(details.EducationDegrees != null)
         for (EducationDegree degree : details.EducationDegrees)
         {
             EducationDegreeViewHolder holder = new EducationDegreeViewHolder(activity);
