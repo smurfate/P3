@@ -86,7 +86,6 @@ public class ResumeFragment extends AbstractFragment {
     private Country county;
     private Indice fieldOfWork;
     private Indice jobType;
-    private Indice photo;
     private Indice cvLanguage;
     private String searchQuery;
 

@@ -237,7 +237,7 @@
     <string name="no_results">لا يوجد نتائج</string>
     <string name="error_reload">لم نستطع الوصول إلى المخدم, تأكد من أنك متصل بالانترنت\nإضغط في أي مكان لإعادة المحاولة</string>
     <string name="confirm">تأكيد</string>
-    <string name="error_server_issue">حصل خطأ غير متوقع, حاول مجددا بعد قليل</string>
+    <string name="error_server_issue">حصل خطأ غير متوقع, أعد المحاولة لاحقا</string>
 
 
 </resources>
