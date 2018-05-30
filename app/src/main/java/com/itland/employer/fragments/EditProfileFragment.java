@@ -1,7 +1,12 @@
 package com.itland.employer.fragments;
 
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
@@ -9,10 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.itland.employer.R;
+import com.itland.employer.abstracts.AbstractActivity;
+import com.itland.employer.api.FileUploader;
 import com.itland.employer.entities.CompanyProfile;
 import com.itland.employer.entities.Country;
 import com.itland.employer.responses.CitiesListResponse;
@@ -26,12 +34,14 @@ import com.itland.employer.entities.City;
 import com.itland.employer.entities.Indice;
 import com.itland.employer.responses.ProfileInfoResponse;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfileFragment extends AbstractFragment {
 
@@ -56,6 +66,8 @@ public class EditProfileFragment extends AbstractFragment {
     @Bind(R.id.spnIndustry) Spinner spnIndustry;
     @Bind(R.id.spnContactTitle) Spinner spnContactTitle;
     @Bind(R.id.switchVisible) SwitchCompat switchCompat;
+    @Bind(R.id.imgLogoAr) CircleImageView imgLogoAr;
+    @Bind(R.id.imgLogoEn) CircleImageView imgLogoEn;
 
     HashMap<String,Country> name2county = new HashMap<>();
     HashMap<String,City> name2city = new HashMap<>();
@@ -63,6 +75,7 @@ public class EditProfileFragment extends AbstractFragment {
     HashMap<String,Indice> name2ContactTitle = new HashMap<>();
 
     private CompanyProfile profile;
+    private int PICK_IMAGE = 22;
 
     public EditProfileFragment() {
         // Required empty public constructor
@@ -257,6 +270,7 @@ public class EditProfileFragment extends AbstractFragment {
 
     }
 
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -280,6 +294,32 @@ public class EditProfileFragment extends AbstractFragment {
 
 
         initiateSpinners();
+
+        imgLogoAr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.pickImage(new AbstractActivity.OnImagePicked() {
+                    @Override
+                    public void onImagePicked(Bitmap bitmap) {
+                        imgLogoAr.setImageBitmap(bitmap);
+                        imgLogoAr.setTag(bitmap);
+                    }
+                });
+            }
+        });
+
+        imgLogoEn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.pickImage(new AbstractActivity.OnImagePicked() {
+                    @Override
+                    public void onImagePicked(Bitmap bitmap) {
+                        imgLogoEn.setImageBitmap(bitmap);
+                        imgLogoEn.setTag(bitmap);
+                    }
+                });
+            }
+        });
 
 
         TextView txtSave = activity.actionText(true);
@@ -327,10 +367,6 @@ public class EditProfileFragment extends AbstractFragment {
             }
         });
 
-
-
-
-
-
     }
+
 }

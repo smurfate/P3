@@ -1,7 +1,13 @@
 package com.itland.employer.fragments;
 
 
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -82,6 +88,7 @@ public class ProfileFragment extends AbstractFragment {
         super.onStart();
         setTitle(getString(R.string.profile));
     }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
