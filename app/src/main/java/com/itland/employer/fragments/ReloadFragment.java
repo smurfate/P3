@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.itland.employer.R;
@@ -24,6 +25,7 @@ public class ReloadFragment extends Fragment {
 
     @Bind(R.id.txtReload) TextView txtReload;
     @Bind(R.id.frmRelaod) FrameLayout frmReload;
+    @Bind(R.id.imgFace) ImageView imgFace;
 
     private FragmentNavigator navigator;
 
@@ -63,10 +65,17 @@ public class ReloadFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         frmReload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigator.goBack();
+                imgFace.setImageResource(R.drawable.ic_sentiment_neutral_black_24dp);
+                v.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        navigator.goBack();
+                    }
+                },300);
             }
         });
     }

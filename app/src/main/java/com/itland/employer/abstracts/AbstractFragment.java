@@ -66,7 +66,7 @@ public abstract class AbstractFragment extends Fragment {
 
     public void toast(AbstractEntity response)
     {
-        if(isSafe()) Toast.makeText(getActivity(),response.Message.Content,Toast.LENGTH_LONG).show();
+        if(isSafe() && response.Message != null) Toast.makeText(getActivity(),response.Message.Content,Toast.LENGTH_LONG).show();
     }
 
     public void log(String log)

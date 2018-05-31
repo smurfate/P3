@@ -134,10 +134,9 @@ public class VacancyDetailsFragment extends AbstractFragment {
             public void onClick(View v) {
                 if(details.isActive()) navigator.gotoSubSection(EditVacancyFragment.newInstance(details));
                 if(details.isInactive() || details.isExpired()) navigator.gotoSubSection(PostVacancyFragment.newInstance(details));
-
-
             }
         });
+
 
 
     }

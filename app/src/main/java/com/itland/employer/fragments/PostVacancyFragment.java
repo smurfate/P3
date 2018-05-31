@@ -455,11 +455,12 @@ public class PostVacancyFragment extends AbstractFragment {
                     apiCalls.postJobVacancy(positionTitle, jobDescription, preRequisits, skillsNeeded,
                             benefits, about, 0, cityId, experience, eduId, fieldId, titleId, militaryId,
                             salaryId, employeeNumber, switchPhoto.isChecked(), cvLangId,
-                            switchHideCompanyName.isChecked(), new CallbackWrapped<GeneralResponse>() {
+                            switchHideCompanyName.isChecked(), new CallbackWrapped<VacancyDetails>() {
                                 @Override
-                                public void onResponse(GeneralResponse response) {
+                                public void onResponse(VacancyDetails response) {
                                     toast(response);
-                                    navigator.goBackTo(VacanciesFragment.class);
+                                    navigator.goBack();
+                                    navigator.gotoSubSection(VacancyDetailsFragment.newInstance(response));
                                 }
 
                                 @Override

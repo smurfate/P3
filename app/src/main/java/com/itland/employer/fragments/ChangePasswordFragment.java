@@ -94,5 +94,13 @@ public class ChangePasswordFragment extends AbstractFragment {
 
             }
         });
+
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigator.goBack();
+            }
+        });
     }
 }

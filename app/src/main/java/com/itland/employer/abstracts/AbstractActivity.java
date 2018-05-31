@@ -1,12 +1,16 @@
 package com.itland.employer.abstracts;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -21,6 +25,7 @@ import com.itland.employer.R;
 import com.itland.employer.util.PrefUtil;
 import com.itland.employer.util.SharedPreferencesKeys;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -33,6 +38,9 @@ public abstract class AbstractActivity extends AppCompatActivity {
 
 
     public enum Lang { ar,en }
+
+    private OnImagePicked onImagePicked;
+    private int PICK_IMAGE_CODE = 22;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -116,6 +124,34 @@ public abstract class AbstractActivity extends AppCompatActivity {
         return PrefUtil.getStringPreference(SharedPreferencesKeys.language).equals(Lang.ar.name())?Lang.ar:Lang.en;
     }
 
+    public void pickImage(OnImagePicked onImagePicked)
+    {
+        this.onImagePicked = onImagePicked;
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_CODE);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==PICK_IMAGE_CODE && resultCode == Activity.RESULT_OK && data != null)
+        {
+            Uri uri = data.getData();
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                onImagePicked.onImagePicked(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
+    public interface OnImagePicked{
+        public void onImagePicked(Bitmap bitmap);
+    }
 }

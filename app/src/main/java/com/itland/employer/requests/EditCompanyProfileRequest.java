@@ -20,10 +20,14 @@ public class EditCompanyProfileRequest {
       "EnAbout": "string",
       "CommercialRegister": "string",
       "POBox": 0,
+      "Email": "string",
+        "Phone": "string",
       "PersonalDetailsTitleId": 0,
       "PersonalDetailsFirstName": "string",
       "PersonalDetailsLastName": "string",
-      "PersonalDetailsposition": "string"
+      "PersonalDetailsPosition": "string"
+      "PersonalDetailsEmail": "string",
+  "PersonalDetailsGsm": "string"
     }
 */
     public Integer Id;
@@ -39,8 +43,12 @@ public class EditCompanyProfileRequest {
     public String EnAbout;
     public String CommercialRegister;
     public Integer POBox;
+    public String Email;
+    public String Phone;
     public Integer PersonalDetailsTitleId;
     public String PersonalDetailsFirstName;
     public String PersonalDetailsLastName;
-    public String PersonalDetailsposition;
+    public String PersonalDetailsPosition;
+    public String PersonalDetailsEmail;
+    public String PersonalDetailsGsm;
 }

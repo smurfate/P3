@@ -1,5 +1,6 @@
 package com.itland.employer.api;
 
+import com.itland.employer.entities.ProfileInfo;
 import com.itland.employer.requests.ChangeEmailRequest;
 import com.itland.employer.requests.ChangeGsmRequest;
 import com.itland.employer.requests.ChangePasswordRequest;
@@ -7,6 +8,7 @@ import com.itland.employer.requests.EditActiveVacancyRequest;
 import com.itland.employer.requests.EditCompanyProfileRequest;
 import com.itland.employer.requests.EditExpiredVacancyRequest;
 import com.itland.employer.requests.EditInactiveVacancyRequest;
+import com.itland.employer.requests.EditProfileInfoRequest;
 import com.itland.employer.requests.FilterJobSeekersRequest;
 import com.itland.employer.requests.ForgotPasswordRequest;
 import com.itland.employer.requests.PostVacancyRequest;
@@ -15,6 +17,7 @@ import com.itland.employer.requests.VerifyAccountRequest;
 import com.itland.employer.requests.VerifyChangeEmailRequest;
 import com.itland.employer.requests.VerifyChangeGsmRequest;
 import com.itland.employer.requests.VerifyForgotPasswordRequest;
+import com.itland.employer.responses.AboutUsResponse;
 import com.itland.employer.responses.CitiesListResponse;
 import com.itland.employer.responses.CountyCodeResponse;
 import com.itland.employer.responses.CountyListResponse;
@@ -85,7 +88,7 @@ public interface Apis {
 
     @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/EmpVacancies/PostJobVacancy")
-    Call<GeneralResponse> PostJobVacancy(@Header("Language") String language,@Header("Authorization") String authorization, @Body PostVacancyRequest request);
+    Call<VacancyDetails> PostJobVacancy(@Header("Language") String language,@Header("Authorization") String authorization, @Body PostVacancyRequest request);
 
     @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/EmpVacancies/EditActiveJobVacancy")
@@ -162,51 +165,74 @@ public interface Apis {
     @GET("/IRecruitment.Api/api/Indices/ListCountryCodes")
     Call<CountyCodeResponse> ListCountryCodes(@Header("Language") String language);
 
+    @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/Account/Register")
     Call<RegisterResponse> Register(@Header("Language") String language,@Body RegisterRequest request);
 
+    @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/Account/ChangeGsm")
     Call<GeneralResponse> ChangeGsm(@Header("Language") String language,@Header("Authorization") String authorization, @Body ChangeGsmRequest request);
 
+    @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/Account/ResendCodeChangeGsm")
     Call<GeneralResponse> ResendCodeChangeGsm(@Header("Language") String language,@Header("Authorization") String authorization, @Body ChangeGsmRequest request);
 
+    @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/Account/ChangeEmail")
     Call<GeneralResponse> ChangeEmail(@Header("Language") String language,@Header("Authorization") String authorization, @Body ChangeEmailRequest request);
 
+    @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/Account/ResendCodeChangeEmail")
     Call<GeneralResponse> ResendCodeChangeEmail(@Header("Language") String language,@Header("Authorization") String authorization, @Body ChangeEmailRequest request);
 
+    @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/Account/VerifyChangeEmail")
     Call<GeneralResponse> VerifyChangeEmail(@Header("Language") String language,@Header("Authorization") String authorization, @Body VerifyChangeEmailRequest request);
 
+    @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/Account/VerifyChangeGsm")
     Call<GeneralResponse> VerifyChangeGsm(@Header("Language") String language,@Header("Authorization") String authorization, @Body VerifyChangeGsmRequest request);
 
     @POST("/IRecruitment.Api/api/Account/ForgotPassword")
     Call<GeneralResponse> ForegotPassword(@Header("Language") String language,@Body ForgotPasswordRequest request);
 
+    @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/Account/ConfirmForgotPassword")
     Call<GeneralResponse> ConfirmForgotPassword(@Header("Language") String language,@Body VerifyForgotPasswordRequest request);
 
+    @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/Account/ResendCodeForgotPassword")
     Call<GeneralResponse> ResendCodeForgotPassword(@Header("Language") String language,@Body ForgotPasswordRequest request);
 
+    @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/Account/VerifyAccount")
     Call<GeneralResponse> VerifyAccount(@Header("Language") String language,@Body VerifyAccountRequest request);
 
+    @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/Account/ResendCodeRegister")
     Call<GeneralResponse> ResendCodeRegister(@Header("Language") String language,@Body VerifyAccountRequest request);
 
+    @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/Account/ChangePassword")
     Call<GeneralResponse> ChangePassword(@Header("Language") String language,@Header("Authorization") String authorization, @Body ChangePasswordRequest request);
 
+    @Headers("Content-Type: application/json")
     @POST("/IRecruitment.Api/api/Account/Logout")
     Call<Void> Logout(@Header("Language") String language,@Header("Authorization") String authorization);
 
     @GET("/IRecruitment.Api/api/EmpHome/Home")
     Call<HomeResponse> Home(@Header("Language") String language,@Header("Authorization") String authorization);
 
+    @GET("/IRecruitment.Api/api/Account/ProfileInfo")
+    Call<ProfileInfo> ProfileInfo(@Header("Language") String language, @Header("Authorization") String authorization);
+
+    @Headers("Content-Type: application/json")
+    @POST("/IRecruitment.Api/api/Account/ChangeProfileInfo")
+    Call<GeneralResponse> ChangeProfileInfo(@Header("Language") String language, @Header("Authorization") String authorization, @Body EditProfileInfoRequest request);
+
+    @Headers("Content-Type: application/json")
+    @POST("/IRecruitment.Api/api/Home/AboutUs")
+    Call<AboutUsResponse> AboutUs(@Header("Language") String language, @Header("Authorization") String authorization);
 
 
 }

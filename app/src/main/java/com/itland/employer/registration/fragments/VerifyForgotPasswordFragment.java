@@ -82,6 +82,7 @@ public class VerifyForgotPasswordFragment extends AbstractResistrationFragment {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);
+                        navigator.goBackTo(SignInFragment.class);
 
                     }
 

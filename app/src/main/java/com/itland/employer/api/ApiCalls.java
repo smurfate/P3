@@ -9,6 +9,7 @@ import com.itland.employer.MainActivity;
 import com.itland.employer.R;
 import com.itland.employer.abstracts.AbstractEntity;
 import com.itland.employer.entities.Message;
+import com.itland.employer.entities.ProfileInfo;
 import com.itland.employer.fragments.ReloadFragment;
 import com.itland.employer.registration.RegistrationActivity;
 import com.itland.employer.requests.ChangeEmailRequest;
@@ -18,6 +19,7 @@ import com.itland.employer.requests.EditActiveVacancyRequest;
 import com.itland.employer.requests.EditCompanyProfileRequest;
 import com.itland.employer.requests.EditExpiredVacancyRequest;
 import com.itland.employer.requests.EditInactiveVacancyRequest;
+import com.itland.employer.requests.EditProfileInfoRequest;
 import com.itland.employer.requests.FilterJobSeekersRequest;
 import com.itland.employer.requests.ForgotPasswordRequest;
 import com.itland.employer.requests.PostVacancyRequest;
@@ -26,6 +28,7 @@ import com.itland.employer.requests.VerifyAccountRequest;
 import com.itland.employer.requests.VerifyChangeEmailRequest;
 import com.itland.employer.requests.VerifyChangeGsmRequest;
 import com.itland.employer.requests.VerifyForgotPasswordRequest;
+import com.itland.employer.responses.AboutUsResponse;
 import com.itland.employer.responses.CitiesListResponse;
 import com.itland.employer.responses.CountyCodeResponse;
 import com.itland.employer.responses.CountyListResponse;
@@ -66,6 +69,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public abstract class ApiCalls {
+
 
     private String TAG = getClass().getSimpleName();
     private Retrofit retrofit ;
@@ -339,7 +343,8 @@ public abstract class ApiCalls {
     public void editProfile(Integer id, String nameEn, String nameAr,String aboutAr,String aboutEn,String addressAr,
                             String addressEn,Integer cityId, Integer industryId, String commercialRegister,
                             Integer pBox, Integer contactTitleId,String contactFirstName, String contactLastName,
-                            String contactPosition, CallbackWrapped<GeneralResponse> callback)
+                            String contactPosition,String phone,String email, String contactEmail,String contactGsm,
+                            String arLogo,String enLogo, CallbackWrapped<GeneralResponse> callback)
     {
         EditCompanyProfileRequest request = new EditCompanyProfileRequest();
         request.Id = id;
@@ -353,10 +358,17 @@ public abstract class ApiCalls {
         request.IndustryId = industryId;
         request.CommercialRegister = commercialRegister;
         request.POBox = pBox;
+        request.Phone = phone;
+        request.Email = email;
+        request.PersonalDetailsEmail = contactEmail;
+        request.PersonalDetailsGsm = contactGsm;
         request.PersonalDetailsTitleId = contactTitleId;
         request.PersonalDetailsFirstName = contactFirstName;
         request.PersonalDetailsLastName = contactLastName;
-        request.PersonalDetailsposition = contactPosition;
+        request.PersonalDetailsPosition = contactPosition;
+
+        request.ArLogoUrl = arLogo;
+        request.EnLogoUrl = enLogo;
 
 
 
@@ -369,7 +381,7 @@ public abstract class ApiCalls {
                                Integer cityId, Integer requiredYearsExperience, Integer minEduDegree,
                                Integer fieldOfWork, Integer jobTitle, Integer militaryService, Integer salary,
                                Integer requiredEmployeeNumber, Boolean photo,Integer cvLanguage,
-                               Boolean hidCompanyName,CallbackWrapped<GeneralResponse> callback)
+                               Boolean hidCompanyName,CallbackWrapped<VacancyDetails> callback)
     {
         PostVacancyRequest request = new PostVacancyRequest();
 
@@ -622,6 +634,33 @@ public abstract class ApiCalls {
 
         apis.UserInfo(language,authorization).enqueue(convertCallback(callback));
     }
+
+    public void getProfileInfo(CallbackWrapped<ProfileInfo> callback)
+    {
+        apis.ProfileInfo(language,authorization).enqueue(convertCallback(callback));
+    }
+
+    public void editProfileInfo(String id,String firstName, String lastName, String email,
+                                String countyCode, String phone, String imgUrl, String username,
+                                CallbackWrapped<GeneralResponse> callback)
+    {
+        EditProfileInfoRequest request = new EditProfileInfoRequest();
+        request.Id = id;
+        request.Email = email;
+        request.FirstName = firstName;
+        request.LastName = lastName;
+        request.GsmCountryCode = countyCode;
+        request.PhoneNumber = phone;
+        request.Username = username;
+        request.ImageURL = imgUrl;
+        apis.ChangeProfileInfo(language,authorization,request).enqueue(convertCallback(callback));
+    }
+
+    public void getAboutUs(CallbackWrapped<AboutUsResponse> callback)
+    {
+        apis.AboutUs(language,authorization).enqueue(convertCallback(callback));
+    }
+
 
 
 }

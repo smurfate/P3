@@ -238,6 +238,13 @@
     <string name="error_reload">لم نستطع الوصول إلى المخدم, تأكد من أنك متصل بالانترنت\nإضغط في أي مكان لإعادة المحاولة</string>
     <string name="confirm">تأكيد</string>
     <string name="error_server_issue">حصل خطأ غير متوقع, أعد المحاولة لاحقا</string>
+    <string name="account_settings">إعدادات الحساب</string>
+    <string name="about_us">من نحن</string>
+    <string name="contact_us">اتصل بنا</string>
+    <string name="customer_care">خدمة الزبائن</string>
+    <string name="sign_out">تسجيل الخروج</string>
+    <string name="arabic">العربية</string>
+    <string name="english">الانكليزية</string>
 
 
 </resources>

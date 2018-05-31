@@ -98,6 +98,7 @@ public class ResumeDetailsFragment extends AbstractFragment {
             txtDependacyNumber.setText(details.PersonalDetails.NumberOfDependencies.toString());
             txtFullAddress.setText(details.PersonalDetails.Address);
             txtGSMCode.setText(details.PersonalDetails.MobilePhone);
+            txtMotherLanguage.setText(details.PersonalDetails.MotherLanguage);
 
         }
 
@@ -113,7 +114,6 @@ public class ResumeDetailsFragment extends AbstractFragment {
             txtWorkPeriod.setText(details.JobTarget.NoticePeriod);
             txtDesiredSalary.setText(details.JobTarget.DesiredNetSalary + " " + details.JobTarget.DesiredNetSalaryCurrency);
             txtLastMonthSalary.setText(details.JobTarget.LastMonthSalary + " " + details.JobTarget.LastMonthSalaryCurrency);
-            txtMotherLanguage.setText(details.PersonalDetails.MotherLanguage);
             txtWorkCity.setText(details.JobTarget.City);
 
         }

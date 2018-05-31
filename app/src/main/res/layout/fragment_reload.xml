@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView21"
+                android:id="@+id/imgFace"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:tint="@color/text_error"

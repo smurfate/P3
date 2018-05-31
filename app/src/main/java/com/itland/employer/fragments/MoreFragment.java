@@ -16,7 +16,9 @@ import com.itland.employer.abstracts.AbstractActivity;
 import com.itland.employer.abstracts.AbstractFragment;
 import com.itland.employer.api.CallbackWrapped;
 import com.itland.employer.api.ErrorMessage;
+import com.itland.employer.entities.ProfileInfo;
 import com.itland.employer.registration.RegistrationActivity;
+import com.itland.employer.responses.AboutUsResponse;
 import com.itland.employer.responses.HomeResponse;
 import com.itland.employer.util.PrefUtil;
 import com.itland.employer.util.SharedPreferencesKeys;
@@ -33,6 +35,7 @@ public class MoreFragment extends AbstractFragment {
     @Bind(R.id.txtSignout) TextView txtSignOut;
     @Bind(R.id.txtAbout) TextView txtAbout;
     @Bind(R.id.txtCompanyName) TextView txtCompanyName;
+    @Bind(R.id.txtAccount) TextView txtAccount;
     @Bind(R.id.imgLogo) CircleImageView imgLogo;
 
     public MoreFragment() {
@@ -82,10 +85,10 @@ public class MoreFragment extends AbstractFragment {
 
 
         if(activity.getLocale().equals(AbstractActivity.Lang.ar)) {
-            switchLanguage.setText("Arabic");
+            switchLanguage.setText(R.string.arabic);
             switchLanguage.setChecked(true);
         } else {
-            switchLanguage.setText("English");
+            switchLanguage.setText(R.string.english);
             switchLanguage.setChecked(false);
         }
 
@@ -119,6 +122,41 @@ public class MoreFragment extends AbstractFragment {
                     }
                 });
 
+            }
+        });
+
+
+        txtAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                apiCalls.getProfileInfo(new CallbackWrapped<ProfileInfo>() {
+                    @Override
+                    public void onResponse(ProfileInfo response) {
+                        navigator.gotoSubSection(AccountSettingsFragment.newInstance(response));
+                    }
+
+                    @Override
+                    public void onFailure(ErrorMessage errorMessage) {
+
+                    }
+                });
+            }
+        });
+
+        txtAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                apiCalls.getAboutUs(new CallbackWrapped<AboutUsResponse>() {
+                    @Override
+                    public void onResponse(AboutUsResponse response) {
+                        navigator.gotoSubSection(AboutFragment.newInstance(response));
+                    }
+
+                    @Override
+                    public void onFailure(ErrorMessage errorMessage) {
+
+                    }
+                });
             }
         });
 

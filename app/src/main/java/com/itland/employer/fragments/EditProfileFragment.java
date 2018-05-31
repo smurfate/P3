@@ -1,7 +1,12 @@
 package com.itland.employer.fragments;
 
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
@@ -9,10 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.itland.employer.R;
+import com.itland.employer.abstracts.AbstractActivity;
+import com.itland.employer.api.FileUploader;
 import com.itland.employer.entities.CompanyProfile;
 import com.itland.employer.entities.Country;
 import com.itland.employer.responses.CitiesListResponse;
@@ -26,12 +34,14 @@ import com.itland.employer.entities.City;
 import com.itland.employer.entities.Indice;
 import com.itland.employer.responses.ProfileInfoResponse;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfileFragment extends AbstractFragment {
 
@@ -45,7 +55,6 @@ public class EditProfileFragment extends AbstractFragment {
     @Bind(R.id.txtPBox) EditText txtPBox;
     @Bind(R.id.txtEmail) EditText txtEmail;
     @Bind(R.id.txtPhone) EditText txtPhone;
-    @Bind(R.id.txtGsm) EditText txtGsm;
     @Bind(R.id.txtContactFirstName) EditText txtContactFirstName;
     @Bind(R.id.txtContactLastName) EditText txtContactLastName;
     @Bind(R.id.txtContactPosition) EditText txtContactPosition;
@@ -56,6 +65,10 @@ public class EditProfileFragment extends AbstractFragment {
     @Bind(R.id.spnIndustry) Spinner spnIndustry;
     @Bind(R.id.spnContactTitle) Spinner spnContactTitle;
     @Bind(R.id.switchVisible) SwitchCompat switchCompat;
+    @Bind(R.id.imgLogoAr) CircleImageView imgLogoAr;
+    @Bind(R.id.imgLogoEn) CircleImageView imgLogoEn;
+    @Bind(R.id.imgUploadLogoAr) CircleImageView imgUploadLogoAr;
+    @Bind(R.id.imgUploadLogoEn) CircleImageView imgUploadLogoEn;
 
     HashMap<String,Country> name2county = new HashMap<>();
     HashMap<String,City> name2city = new HashMap<>();
@@ -63,6 +76,10 @@ public class EditProfileFragment extends AbstractFragment {
     HashMap<String,Indice> name2ContactTitle = new HashMap<>();
 
     private CompanyProfile profile;
+    private TextView txtSave;
+    private String logoArUrl;
+    private String logoEnUrl;
+
 
     public EditProfileFragment() {
         // Required empty public constructor
@@ -116,7 +133,6 @@ public class EditProfileFragment extends AbstractFragment {
         required(txtContactLastName)&&
         required(txtContactPosition)&&
         required(txtEmail)&&
-        required(txtGsm)&&
         required(txtNameAr)&&
         required(txtNameEn)&&
         required(txtPBox)&&
@@ -257,9 +273,15 @@ public class EditProfileFragment extends AbstractFragment {
 
     }
 
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        txtSave = activity.actionText(true);
+
+        imgUploadLogoAr.setVisibility(View.GONE);
+        imgUploadLogoEn.setVisibility(View.GONE);
 
         txtNameEn.setText(profile.EnName);
         txtNameAr.setText(profile.ArName);
@@ -271,7 +293,6 @@ public class EditProfileFragment extends AbstractFragment {
         txtPBox.setText(profile.POBox.toString());
         txtEmail.setText(profile.Email);
         txtPhone.setText(profile.Phone);
-        txtGsm.setText(profile.Phone);
         txtContactFirstName.setText(profile.PersonalDetailsFullName);
         txtContactLastName.setText(profile.PersonalDetailsFullName);
         txtContactPosition.setText(profile.PersonalDetailsposition);
@@ -281,8 +302,75 @@ public class EditProfileFragment extends AbstractFragment {
 
         initiateSpinners();
 
+        imgLogoAr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.pickImage(new AbstractActivity.OnImagePicked() {
+                    @Override
+                    public void onImagePicked(Bitmap bitmap) {
+                        imgLogoAr.setImageBitmap(bitmap);
+                        imgLogoAr.setTag(bitmap);
+                        imgUploadLogoAr.setVisibility(View.VISIBLE);
+                    }
+                });
+            }
+        });
 
-        TextView txtSave = activity.actionText(true);
+        imgLogoEn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.pickImage(new AbstractActivity.OnImagePicked() {
+                    @Override
+                    public void onImagePicked(Bitmap bitmap) {
+                        imgLogoEn.setImageBitmap(bitmap);
+                        imgLogoEn.setTag(bitmap);
+                        imgUploadLogoEn.setVisibility(View.VISIBLE);
+                    }
+                });
+            }
+        });
+
+        imgUploadLogoEn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(imgLogoEn.getTag()==null) return;
+                txtSave.setVisibility(View.GONE);
+                Bitmap bm = (Bitmap) imgLogoEn.getTag();
+                FileUploader.upload(bm, "", new FileUploader.OnImageUploadedListener() {
+                    @Override
+                    public void onImageUploaded(String imageUrl) {
+                        txtSave.setVisibility(View.VISIBLE);
+                        if(!imageUrl.equals("Error"))
+                        {
+                            logoEnUrl = imageUrl;
+                            imgUploadLogoEn.setVisibility(View.GONE);
+                        }
+                    }
+                });
+            }
+        });
+
+        imgUploadLogoAr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(imgLogoAr.getTag()==null) return;
+                txtSave.setVisibility(View.GONE);
+                Bitmap bm = (Bitmap) imgLogoAr.getTag();
+                FileUploader.upload(bm, "", new FileUploader.OnImageUploadedListener() {
+                    @Override
+                    public void onImageUploaded(String imageUrl) {
+                        txtSave.setVisibility(View.VISIBLE);
+                        if(!imageUrl.equals("Error"))
+                        {
+                            logoArUrl = imageUrl;
+                            imgUploadLogoAr.setVisibility(View.GONE);
+                        }
+                    }
+                });
+            }
+        });
+
+
         txtSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -301,7 +389,6 @@ public class EditProfileFragment extends AbstractFragment {
                 String contactGsm = txtContactGSM.getText().toString();
                 String contactPosition = txtContactPosition.getText().toString();
                 String emial = txtEmail.getText().toString();//seperated
-                String gsm = txtGsm.getText().toString();//seperated
                 String pbox = txtPBox.getText().toString();
                 String phone = txtPhone.getText().toString();
 
@@ -311,7 +398,10 @@ public class EditProfileFragment extends AbstractFragment {
                 Integer titleId = name2ContactTitle.get(spnContactTitle.getSelectedItem().toString()).Id;
                 boolean visibility = switchCompat.isChecked();
 
-                apiCalls.editProfile(profile.Id,nameEn, nameAr, aboutAr, aboutEn, addressAr, addressEn, cityId, industryId, commercialRegister, Integer.parseInt(pbox), titleId, contactFirstName, contactLastName, contactPosition, new CallbackWrapped<GeneralResponse>() {
+
+                apiCalls.editProfile(profile.Id,nameEn, nameAr, aboutAr, aboutEn, addressAr, addressEn,
+                        cityId, industryId, commercialRegister, Integer.parseInt(pbox), titleId, contactFirstName,
+                        contactLastName, contactPosition,phone,emial,contactEmail,contactGsm,logoArUrl,logoEnUrl, new CallbackWrapped<GeneralResponse>() {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);
@@ -327,10 +417,6 @@ public class EditProfileFragment extends AbstractFragment {
             }
         });
 
-
-
-
-
-
     }
+
 }

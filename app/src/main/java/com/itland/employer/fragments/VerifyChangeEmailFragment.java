@@ -69,6 +69,7 @@ public class VerifyChangeEmailFragment extends AbstractFragment {
                     @Override
                     public void onResponse(GeneralResponse response) {
                         toast(response);
+                        navigator.gotoSection(MoreFragment.newInstance());
                     }
 
                     @Override

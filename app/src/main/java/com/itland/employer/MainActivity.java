@@ -202,6 +202,7 @@ public class MainActivity extends AbstractActivity {
         return actionIcon;
     }
 
+
     public TextView actionText(boolean show)
     {
         if(show) {

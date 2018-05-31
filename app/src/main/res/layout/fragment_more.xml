@@ -61,25 +61,13 @@
                     android:paddingRight="@dimen/margin_lr">
 
                     <TextView
+                        android:id="@+id/txtAccount"
                         style="@style/TextViewBody"
                         android:layout_width="match_parent"
                         android:layout_height="75dp"
                         android:layout_marginTop="@dimen/dividerHeight"
                         android:gravity="center_vertical"
-                        android:text="example@company.com" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@android:color/black" />
-
-                    <TextView
-                        style="@style/TextViewBody"
-                        android:layout_width="match_parent"
-                        android:layout_height="75dp"
-                        android:layout_marginTop="@dimen/dividerHeight"
-                        android:gravity="center_vertical"
-                        android:text="Account Settings" />
+                        android:text="@string/account_settings" />
 
                     <View
                         android:layout_width="match_parent"
@@ -103,7 +91,7 @@
                         android:layout_height="75dp"
                         android:layout_marginTop="@dimen/dividerHeight"
                         android:gravity="center_vertical"
-                        android:text="About us" />
+                        android:text="@string/about_us" />
 
                     <View
                         android:layout_width="match_parent"
@@ -116,7 +104,7 @@
                         android:layout_height="75dp"
                         android:layout_marginTop="@dimen/dividerHeight"
                         android:gravity="center_vertical"
-                        android:text="Contact Us" />
+                        android:text="@string/contact_us" />
 
                     <View
                         android:layout_width="match_parent"
@@ -129,7 +117,7 @@
                         android:layout_height="75dp"
                         android:layout_marginTop="@dimen/dividerHeight"
                         android:gravity="center_vertical"
-                        android:text="Customer Care" />
+                        android:text="@string/customer_care" />
 
                     <View
                         android:layout_width="match_parent"
@@ -143,7 +131,7 @@
                         android:layout_height="75dp"
                         android:layout_marginTop="@dimen/dividerHeight"
                         android:gravity="center_vertical"
-                        android:text="Sign Out" />
+                        android:text="@string/sign_out" />
 
 
                 </LinearLayout>
