@@ -4,6 +4,9 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.itland.employer.responses.UploadImageResponse;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -22,6 +25,7 @@ public class FileUploader extends AsyncTask<Void,Void,Void> {
     private Bitmap bitmap;
     private String uploadUrl;
     private String imageUrl;
+    private Gson gson;
     public String url = "http://82.137.221.168/IRecruitment.Site/Account/UploadFile";
     private OnImageUploadedListener listener;
 
@@ -34,6 +38,7 @@ public class FileUploader extends AsyncTask<Void,Void,Void> {
         this.bitmap = bitmap;
         this.uploadUrl = uploadUrl;
         this.listener = listener;
+        this.gson = new Gson();
         execute();
     }
 
@@ -50,7 +55,9 @@ public class FileUploader extends AsyncTask<Void,Void,Void> {
 
     @Override
     protected void onPostExecute(Void s) {
-        listener.onImageUploaded(imageUrl);
+        UploadImageResponse response = gson.fromJson(imageUrl,UploadImageResponse.class);
+        if(response.IsOk) listener.onImageUploaded(response.ImageUrl);
+        else listener.onImageUploaded("Error");
         super.onPostExecute(s);
     }
 

@@ -157,13 +157,11 @@ public class EditProfileInfoFragment extends AbstractFragment {
             @Override
             public void onClick(View v) {
                 if(imgLogo.getTag()==null) return;
-                txtSave.setVisibility(View.GONE);
                 Bitmap bm = (Bitmap) imgLogo.getTag();
                 activity.showProgressIndicator(true);
                 FileUploader.upload(bm, "", new FileUploader.OnImageUploadedListener() {
                     @Override
                     public void onImageUploaded(String imageUrl) {
-                        txtSave.setVisibility(View.VISIBLE);
                         activity.showProgressIndicator(false);
                         if(!imageUrl.equals("Error"))
                         {

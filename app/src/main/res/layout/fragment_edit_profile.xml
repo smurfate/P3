@@ -21,7 +21,6 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
-
                 <ImageView
                     android:id="@+id/imgUploadLogoAr"
                     android:layout_width="wrap_content"
@@ -30,7 +29,7 @@
                     app:srcCompat="@android:drawable/ic_menu_upload" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/imgLogoEn"
+                    android:id="@+id/imgLogoAr"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -38,6 +37,7 @@
                     android:src="@mipmap/profile"
                     app:civ_border_color="#FF000000"
                     app:civ_border_width="2dp" />
+
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -62,7 +62,6 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
-
                 <ImageView
                     android:id="@+id/imgUploadLogoEn"
                     android:layout_width="wrap_content"
@@ -71,7 +70,7 @@
                     app:srcCompat="@android:drawable/ic_menu_upload" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/imgLogoAr"
+                    android:id="@+id/imgLogoEn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -79,6 +78,7 @@
                     android:src="@mipmap/profile"
                     app:civ_border_color="#FF000000"
                     app:civ_border_width="2dp" />
+
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"

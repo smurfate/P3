@@ -67,8 +67,8 @@ public class EditProfileFragment extends AbstractFragment {
     @Bind(R.id.switchVisible) SwitchCompat switchCompat;
     @Bind(R.id.imgLogoAr) CircleImageView imgLogoAr;
     @Bind(R.id.imgLogoEn) CircleImageView imgLogoEn;
-    @Bind(R.id.imgUploadLogoAr) CircleImageView imgUploadLogoAr;
-    @Bind(R.id.imgUploadLogoEn) CircleImageView imgUploadLogoEn;
+    @Bind(R.id.imgUploadLogoAr) ImageView imgUploadLogoAr;
+    @Bind(R.id.imgUploadLogoEn) ImageView imgUploadLogoEn;
 
     HashMap<String,Country> name2county = new HashMap<>();
     HashMap<String,City> name2city = new HashMap<>();
@@ -334,12 +334,12 @@ public class EditProfileFragment extends AbstractFragment {
             @Override
             public void onClick(View v) {
                 if(imgLogoEn.getTag()==null) return;
-                txtSave.setVisibility(View.GONE);
+                activity.showProgressIndicator(true);
                 Bitmap bm = (Bitmap) imgLogoEn.getTag();
                 FileUploader.upload(bm, "", new FileUploader.OnImageUploadedListener() {
                     @Override
                     public void onImageUploaded(String imageUrl) {
-                        txtSave.setVisibility(View.VISIBLE);
+                        activity.showProgressIndicator(false);
                         if(!imageUrl.equals("Error"))
                         {
                             logoEnUrl = imageUrl;
@@ -354,12 +354,12 @@ public class EditProfileFragment extends AbstractFragment {
             @Override
             public void onClick(View v) {
                 if(imgLogoAr.getTag()==null) return;
-                txtSave.setVisibility(View.GONE);
+                activity.showProgressIndicator(true);
                 Bitmap bm = (Bitmap) imgLogoAr.getTag();
                 FileUploader.upload(bm, "", new FileUploader.OnImageUploadedListener() {
                     @Override
                     public void onImageUploaded(String imageUrl) {
-                        txtSave.setVisibility(View.VISIBLE);
+                        activity.showProgressIndicator(false);
                         if(!imageUrl.equals("Error"))
                         {
                             logoArUrl = imageUrl;
